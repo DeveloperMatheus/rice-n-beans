@@ -1,12 +1,5 @@
 import { cva } from "class-variance-authority";
 
 export const inputStyles = cva(
-  "block h-standard w-full appearance-none rounded-lg border-2 border-shape_green focus:border-shape_green_2 px-3 py-1 placeholder-gray-500 placeholder:font-normal font-normal text-sm text-gray-500 focus:outline-none focus:z-10 disabled:opacity-50 disabled:cursor-not-allowed",
-  {
-    variants: {
-      isReadOnly: {
-        true: "opacity-50 cursor-not-allowed",
-      },
-    },
-  }
+  "appearance-none w-full rounded-lg w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300"
 );

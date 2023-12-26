@@ -1,3 +1,5 @@
-import { cva } from 'class-variance-authority'
+import { cva } from "class-variance-authority";
 
-export const formLabelStyles = cva('inline-block font-bold text-primary')
+export const formLabelStyles = cva(
+  "inline-block font-bold text-primary select-none"
+);

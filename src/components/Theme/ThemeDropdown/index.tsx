@@ -17,7 +17,7 @@ export function ThemeDropdown() {
   }
 
   return (
-    <FormSelect onChange={(evt) => setTheme(evt.target.value)}>
+    <FormSelect onChange={(evt) => setTheme(evt.target.value)} className="">
       <option value="" hidden defaultChecked>
         {theme}
       </option>

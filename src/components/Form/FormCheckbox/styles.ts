@@ -1,15 +1,5 @@
 import { cva } from "class-variance-authority";
 
 export const checkboxStyles = cva(
-  "flex flex-row items-center justify-start hover:opacity-70 disabled:opacity-50 disabled:cursor-not-allowed",
-  {
-    variants: {
-      disabled: {
-        true: "opacity-50 cursor-not-allowed",
-      },
-      isReadOnly: {
-        true: "opacity-50 cursor-not-allowed",
-      },
-    },
-  }
+  "bg-white rounded-md h-5 w-5 cursor-pointer appearance-none border border-opacity-20 focus:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 checked:relative checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:w-[0.8rem] checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:content-checkIcon"
 );

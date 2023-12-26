@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {},
+    content: {
+      checkIcon: 'url("/icon/check.svg")',
+    },
   },
   plugins: [],
 };

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Card } from "~/components/Card";
 import { FormCheckbox } from "~/components/Form/FormCheckbox";
 import { FormInput } from "~/components/Form/FormInput";
 import { FormLabel } from "~/components/Form/FormLabel";
@@ -50,6 +51,18 @@ export default function Home() {
           <FormRadio name="test" />
           <FormRadio name="test" />
           <FormRadio name="test" />
+        </div>
+      </div>
+
+      <div>
+        <h2>Card:</h2>
+        <div>
+          <Card>
+            <p>test</p>
+          </Card>
+          <Card>
+            <p>test</p>
+          </Card>
         </div>
       </div>
     </main>

@@ -68,13 +68,9 @@ export default function Home() {
 
       <div>
         oi:
-        {/* <label className="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" className="sr-only peer" />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-        </label> */}
         <input
           type="checkbox"
-          className="appearance-none cursor-pointer w-12 h-6 border rounded-full relative before:absolute before:top-[0.88rem] before:-translate-x-1 checked:before:translate-x-[1.25rem] before:-translate-y-1/2 before:transition-all before:content-circleIcon checked:before:brightness-0 dark:checked:before:brightness-200"
+          className="appearance-none cursor-pointer bg-white dark:bg-zinc-950 w-12 h-6 border border-zinc-200 dark:border-zinc-800 rounded-full relative before:absolute before:top-[0.88rem] before:-translate-x-1 checked:before:translate-x-[1.25rem] before:-translate-y-1/2 before:transition-all before:content-circleIcon before:brightness-[.8] dark:before:brightness-[.4] checked:before:brightness-0 dark:checked:before:brightness-200 disabled:opacity-50 disabled:cursor-not-allowed"
         />
       </div>
     </main>

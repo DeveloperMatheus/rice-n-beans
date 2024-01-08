@@ -1,10 +1,10 @@
-import Image from "next/image";
 import { Card } from "~/components/Card";
 import { FormCheckbox } from "~/components/Form/FormCheckbox";
 import { FormInput } from "~/components/Form/FormInput";
 import { FormLabel } from "~/components/Form/FormLabel";
 import { FormRadio } from "~/components/Form/FormRadio";
 import { FormSelect } from "~/components/Form/FormSelect";
+import { FormSwitch } from "~/components/Form/FormSwitch";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 
 export default function Home() {
@@ -66,12 +66,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        oi:
-        <input
-          type="checkbox"
-          className="appearance-none cursor-pointer bg-white dark:bg-zinc-950 w-12 h-6 border border-zinc-200 dark:border-zinc-800 rounded-full relative before:absolute before:top-[0.88rem] before:-translate-x-1 checked:before:translate-x-[1.25rem] before:-translate-y-1/2 before:transition-all before:content-circleIcon before:brightness-[.8] dark:before:brightness-[.4] checked:before:brightness-0 dark:checked:before:brightness-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        />
+      <div className="space-x-4">
+        <h2>Switch:</h2>
+        <FormSwitch disabled />
+        <FormSwitch />
+        <FormSwitch />
+        <FormSwitch />
       </div>
     </main>
   );

@@ -74,7 +74,7 @@ export default function Home() {
         </label> */}
         <input
           type="checkbox"
-          className="appearance-none cursor-pointer w-12 h-6 border rounded-full relative before:absolute before:top-3.5 before:left-[0.05rem] before:w-[0.5rem] before:-translate-x-10 checked:before:-translate-x-[1rem] before:-translate-y-1/2 before:transition-all before:content-circleIcon checked:before:brightness-0 dark:checked:before:brightness-200"
+          className="appearance-none cursor-pointer w-12 h-6 border rounded-full relative before:absolute before:top-3.5 before:-translate-x-1 checked:before:translate-x-[1.3rem] before:-translate-y-1/2 before:transition-all before:content-circleIcon checked:before:brightness-0 dark:checked:before:brightness-200"
         />
       </div>
     </main>

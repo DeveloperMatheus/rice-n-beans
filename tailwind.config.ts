@@ -11,6 +11,7 @@ const config: Config = {
     extend: {},
     content: {
       checkIcon: 'url("/icon/check.svg")',
+      circleIcon: 'url("/icon/circle.svg")',
     },
   },
   plugins: [],

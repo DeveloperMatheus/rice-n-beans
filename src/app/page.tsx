@@ -68,7 +68,7 @@ export default function Home() {
 
       <div className="space-x-4">
         <h2>Switch:</h2>
-        <FormSwitch aria-label="Teste" />
+        <FormSwitch aria-label="Teste" disabled />
         <FormSwitch />
         <FormSwitch />
         <FormSwitch />

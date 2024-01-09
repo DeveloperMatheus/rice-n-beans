@@ -6,6 +6,7 @@ export const FormSwitch = forwardRef<HTMLInputElement, FormSwitchProps>(
   ({ className, ...props }, ref) => (
     <input
       type="checkbox"
+      role="switch"
       className={switchStyles({ className })}
       ref={ref}
       {...props}

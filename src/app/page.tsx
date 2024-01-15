@@ -48,18 +48,9 @@ export default function Home() {
       <div>
         <h2>Radio:</h2>
         <div className="flex flex-row items-center justify-center space-x-2">
-          <FormRadio
-            name="test"
-            className="relative checked:before:absolute checked:before:-translate-y-1/2 checked:before:-translate-x-1/2 checked:before:top-1/2 checked:before:left-1/2  checked:before:content-[''] checked:before:w-[0.62rem] checked:before:h-[0.62rem] checked:before:rounded-full checked:before:bg-black"
-          />
-          <FormRadio
-            name="test"
-            className="relative checked:before:absolute checked:before:-translate-y-1/2 checked:before:-translate-x-1/2 checked:before:top-1/2 checked:before:left-1/2  checked:before:content-[''] checked:before:w-[0.62rem] checked:before:h-[0.62rem] checked:before:rounded-full checked:before:bg-black"
-          />
-          <FormRadio
-            name="test"
-            className="relative checked:before:absolute checked:before:-translate-y-1/2 checked:before:-translate-x-1/2 checked:before:top-1/2 checked:before:left-1/2  checked:before:content-[''] checked:before:w-[0.62rem] checked:before:h-[0.62rem] checked:before:rounded-full checked:before:bg-black"
-          />
+          <FormRadio name="test" />
+          <FormRadio name="test" />
+          <FormRadio name="test" />
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
 
 export const radioStyles = cva(
-  "w-5 h-5 accent-black dark:accent-white disabled:cursor-not-allowed disabled:opacity-50"
+  "appearance-none w-5 h-5 border rounded-full disabled:cursor-not-allowed disabled:opacity-50"
 );

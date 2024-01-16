@@ -1,3 +1,3 @@
-import { cva } from 'class-variance-authority'
+import { cva } from "class-variance-authority";
 
-export const formErrorMessageStyles = cva('text-red-500')
+export const formErrorMessageStyles = cva("text-red-500 font-sans");

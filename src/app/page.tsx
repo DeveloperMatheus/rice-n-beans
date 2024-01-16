@@ -74,13 +74,13 @@ export default function Home() {
         <FormSwitch />
       </div>
 
-      {/* <div className="space-x-4">
+      <div className="space-x-4">
         <h2>Range:</h2>
         <input
           type="range"
           className="appearance-none bg-purple-950 rounded-full h-2"
         />
-      </div> */}
+      </div>
     </main>
   );
 }

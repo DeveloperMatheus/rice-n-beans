@@ -3,6 +3,7 @@ import { FormCheckbox } from "~/components/Form/FormCheckbox";
 import { FormInput } from "~/components/Form/FormInput";
 import { FormLabel } from "~/components/Form/FormLabel";
 import { FormRadio } from "~/components/Form/FormRadio";
+import { FormRange } from "~/components/Form/FormRange";
 import { FormSelect } from "~/components/Form/FormSelect";
 import { FormSwitch } from "~/components/Form/FormSwitch";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
@@ -76,10 +77,7 @@ export default function Home() {
 
       <div className="space-x-4">
         <h2>Range:</h2>
-        <input
-          type="range"
-          className="appearance-none bg-purple-950 rounded-full h-2"
-        />
+        <FormRange />
       </div>
     </main>
   );

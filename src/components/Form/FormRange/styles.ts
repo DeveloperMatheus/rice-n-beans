@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
 
 export const rangeStyles = cva(
-  "appearance-none cursor-pointer bg-transparent disabled:cursor-not-allowed disabled:opacity-50"
+  "appearance-none relative focus:outline-none cursor-pointer h-2 border border-zinc-200 dark:border-zinc-800 rounded-full disabled:cursor-not-allowed disabled:opacity-50"
 );

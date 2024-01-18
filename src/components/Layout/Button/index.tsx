@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-
 import { buttonStyles } from "./styles";
 import { ButtonProps } from "./types";
 

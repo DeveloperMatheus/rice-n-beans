@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { FormSwitchProps } from "./types";
+import { SwitchProps } from "./types";
 import { switchStyles } from "./styles";
 
-export const FormSwitch = forwardRef<HTMLInputElement, FormSwitchProps>(
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ({ className, ...props }, ref) => (
     <input
       type="checkbox"
@@ -14,4 +14,4 @@ export const FormSwitch = forwardRef<HTMLInputElement, FormSwitchProps>(
   )
 );
 
-FormSwitch.displayName = "FormSwitch";
+Switch.displayName = "Switch";

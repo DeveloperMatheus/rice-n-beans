@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { FormSelectProps } from "./types";
+import { SelectProps } from "./types";
 import { selectStyles } from "./styles";
 
-export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, ...props }, ref) => (
     <select
       className={`${selectStyles({ className })} form__select`}
@@ -14,4 +14,4 @@ export const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   )
 );
 
-FormSelect.displayName = "FormSelect";
+Select.displayName = "Select";

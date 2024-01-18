@@ -1,10 +1,13 @@
-import { Card } from "~/components/Card";
-import { Checkbox, Input } from "~/components/Form";
-import { FormLabel } from "~/components/Form/FormLabel";
-import { FormRadio } from "~/components/Form/FormRadio";
-import { FormRange } from "~/components/Form/FormRange";
-import { FormSelect } from "~/components/Form/FormSelect";
-import { FormSwitch } from "~/components/Form/FormSwitch";
+import {
+  Checkbox,
+  Input,
+  Label,
+  Radio,
+  Range,
+  Select,
+  Switch,
+} from "~/components/Form";
+import { Card } from "~/components/Layout";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 
 export default function Home() {
@@ -25,13 +28,13 @@ export default function Home() {
       <div className="w-full">
         <h2>Select:</h2>
         <div className="flex flex-row items-center justify-center">
-          <FormSelect>
+          <Select>
             <option defaultChecked hidden></option>
             <option>Test1</option>
             <option>Test2</option>
             <option>Test3</option>
             <option>Test4</option>
-          </FormSelect>
+          </Select>
         </div>
       </div>
 
@@ -39,18 +42,18 @@ export default function Home() {
         <h2>Checkbox:</h2>
         <div className="flex flex-row items-center justify-center">
           <Checkbox id="oi" />
-          <FormLabel htmlFor="oi" className="ml-2">
+          <Label htmlFor="oi" className="ml-2">
             Test
-          </FormLabel>
+          </Label>
         </div>
       </div>
 
       <div>
         <h2>Radio:</h2>
         <div className="flex flex-row items-center justify-center space-x-2">
-          <FormRadio name="test" />
-          <FormRadio name="test" />
-          <FormRadio name="test" />
+          <Radio name="test" />
+          <Radio name="test" />
+          <Radio name="test" />
         </div>
       </div>
 
@@ -68,15 +71,15 @@ export default function Home() {
 
       <div className="space-x-4">
         <h2>Switch:</h2>
-        <FormSwitch aria-label="Teste" disabled />
-        <FormSwitch />
-        <FormSwitch />
-        <FormSwitch />
+        <Switch aria-label="Teste" disabled />
+        <Switch />
+        <Switch />
+        <Switch />
       </div>
 
       <div className="space-x-4">
         <h2>Range:</h2>
-        <FormRange />
+        <Range />
       </div>
     </main>
   );

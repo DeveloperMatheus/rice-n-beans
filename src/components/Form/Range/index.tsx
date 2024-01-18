@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { FormRangeProps } from "./types";
+import { RangeProps } from "./types";
 import { rangeStyles } from "./styles";
 
-export const FormRange = forwardRef<HTMLInputElement, FormRangeProps>(
+export const Range = forwardRef<HTMLInputElement, RangeProps>(
   ({ className, ...props }, ref) => (
     <input
       type="range"
@@ -13,4 +13,4 @@ export const FormRange = forwardRef<HTMLInputElement, FormRangeProps>(
   )
 );
 
-FormRange.displayName = "FormRange";
+Range.displayName = "Range";

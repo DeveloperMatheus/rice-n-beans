@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 
 import { radioStyles } from "./styles";
-import { FormRadioProps } from "./types";
+import { RadioProps } from "./types";
 
-export const FormRadio = forwardRef<HTMLInputElement, FormRadioProps>(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ className, ...props }, ref) => (
     <input
       type="radio"
@@ -14,4 +14,4 @@ export const FormRadio = forwardRef<HTMLInputElement, FormRadioProps>(
   )
 );
 
-FormRadio.displayName = "FormRadio";
+Radio.displayName = "Radio";

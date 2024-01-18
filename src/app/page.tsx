@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Checkbox,
   Input,
@@ -7,11 +9,13 @@ import {
   Select,
   Switch,
 } from "~/components/Form";
-import { Button, Card } from "~/components/Layout";
-import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
+import { Button, Card, Modal } from "~/components/Layout";
 import { Title } from "~/components/Typography";
+import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
+import { useState } from "react";
 
 export default function Home() {
+  const [testModal, setTestModal] = useState(false);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Title>Page title</Title>
@@ -26,6 +30,14 @@ export default function Home() {
       <div>
         <h2>Input: </h2>
         <Input />
+      </div>
+
+      <div>
+        <h2>Modal: </h2>
+        <Button onClick={() => setTestModal(true)}>Open Modal</Button>
+        <Modal isOpen={testModal} onCloseModal={() => setTestModal(false)}>
+          Test
+        </Modal>
       </div>
 
       <div className="w-full">

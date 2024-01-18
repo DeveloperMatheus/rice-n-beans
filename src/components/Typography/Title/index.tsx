@@ -1,14 +1,13 @@
 import { forwardRef } from "react";
+import { titleStyles } from "./styles";
+import { TitleProps } from "./types";
 
-import { cardStyles } from "./styles";
-import { CardProps } from "./types";
-
-export const Card = forwardRef<HTMLDivElement, CardProps>(
+export const Title = forwardRef<HTMLDivElement, TitleProps>(
   ({ children, className, ...props }, ref) => (
-    <div className={cardStyles({ className })} ref={ref} {...props}>
+    <h1 className={titleStyles({ className })} ref={ref} {...props}>
       {children}
-    </div>
+    </h1>
   )
 );
 
-Card.displayName = "Card";
+Title.displayName = "Title";

@@ -1,5 +1,5 @@
 import { VariantProps } from "class-variance-authority";
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps } from "react";
 
 import { cardStyles } from "./styles";
 

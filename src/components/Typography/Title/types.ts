@@ -1,6 +1,7 @@
 import { VariantProps } from "class-variance-authority";
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps } from "react";
 
-import { cardStyles } from "./styles";
+import { titleStyles } from "./styles";
 
-export type CardProps = ComponentProps<"div"> & VariantProps<typeof cardStyles>;
+export type TitleProps = ComponentProps<"h1"> &
+  VariantProps<typeof titleStyles>;

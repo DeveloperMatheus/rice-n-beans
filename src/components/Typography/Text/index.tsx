@@ -1,14 +1,14 @@
 import { forwardRef } from "react";
 
-import { cardStyles } from "./styles";
-import { CardProps } from "./types";
+import { textStyles } from "./styles";
+import { TextProps } from "./types";
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
+export const Text = forwardRef<HTMLDivElement, TextProps>(
   ({ children, className, ...props }, ref) => (
-    <div className={cardStyles({ className })} ref={ref} {...props}>
+    <p className={textStyles({ className })} ref={ref} {...props}>
       {children}
-    </div>
+    </p>
   )
 );
 
-Card.displayName = "Card";
+Text.displayName = "Text";

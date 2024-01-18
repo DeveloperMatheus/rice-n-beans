@@ -9,11 +9,12 @@ import {
 } from "~/components/Form";
 import { Card } from "~/components/Layout";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
+import { Title } from "~/components/Typography";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h2>Page title</h2>
+      <Title>Page title</Title>
 
       <div>
         <h2>Theme changer: </h2>

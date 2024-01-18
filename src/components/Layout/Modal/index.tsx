@@ -30,9 +30,11 @@ export const Modal = ({
       ref={ref}
       {...props}
     >
-      {children}
-      <div>
-        <Button onClick={() => onCloseModal()}>Close</Button>
+      <div className="p-3">{children}</div>
+      <div className="border-t p-3 flex justify-end">
+        <Button size="sm" onClick={() => onCloseModal()}>
+          Close
+        </Button>
       </div>
     </dialog>
   );

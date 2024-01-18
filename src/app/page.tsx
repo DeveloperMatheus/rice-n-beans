@@ -35,7 +35,11 @@ export default function Home() {
       <div>
         <h2>Modal: </h2>
         <Button onClick={() => setTestModal(true)}>Open Modal</Button>
-        <Modal isOpen={testModal} onCloseModal={() => setTestModal(false)}>
+        <Modal
+          className="rounded-lg w-full max-w-[40rem]"
+          isOpen={testModal}
+          onCloseModal={() => setTestModal(false)}
+        >
           Test
         </Modal>
       </div>

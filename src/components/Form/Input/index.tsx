@@ -1,12 +1,12 @@
 import { forwardRef } from "react";
 
 import { inputStyles } from "./styles";
-import { FormInputProps } from "./types";
+import { InputProps } from "./types";
 
-export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => (
     <input className={inputStyles({ className })} ref={ref} {...props} />
   )
 );
 
-FormInput.displayName = "FormInput";
+Input.displayName = "Input";

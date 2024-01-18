@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { checkboxStyles } from "./styles";
-import { FormCheckboxProps } from "./types";
+import { CheckboxProps } from "./types";
 
-export const FormCheckbox = forwardRef<HTMLInputElement, FormCheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, ...props }, ref) => (
     <input
       type="checkbox"
@@ -13,4 +13,4 @@ export const FormCheckbox = forwardRef<HTMLInputElement, FormCheckboxProps>(
   )
 );
 
-FormCheckbox.displayName = "FormCheckbox";
+Checkbox.displayName = "Checkbox";

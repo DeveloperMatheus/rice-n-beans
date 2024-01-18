@@ -1,6 +1,5 @@
 import { Card } from "~/components/Card";
-import { FormCheckbox } from "~/components/Form/FormCheckbox";
-import { FormInput } from "~/components/Form/FormInput";
+import { Checkbox, Input } from "~/components/Form";
 import { FormLabel } from "~/components/Form/FormLabel";
 import { FormRadio } from "~/components/Form/FormRadio";
 import { FormRange } from "~/components/Form/FormRange";
@@ -20,7 +19,7 @@ export default function Home() {
 
       <div>
         <h2>Input: </h2>
-        <FormInput />
+        <Input />
       </div>
 
       <div className="w-full">
@@ -39,7 +38,7 @@ export default function Home() {
       <div>
         <h2>Checkbox:</h2>
         <div className="flex flex-row items-center justify-center">
-          <FormCheckbox id="oi" />
+          <Checkbox id="oi" />
           <FormLabel htmlFor="oi" className="ml-2">
             Test
           </FormLabel>

@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { titleStyles } from "./styles";
 import { TitleProps } from "./types";
 
-export const Title = forwardRef<HTMLDivElement, TitleProps>(
+export const Title = forwardRef<HTMLHeadingElement, TitleProps>(
   ({ children, className, ...props }, ref) => (
     <h1 className={titleStyles({ className })} ref={ref} {...props}>
       {children}

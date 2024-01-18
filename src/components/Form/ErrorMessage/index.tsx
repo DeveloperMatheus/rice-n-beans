@@ -5,9 +5,9 @@ import { ErrorMessageProps } from "./types";
 
 export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
   ({ children, className, ...props }, ref) => (
-    <span className={errorMessageStyles({ className })} ref={ref} {...props}>
+    <p className={errorMessageStyles({ className })} ref={ref} {...props}>
       {children}
-    </span>
+    </p>
   )
 );
 

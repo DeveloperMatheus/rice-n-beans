@@ -40,11 +40,7 @@ export default function Home() {
 
       <div>
         <h2>Modal: </h2>
-        <Button
-          size="lg"
-          variant="destructive"
-          onClick={() => setTestModal(true)}
-        >
+        <Button size="lg" onClick={() => setTestModal(true)}>
           Open Modal
         </Button>
 

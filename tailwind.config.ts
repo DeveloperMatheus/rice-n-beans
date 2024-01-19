@@ -8,7 +8,17 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.2s ease-in-out",
+      },
+    },
     content: {
       checkIcon: 'url("/icon/check.svg")',
       circleIcon: 'url("/icon/circle.svg")',

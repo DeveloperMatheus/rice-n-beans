@@ -9,7 +9,13 @@ import {
   Select,
   Switch,
 } from "~/components/Form";
-import { Button, Card, Modal } from "~/components/Layout";
+import {
+  Button,
+  Card,
+  Modal,
+  ModalContent,
+  ModalFooter,
+} from "~/components/Layout";
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 import { useState } from "react";
@@ -34,13 +40,21 @@ export default function Home() {
 
       <div>
         <h2>Modal: </h2>
-        <Button onClick={() => setTestModal(true)}>Open Modal</Button>
-        <Modal
-          className="rounded-lg w-full max-w-[40rem]"
-          isOpen={testModal}
-          onCloseModal={() => setTestModal(false)}
+        <Button
+          size="lg"
+          variant="destructive"
+          onClick={() => setTestModal(true)}
         >
-          Test
+          Open Modal
+        </Button>
+
+        <Modal isOpen={testModal} onCloseModal={() => setTestModal(false)}>
+          <ModalContent>test</ModalContent>
+          <ModalFooter>
+            <Button size="sm" onClick={() => setTestModal(false)}>
+              Close
+            </Button>
+          </ModalFooter>
         </Modal>
       </div>
 

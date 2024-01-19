@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
-import { modalStyles } from "./styles";
-import { ModalProps } from "./types";
-import { Button } from "~/components/Layout";
+import { modalContentStyles, modalFooterStyles, modalStyles } from "./styles";
+import { ModalContentProps, ModalFooterProps, ModalProps } from "./types";
 
-export const Modal = ({
+const Modal = ({
   children,
   className,
   isOpen,
@@ -30,14 +29,29 @@ export const Modal = ({
       ref={ref}
       {...props}
     >
-      <div className="p-3">{children}</div>
-      <div className="border-t p-3 flex justify-end">
-        <Button size="sm" onClick={() => onCloseModal()}>
-          Close
-        </Button>
-      </div>
+      {children}
     </dialog>
   );
 };
 
+const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
+  ({ children, className, ...props }, ref) => (
+    <div className={modalContentStyles({ className })} ref={ref} {...props}>
+      {children}
+    </div>
+  )
+);
+
+const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
+  ({ children, className, ...props }, ref) => (
+    <div className={modalFooterStyles({ className })} ref={ref} {...props}>
+      {children}
+    </div>
+  )
+);
+
 Modal.displayName = "Modal";
+ModalContent.displayName = "ModalContent";
+ModalFooter.displayName = "ModalFooter";
+
+export { Modal, ModalContent, ModalFooter };

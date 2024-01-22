@@ -9,6 +9,9 @@ export type ModalProps = {
 } & ComponentProps<"dialog"> &
   VariantProps<typeof modalStyles>;
 
+export type ModalHeaderProps = ComponentProps<"div"> &
+  VariantProps<typeof modalContentStyles>;
+
 export type ModalContentProps = ComponentProps<"div"> &
   VariantProps<typeof modalContentStyles>;
 

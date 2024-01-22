@@ -2,8 +2,19 @@
 
 import { forwardRef, useEffect, useRef } from "react";
 
-import { modalContentStyles, modalFooterStyles, modalStyles } from "./styles";
-import { ModalContentProps, ModalFooterProps, ModalProps } from "./types";
+import {
+  modalContentStyles,
+  modalFooterStyles,
+  modalHeaderStyles,
+  modalStyles,
+} from "./styles";
+
+import {
+  ModalContentProps,
+  ModalFooterProps,
+  ModalHeaderProps,
+  ModalProps,
+} from "./types";
 
 const Modal = ({
   children,
@@ -34,6 +45,14 @@ const Modal = ({
   );
 };
 
+const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
+  ({ children, className, ...props }, ref) => (
+    <div className={modalHeaderStyles({ className })} ref={ref} {...props}>
+      {children}
+    </div>
+  )
+);
+
 const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
   ({ children, className, ...props }, ref) => (
     <div className={modalContentStyles({ className })} ref={ref} {...props}>
@@ -51,7 +70,8 @@ const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
 );
 
 Modal.displayName = "Modal";
+ModalHeader.displayName = "ModalHeader";
 ModalContent.displayName = "ModalContent";
 ModalFooter.displayName = "ModalFooter";
 
-export { Modal, ModalContent, ModalFooter };
+export { Modal, ModalHeader, ModalContent, ModalFooter };

@@ -10,6 +10,7 @@ import {
   Switch,
 } from "~/components/Form";
 import {
+  Badge,
   Button,
   Card,
   Modal,
@@ -22,6 +23,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Title>Page title</Title>
@@ -109,6 +111,11 @@ export default function Home() {
       <div className="space-x-4">
         <h2>Range:</h2>
         <Range />
+      </div>
+
+      <div className="space-x-4">
+        <h2>Badge:</h2>
+        <Badge>Test</Badge>
       </div>
     </main>
   );

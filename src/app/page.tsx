@@ -9,6 +9,7 @@ import {
   Select,
   Switch,
 } from "~/components/Form";
+
 import {
   Badge,
   Button,
@@ -16,7 +17,15 @@ import {
   Modal,
   ModalContent,
   ModalFooter,
+  Table,
+  TableBody,
+  TableData,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "~/components/Layout";
+
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 import { useState } from "react";
@@ -116,6 +125,40 @@ export default function Home() {
       <div className="space-x-4">
         <h2>Badge:</h2>
         <Badge>Test</Badge>
+      </div>
+
+      <div className="space-x-4">
+        <h2>Table:</h2>
+        <Card className="p-0 overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Test</TableHead>
+                <TableHead>Test</TableHead>
+                <TableHead>Test</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+              </TableRow>
+              <TableRow>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+              </TableRow>
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+                <TableData>TestData</TableData>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </Card>
       </div>
     </main>
   );

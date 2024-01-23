@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 
 import {
   modalContentStyles,
@@ -35,7 +36,7 @@ const Modal = ({
 
   return (
     <dialog
-      className={modalStyles({ className })}
+      className={twMerge(modalStyles({ className }))}
       onClose={() => onCloseModal()}
       ref={ref}
       {...props}
@@ -47,7 +48,11 @@ const Modal = ({
 
 const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ children, className, ...props }, ref) => (
-    <div className={modalHeaderStyles({ className })} ref={ref} {...props}>
+    <div
+      className={twMerge(modalHeaderStyles({ className }))}
+      ref={ref}
+      {...props}
+    >
       {children}
     </div>
   )
@@ -55,7 +60,11 @@ const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
 
 const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
   ({ children, className, ...props }, ref) => (
-    <div className={modalContentStyles({ className })} ref={ref} {...props}>
+    <div
+      className={twMerge(modalContentStyles({ className }))}
+      ref={ref}
+      {...props}
+    >
       {children}
     </div>
   )
@@ -63,7 +72,11 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
 
 const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
   ({ children, className, ...props }, ref) => (
-    <div className={modalFooterStyles({ className })} ref={ref} {...props}>
+    <div
+      className={twMerge(modalFooterStyles({ className }))}
+      ref={ref}
+      {...props}
+    >
       {children}
     </div>
   )

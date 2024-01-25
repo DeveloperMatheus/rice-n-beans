@@ -4,11 +4,7 @@ import { selectStyles } from "./styles";
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, ...props }, ref) => (
-    <select
-      className={`${selectStyles({ className })} form__select`}
-      ref={ref}
-      {...props}
-    >
+    <select className={selectStyles({ className })} ref={ref} {...props}>
       {props.children}
     </select>
   )

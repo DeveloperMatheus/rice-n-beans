@@ -1,0 +1,11 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="none"
+  stroke="#aaa"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <polyline points="17 7 10 15 2 7"></polyline>
+</svg>

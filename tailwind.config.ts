@@ -21,7 +21,7 @@ const config: Config = {
     },
     content: {
       checkIcon: 'url("/icon/check.svg")',
-      circleIcon: 'url("/icon/circle.svg")',
+      arrowIcon: 'url("/icon/arrow.svg")',
     },
   },
   plugins: [],

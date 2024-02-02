@@ -6,3 +6,4 @@ export { Radio } from "./Radio";
 export { Range } from "./Range";
 export { Select } from "./Select";
 export { Switch } from "./Switch";
+export { DatePicker } from "./DatePicker";

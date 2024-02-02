@@ -2,6 +2,7 @@
 
 import {
   Checkbox,
+  DatePicker,
   Input,
   Label,
   Radio,
@@ -28,10 +29,23 @@ import {
 
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
-import { useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
+
+  const testRef = useRef<HTMLInputElement>(null);
+
+  function handleSubmit(evt: FormEvent) {
+    evt.preventDefault();
+
+    console.log(testRef.current?.value);
+
+    if (!testRef.current?.value) return;
+
+    const testDate = new Date(testRef.current.value);
+    console.log("🚀 ~ handleSubmit ~ testDate:", testDate);
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -160,6 +174,17 @@ export default function Home() {
           </Table>
         </Card>
       </div>
+
+      <form onSubmit={handleSubmit}>
+        <div>
+          <h2>Date:</h2>
+          <div className="flex flex-row items-center justify-center space-x-2">
+            <DatePicker ref={testRef} />
+          </div>
+        </div>
+
+        <Button>Enviar</Button>
+      </form>
     </main>
   );
 }

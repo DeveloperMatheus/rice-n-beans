@@ -3,6 +3,7 @@
 import {
   Checkbox,
   DatePicker,
+  ErrorMessage,
   Input,
   Label,
   Radio,
@@ -29,23 +30,36 @@ import {
 
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
-import { FormEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { testDateFormSchema } from "./schema";
+import { z } from "zod";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
 
   const testRef = useRef<HTMLInputElement>(null);
 
-  function handleSubmit(evt: FormEvent) {
-    evt.preventDefault();
+  function handleTestSubmit(evt: z.infer<typeof testDateFormSchema>) {
+    console.log("🚀 ~ handleTestSubmit ~ evt:", evt.testDate);
 
-    console.log(testRef.current?.value);
+    // if (!testRef.current?.value) return;
 
-    if (!testRef.current?.value) return;
-
-    const testDate = new Date(testRef.current.value);
-    console.log("🚀 ~ handleSubmit ~ testDate:", testDate);
+    // const testDate = new Date(testRef.current.value);
+    // console.log("🚀 ~ handleSubmit ~ testDate:", testDate);
   }
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    setValue,
+    formState: { errors },
+  } = useForm<z.infer<typeof testDateFormSchema>>({
+    resolver: zodResolver(testDateFormSchema),
+  });
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -175,12 +189,20 @@ export default function Home() {
         </Card>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(handleTestSubmit)}>
         <div>
           <h2>Date:</h2>
-          <div className="flex flex-row items-center justify-center space-x-2">
-            <DatePicker ref={testRef} />
-          </div>
+          <div className="flex flex-row items-center justify-center space-x-2"></div>
+          <Controller
+            control={control}
+            name="testDate"
+            render={({ field: { onChange, onBlur, value, ref } }) => {
+              return (
+                <DatePicker min="1900-01-01" onChange={onChange} ref={ref} />
+              );
+            }}
+          />
+          {errors.testDate && <ErrorMessage>Date is required</ErrorMessage>}
         </div>
 
         <Button>Enviar</Button>

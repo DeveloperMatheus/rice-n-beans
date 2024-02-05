@@ -189,23 +189,24 @@ export default function Home() {
         </Card>
       </div>
 
-      <form onSubmit={handleSubmit(handleTestSubmit)}>
+      <form
+        className="border rounded-lg p-3 mt-5"
+        onSubmit={handleSubmit(handleTestSubmit)}
+      >
+        <h2>Form: </h2>
         <div>
-          <h2>Date:</h2>
-          <div className="flex flex-row items-center justify-center space-x-2"></div>
+          <h3>Date:</h3>
           <Controller
             control={control}
             name="testDate"
-            render={({ field: { onChange, onBlur, value, ref } }) => {
-              return (
-                <DatePicker min="1900-01-01" onChange={onChange} ref={ref} />
-              );
+            render={({ field: { onChange } }) => {
+              return <DatePicker min="1900-01-01" onChange={onChange} />;
             }}
           />
           {errors.testDate && <ErrorMessage>Date is required</ErrorMessage>}
         </div>
 
-        <Button>Enviar</Button>
+        <Button className="mt-5">Enviar</Button>
       </form>
     </main>
   );

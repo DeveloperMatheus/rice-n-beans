@@ -19,6 +19,9 @@ import {
   Modal,
   ModalContent,
   ModalFooter,
+} from "~/components/Layout";
+
+import {
   Table,
   TableBody,
   TableData,
@@ -26,7 +29,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "~/components/Layout";
+} from "~/components/Table";
 
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
@@ -43,11 +46,6 @@ export default function Home() {
 
   function handleTestSubmit(evt: z.infer<typeof testDateFormSchema>) {
     console.log("🚀 ~ handleTestSubmit ~ evt:", evt.testDate);
-
-    // if (!testRef.current?.value) return;
-
-    // const testDate = new Date(testRef.current.value);
-    // console.log("🚀 ~ handleSubmit ~ testDate:", testDate);
   }
 
   const {

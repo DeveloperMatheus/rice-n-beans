@@ -12,14 +12,7 @@ import {
   Switch,
 } from "~/components/Form";
 
-import {
-  Badge,
-  Button,
-  Card,
-  Modal,
-  ModalContent,
-  ModalFooter,
-} from "~/components/Layout";
+import { Badge, Button, Card } from "~/components/Layout";
 
 import {
   Table,
@@ -30,6 +23,8 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/Table";
+
+import { Modal, ModalContent, ModalFooter } from "~/components/Modal";
 
 import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";

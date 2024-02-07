@@ -33,6 +33,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { testDateFormSchema } from "./schema";
 import { z } from "zod";
+import { Tab, TabButton, Tabs } from "~/components/Tabs";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
@@ -58,7 +59,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Title>Page title</Title>
 
-      <Button>fsafsafasfasfas</Button>
+      <Button className="rounded-none">fsafsafasfasfas</Button>
 
       <div>
         <h2>Theme changer: </h2>
@@ -146,6 +147,14 @@ export default function Home() {
       <div className="space-x-4">
         <h2>Badge:</h2>
         <Badge>Test</Badge>
+      </div>
+
+      <div className="space-x-4">
+        <h2>Tabs:</h2>
+        <Tabs defaultValue={0}>
+          <Tab title="a1">Test1</Tab>
+          <Tab title="fsafs">Test2</Tab>
+        </Tabs>
       </div>
 
       <div className="space-x-4">

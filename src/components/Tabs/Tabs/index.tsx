@@ -41,9 +41,6 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
           clickAndFocus(tabs[next]);
           break;
         }
-        case "Tab": {
-          break;
-        }
       }
     },
     []

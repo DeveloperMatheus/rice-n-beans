@@ -47,8 +47,8 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
   );
 
   return (
-    <div ref={refList} onKeyDown={onKeyDown}>
-      <ul className="flex flex-row items-center just" role="tablist">
+    <div ref={refList} onKeyDown={onKeyDown} className="p-3 border rounded-lg">
+      <div className="flex flex-row items-center just" role="tablist">
         {children.map((item, index) => (
           <TabButton
             key={`tab-${item.props.title}--${index}`}
@@ -58,7 +58,7 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
             setSelectedTab={setSelectedTab}
           />
         ))}
-      </ul>
+      </div>
       {children[selectedTab]}
     </div>
   );

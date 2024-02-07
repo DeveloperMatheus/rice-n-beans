@@ -26,7 +26,7 @@ export const TabButton = ({
   return (
     <li role="presentation">
       <Button
-        className={renderActiveClass()}
+        className={`${renderActiveClass()} rounded-none`}
         onClick={() => setSelectedTab(index)}
         role="tab"
         aria-selected={isActive}

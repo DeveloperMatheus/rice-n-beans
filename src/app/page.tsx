@@ -153,6 +153,11 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs defaultValue={0}>
           <Tab title="a1">Test1</Tab>
+          <Tab title="a1">Test2</Tab>
+        </Tabs>
+
+        <Tabs defaultValue={0}>
+          <Tab title="a1">Test1</Tab>
           <Tab title="fsafs">Test2</Tab>
         </Tabs>
       </div>

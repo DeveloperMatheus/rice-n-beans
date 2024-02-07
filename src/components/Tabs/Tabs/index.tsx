@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useCallback, useRef, useState } from "react";
 import { TabButton, TabButtonProps } from "../TabButton";
 
 type TabsProps = {
@@ -8,9 +8,40 @@ type TabsProps = {
 
 export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
+  const refList = useRef<HTMLDivElement>(null);
+
+  const onKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      const list = refList.current;
+
+      if (!list) return;
+
+      const tabs = Array.from<HTMLElement>(
+        list.querySelectorAll('[role="tab"]:not([disabled])')
+      );
+
+      const index = tabs.indexOf(document.activeElement as HTMLElement);
+
+      if (index < 0) return;
+
+      switch (event.key) {
+        case "ArrowLeft": {
+          const next = (index - 1 + tabs.length) % tabs.length;
+          tabs[next]?.focus();
+          break;
+        }
+        case "ArrowRight": {
+          const next = (index + 1 + tabs.length) % tabs.length;
+          tabs[next]?.focus();
+          break;
+        }
+      }
+    },
+    []
+  );
 
   return (
-    <>
+    <div ref={refList} onKeyDown={onKeyDown}>
       <ul className="flex flex-row items-center just" role="tablist">
         {children.map((item, index) => (
           <TabButton
@@ -23,7 +54,7 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
         ))}
       </ul>
       {children[selectedTab]}
-    </>
+    </div>
   );
 };
 

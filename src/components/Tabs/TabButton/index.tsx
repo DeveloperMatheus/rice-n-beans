@@ -25,6 +25,9 @@ export const TabButton = ({
         className={renderActiveClass()}
         onClick={() => setSelectedTab(index)}
         role="tab"
+        aria-selected={isActive}
+        id={`tab-${title}`}
+        aria-controls={`tabpanel-${title}`}
       >
         {title}
       </Button>

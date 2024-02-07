@@ -15,8 +15,12 @@ export const TabButton = ({
 }: TabButtonProps) => {
   function renderActiveClass() {
     if (!isActive) return;
-
     return "bg-yellow-600";
+  }
+
+  function applyTabIndex() {
+    if (!isActive) return -1;
+    return 0;
   }
 
   return (
@@ -28,6 +32,7 @@ export const TabButton = ({
         aria-selected={isActive}
         id={`tab-${title}`}
         aria-controls={`tabpanel-${title}`}
+        tabIndex={applyTabIndex()}
       >
         {title}
       </Button>

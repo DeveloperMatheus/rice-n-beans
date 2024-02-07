@@ -10,6 +10,11 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);
 
+  function clickAndFocus(tabButton: HTMLElement) {
+    tabButton.focus();
+    tabButton.click();
+  }
+
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
       const list = refList.current;
@@ -26,13 +31,17 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
 
       switch (event.key) {
         case "ArrowLeft": {
-          const next = (index - 1 + tabs.length) % tabs.length;
-          tabs[next]?.focus();
+          const prev = (index - 1 + tabs.length) % tabs.length;
+          clickAndFocus(tabs[prev]);
           break;
         }
+
         case "ArrowRight": {
           const next = (index + 1 + tabs.length) % tabs.length;
-          tabs[next]?.focus();
+          clickAndFocus(tabs[next]);
+          break;
+        }
+        case "Tab": {
           break;
         }
       }

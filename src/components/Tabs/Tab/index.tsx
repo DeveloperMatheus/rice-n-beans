@@ -7,6 +7,7 @@ export const Tab = ({ children, title }: TabProps) => {
       aria-labelledby={`tab-${title}`}
       role="tabpanel"
       tabIndex={0}
+      className="p-3"
     >
       {children}
     </div>

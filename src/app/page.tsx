@@ -149,7 +149,7 @@ export default function Home() {
         <Badge>Test</Badge>
       </div>
 
-      <div className="space-x-4">
+      <div className="space-x-4 space-y-4">
         <h2>Tabs:</h2>
         <Tabs defaultValue={0}>
           <Tab title="a1">Test1</Tab>

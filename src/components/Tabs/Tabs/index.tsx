@@ -47,9 +47,9 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
   );
 
   return (
-    <div ref={refList} onKeyDown={onKeyDown} className="p-3 border rounded-lg">
+    <div ref={refList} onKeyDown={onKeyDown} className="rounded-lg">
       <div
-        className="flex flex-row items-center justify-center list-none"
+        className="flex flex-row items-center justify-between list-none"
         role="tablist"
         aria-orientation="horizontal"
       >
@@ -63,7 +63,7 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
           />
         ))}
       </div>
-      {children[selectedTab]}
+      <div className="border rounded-b-lg">{children[selectedTab]}</div>
     </div>
   );
 };

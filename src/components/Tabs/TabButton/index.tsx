@@ -15,7 +15,7 @@ export const TabButton = ({
 }: TabButtonProps) => {
   function renderActiveClass() {
     if (!isActive) return;
-    return "bg-yellow-600";
+    return "hover:bg-zinc-900/80 bg-zinc-900/80 dark:bg-zinc-50/90 underline font-bold";
   }
 
   function applyTabIndex() {
@@ -26,7 +26,7 @@ export const TabButton = ({
   return (
     <li role="presentation">
       <Button
-        className={`${renderActiveClass()} rounded-none`}
+        className={`${renderActiveClass()} rounded-b-none min-w-24`}
         onClick={() => setSelectedTab(index)}
         role="tab"
         aria-selected={isActive}

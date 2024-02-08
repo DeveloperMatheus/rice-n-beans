@@ -1,17 +1,14 @@
 import { Button } from "~/components/Layout";
-
-export type TabButtonProps = {
-  title: string;
-  index: number;
-  isActive: boolean;
-  setSelectedTab: (index: number) => void;
-};
+import { TabButtonProps } from "./types";
+import { twMerge } from "tailwind-merge";
+import { tabButtonStyles } from "./styles";
 
 export const TabButton = ({
   title,
   index,
   isActive,
   setSelectedTab,
+  className,
 }: TabButtonProps) => {
   function renderActiveClass() {
     if (!isActive) return;
@@ -24,9 +21,9 @@ export const TabButton = ({
   }
 
   return (
-    <li role="presentation">
+    <div role="presentation">
       <Button
-        className={`${renderActiveClass()} rounded-b-none min-w-24`}
+        className={twMerge(tabButtonStyles({ className }), renderActiveClass())}
         onClick={() => setSelectedTab(index)}
         role="tab"
         aria-selected={isActive}
@@ -36,7 +33,7 @@ export const TabButton = ({
       >
         {title}
       </Button>
-    </li>
+    </div>
   );
 };
 

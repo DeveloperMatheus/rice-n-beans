@@ -1,5 +1,6 @@
 import React, { ReactElement, useCallback, useRef, useState } from "react";
-import { TabButton, TabButtonProps } from "../TabButton";
+import { TabButton } from "../TabButton";
+import { TabButtonProps } from "../TabButton/types";
 
 type TabsProps = {
   children: ReactElement<TabButtonProps>[];

@@ -5,7 +5,7 @@ import { tabButtonStyles } from "./styles";
 import { useContext } from "react";
 import { TabsContext } from "../tabsContext";
 
-export const TabButton = ({ title, className, id }: TabButtonProps) => {
+export const Tab = ({ title, className, id }: TabButtonProps) => {
   const { activeTab, setActiveTab } = useContext(TabsContext);
 
   function isTabActive() {
@@ -43,4 +43,4 @@ export const TabButton = ({ title, className, id }: TabButtonProps) => {
   );
 };
 
-TabButton.displayName = "TabButton";
+Tab.displayName = "Tab";

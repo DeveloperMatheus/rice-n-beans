@@ -3,7 +3,6 @@ import React, { useCallback, useRef, useState } from "react";
 import { TabsContext } from "../tabsContext";
 import { TabsProps } from "./types";
 
-// criar um provider, não tem jeito
 export const Tabs = ({ children, defaultValue }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);

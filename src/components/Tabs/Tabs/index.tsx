@@ -1,13 +1,10 @@
-import React, { ReactElement, useCallback, useRef, useState } from "react";
-import { TabButton } from "../TabButton";
-import { TabButtonProps } from "../TabButton/types";
+import React, { useCallback, useRef, useState } from "react";
 
-type TabsProps = {
-  children: ReactElement<TabButtonProps>[];
-  defaultValue: number;
-};
+import { TabsContext } from "../tabsContext";
+import { TabsProps } from "./types";
 
-export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
+// criar um provider, não tem jeito
+export const Tabs = ({ children, defaultValue }: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);
 
@@ -48,24 +45,21 @@ export const Tabs = ({ children, defaultValue = 0 }: TabsProps) => {
   );
 
   return (
-    <div ref={refList} onKeyDown={onKeyDown} className="rounded-lg">
+    <TabsContext.Provider
+      value={{
+        activeTab: selectedTab,
+        setActiveTab: setSelectedTab,
+      }}
+    >
       <div
-        className="flex flex-row items-center justify-between list-none"
+        ref={refList}
+        onKeyDown={onKeyDown}
         role="tablist"
         aria-orientation="horizontal"
       >
-        {children.map((item, index) => (
-          <TabButton
-            key={`tab-${item.props.title}--${index}`}
-            title={item.props.title}
-            index={index}
-            isActive={index === selectedTab}
-            setSelectedTab={setSelectedTab}
-          />
-        ))}
+        {children}
       </div>
-      <div className="border rounded-b-lg">{children[selectedTab]}</div>
-    </div>
+    </TabsContext.Provider>
   );
 };
 

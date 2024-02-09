@@ -4,8 +4,6 @@ import { tabButtonStyles } from "./styles";
 
 export type TabButtonProps = {
   title: string;
-  index: number;
-  isActive: boolean;
-  setSelectedTab: (index: number) => void;
+  id: string;
 } & ComponentProps<"button"> &
   VariantProps<typeof tabButtonStyles>;

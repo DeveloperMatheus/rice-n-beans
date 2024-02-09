@@ -160,16 +160,6 @@ export default function Home() {
           <TabPanel id="test1">Test Panel 1</TabPanel>
           <TabPanel id="test2">Test Panel 2</TabPanel>
         </Tabs>
-
-        <Tabs defaultValue="test1">
-          <div className="rounded-lg flex flex-row items-center justify-center list-none">
-            <Tab title="Tab1" id="test1" />
-            <Tab title="Tab2" id="test2" />
-          </div>
-
-          <TabPanel id="test1">Test Panel 1</TabPanel>
-          <TabPanel id="test2">Test Panel 2</TabPanel>
-        </Tabs>
       </div>
 
       <div className="space-x-4">

@@ -18,7 +18,7 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
     if (!isTabActive()) return "border-b";
 
     // return "hover:bg-zinc-900/80 bg-zinc-900/80 dark:bg-zinc-50/90 underline font-bold";
-    return "border-b-0 border-x border-t underline";
+    return "border-b-0 border-x border-t underline font-bold";
   }
 
   function applyTabIndex() {
@@ -28,20 +28,18 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
   }
 
   return (
-    <div role="presentation">
-      <Button
-        className={twMerge(tabButtonStyles({ className }), renderActiveClass())}
-        onClick={() => setActiveTab(id)}
-        role="tab"
-        aria-selected={isTabActive()}
-        id={`tab-${title}`}
-        aria-controls={`tabpanel-${title}`}
-        tabIndex={applyTabIndex()}
-        variant="link"
-      >
-        {title}
-      </Button>
-    </div>
+    <Button
+      className={twMerge(tabButtonStyles({ className }), renderActiveClass())}
+      onClick={() => setActiveTab(id)}
+      role="tab"
+      aria-selected={isTabActive()}
+      id={`tab-${title}`}
+      aria-controls={`tabpanel-${title}`}
+      tabIndex={applyTabIndex()}
+      variant="link"
+    >
+      {title}
+    </Button>
   );
 };
 

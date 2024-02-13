@@ -33,7 +33,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { testDateFormSchema } from "./schema";
 import { z } from "zod";
-import { TabPanel, Tab, Tabs } from "~/components/Tabs";
+import { TabPanel, Tab, Tabs, TabList } from "~/components/Tabs";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
@@ -152,10 +152,10 @@ export default function Home() {
       <div className="space-x-4 space-y-4">
         <h2>Tabs:</h2>
         <Tabs defaultValue="test1">
-          <div className="rounded-lg flex flex-row items-center justify-center list-none">
+          <TabList>
             <Tab title="Tab1" id="test1" />
             <Tab title="Tab2" id="test2" />
-          </div>
+          </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
           <TabPanel id="test2">Test Panel 2</TabPanel>

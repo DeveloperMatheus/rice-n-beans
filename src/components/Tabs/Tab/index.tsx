@@ -15,9 +15,10 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
   }
 
   function renderActiveClass() {
-    if (!isTabActive()) return;
+    if (!isTabActive()) return "border-b";
 
-    return "hover:bg-zinc-900/80 bg-zinc-900/80 dark:bg-zinc-50/90 underline font-bold";
+    // return "hover:bg-zinc-900/80 bg-zinc-900/80 dark:bg-zinc-50/90 underline font-bold";
+    return "border-b-0 border-x border-t underline";
   }
 
   function applyTabIndex() {
@@ -36,6 +37,7 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
         id={`tab-${title}`}
         aria-controls={`tabpanel-${title}`}
         tabIndex={applyTabIndex()}
+        variant="link"
       >
         {title}
       </Button>

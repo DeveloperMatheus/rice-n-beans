@@ -153,12 +153,13 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs defaultValue="test1">
           <TabList>
-            <Tab title="Tab1" id="test1" />
-            <Tab title="Tab2" id="test2" />
+            <Tab title="at" id="test1" />
+            <Tab title="at" id="test2" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
-          <TabPanel id="test2">Test Panel 2</TabPanel>
+          <TabPanel id="test2">Test Panel 1</TabPanel>
+          <TabPanel id="test3">Test Panel 1</TabPanel>
         </Tabs>
       </div>
 

@@ -153,8 +153,8 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs defaultValue="test1">
           <TabList>
-            <Tab title="at" id="test1" />
-            <Tab title="at" id="test2" />
+            <Tab title="atfsaafsafs" id="test1" />
+            <Tab title="atfsa" id="test2" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>

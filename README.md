@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome Rice and Beans!
 
-## Getting Started
+## Rice and Beans is a list of curated components (inspired by Shadcn) using React and Typescript and a few libraries, that are meant to be simple, used with HTML5 (if it is possible), and with a certain degree of flexibility.
 
-First, run the development server:
+## Instalation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+First, you need to install the following libs:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `tailwindcss`: Make a normal installation from this one, your React framework might have a CLI to do this. See: https://tailwindcss.com/docs/installation/framework-guides
+- `tailwind-merge`: This is an utility function used to merge the classNames and not have any conflicts. See: https://github.com/dcastil/tailwind-merge
+- `class-variance-authority`: This is a lib that allows us to have more control of our tailwind classNames (and write more ergonomic code using typescript). See: https://cva.style/docs
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+After that, just copy and paste from the docs, and you're good to go!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### The reason:
 
-## Learn More
+I feel that we can do components that can have a more "life expectancy" by using what we have, the HTML5.
 
-To learn more about Next.js, take a look at the following resources:
+So that means, to make a component inside of this list, i had taken a few rules into account:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> I cannot install a lib for one unique component: The few libs/deps that are installed, are for all components, or i don't install it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+> If an idea of a component is listed on the Mozilla for Devs for example, and it is possible to make an idea of customization (even if it is parcial), and, it has a nice support for modern browsers, it is mandatory that i have to pick from the native HTML5 rather than building from scratch.
 
-## Deploy on Vercel
+> The components needs to be accesible, whether from the HTML5 or built from scratch.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> The components also needs to have at least one prop for the className (because they're built using Tailwind), preferably, using the forwardRefs function.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Last but not least, the components needs to be built using the composition pattern (if we need more than one element). I'm allowed to use some client side processing such as useState/useRef/ContextAPI (But the rule 2 needs to be checked before doing this).

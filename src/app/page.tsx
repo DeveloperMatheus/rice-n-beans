@@ -149,12 +149,12 @@ export default function Home() {
         <Badge>Test</Badge>
       </div>
 
-      <div className="space-x-4 space-y-4">
+      <div className="space-x-4 space-y-4 w-full">
         <h2>Tabs:</h2>
         <Tabs defaultValue="test1">
           <TabList>
-            <Tab title="atfsaafsafs" id="test1" />
-            <Tab title="atfsa" id="test2" />
+            <Tab title="one" id="test1" />
+            <Tab title="two" id="test2" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>

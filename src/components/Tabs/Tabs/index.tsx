@@ -2,8 +2,15 @@ import React, { useCallback, useRef, useState } from "react";
 
 import { TabsContext } from "../tabsContext";
 import { TabsProps } from "./types";
+import { twMerge } from "tailwind-merge";
+import { tabsStyles } from "./styles";
 
-export const Tabs = ({ children, defaultValue }: TabsProps) => {
+export const Tabs = ({
+  children,
+  className,
+  defaultValue,
+  ...props
+}: TabsProps) => {
   const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);
 
@@ -55,6 +62,8 @@ export const Tabs = ({ children, defaultValue }: TabsProps) => {
         onKeyDown={onKeyDown}
         role="tablist"
         aria-orientation="horizontal"
+        className={twMerge(tabsStyles({ className }))}
+        {...props}
       >
         {children}
       </div>

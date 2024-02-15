@@ -14,7 +14,7 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
     return true;
   }
 
-  function renderActiveClass() {
+  function renderActiveBorder() {
     if (!isTabActive()) return "mb-0.5";
 
     return "border-b-2 border-black dark:border-white";
@@ -28,7 +28,7 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
 
   return (
     <Button
-      className={twMerge(tabButtonStyles({ className }), renderActiveClass())}
+      className={twMerge(tabButtonStyles({ className }), renderActiveBorder())}
       onClick={() => setActiveTab(id)}
       role="tab"
       aria-selected={isTabActive()}

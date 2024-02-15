@@ -152,7 +152,7 @@ export default function Home() {
       <div>
         <h2>Tabs:</h2>
         <Tabs className="w-96" defaultValue="test1">
-          <TabList isFitted>
+          <TabList>
             <Tab title="one" id="test1" />
             <Tab title="two" id="test2" />
             <Tab title="three" id="test3" />

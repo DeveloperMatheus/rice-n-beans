@@ -1,3 +1,3 @@
 import { cva } from "class-variance-authority";
 
-export const tabsStyles = cva("");
+export const tabsStyles = cva("border rounded-lg");

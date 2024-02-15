@@ -149,17 +149,18 @@ export default function Home() {
         <Badge>Test</Badge>
       </div>
 
-      <div className="space-x-4 space-y-4 w-full">
+      <div>
         <h2>Tabs:</h2>
-        <Tabs defaultValue="test1">
-          <TabList>
+        <Tabs className="w-96" defaultValue="test1">
+          <TabList isFitted>
             <Tab title="one" id="test1" />
             <Tab title="two" id="test2" />
+            <Tab title="three" id="test3" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
-          <TabPanel id="test2">Test Panel 1</TabPanel>
-          <TabPanel id="test3">Test Panel 1</TabPanel>
+          <TabPanel id="test2">Test Panel 2</TabPanel>
+          <TabPanel id="test3">Test Panel 3</TabPanel>
         </Tabs>
       </div>
 

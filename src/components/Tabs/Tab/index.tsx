@@ -15,9 +15,9 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
   }
 
   function renderActiveClass() {
-    if (!isTabActive()) return "";
+    if (!isTabActive()) return "mb-0.5";
 
-    return "border-b-4 border-black dark:border-white";
+    return "border-b-2 border-black dark:border-white";
   }
 
   function applyTabIndex() {

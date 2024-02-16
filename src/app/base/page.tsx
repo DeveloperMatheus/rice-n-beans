@@ -1,9 +1,12 @@
-import { Base, BaseHeader } from "~/components/Base";
+import { Base, BaseDrawer, BaseHeader } from "~/components/Base";
 
 export default function Home() {
   return (
     <Base>
-      <BaseHeader>Header</BaseHeader>
+      <BaseDrawer>Test</BaseDrawer>
+      <div className="h-screen w-full">
+        <BaseHeader>Header</BaseHeader>
+      </div>
     </Base>
   );
 }

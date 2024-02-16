@@ -1,3 +1,3 @@
 import { cva } from "class-variance-authority";
 
-export const baseStyles = cva("");
+export const baseStyles = cva("flex");

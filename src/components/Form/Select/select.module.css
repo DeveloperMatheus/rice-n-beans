@@ -1,0 +1,6 @@
+.form__select {
+  background-image: url("/icon/arrow.svg");
+  background-size: 0.8rem;
+  background-position: right 0.8rem center;
+  background-repeat: no-repeat;
+}

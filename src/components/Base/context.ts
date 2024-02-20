@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { BaseDrawerContext } from "./types";
+import { BaseDrawerContext } from "./BaseDrawer/types";
 
 export const DrawerContext = createContext<BaseDrawerContext>({
   isDrawerOpen: false,

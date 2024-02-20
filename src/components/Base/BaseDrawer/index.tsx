@@ -1,30 +1,25 @@
 "use client";
 
-import { forwardRef, useState } from "react";
+import { forwardRef, useContext, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { baseDrawerStyles } from "./styles";
 import { BaseDrawerProps } from "./types";
-import { DrawerContext } from "./context";
+import { DrawerContext } from "../context";
 
 export const BaseDrawer = forwardRef<HTMLDivElement, BaseDrawerProps>(
   ({ children, className, ...props }, ref) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const { isDrawerOpen } = useContext(DrawerContext);
 
     return (
-      <DrawerContext.Provider
-        value={{
-          isDrawerOpen: isOpen,
-          setIsDrawerOpen: setIsOpen,
-        }}
+      <div
+        className={twMerge(
+          baseDrawerStyles({ className, isDrawerOpen: isDrawerOpen })
+        )}
+        ref={ref}
+        {...props}
       >
-        <div
-          className={twMerge(baseDrawerStyles({ className }))}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
-      </DrawerContext.Provider>
+        {children}
+      </div>
     );
   }
 );

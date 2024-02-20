@@ -8,12 +8,13 @@ import { DrawerContext } from "../context";
 
 export const BaseDrawer = forwardRef<HTMLDivElement, BaseDrawerProps>(
   ({ children, className, ...props }, ref) => {
-    const { isDrawerOpen } = useContext(DrawerContext);
+    const { isCollapsed } = useContext(DrawerContext);
+    console.log("🚀 ~ isDrawerOpen:", isCollapsed);
 
     return (
       <div
         className={twMerge(
-          baseDrawerStyles({ className, isDrawerOpen: isDrawerOpen })
+          baseDrawerStyles({ className, isDrawerOpen: isCollapsed })
         )}
         ref={ref}
         {...props}

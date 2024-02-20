@@ -9,7 +9,7 @@ import { DrawerContext } from "../context";
 
 export const BaseHeader = forwardRef<HTMLDivElement, BaseHeaderProps>(
   ({ children, className, ...props }, ref) => {
-    const { isDrawerOpen, setIsDrawerOpen } = useContext(DrawerContext);
+    const { toggleDrawercollapse } = useContext(DrawerContext);
 
     return (
       <div
@@ -17,7 +17,7 @@ export const BaseHeader = forwardRef<HTMLDivElement, BaseHeaderProps>(
         ref={ref}
         {...props}
       >
-        <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>PLI OPEN</Button>
+        <Button onClick={() => toggleDrawercollapse()}>PLI OPEN</Button>
         {children}
       </div>
     );

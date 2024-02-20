@@ -4,19 +4,12 @@ import { forwardRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { baseStyles } from "./styles";
 import { BaseProps } from "./types";
-import { DrawerContext } from "../context";
+import { DrawerContext, DrawerProvider } from "../context";
 
 export const Base = forwardRef<HTMLDivElement, BaseProps>(
   ({ children, className, ...props }, ref) => {
-    const [isOpen, setIsOpen] = useState(false);
-
     return (
-      <DrawerContext.Provider
-        value={{
-          isDrawerOpen: isOpen,
-          setIsDrawerOpen: setIsOpen,
-        }}
-      >
+      <DrawerProvider>
         <div
           className={twMerge(baseStyles({ className }))}
           ref={ref}
@@ -24,7 +17,7 @@ export const Base = forwardRef<HTMLDivElement, BaseProps>(
         >
           {children}
         </div>
-      </DrawerContext.Provider>
+      </DrawerProvider>
     );
   }
 );

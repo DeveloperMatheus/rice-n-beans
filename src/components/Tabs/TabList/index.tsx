@@ -4,12 +4,8 @@ import { tabListStyles } from "./styles";
 import { TabListProps } from "./types";
 
 export const TabList = forwardRef<HTMLDivElement, TabListProps>(
-  ({ children, className, position, ...props }, ref) => (
-    <div
-      className={twMerge(tabListStyles({ className, position }))}
-      ref={ref}
-      {...props}
-    >
+  ({ children, className, ...props }, ref) => (
+    <div className={twMerge(tabListStyles({ className }))} ref={ref} {...props}>
       {children}
     </div>
   )

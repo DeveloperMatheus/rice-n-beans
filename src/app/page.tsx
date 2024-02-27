@@ -56,21 +56,17 @@ export default function Home() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       <Title>Page title</Title>
-
       <Button className="rounded-none">fsafsafasfasfas</Button>
-
       <div>
         <h2>Theme changer: </h2>
         <ThemeDropdown />
       </div>
-
       <div>
         <h2>Input: </h2>
         <Input />
       </div>
-
       <div>
         <h2>Modal: </h2>
         <Button size="lg" onClick={() => setTestModal(true)}>
@@ -86,7 +82,6 @@ export default function Home() {
           </ModalFooter>
         </Modal>
       </div>
-
       <div className="w-full">
         <h2>Select:</h2>
         <div className="flex flex-row items-center justify-center">
@@ -99,7 +94,6 @@ export default function Home() {
           </Select>
         </div>
       </div>
-
       <div>
         <h2>Checkbox:</h2>
         <div className="flex flex-row items-center justify-center">
@@ -109,7 +103,6 @@ export default function Home() {
           </Label>
         </div>
       </div>
-
       <div>
         <h2>Radio:</h2>
         <div className="flex flex-row items-center justify-center space-x-2">
@@ -118,7 +111,6 @@ export default function Home() {
           <Radio name="test" />
         </div>
       </div>
-
       <div>
         <h2>Card:</h2>
         <div>
@@ -130,7 +122,6 @@ export default function Home() {
           </Card>
         </div>
       </div>
-
       <div className="space-x-4">
         <h2>Switch:</h2>
         <Switch aria-label="Teste" disabled />
@@ -138,24 +129,54 @@ export default function Home() {
         <Switch />
         <Switch />
       </div>
-
       <div className="space-x-4">
         <h2>Range:</h2>
         <Range />
       </div>
-
       <div className="space-x-4">
         <h2>Badge:</h2>
         <Badge>Test</Badge>
       </div>
+      {/* w-full flex flex-row items-center space-x-4 overflow-x-scroll */}
+      {/* <div className="flex flex-row items-center overflow-x-scroll"> */}
 
-      <div>
+      {/* <div className="w-full flex flex-row items-center list-none border-b overflow-x-auto">
+        <button>XIBIU</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>Test</button>
+        <button>TestFIM</button>
+      </div> */}
+
+      <div className="w-full flex flex-col items-center justify-center">
         <h2>Tabs:</h2>
-        <Tabs className="w-96" defaultValue="test1">
+        <Tabs className="w-full lg:w-96" defaultValue="test1">
           <TabList>
+            <Tab title="xibiu" id="test1" />
+            <Tab title="two" id="test2" />
+            <Tab title="three" id="test3" />
             <Tab title="one" id="test1" />
             <Tab title="two" id="test2" />
             <Tab title="three" id="test3" />
+            <Tab title="one" id="test1" />
+            <Tab title="two" id="test2" />
+            <Tab title="xibiuFIM" id="test3" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
@@ -197,7 +218,6 @@ export default function Home() {
           </Table>
         </Card>
       </div>
-
       <form
         className="border rounded-lg p-3 mt-5"
         onSubmit={handleSubmit(handleTestSubmit)}

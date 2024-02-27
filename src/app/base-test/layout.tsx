@@ -10,7 +10,7 @@ export default function BaseTestLayout({
       <BaseDrawer>Test</BaseDrawer>
       <BaseContainer>
         <BaseHeader>Header</BaseHeader>
-        <div className="px-3 pb-3 pt-1">{children}</div>
+        <div className="px-3 pb-3 pt-1 bg-blue-800">{children}</div>
       </BaseContainer>
     </Base>
   );

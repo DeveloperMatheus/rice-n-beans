@@ -168,20 +168,33 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs className="w-full lg:w-96" defaultValue="test1">
           <TabList>
-            <Tab title="xibiu" id="test1" />
-            <Tab title="two" id="test2" />
-            <Tab title="three" id="test3" />
-            <Tab title="one" id="test1" />
-            <Tab title="two" id="test2" />
-            <Tab title="three" id="test3" />
-            <Tab title="one" id="test1" />
-            <Tab title="two" id="test2" />
-            <Tab title="xibiuFIM" id="test3" />
+            <Tab title="xibiu1" id="test1" />
+            <Tab title="two2" id="test2" />
+            <Tab title="three3" id="test3" />
+            <Tab title="one4" id="test4" />
+            <Tab title="two5" id="test5" />
+            <Tab title="three6" id="test6" />
+            <Tab title="one7" id="test7" />
+            <Tab title="two8" id="test8" />
+            <Tab title="xibelfi9" id="test9" />
+            <Tab title="desgraica10" id="test3" />
+            <Tab title="pirula11" id="test4" />
+            <Tab title="makonha12" id="test5" />
+            <Tab title="xereselfie13" id="test6" />
+            <Tab title="fototeta14" id="test7" />
+            <Tab title="fotoculo15" id="test8" />
+            <Tab title="jilipollas16" id="test9" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
           <TabPanel id="test2">Test Panel 2</TabPanel>
           <TabPanel id="test3">Test Panel 3</TabPanel>
+          <TabPanel id="test4">Test Panel 4</TabPanel>
+          <TabPanel id="test5">Test Panel 5</TabPanel>
+          <TabPanel id="test6">Test Panel 6</TabPanel>
+          <TabPanel id="test7">Test Panel 7</TabPanel>
+          <TabPanel id="test8">Test Panel 8</TabPanel>
+          <TabPanel id="test9">Test Panel 9</TabPanel>
         </Tabs>
       </div>
 

@@ -15,8 +15,9 @@ export const Tabs = ({
   const refList = useRef<HTMLDivElement>(null);
 
   function clickAndFocus(tabButton: HTMLElement) {
-    tabButton.focus();
     tabButton.click();
+    tabButton.focus();
+    tabButton.scrollIntoView({ behavior: "smooth", inline: "center" });
   }
 
   const onKeyDown = useCallback(
@@ -33,6 +34,7 @@ export const Tabs = ({
 
       if (index < 0) return;
 
+      event.preventDefault();
       switch (event.key) {
         case "ArrowLeft": {
           const prev = (index - 1 + tabs.length) % tabs.length;

@@ -142,13 +142,13 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs className="w-full lg:w-96" defaultValue="test1">
           <TabList>
-            <Tab title="xibiu1" id="test1" />
-            <Tab title="two2" id="test2" />
-            <Tab title="makonha12" id="test5" />
-            <Tab title="xereselfie13" id="test6" />
-            <Tab title="fototeta14" id="test7" />
-            <Tab title="fotoculo15" id="test8" />
-            <Tab title="jilipollas16" id="test9" />
+            <Tab className="min-w-20" title="Test 1" id="test1" />
+            <Tab className="min-w-20" title="Test 2" id="test2" />
+            <Tab className="min-w-20" title="Test 3" id="test5" />
+            <Tab className="min-w-20" title="Test 4" id="test6" />
+            <Tab className="min-w-20" title="Test 5" id="test7" />
+            <Tab className="min-w-20" title="Test 6" id="test8" />
+            <Tab className="min-w-20" title="Test 7" id="test9" />
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>

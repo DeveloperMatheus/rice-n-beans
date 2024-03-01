@@ -32,8 +32,8 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
       onClick={() => setActiveTab(id)}
       role="tab"
       aria-selected={isTabActive()}
-      id={`tab-${title}`}
-      aria-controls={`tabpanel-${title}`}
+      id={`tab-${id}`}
+      aria-controls={`tabpanel-${id}`}
       tabIndex={applyTabIndex()}
       variant={applyActiveStyle()}
     >

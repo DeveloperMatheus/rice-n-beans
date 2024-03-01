@@ -36,6 +36,7 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
       aria-controls={`tabpanel-${id}`}
       tabIndex={applyTabIndex()}
       variant={applyActiveStyle()}
+      aria-disabled="false"
     >
       {title}
     </Button>

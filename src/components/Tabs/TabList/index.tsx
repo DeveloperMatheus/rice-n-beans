@@ -7,6 +7,7 @@ export const TabList = forwardRef<HTMLDivElement, TabListProps>(
   ({ children, className, ...props }, ref) => (
     <div
       role="tablist"
+      aria-orientation="horizontal"
       className={twMerge(tabListStyles({ className }))}
       ref={ref}
       {...props}

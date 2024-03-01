@@ -65,7 +65,6 @@ export const Tabs = ({
       <div
         ref={refList}
         onKeyDown={onKeyDown}
-        aria-orientation="horizontal"
         className={twMerge(tabsStyles({ className }))}
         {...props}
       >

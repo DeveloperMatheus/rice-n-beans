@@ -14,10 +14,14 @@ export const Tabs = ({
   const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);
 
-  function clickAndFocus(tabButton: HTMLElement) {
+  function clickAndFocus(
+    tabButton: HTMLElement,
+    evt: React.KeyboardEvent<HTMLDivElement>
+  ) {
     tabButton.click();
     tabButton.focus();
     tabButton.scrollIntoView({ behavior: "smooth", inline: "center" });
+    evt.preventDefault();
   }
 
   const onKeyDown = useCallback(
@@ -34,17 +38,16 @@ export const Tabs = ({
 
       if (index < 0) return;
 
-      event.preventDefault();
       switch (event.key) {
         case "ArrowLeft": {
           const prev = (index - 1 + tabs.length) % tabs.length;
-          clickAndFocus(tabs[prev]);
+          clickAndFocus(tabs[prev], event);
           break;
         }
 
         case "ArrowRight": {
           const next = (index + 1 + tabs.length) % tabs.length;
-          clickAndFocus(tabs[next]);
+          clickAndFocus(tabs[next], event);
           break;
         }
       }
@@ -62,7 +65,6 @@ export const Tabs = ({
       <div
         ref={refList}
         onKeyDown={onKeyDown}
-        role="tablist"
         aria-orientation="horizontal"
         className={twMerge(tabsStyles({ className }))}
         {...props}

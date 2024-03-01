@@ -14,10 +14,10 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
     return true;
   }
 
-  function renderActiveBorder() {
-    if (!isTabActive()) return "mb-0.5";
+  function applyActiveStyle() {
+    if (!isTabActive()) return "outline";
 
-    return "border-b-2 border-black dark:border-white";
+    return "default";
   }
 
   function applyTabIndex() {
@@ -28,14 +28,14 @@ export const Tab = ({ title, className, id }: TabButtonProps) => {
 
   return (
     <Button
-      className={twMerge(tabButtonStyles({ className }), renderActiveBorder())}
+      className={twMerge(tabButtonStyles({ className }))}
       onClick={() => setActiveTab(id)}
       role="tab"
       aria-selected={isTabActive()}
       id={`tab-${title}`}
       aria-controls={`tabpanel-${title}`}
       tabIndex={applyTabIndex()}
-      variant="link"
+      variant={applyActiveStyle()}
     >
       {title}
     </Button>

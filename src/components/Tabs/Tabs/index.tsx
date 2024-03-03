@@ -1,9 +1,9 @@
 import React, { useCallback, useRef, useState } from "react";
 
-import { TabsContext } from "../tabsContext";
 import { TabsProps } from "./types";
 import { twMerge } from "tailwind-merge";
 import { tabsStyles } from "./styles";
+import { TabsContext } from "../context";
 
 export const Tabs = ({
   children,

@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { TabPanelProps } from "./types";
 import { tabPanelStyles } from "./styles";
 import { useContext } from "react";
-import { TabsContext } from "../tabsContext";
+import { TabsContext } from "../context";
 
 export const TabPanel = ({ children, id, className }: TabPanelProps) => {
   const tabActive = useContext(TabsContext);

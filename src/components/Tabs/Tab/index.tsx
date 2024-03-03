@@ -3,7 +3,7 @@ import { TabButtonProps } from "./types";
 import { twMerge } from "tailwind-merge";
 import { tabButtonStyles } from "./styles";
 import { useContext } from "react";
-import { TabsContext } from "../tabsContext";
+import { TabsContext } from "../context";
 
 export const Tab = ({ title, className, id }: TabButtonProps) => {
   const { activeTab, setActiveTab } = useContext(TabsContext);

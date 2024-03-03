@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
 
 export const tableFooterStyles = cva(
-  "bg-zinc-50 dark:bg-zinc-950 border-t font-bold"
+  "border-t border-zinc-200 dark:border-zinc-800 font-bold"
 );

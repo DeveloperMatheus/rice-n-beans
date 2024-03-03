@@ -34,6 +34,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { testDateFormSchema } from "./schema";
 import { z } from "zod";
 import { TabPanel, Tab, Tabs, TabList } from "~/components/Tabs";
+import Image from "next/image";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
@@ -152,7 +153,15 @@ export default function Home() {
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>
-          <TabPanel id="test2">Test Panel 2</TabPanel>
+          <TabPanel id="test2">
+            <p>Lazy loaded image</p>
+            <Image
+              width={200}
+              height={200}
+              src="/rice-and-beans.webp"
+              alt="Rice and beans on a plate"
+            />
+          </TabPanel>
           <TabPanel id="test5">Test Panel 4</TabPanel>
           <TabPanel id="test6">Test Panel 5</TabPanel>
           <TabPanel id="test7">Test Panel 6</TabPanel>

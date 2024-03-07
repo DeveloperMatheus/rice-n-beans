@@ -20,7 +20,11 @@ export const Tabs = ({
   ) {
     tabButton.click();
     tabButton.focus();
-    tabButton.scrollIntoView({ behavior: "smooth", inline: "center" });
+    tabButton.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
     evt.preventDefault();
   }
 

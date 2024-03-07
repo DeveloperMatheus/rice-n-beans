@@ -125,7 +125,6 @@ export default function Home() {
       </div>
       <div className="space-x-4">
         <h2>Switch:</h2>
-        <Switch aria-label="Teste" disabled />
         <Switch />
         <Switch />
         <Switch />
@@ -142,6 +141,34 @@ export default function Home() {
       <div className="w-full flex flex-col items-center justify-center my-5">
         <h2>Tabs:</h2>
         <Tabs className="w-full lg:w-96" defaultValue="test1">
+          <TabList>
+            <Tab className="min-w-20" title="Test 1" id="test1" />
+            <Tab disabled className="min-w-20" title="Test 2aa" id="test2" />
+            <Tab className="min-w-20" title="Test 3" id="test5" />
+            <Tab className="min-w-20" title="Test 4" id="test6" />
+            <Tab className="min-w-20" title="Test 5" id="test7" />
+            <Tab className="min-w-20" title="Test 6" id="test8" />
+            <Tab className="min-w-20" title="Test 7" id="test9" />
+          </TabList>
+
+          <TabPanel id="test1">Test Panel 1</TabPanel>
+          <TabPanel id="test2">
+            <p>Lazy loaded image</p>
+            <Image
+              width={200}
+              height={200}
+              src="/rice-and-beans.webp"
+              alt="Rice and beans on a plate"
+            />
+          </TabPanel>
+          <TabPanel id="test5">Test Panel 4</TabPanel>
+          <TabPanel id="test6">Test Panel 5</TabPanel>
+          <TabPanel id="test7">Test Panel 6</TabPanel>
+          <TabPanel id="test8">Test Panel 7</TabPanel>
+          <TabPanel id="test9">Test Panel 8</TabPanel>
+        </Tabs>
+
+        <Tabs className="w-full lg:w-96 mt-5" defaultValue="test1">
           <TabList>
             <Tab className="min-w-20" title="Test 1" id="test1" />
             <Tab className="min-w-20" title="Test 2" id="test2" />

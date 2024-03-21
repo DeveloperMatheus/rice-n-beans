@@ -1,0 +1,6 @@
+import { VariantProps } from "class-variance-authority";
+import { ComponentProps } from "react";
+
+import { {{camelCase name}}Styles } from "./styles";
+
+export type {{pascalCase name}}Props = ComponentProps<"div"> & VariantProps<typeof {{camelCase name}}Styles>;

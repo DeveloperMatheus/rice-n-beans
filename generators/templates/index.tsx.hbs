@@ -3,7 +3,7 @@ import { {{pascalCase name}}Props } from "./types";
 import { twMerge } from "tailwind-merge";
 import { {{camelCase name}}Styles } from "./styles";
 
-const {{pascalCase name}} = forwardRef<HTMLDivElement, {{pascalCase name}}Props>(
+export const {{pascalCase name}} = forwardRef<HTMLDivElement, {{pascalCase name}}Props>(
   ({ children, className, ...props }, ref) => {
     return (
       <div
@@ -17,4 +17,4 @@ const {{pascalCase name}} = forwardRef<HTMLDivElement, {{pascalCase name}}Props>
   }
 );
 
-export default {{pascalCase name}};
+{{pascalCase name}}.displayName = "{{pascalCase name}}";

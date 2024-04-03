@@ -35,6 +35,11 @@ import { testDateFormSchema } from "./schema";
 import { z } from "zod";
 import { TabPanel, Tab, Tabs, TabList } from "~/components/Tabs";
 import Image from "next/image";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionTrigger,
+} from "~/components/Accordion";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
@@ -46,7 +51,6 @@ export default function Home() {
   }
 
   const {
-    register,
     handleSubmit,
     reset,
     control,
@@ -230,6 +234,20 @@ export default function Home() {
           </Table>
         </Card>
       </div>
+
+      <div className="space-x-4">
+        <h2>Accordion:</h2>
+        <Accordion>
+          <AccordionTrigger>Test</AccordionTrigger>
+          <AccordionContent>Test Content</AccordionContent>
+        </Accordion>
+
+        <Accordion>
+          <AccordionTrigger>Test2</AccordionTrigger>
+          <AccordionContent>Test Content2</AccordionContent>
+        </Accordion>
+      </div>
+
       <form
         className="border rounded-lg p-3 mt-5"
         onSubmit={handleSubmit(handleTestSubmit)}

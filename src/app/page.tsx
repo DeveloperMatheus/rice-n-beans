@@ -235,7 +235,7 @@ export default function Home() {
         </Card>
       </div>
 
-      <div className="space-x-4">
+      <div className="space-x-4 space-y-4">
         <h2>Accordion:</h2>
         <Accordion>
           <AccordionTrigger>Test</AccordionTrigger>

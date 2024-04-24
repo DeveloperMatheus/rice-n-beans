@@ -2,17 +2,12 @@ import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const tableStyles = "border-collapse";
-
 const tableDataStyles = "px-2 py-1 text-center";
-
 const tableRowStyles =
   "[&:not(:last-child)]:border-b border-zinc-200 dark:border-zinc-800";
-
 const tableHeadStyles = "px-2 py-1 text-center";
-
 const tableHeaderStyles =
   "border-b border-zinc-200 dark:border-zinc-800 text-center";
-
 const tableFooterStyles =
   "border-t border-zinc-200 dark:border-zinc-800 font-bold";
 

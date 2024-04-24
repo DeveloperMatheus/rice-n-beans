@@ -39,6 +39,7 @@ const buttonStyles = cva(
 const cardStyles =
   "bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-sm";
 
+/* --- Badge --- */
 export const Badge = forwardRef<HTMLSpanElement, ComponentProps<"span">>(
   ({ children, className, ...props }, ref) => (
     <span className={twMerge(badgeStyles, className)} ref={ref} {...props}>
@@ -49,6 +50,7 @@ export const Badge = forwardRef<HTMLSpanElement, ComponentProps<"span">>(
 
 Badge.displayName = "Badge";
 
+/* --- Button --- */
 export const Button = forwardRef<
   HTMLButtonElement,
   ComponentProps<"button"> & VariantProps<typeof buttonStyles>
@@ -64,6 +66,7 @@ export const Button = forwardRef<
 
 Button.displayName = "Button";
 
+/* --- Card --- */
 export const Card = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => (
     <div className={twMerge(cardStyles, className)} ref={ref} {...props}>

@@ -1,17 +1,6 @@
 import { cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import {
-  CheckboxProps,
-  DatePickerProps,
-  ErrorMessageProps,
-  InputProps,
-  LabelProps,
-  RadioProps,
-  RangeProps,
-  SelectProps,
-  SwitchProps,
-} from "./types";
 
 export const inputStyles =
   "appearance-none font-sans w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 ring-offset-white file:border-0 file:bg-transparent file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300";
@@ -39,7 +28,8 @@ export const datePickerStyles =
 
 export const errorMessageStyles = cva("text-red-500 font-sans");
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+/* --- Input --- */
+export const Input = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <input className={twMerge(inputStyles, className)} ref={ref} {...props} />
   )
@@ -47,7 +37,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = "Input";
 
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+/* --- Label --- */
+export const Label = forwardRef<HTMLLabelElement, ComponentProps<"label">>(
   ({ children, className, ...props }, ref) => (
     <label className={twMerge(labelStyles, className)} ref={ref} {...props}>
       {children}
@@ -57,7 +48,8 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
 
 Label.displayName = "Label";
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+/* --- Checkbox --- */
+export const Checkbox = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <input
       type="checkbox"
@@ -70,7 +62,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
 Checkbox.displayName = "Checkbox";
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+/* --- Radio --- */
+export const Radio = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <input
       type="radio"
@@ -83,7 +76,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
 Radio.displayName = "Radio";
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+/* --- Select --- */
+export const Select = forwardRef<HTMLSelectElement, ComponentProps<"select">>(
   ({ className, ...props }, ref) => (
     <select className={twMerge(selectStyles, className)} ref={ref} {...props}>
       {props.children}
@@ -93,7 +87,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = "Select";
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+/* --- Switch --- */
+export const Switch = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <input
       type="checkbox"
@@ -107,7 +102,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
 Switch.displayName = "Switch";
 
-export const Range = forwardRef<HTMLInputElement, RangeProps>(
+/* --- Range --- */
+export const Range = forwardRef<HTMLInputElement, ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <input
       type="range"
@@ -120,12 +116,19 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(
 
 Range.displayName = "Range";
 
+/* --- DatePicker --- */
+type DatePickerProps = {
+  type?: "date" | "time" | "datetime-local";
+} & ComponentProps<"input">;
+
 /*
 Possible values:
 - type="date" -> 2024-02-06 (yyyy-mm-dd)
 - type="datetime-local" -> 2024-02-06T02:36 (yyyy-mm-ddThh:mm)
 - type="time" -> 02:36 (hh:mm)
+
 */
+
 export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
   ({ className, type = "date", ...props }, ref) => (
     <input
@@ -140,16 +143,18 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 
 DatePicker.displayName = "DatePicker";
 
-export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
-  ({ children, className, ...props }, ref) => (
-    <p
-      className={twMerge(errorMessageStyles({ className }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </p>
-  )
-);
+/* --- ErrorMessage --- */
+export const ErrorMessage = forwardRef<
+  HTMLParagraphElement,
+  ComponentProps<"p">
+>(({ children, className, ...props }, ref) => (
+  <p
+    className={twMerge(errorMessageStyles({ className }))}
+    ref={ref}
+    {...props}
+  >
+    {children}
+  </p>
+));
 
 ErrorMessage.displayName = "ErrorMessage";

@@ -1,12 +1,13 @@
 "use client";
 
-import { createContext, forwardRef, useContext, useId, useState } from "react";
 import {
-  AccordionContentProps,
-  AccordionContextProps,
-  AccordionProps,
-  AccordionTriggerProps,
-} from "./types";
+  ComponentProps,
+  createContext,
+  forwardRef,
+  useContext,
+  useId,
+  useState,
+} from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "~/components/Layout";
 
@@ -17,6 +18,12 @@ export const accordionTriggerStyles =
   "w-full flex flex-row items-center justify-between";
 
 /* --- Context --- */
+type AccordionContextProps = {
+  isAccordionOpen: boolean;
+  setAccordionOpen: (value: boolean) => void;
+  accordionId: string;
+};
+
 const InitAccordion: AccordionContextProps = {
   isAccordionOpen: false,
   setAccordionOpen: () => {},
@@ -41,7 +48,7 @@ const AccordionProvider = ({ children }: { children: React.ReactNode }) => {
 export { AccordionContext, AccordionProvider };
 
 /* --- Wrapper --- */
-export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
+export const Accordion = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => {
     return (
       <AccordionProvider>
@@ -62,7 +69,7 @@ Accordion.displayName = "Accordion";
 /* --- Content --- */
 export const AccordionContent = forwardRef<
   HTMLDivElement,
-  AccordionContentProps
+  ComponentProps<"div">
 >(({ children, className, ...props }, ref) => {
   const { isAccordionOpen, accordionId } = useContext(AccordionContext);
 
@@ -88,7 +95,7 @@ AccordionContent.displayName = "AccordionContent";
 /* --- Trigger --- */
 export const AccordionTrigger = forwardRef<
   HTMLButtonElement,
-  AccordionTriggerProps
+  ComponentProps<"button">
 >(({ children, className, ...props }, ref) => {
   const { isAccordionOpen, setAccordionOpen, accordionId } =
     useContext(AccordionContext);

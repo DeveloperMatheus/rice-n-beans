@@ -1,4 +1,5 @@
-import { VariantProps } from "class-variance-authority";
+"use client";
+
 import {
   ComponentProps,
   forwardRef,

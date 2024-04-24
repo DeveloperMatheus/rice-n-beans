@@ -11,10 +11,10 @@ import {
 import { twMerge } from "tailwind-merge";
 import { Button } from "~/components/Layout";
 
-export const accordionStyles =
+const accordionStyles =
   "w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg";
-export const accordionContentStyles = "mt-3";
-export const accordionTriggerStyles =
+const accordionContentStyles = "mt-3";
+const accordionTriggerStyles =
   "w-full flex flex-row items-center justify-between";
 
 /* --- Context --- */

@@ -21,6 +21,7 @@ const tabPanelStyles = "p-3 w-full rounded-b-lg";
 const tabButtonStyles =
   "focus:ring-0 focus:ring-transparent dark:focus:ring-transparent";
 
+/* --- Context --- */
 type TabsProps = {
   children: React.ReactNode;
   defaultValue: string;
@@ -60,6 +61,7 @@ const TabsProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+/* --- Tabs --- */
 export const Tabs = ({
   children,
   className,
@@ -135,6 +137,7 @@ export const Tabs = ({
 
 Tabs.displayName = "Tabs";
 
+/* --- TabList --- */
 export const TabList = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => (
     <div
@@ -151,6 +154,7 @@ export const TabList = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 TabList.displayName = "TabList";
 
+/* --- TabPanel --- */
 export const TabPanel = ({ children, id, className }: TabPanelProps) => {
   const tabActive = useContext(TabsContext);
 
@@ -175,6 +179,7 @@ export const TabPanel = ({ children, id, className }: TabPanelProps) => {
 
 TabPanel.displayName = "TabPanel";
 
+/* --- Tab --- */
 export const Tab = ({
   title,
   className,

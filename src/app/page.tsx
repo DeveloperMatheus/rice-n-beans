@@ -87,14 +87,12 @@ export default function Home() {
           </ModalFooter>
         </Modal>
       </div>
-      <div>
+      <div className="container">
         <h2>Select:</h2>
         <div className="flex flex-row items-center justify-center">
           <Select>
             <option defaultChecked hidden></option>
-            <option>
-              Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1Test1
-            </option>
+            <option>Test1</option>
             <option>Test2</option>
             <option>Test3</option>
             <option>Test4</option>

@@ -45,8 +45,6 @@ const AccordionProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export { AccordionContext, AccordionProvider };
-
 /* --- Wrapper --- */
 export const Accordion = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => {

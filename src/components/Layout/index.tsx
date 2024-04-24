@@ -1,6 +1,11 @@
-import { cva } from "class-variance-authority";
+import { VariantProps, cva } from "class-variance-authority";
+import { ComponentProps, forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
 
-export const buttonStyles = cva(
+const badgeStyles =
+  "inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900";
+
+const buttonStyles = cva(
   "appearance-none font-sans rounded-lg disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
@@ -30,3 +35,41 @@ export const buttonStyles = cva(
     },
   }
 );
+
+const cardStyles =
+  "bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-sm";
+
+export const Badge = forwardRef<HTMLSpanElement, ComponentProps<"span">>(
+  ({ children, className, ...props }, ref) => (
+    <span className={twMerge(badgeStyles, className)} ref={ref} {...props}>
+      {children}
+    </span>
+  )
+);
+
+Badge.displayName = "Badge";
+
+export const Button = forwardRef<
+  HTMLButtonElement,
+  ComponentProps<"button"> & VariantProps<typeof buttonStyles>
+>(({ children, className, variant, size, ...props }, ref) => (
+  <button
+    className={twMerge(buttonStyles({ className, variant, size }))}
+    ref={ref}
+    {...props}
+  >
+    {children}
+  </button>
+));
+
+Button.displayName = "Button";
+
+export const Card = forwardRef<HTMLDivElement, ComponentProps<"div">>(
+  ({ children, className, ...props }, ref) => (
+    <div className={twMerge(cardStyles, className)} ref={ref} {...props}>
+      {children}
+    </div>
+  )
+);
+
+Card.displayName = "Card";

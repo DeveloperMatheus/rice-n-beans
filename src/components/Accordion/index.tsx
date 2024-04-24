@@ -7,7 +7,6 @@ import {
   AccordionProps,
   AccordionTriggerProps,
 } from "./types";
-import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import { Button } from "~/components/Layout";
 

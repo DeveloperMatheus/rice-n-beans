@@ -12,11 +12,8 @@ export type AccordionContextProps = {
   accordionId: string;
 };
 
-export type AccordionProps = ComponentProps<"div"> &
-  VariantProps<typeof accordionStyles>;
+export type AccordionProps = ComponentProps<"div">;
 
-export type AccordionContentProps = ComponentProps<"div"> &
-  VariantProps<typeof accordionContentStyles>;
+export type AccordionContentProps = ComponentProps<"div">;
 
-export type AccordionTriggerProps = ComponentProps<"button"> &
-  VariantProps<typeof accordionTriggerStyles>;
+export type AccordionTriggerProps = ComponentProps<"button">;

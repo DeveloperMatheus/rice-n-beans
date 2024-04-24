@@ -11,13 +11,11 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import { Button } from "~/components/Layout";
 
-export const accordionStyles = cva(
-  "w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg"
-);
-export const accordionContentStyles = cva("mt-3");
-export const accordionTriggerStyles = cva(
-  "w-full flex flex-row items-center justify-between"
-);
+export const accordionStyles =
+  "w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg";
+export const accordionContentStyles = "mt-3";
+export const accordionTriggerStyles =
+  "w-full flex flex-row items-center justify-between";
 
 /* --- Context --- */
 const InitAccordion: AccordionContextProps = {
@@ -49,7 +47,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
     return (
       <AccordionProvider>
         <div
-          className={twMerge(accordionStyles({ className }))}
+          className={twMerge(accordionStyles, className)}
           ref={ref}
           {...props}
         >
@@ -73,7 +71,7 @@ export const AccordionContent = forwardRef<
 
   return (
     <div
-      className={twMerge(accordionContentStyles({ className }))}
+      className={twMerge(accordionContentStyles, className)}
       ref={ref}
       {...props}
       id={`accordion-${accordionId}`}
@@ -104,7 +102,7 @@ export const AccordionTrigger = forwardRef<
 
   return (
     <Button
-      className={twMerge(accordionTriggerStyles({ className }))}
+      className={twMerge(accordionTriggerStyles, className)}
       ref={ref}
       {...props}
       variant="outline"

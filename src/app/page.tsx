@@ -146,41 +146,27 @@ export default function Home() {
         <h2>Tabs:</h2>
         <Tabs className="w-full lg:w-96" defaultValue="test1">
           <TabList>
-            <Tab className="min-w-20" title="Test 1" id="test1" />
-            <Tab disabled className="min-w-20" title="Test 2aa" id="test2" />
-            <Tab className="min-w-20" title="Test 3" id="test5" />
-            <Tab className="min-w-20" title="Test 4" id="test6" />
-            <Tab className="min-w-20" title="Test 5" id="test7" />
-            <Tab className="min-w-20" title="Test 6" id="test8" />
-            <Tab className="min-w-20" title="Test 7" id="test9" />
-          </TabList>
-
-          <TabPanel id="test1">Test Panel 1</TabPanel>
-          <TabPanel id="test2">
-            <p>Lazy loaded image</p>
-            <Image
-              width={200}
-              height={200}
-              src="/rice-and-beans.webp"
-              alt="Rice and beans on a plate"
-            />
-          </TabPanel>
-          <TabPanel id="test5">Test Panel 4</TabPanel>
-          <TabPanel id="test6">Test Panel 5</TabPanel>
-          <TabPanel id="test7">Test Panel 6</TabPanel>
-          <TabPanel id="test8">Test Panel 7</TabPanel>
-          <TabPanel id="test9">Test Panel 8</TabPanel>
-        </Tabs>
-
-        <Tabs className="w-full lg:w-96 mt-5" defaultValue="test1">
-          <TabList>
-            <Tab className="min-w-20" title="Test 1" id="test1" />
-            <Tab className="min-w-20" title="Test 2" id="test2" />
-            <Tab className="min-w-20" title="Test 3" id="test5" />
-            <Tab className="min-w-20" title="Test 4" id="test6" />
-            <Tab className="min-w-20" title="Test 5" id="test7" />
-            <Tab className="min-w-20" title="Test 6" id="test8" />
-            <Tab className="min-w-20" title="Test 7" id="test9" />
+            <Tab className="min-w-20" id="test1">
+              Test1
+            </Tab>
+            <Tab disabled className="min-w-20" id="test2">
+              Test2
+            </Tab>
+            <Tab className="min-w-20" id="test5">
+              Test3
+            </Tab>
+            <Tab className="min-w-20" id="test6">
+              Test4
+            </Tab>
+            <Tab className="min-w-20" id="test7">
+              Test5
+            </Tab>
+            <Tab className="min-w-20" id="test8">
+              Test6
+            </Tab>
+            <Tab className="min-w-20" id="test9">
+              Test7
+            </Tab>
           </TabList>
 
           <TabPanel id="test1">Test Panel 1</TabPanel>

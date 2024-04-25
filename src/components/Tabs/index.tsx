@@ -7,6 +7,7 @@ import {
   forwardRef,
   useCallback,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -22,37 +23,23 @@ const tabButtonStyles =
   "focus:ring-0 focus:ring-transparent dark:focus:ring-transparent";
 
 /* --- Context --- */
-type TabsProps = {
+
+type TabsProviderProps = {
   children: React.ReactNode;
   defaultValue: string;
-} & ComponentPropsWithoutRef<"div">;
-
-type ActiveTabsContext = {
-  activeTab: string | undefined;
-  setActiveTab: (id: string) => void;
 };
-
 type TabsContextProps = {
   activeTab: string;
   setActiveTab: (selectedTab: string) => void;
 };
-
-type TabPanelProps = {
-  id: string;
-} & ComponentProps<"div">;
-
-type TabButtonProps = {
-  title: string;
-  id: string;
-} & ComponentProps<"button">;
 
 const TabsContext = createContext<TabsContextProps>({
   activeTab: "",
   setActiveTab: () => null,
 });
 
-const TabsProvider = ({ children }: { children: React.ReactNode }) => {
-  const [activeTab, setActiveTab] = useState("");
+const TabsProvider = ({ children, defaultValue }: TabsProviderProps) => {
+  const [activeTab, setActiveTab] = useState(defaultValue);
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
@@ -62,13 +49,17 @@ const TabsProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 /* --- Tabs --- */
+type TabsProps = {
+  children: React.ReactNode;
+  defaultValue: string;
+} & ComponentPropsWithoutRef<"div">;
+
 export const Tabs = ({
   children,
   className,
   defaultValue,
   ...props
 }: TabsProps) => {
-  const [selectedTab, setSelectedTab] = useState(defaultValue);
   const refList = useRef<HTMLDivElement>(null);
 
   function clickAndFocus(
@@ -117,12 +108,7 @@ export const Tabs = ({
   );
 
   return (
-    <TabsContext.Provider
-      value={{
-        activeTab: selectedTab,
-        setActiveTab: setSelectedTab,
-      }}
-    >
+    <TabsProvider defaultValue={defaultValue}>
       <div
         ref={refList}
         onKeyDown={onKeyDown}
@@ -131,7 +117,7 @@ export const Tabs = ({
       >
         {children}
       </div>
-    </TabsContext.Provider>
+    </TabsProvider>
   );
 };
 
@@ -155,12 +141,15 @@ export const TabList = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 TabList.displayName = "TabList";
 
 /* --- TabPanel --- */
+type TabPanelProps = {
+  id: string;
+} & ComponentProps<"div">;
+
 export const TabPanel = ({ children, id, className }: TabPanelProps) => {
   const tabActive = useContext(TabsContext);
 
   function renderActiveTabPanel() {
     if (tabActive?.activeTab !== id) return;
-
     return (
       <div
         className={twMerge(tabPanelStyles, className)}
@@ -180,71 +169,71 @@ export const TabPanel = ({ children, id, className }: TabPanelProps) => {
 TabPanel.displayName = "TabPanel";
 
 /* --- Tab --- */
-export const Tab = ({
-  title,
-  className,
-  id,
-  ref,
-  ...props
-}: TabButtonProps) => {
-  const { activeTab, setActiveTab } = useContext(TabsContext);
+type TabButtonProps = {
+  id: string;
+} & ComponentProps<"button">;
+export const Tab = forwardRef<HTMLButtonElement, TabButtonProps>(
+  ({ children, className, id, ...props }, ref) => {
+    const { activeTab, setActiveTab } = useContext(TabsContext);
 
-  function isTabActive() {
-    if (activeTab !== id) return false;
+    function isTabActive() {
+      if (activeTab !== id) return false;
 
-    return true;
+      return true;
+    }
+
+    function applyActiveStyle() {
+      if (!isTabActive()) return "outline";
+
+      return "default";
+    }
+
+    function applyTabIndex() {
+      if (!isTabActive()) return -1;
+
+      return 0;
+    }
+
+    function clickAndFocus(
+      tabButton: HTMLElement,
+      evt: React.MouseEvent<HTMLButtonElement>
+    ) {
+      tabButton.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+      evt.preventDefault();
+    }
+
+    const onClickDown = useCallback(
+      (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        clickAndFocus(event.currentTarget, event);
+      },
+      []
+    );
+
+    return (
+      <Button
+        className={twMerge(tabButtonStyles, className)}
+        onClick={(evt) => {
+          setActiveTab(id);
+          onClickDown(evt);
+        }}
+        role="tab"
+        aria-selected={isTabActive()}
+        id={`tab-${id}`}
+        aria-controls={`tabpanel-${id}`}
+        tabIndex={applyTabIndex()}
+        variant={applyActiveStyle()}
+        aria-disabled="false"
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
   }
-
-  function applyActiveStyle() {
-    if (!isTabActive()) return "outline";
-
-    return "default";
-  }
-
-  function applyTabIndex() {
-    if (!isTabActive()) return -1;
-
-    return 0;
-  }
-
-  function clickAndFocus(
-    tabButton: HTMLElement,
-    evt: React.MouseEvent<HTMLButtonElement>
-  ) {
-    tabButton.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    });
-    evt.preventDefault();
-  }
-
-  const onClickDown = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      clickAndFocus(event.currentTarget, event);
-    },
-    []
-  );
-
-  return (
-    <Button
-      className={twMerge(tabButtonStyles, className)}
-      onClick={(evt) => {
-        setActiveTab(id);
-        onClickDown(evt);
-      }}
-      role="tab"
-      aria-selected={isTabActive()}
-      id={`tab-${id}`}
-      aria-controls={`tabpanel-${id}`}
-      tabIndex={applyTabIndex()}
-      variant={applyActiveStyle()}
-      aria-disabled="false"
-      {...props}
-    >
-      {title}
-    </Button>
-  );
-};
+);
 
 Tab.displayName = "Tab";

@@ -14,6 +14,8 @@ import {
   Switch,
 } from "~/components/Form";
 
+import { Text } from "~/components/Typography";
+
 import {
   Table,
   TableBody,
@@ -26,7 +28,6 @@ import {
 
 import { Modal, ModalContent, ModalFooter } from "~/components/Modal";
 
-import { Title } from "~/components/Typography";
 import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 import { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -62,7 +63,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <Title>Page title</Title>
+      <Text tag="h1">Page title</Text>
       <Button className="rounded-none">fsafsafasfasfas</Button>
       <div>
         <h2>Theme changer: </h2>
@@ -253,6 +254,12 @@ export default function Home() {
 
         <Button className="mt-5">Enviar</Button>
       </form>
+
+      <div>
+        <Text className="text-red-600 dark:text-purple-400">
+          Me cagué todito
+        </Text>
+      </div>
     </main>
   );
 }

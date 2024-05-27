@@ -11,11 +11,8 @@ import { twMerge } from "tailwind-merge";
 
 const modalStyles =
   "rounded-lg w-full max-w-[40rem] open:animate-fade-in backdrop:backdrop-blur-sm";
-
 const modalContentStyles = "p-3";
-
 const modalHeaderStyles = "p-3";
-
 const modalFooterStyles =
   "border-t border-zinc-200 dark:border-zinc-800 p-3 flex justify-end";
 

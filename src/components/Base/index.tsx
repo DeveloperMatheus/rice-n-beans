@@ -1,3 +1,5 @@
+"use client";
+
 import { VariantProps, cva } from "class-variance-authority";
 import {
   ComponentProps,
@@ -11,7 +13,14 @@ import { twMerge } from "tailwind-merge";
 
 import { Button } from "~/components/Layout";
 
-const baseStyles = cva("flex");
+const baseStyles = cva("flex", {
+  variants: {
+    orientation: {
+      left: "flex-row",
+      right: "flex-row-reverse",
+    },
+  },
+});
 const baseContainerStyles = cva("h-screen w-full");
 const baseDrawerStyles = cva("bg-green-800 h-screen", {
   variants: {
@@ -67,21 +76,22 @@ const DrawerProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 /* --- Base --- */
-export const Base = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <DrawerProvider>
-        <div
-          className={twMerge(baseStyles({ className }))}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
-      </DrawerProvider>
-    );
-  }
-);
+export const Base = forwardRef<
+  HTMLDivElement,
+  ComponentProps<"div"> & VariantProps<typeof baseStyles>
+>(({ children, className, orientation = "left", ...props }, ref) => {
+  return (
+    <DrawerProvider>
+      <div
+        className={twMerge(baseStyles({ className, orientation }))}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </div>
+    </DrawerProvider>
+  );
+});
 
 Base.displayName = "Base";
 

@@ -6,7 +6,7 @@ export default function BaseTestLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Base orientation="right">
+    <Base>
       <BaseDrawer>Test</BaseDrawer>
       <BaseContainer>
         <BaseHeader>Header</BaseHeader>

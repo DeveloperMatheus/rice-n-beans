@@ -22,7 +22,7 @@ const baseStyles = cva("flex", {
   },
 });
 const baseContainerStyles = cva("h-screen w-full");
-const baseDrawerStyles = cva("bg-green-800 h-screen", {
+const baseDrawerStyles = cva("bg-green-800 h-screen transition-all", {
   variants: {
     isDrawerOpen: {
       true: "w-72",

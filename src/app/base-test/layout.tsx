@@ -1,4 +1,11 @@
-import { Base, BaseContainer, BaseDrawer, BaseHeader } from "~/components/Base";
+import {
+  Base,
+  BaseToggleDrawer,
+  BaseContainer,
+  BaseDrawer,
+  BaseHeader,
+  BaseContent,
+} from "~/components/Base";
 
 export default function BaseTestLayout({
   children,
@@ -7,10 +14,14 @@ export default function BaseTestLayout({
 }) {
   return (
     <Base>
-      <BaseDrawer>Test</BaseDrawer>
+      <BaseDrawer>
+        <BaseToggleDrawer className="block lg:hidden text-black" />
+      </BaseDrawer>
       <BaseContainer>
-        <BaseHeader>Header</BaseHeader>
-        <div className="px-3 pb-3 pt-1 bg-blue-800">{children}</div>
+        <BaseHeader className="text-black">
+          <BaseToggleDrawer />
+        </BaseHeader>
+        <BaseContent>{children}</BaseContent>
       </BaseContainer>
     </Base>
   );

@@ -41,6 +41,7 @@ import {
   AccordionContent,
   AccordionTrigger,
 } from "~/components/Accordion";
+import Link from "next/link";
 
 export default function Home() {
   const [testModal, setTestModal] = useState(false);
@@ -64,7 +65,15 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Text tag="h1">Page title</Text>
+
+      <Link href="/base-test">Go to base test</Link>
       <Button className="rounded-none">fsafsafasfasfas</Button>
+
+      <div className="relative bg-blue-800">
+        <div className="sticky top-0 bg-red-800">
+          <Button className="rounded-none">sticky?</Button>
+        </div>
+      </div>
       <div>
         <h2>Theme changer: </h2>
         <ThemeDropdown />

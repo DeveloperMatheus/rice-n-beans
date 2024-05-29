@@ -16,7 +16,7 @@ dependencies:
     version: 1.9.0(@maskito/core@1.9.0)
   '@maskito/react':
     specifier: ^1.9.0
-    version: 1.9.0(@maskito/core@1.9.0)(react-dom@18.2.0)(react@18.3.1)
+    version: 1.9.0(@maskito/core@1.9.0)(react-dom@18.3.1)(react@18.3.1)
   keen-slider:
     specifier: ^6.8.6
     version: 6.8.6
@@ -25,22 +25,22 @@ dependencies:
     version: 0.379.0(react@18.3.1)
   next:
     specifier: 14.2.3
-    version: 14.2.3(react-dom@18.2.0)(react@18.3.1)
+    version: 14.2.3(react-dom@18.3.1)(react@18.3.1)
   next-themes:
     specifier: ^0.3.0
-    version: 0.3.0(react-dom@18.2.0)(react@18.3.1)
+    version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
   react:
     specifier: ^18
     version: 18.3.1
   react-dom:
     specifier: ^18
-    version: 18.2.0(react@18.3.1)
+    version: 18.3.1(react@18.3.1)
   react-hook-form:
     specifier: ^7.51.5
     version: 7.51.5(react@18.3.1)
   sonner:
     specifier: ^1.4.41
-    version: 1.4.41(react-dom@18.2.0)(react@18.3.1)
+    version: 1.4.41(react-dom@18.3.1)(react@18.3.1)
   tailwind-merge:
     specifier: ^2.3.0
     version: 2.3.0
@@ -57,7 +57,7 @@ devDependencies:
     version: 18.3.3
   '@types/react-dom':
     specifier: ^18
-    version: 18.2.25
+    version: 18.3.0
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -238,7 +238,7 @@ packages:
       '@maskito/core': 1.9.0
     dev: false
 
-  /@maskito/react@1.9.0(@maskito/core@1.9.0)(react-dom@18.2.0)(react@18.3.1):
+  /@maskito/react@1.9.0(@maskito/core@1.9.0)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-6mjdXyaJDcZH1VnIYiR0kTA//F0q2djs0fKxfMfqEhEzyRR/HXL0VvsPRayk3HHy7wEtwR7bKgTNBwlwFdTj0g==}
     peerDependencies:
       '@maskito/core': ^1.9.0
@@ -247,7 +247,7 @@ packages:
     dependencies:
       '@maskito/core': 1.9.0
       react: 18.3.1
-      react-dom: 18.2.0(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /@next/env@14.2.3:
@@ -415,8 +415,8 @@ packages:
   /@types/prop-types@15.7.11:
     resolution: {integrity: sha512-ga8y9v9uyeiLdpKddhxYQkxNDrfvuPrlFb0N1qnZZByvcElJaXthF1UhvCh9TLWJBEHeNtdnbysW7Y6Uq8CVng==}
 
-  /@types/react-dom@18.2.25:
-    resolution: {integrity: sha512-o/V48vf4MQh7juIKZU2QGDfli6p1+OOi5oXx36Hffpc9adsHeXjVp8rHuPkjd8VT8sOJ2Zp05HR7CdpGTIUFUA==}
+  /@types/react-dom@18.3.0:
+    resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
     dependencies:
       '@types/react': 18.3.3
     dev: true
@@ -2493,17 +2493,17 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-themes@0.3.0(react-dom@18.2.0)(react@18.3.1):
+  /next-themes@0.3.0(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
     peerDependencies:
       react: ^16.8 || ^17 || ^18
       react-dom: ^16.8 || ^17 || ^18
     dependencies:
       react: 18.3.1
-      react-dom: 18.2.0(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
-  /next@14.2.3(react-dom@18.2.0)(react@18.3.1):
+  /next@14.2.3(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -2528,7 +2528,7 @@ packages:
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.1
-      react-dom: 18.2.0(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 5.1.1(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.3
@@ -2983,14 +2983,14 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-dom@18.2.0(react@18.3.1):
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  /react-dom@18.3.1(react@18.3.1):
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.1
     dependencies:
       loose-envify: 1.4.0
       react: 18.3.1
-      scheduler: 0.23.0
+      scheduler: 0.23.2
     dev: false
 
   /react-hook-form@7.51.5(react@18.3.1):
@@ -3172,8 +3172,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /scheduler@0.23.0:
-    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+  /scheduler@0.23.2:
+    resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
     dependencies:
       loose-envify: 1.4.0
     dev: false
@@ -3264,14 +3264,14 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /sonner@1.4.41(react-dom@18.2.0)(react@18.3.1):
+  /sonner@1.4.41(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-uG511ggnnsw6gcn/X+YKkWPo5ep9il9wYi3QJxHsYe7yTZ4+cOd1wuodOUmOpFuXL+/RE3R04LczdNCDygTDgQ==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
       react: 18.3.1
-      react-dom: 18.2.0(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /source-map-js@1.2.0:

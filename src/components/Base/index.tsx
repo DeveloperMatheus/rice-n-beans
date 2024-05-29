@@ -23,20 +23,22 @@ const baseStyles = cva("flex", {
 });
 const baseContainerStyles = cva("bg-red-800 dark:bg-zinc-800 h-screen w-full");
 const baseContentStyles = cva(
-  "px-3 pb-3 pt-1 overflow-y-auto h-screen h-[calc(100vh-4.5rem)] border-y"
+  "px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-y"
 );
 const baseDrawerStyles = cva(
-  "bg-green-800 fixed lg:sticky h-screen transition-all z-10 border-r border-b",
+  "bg-green-800 fixed lg:sticky h-screen transition-all z-10 border",
   {
     variants: {
       isOpen: {
         true: "w-full lg:w-72",
-        false: "hidden lg:block lg:w-10",
+        false: "hidden lg:block lg:w-14",
       },
     },
   }
 );
-const baseHeaderStyles = cva("w-full sticky top-0 bg-blue-800 shadow-md p-3");
+const baseHeaderStyles = cva(
+  "w-full sticky top-0 bg-blue-800 shadow-md p-3 border-t"
+);
 const baseCloseDrawerStyles = cva(
   "text-2xl focus:ring-offset-0 dark:focus:ring-offset-0 focus:ring-0 dark:focus:ring-0 hover:bg-transparent dark:hover:bg-transparent"
 );

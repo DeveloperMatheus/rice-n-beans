@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   Base,
   BaseToggleDrawer,
@@ -12,14 +15,23 @@ export default function BaseTestLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  function handleToggleDrawer() {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <Base>
-      <BaseDrawer>
-        <BaseToggleDrawer className="block lg:hidden text-black" />
+      <BaseDrawer isOpen={isOpen}>
+        <BaseToggleDrawer
+          onClick={() => handleToggleDrawer()}
+          className="block lg:hidden text-black"
+        />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader className="text-black">
-          <BaseToggleDrawer />
+          <BaseToggleDrawer onClick={() => handleToggleDrawer()} />
         </BaseHeader>
         <BaseContent>{children}</BaseContent>
       </BaseContainer>

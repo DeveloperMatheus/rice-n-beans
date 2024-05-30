@@ -1,15 +1,8 @@
-"use client";
-
 import { VariantProps, cva } from "class-variance-authority";
-import {
-  ComponentProps,
-  createContext,
-  forwardRef,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { PanelLeft } from "lucide-react";
 
 import { Button } from "~/components/Layout";
 
@@ -23,7 +16,7 @@ const baseStyles = cva("flex", {
 });
 const baseContainerStyles = cva("bg-red-800 dark:bg-zinc-800 h-screen w-full");
 const baseContentStyles = cva(
-  "px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-y"
+  "px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-t lg:border-y"
 );
 const baseDrawerStyles = cva(
   "bg-green-800 fixed lg:sticky h-screen transition-all z-10 border",
@@ -37,54 +30,11 @@ const baseDrawerStyles = cva(
   }
 );
 const baseHeaderStyles = cva(
-  "w-full sticky top-0 bg-blue-800 shadow-md p-3 border-t"
+  "w-full sticky top-0 bg-blue-800 shadow-md p-3 lg:border-t"
 );
 const baseCloseDrawerStyles = cva(
   "text-2xl focus:ring-offset-0 dark:focus:ring-offset-0 focus:ring-0 dark:focus:ring-0 hover:bg-transparent dark:hover:bg-transparent"
 );
-
-/* --- Context --- */
-const initialValue = {
-  isCollapsed: true,
-  toggleDrawercollapse: () => {},
-};
-
-const DrawerContext = createContext(initialValue);
-
-const DrawerProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isCollapsed, setCollapse] = useState(true);
-
-  const [isMounted, setMounted] = useState(false);
-
-  const toggleDrawercollapse = () => {
-    setCollapse((prevState) => !prevState);
-    localStorage.setItem("drawer", JSON.stringify(!isCollapsed));
-  };
-
-  function setStateFromLocalStorage() {
-    const isOpen = localStorage.getItem("drawer");
-
-    if (!isOpen) return setCollapse(false);
-
-    setCollapse(JSON.parse(isOpen) as boolean);
-  }
-
-  useEffect(() => {
-    setMounted(true);
-  }, [isMounted]);
-
-  useEffect(() => {
-    setStateFromLocalStorage();
-  }, [isCollapsed]);
-
-  if (!isMounted) return;
-
-  return (
-    <DrawerContext.Provider value={{ isCollapsed, toggleDrawercollapse }}>
-      {children}
-    </DrawerContext.Provider>
-  );
-};
 
 /* --- Base --- */
 export const Base = forwardRef<
@@ -92,15 +42,13 @@ export const Base = forwardRef<
   ComponentProps<"div"> & VariantProps<typeof baseStyles>
 >(({ children, className, orientation = "left", ...props }, ref) => {
   return (
-    <DrawerProvider>
-      <div
-        className={twMerge(baseStyles({ className, orientation }))}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </div>
-    </DrawerProvider>
+    <div
+      className={twMerge(baseStyles({ className, orientation }))}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </div>
   );
 });
 
@@ -140,12 +88,10 @@ BaseContent.displayName = "BaseContent";
 export const BaseDrawer = forwardRef<
   HTMLDivElement,
   ComponentProps<"div"> & VariantProps<typeof baseDrawerStyles>
->(({ children, className, ...props }, ref) => {
-  const { isCollapsed } = useContext(DrawerContext);
-
+>(({ children, isOpen = true, className, ...props }, ref) => {
   return (
     <div
-      className={twMerge(baseDrawerStyles({ className, isOpen: isCollapsed }))}
+      className={twMerge(baseDrawerStyles({ className, isOpen }))}
       ref={ref}
       {...props}
     >
@@ -178,22 +124,14 @@ export const BaseToggleDrawer = forwardRef<
   HTMLButtonElement,
   ComponentProps<"button">
 >(({ className, ...props }, ref) => {
-  const { isCollapsed, toggleDrawercollapse } = useContext(DrawerContext);
-
-  function handleCloseIcon() {
-    if (isCollapsed) return "🡐";
-    return "🡒";
-  }
-
   return (
     <Button
       variant="ghost"
       className={twMerge(baseCloseDrawerStyles({ className }))}
-      onClick={() => toggleDrawercollapse()}
       ref={ref}
       {...props}
     >
-      {handleCloseIcon()}
+      <PanelLeft size={32} />
     </Button>
   );
 });

@@ -196,6 +196,50 @@ export default function Home() {
           <TabPanel id="test9">Test Panel 8</TabPanel>
         </Tabs>
       </div>
+      <div className="w-full flex flex-col items-center justify-center my-5">
+        <h2>Tabs2222:</h2>
+        <Tabs className="w-full lg:w-96" defaultValue="test1">
+          <TabList>
+            <Tab className="min-w-20" id="test1">
+              Test1
+            </Tab>
+            <Tab disabled className="min-w-20" id="test2">
+              Test2
+            </Tab>
+            <Tab className="min-w-20" id="test5">
+              Test3
+            </Tab>
+            <Tab className="min-w-20" id="test6">
+              Test4
+            </Tab>
+            <Tab className="min-w-20" id="test7">
+              Test5
+            </Tab>
+            <Tab className="min-w-20" id="test8">
+              Test6
+            </Tab>
+            <Tab className="min-w-20" id="test9">
+              Test7
+            </Tab>
+          </TabList>
+
+          <TabPanel id="test1">Test Panel 1</TabPanel>
+          <TabPanel id="test2">
+            <p>Lazy loaded image</p>
+            <Image
+              width={200}
+              height={200}
+              src="/rice-and-beans.webp"
+              alt="Rice and beans on a plate"
+            />
+          </TabPanel>
+          <TabPanel id="test5">Test Panel 4</TabPanel>
+          <TabPanel id="test6">Test Panel 5</TabPanel>
+          <TabPanel id="test7">Test Panel 6</TabPanel>
+          <TabPanel id="test8">Test Panel 7</TabPanel>
+          <TabPanel id="test9">Test Panel 8</TabPanel>
+        </Tabs>
+      </div>
 
       <div className="space-x-4">
         <h2>Table:</h2>

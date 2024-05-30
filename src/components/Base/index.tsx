@@ -14,12 +14,12 @@ const baseStyles = cva("flex", {
     },
   },
 });
-const baseContainerStyles = cva("bg-red-800 dark:bg-zinc-800 h-screen w-full");
+const baseContainerStyles = cva("h-screen w-full");
 const baseContentStyles = cva(
-  "px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-t lg:border-y"
+  "bg-white dark:bg-zinc-900 px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
 );
 const baseDrawerStyles = cva(
-  "bg-green-800 fixed lg:sticky h-screen transition-all z-10 border",
+  "bg-white dark:bg-zinc-900 fixed lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800",
   {
     variants: {
       isOpen: {
@@ -30,7 +30,7 @@ const baseDrawerStyles = cva(
   }
 );
 const baseHeaderStyles = cva(
-  "w-full sticky top-0 bg-blue-800 shadow-md p-3 lg:border-t"
+  "bg-white dark:bg-zinc-900 w-full sticky top-0 shadow-md p-3 lg:border-t border-zinc-200 dark:border-zinc-800"
 );
 const baseCloseDrawerStyles = cva(
   "text-2xl focus:ring-offset-0 dark:focus:ring-offset-0 focus:ring-0 dark:focus:ring-0 hover:bg-transparent dark:hover:bg-transparent"

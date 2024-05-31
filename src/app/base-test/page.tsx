@@ -4,7 +4,7 @@ import { Input } from "~/components/Form";
 export default function Home() {
   return (
     <section>
-      <Link href="/base-test/desgraca">Go to desgraca</Link>
+      <Link href="/base-test/base-nested">Go to nested base page</Link>
 
       <Input />
     </section>

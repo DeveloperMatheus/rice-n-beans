@@ -14,9 +14,14 @@ const config: Config = {
           "0%": { opacity: "0%" },
           "100%": { opacity: "100%" },
         },
+        modal: {
+          "0%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.2s ease-in-out",
+        modal: "modal 0.2s ease-in-out",
       },
     },
     content: {

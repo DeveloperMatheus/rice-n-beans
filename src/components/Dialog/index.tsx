@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   Modal,
@@ -11,6 +13,20 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const dialogStyles = cva("max-w-[20rem] select-text");
+
+type DialogOptions = {
+  title: string;
+  description: string;
+  confirmText: string;
+  cancelText: string;
+  variant:
+    | "default"
+    | "secondary"
+    | "destructive"
+    | "outline"
+    | "ghost"
+    | "link";
+};
 
 const createPromise = () => {
   let resolver;
@@ -27,10 +43,10 @@ const useConfirm = () => {
   const [resolver, setResolver] = useState<{
     resolver?: Promise<boolean>;
   }>({ resolver: undefined });
-  const [label, setLabel] = useState("");
+  const [options, setOptions] = useState<DialogOptions>();
 
-  const getConfirmation = async (text: string) => {
-    setLabel(text);
+  const getConfirmation = async (text: DialogOptions) => {
+    setOptions(text);
     setOpen(true);
     const [promise, resolve] = createPromise();
     console.log("🚀 ~ getConfirmation ~ promise:", promise);
@@ -44,7 +60,7 @@ const useConfirm = () => {
     resolver.resolve(status);
   };
 
-  const Confirmation = () => (
+  const Dialog = () => (
     <Modal
       isOpen={open}
       onCloseModal={() => handleAction(false)}
@@ -52,14 +68,10 @@ const useConfirm = () => {
     >
       <ModalHeader>
         <Text tag="h3" className="text-center">
-          {/* {title} */}
-          Title
+          {options?.title}
         </Text>
       </ModalHeader>
-      <ModalContent>
-        {/* {body} */}
-        Body
-      </ModalContent>
+      <ModalContent>{options?.description}</ModalContent>
 
       <ModalFooter className="space-x-3">
         <Button
@@ -68,24 +80,21 @@ const useConfirm = () => {
           size="sm"
           onClick={() => handleAction(false)}
         >
-          {/* {cancelText} */}
-          Cancel
+          {options?.cancelText}
         </Button>
         <Button
           className="w-full"
-          // variant={variant}
-          variant="destructive"
+          variant={options?.variant ?? "default"}
           size="sm"
           onClick={() => handleAction(true)}
         >
-          {/* {confirmText} */}
-          Confirm
+          {options?.confirmText}
         </Button>
       </ModalFooter>
     </Modal>
   );
 
-  return [getConfirmation, Confirmation];
+  return { getConfirmation, Dialog };
 };
 
 export default useConfirm;

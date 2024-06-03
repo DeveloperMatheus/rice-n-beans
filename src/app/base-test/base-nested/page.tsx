@@ -5,10 +5,16 @@ import useConfirm from "~/components/Dialog";
 import { Button } from "~/components/Layout";
 
 export default function DesgracaPage() {
-  const [getConfirmation, Confirmation] = useConfirm();
+  const { getConfirmation, Dialog } = useConfirm();
 
   async function triggerDialog() {
-    const status = await getConfirmation("Are you sure?");
+    const status = await getConfirmation({
+      title: "Boa noite?",
+      description: "Boaa, noitee, caralho!",
+      confirmText: "Confirma ae, porra!",
+      cancelText: "Cancela, porra!",
+      variant: "destructive",
+    });
     console.log("🚀 ~ triggerDialog ~ status:", status);
   }
 
@@ -54,7 +60,7 @@ export default function DesgracaPage() {
       <h1>Nested page through base layout</h1>
 
       <Button onClick={() => triggerDialog()}>Click me</Button>
-      <Confirmation />
+      <Dialog />
     </section>
   );
 }

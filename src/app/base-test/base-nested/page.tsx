@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import { Dialog } from "~/components/Dialog";
+import useConfirm from "~/components/Dialog";
+import { Button } from "~/components/Layout";
 
 export default function DesgracaPage() {
+  const [getConfirmation, Confirmation] = useConfirm();
+
+  async function triggerDialog() {
+    const status = await getConfirmation("Are you sure?");
+    console.log("🚀 ~ triggerDialog ~ status:", status);
+  }
+
   return (
     <section>
       <Link href="/base-test">Go back</Link>
@@ -43,13 +53,8 @@ export default function DesgracaPage() {
       <h1>Nested page through base layout</h1>
       <h1>Nested page through base layout</h1>
 
-      <Dialog
-        variant="destructive"
-        title="Test!"
-        body="Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?! Are you sure?!"
-        cancelText="No"
-        confirmText="Yes"
-      />
+      <Button onClick={() => triggerDialog()}>Click me</Button>
+      <Confirmation />
     </section>
   );
 }

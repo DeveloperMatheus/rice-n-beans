@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import useConfirm from "~/components/Dialog";
+import { useConfirm } from "~/components/Dialog";
 import { Button } from "~/components/Layout";
 
 export default function DesgracaPage() {
-  const { getConfirmation, Dialog } = useConfirm();
+  const { getConfirmation } = useConfirm();
 
   async function triggerDialog() {
     const status = await getConfirmation({
@@ -60,7 +60,6 @@ export default function DesgracaPage() {
       <h1>Nested page through base layout</h1>
 
       <Button onClick={() => triggerDialog()}>Click me</Button>
-      <Dialog />
     </section>
   );
 }

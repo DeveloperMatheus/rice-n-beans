@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useConfirm } from "~/components/Dialog";
+import useConfirm from "~/components/Dialog";
 import { Button } from "~/components/Layout";
 
 export default function DesgracaPage() {

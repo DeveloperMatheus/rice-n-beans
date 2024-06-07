@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -11,6 +11,7 @@ import { Text } from "~/components/Typography";
 import { Button } from "~/components/Layout";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+import { createPortal } from "react-dom";
 
 const dialogStyles = cva("max-w-[20rem] select-text");
 
@@ -28,73 +29,114 @@ type DialogOptions = {
     | "link";
 };
 
-const createPromise = () => {
-  let resolver;
-  return [
-    new Promise((resolve: (value: boolean) => void, reject) => {
-      resolver = resolve;
-    }),
-    resolver,
-  ];
-};
-
-const useConfirm = () => {
-  const [open, setOpen] = useState(false);
-  const [resolver, setResolver] = useState<{
-    resolver?: Promise<boolean>;
-  }>({ resolver: undefined });
-  const [options, setOptions] = useState<DialogOptions>();
-
-  const getConfirmation = async (text: DialogOptions) => {
-    setOptions(text);
-    setOpen(true);
-    const [promise, resolve] = createPromise();
-    console.log("🚀 ~ getConfirmation ~ promise:", promise);
-    console.log("🚀 ~ getConfirmation ~ resolve:", resolve);
-    setResolver({ resolve });
-    return promise;
-  };
-
-  const handleAction = async (status: boolean) => {
-    setOpen(false);
-    resolver.resolve(status);
-  };
-
-  const Dialog = () => (
+const DialogModal = ({
+  open,
+  handleAction,
+}: {
+  open: boolean;
+  handleAction?: (value: boolean) => void;
+}) => {
+  function handleClose(value: boolean) {
+    if (!handleAction) return;
+    handleAction(value);
+  }
+  return (
     <Modal
       isOpen={open}
-      onCloseModal={() => handleAction(false)}
+      onCloseModal={() => handleClose(false)}
       className={twMerge(dialogStyles())}
     >
       <ModalHeader>
         <Text tag="h3" className="text-center">
-          {options?.title}
+          title
         </Text>
       </ModalHeader>
-      <ModalContent>{options?.description}</ModalContent>
+      <ModalContent>description</ModalContent>
 
       <ModalFooter className="space-x-3">
         <Button
           className="w-full"
           variant="outline"
           size="sm"
-          onClick={() => handleAction(false)}
+          onClick={() => handleClose(false)}
         >
-          {options?.cancelText}
+          cancel
         </Button>
         <Button
           className="w-full"
-          variant={options?.variant ?? "default"}
+          variant="default"
           size="sm"
-          onClick={() => handleAction(true)}
+          onClick={() => handleClose(true)}
         >
-          {options?.confirmText}
+          confirm
         </Button>
       </ModalFooter>
     </Modal>
   );
-
-  return { getConfirmation, Dialog };
 };
 
-export default useConfirm;
+/* --- Context --- */
+interface ModalContextProps {
+  render: (modal: ModalProps, handleAction: (result: any) => void) => void;
+}
+
+export interface ModalProps {
+  header?: string;
+  content?: string;
+  confirmText?: string;
+  rejectText?: string;
+  action?: (result: boolean) => void;
+}
+
+export const ModalContext = createContext<ModalContextProps>({
+  render: () => {},
+});
+
+export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState<ModalProps>({});
+
+  const render = (
+    modal: ModalProps,
+    handleAction: (result: boolean) => void
+  ) => {
+    setModal({
+      ...modal,
+      action: (result) => {
+        setIsOpen(false);
+        handleAction(result);
+      },
+    });
+
+    setIsOpen(true);
+  };
+
+  return (
+    <ModalContext.Provider value={{ render }}>
+      {children}
+
+      {isOpen &&
+        createPortal(
+          <DialogModal open={isOpen} handleAction={modal?.action} />,
+          document.body
+        )}
+    </ModalContext.Provider>
+  );
+};
+
+/* --- Hook --- */
+export const useModal = () => {
+  const modalContext = useContext(ModalContext);
+
+  const open = async (modal: ModalProps): Promise<boolean> => {
+    const reactionPromise = new Promise<boolean>((resolve) => {
+      modalContext.render(modal, resolve);
+    });
+
+    return reactionPromise;
+  };
+
+  return {
+    open,
+  };
+};

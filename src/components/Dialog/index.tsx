@@ -15,26 +15,28 @@ import { createPortal } from "react-dom";
 
 const dialogStyles = cva("max-w-[20rem] select-text");
 
-type DialogOptions = {
-  title: string;
-  description: string;
-  confirmText: string;
-  cancelText: string;
-  variant:
+const DialogModal = ({
+  open,
+  handleAction,
+  header = "Are you sure?",
+  content = "This action cannot be undone.",
+  rejectText = "Cancel",
+  confirmText = "Confirm",
+  variant = "default",
+}: {
+  open: boolean;
+  handleAction?: (value: boolean) => void;
+  header?: string;
+  content?: string;
+  rejectText?: string;
+  confirmText?: string;
+  variant?:
     | "default"
     | "secondary"
     | "destructive"
     | "outline"
     | "ghost"
     | "link";
-};
-
-const DialogModal = ({
-  open,
-  handleAction,
-}: {
-  open: boolean;
-  handleAction?: (value: boolean) => void;
 }) => {
   function handleClose(value: boolean) {
     if (!handleAction) return;
@@ -48,10 +50,10 @@ const DialogModal = ({
     >
       <ModalHeader>
         <Text tag="h3" className="text-center">
-          title
+          {header}
         </Text>
       </ModalHeader>
-      <ModalContent>description</ModalContent>
+      <ModalContent>{content}</ModalContent>
 
       <ModalFooter className="space-x-3">
         <Button
@@ -60,15 +62,15 @@ const DialogModal = ({
           size="sm"
           onClick={() => handleClose(false)}
         >
-          cancel
+          {rejectText}
         </Button>
         <Button
           className="w-full"
-          variant="default"
+          variant={variant}
           size="sm"
           onClick={() => handleClose(true)}
         >
-          confirm
+          {confirmText}
         </Button>
       </ModalFooter>
     </Modal>
@@ -76,28 +78,35 @@ const DialogModal = ({
 };
 
 /* --- Context --- */
-interface ModalContextProps {
-  render: (modal: ModalProps, handleAction: (result: any) => void) => void;
-}
+type DialogContextProps = {
+  render: (modal: DialogProps, handleAction: (result: boolean) => void) => void;
+};
 
-export interface ModalProps {
+export type DialogProps = {
   header?: string;
   content?: string;
   confirmText?: string;
   rejectText?: string;
+  variant?:
+    | "default"
+    | "secondary"
+    | "destructive"
+    | "outline"
+    | "ghost"
+    | "link";
   action?: (result: boolean) => void;
-}
+};
 
-export const ModalContext = createContext<ModalContextProps>({
+export const DialogContext = createContext<DialogContextProps>({
   render: () => {},
 });
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState<ModalProps>({});
+  const [modal, setModal] = useState<DialogProps>();
 
   const render = (
-    modal: ModalProps,
+    modal: DialogProps,
     handleAction: (result: boolean) => void
   ) => {
     setModal({
@@ -112,25 +121,33 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ModalContext.Provider value={{ render }}>
+    <DialogContext.Provider value={{ render }}>
       {children}
 
       {isOpen &&
         createPortal(
-          <DialogModal open={isOpen} handleAction={modal?.action} />,
+          <DialogModal
+            variant={modal?.variant}
+            open={isOpen}
+            header={modal?.header}
+            content={modal?.content}
+            rejectText={modal?.rejectText}
+            confirmText={modal?.confirmText}
+            handleAction={modal?.action}
+          />,
           document.body
         )}
-    </ModalContext.Provider>
+    </DialogContext.Provider>
   );
 };
 
 /* --- Hook --- */
 export const useModal = () => {
-  const modalContext = useContext(ModalContext);
+  const dialogContext = useContext(DialogContext);
 
-  const open = async (modal: ModalProps): Promise<boolean> => {
+  const open = async (modal: DialogProps): Promise<boolean> => {
     const reactionPromise = new Promise<boolean>((resolve) => {
-      modalContext.render(modal, resolve);
+      dialogContext.render(modal, resolve);
     });
 
     return reactionPromise;

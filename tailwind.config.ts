@@ -15,7 +15,7 @@ const config: Config = {
           "100%": { opacity: "100%" },
         },
         modal: {
-          "0%": { transform: "scale(1.1)" },
+          "0%": { transform: "scale(1.05)" },
           "100%": { transform: "scale(1)" },
         },
       },

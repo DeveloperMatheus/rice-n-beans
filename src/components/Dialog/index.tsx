@@ -15,6 +15,24 @@ import { createPortal } from "react-dom";
 
 const dialogStyles = cva("max-w-[20rem] select-text");
 
+export type DialogProps = {
+  header?: string;
+  content?: string;
+  confirmText?: string;
+  rejectText?: string;
+  variant?:
+    | "default"
+    | "secondary"
+    | "destructive"
+    | "outline"
+    | "ghost"
+    | "link";
+};
+
+type DialogAction = {
+  action: (value: boolean) => void;
+};
+
 const DialogModal = ({
   open,
   handleAction,
@@ -23,20 +41,9 @@ const DialogModal = ({
   rejectText = "Cancel",
   confirmText = "Confirm",
   variant = "default",
-}: {
+}: DialogProps & {
   open: boolean;
   handleAction?: (value: boolean) => void;
-  header?: string;
-  content?: string;
-  rejectText?: string;
-  confirmText?: string;
-  variant?:
-    | "default"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link";
 }) => {
   function handleClose(value: boolean) {
     if (!handleAction) return;
@@ -82,28 +89,13 @@ type DialogContextProps = {
   render: (modal: DialogProps, handleAction: (result: boolean) => void) => void;
 };
 
-export type DialogProps = {
-  header?: string;
-  content?: string;
-  confirmText?: string;
-  rejectText?: string;
-  variant?:
-    | "default"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link";
-  action?: (result: boolean) => void;
-};
-
 export const DialogContext = createContext<DialogContextProps>({
   render: () => {},
 });
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState<DialogProps>();
+  const [modal, setModal] = useState<DialogProps & DialogAction>();
 
   const render = (
     modal: DialogProps,

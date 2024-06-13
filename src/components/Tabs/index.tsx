@@ -22,7 +22,6 @@ const tabButtonStyles =
   "focus:ring-0 focus:ring-transparent dark:focus:ring-transparent";
 
 /* --- Context --- */
-
 type TabsProviderProps = {
   children: React.ReactNode;
   defaultValue: string;

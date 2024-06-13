@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "~/components/Theme/ThemeProvider";
-import { ModalProvider } from "~/components/Dialog";
+import { DialogProvider } from "~/components/Dialog";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ModalProvider>
+        <DialogProvider>
           <ThemeProvider
             attribute="class"
             enableSystem
@@ -29,7 +29,7 @@ export default function RootLayout({
             {children}
             {/* <Toaster /> */}
           </ThemeProvider>
-        </ModalProvider>
+        </DialogProvider>
       </body>
     </html>
   );

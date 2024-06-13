@@ -15,87 +15,20 @@ import { createPortal } from "react-dom";
 
 const dialogStyles = cva("max-w-[20rem] select-text");
 
-export type DialogProps = {
-  header?: string;
-  content?: string;
-  confirmText?: string;
-  rejectText?: string;
-  variant?:
-    | "default"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link";
-};
-
-type DialogAction = {
-  action: (value: boolean) => void;
-};
-
-const DialogModal = ({
-  open,
-  handleAction,
-  header = "Are you sure?",
-  content = "This action cannot be undone.",
-  rejectText = "Cancel",
-  confirmText = "Confirm",
-  variant = "default",
-}: DialogProps & {
-  open: boolean;
-  handleAction?: (value: boolean) => void;
-}) => {
-  function handleClose(value: boolean) {
-    if (!handleAction) return;
-    handleAction(value);
-  }
-  return (
-    <Modal
-      isOpen={open}
-      onCloseModal={() => handleClose(false)}
-      className={twMerge(dialogStyles())}
-    >
-      <ModalHeader>
-        <Text tag="h3" className="text-center">
-          {header}
-        </Text>
-      </ModalHeader>
-      <ModalContent>{content}</ModalContent>
-
-      <ModalFooter className="space-x-3">
-        <Button
-          className="w-full"
-          variant="outline"
-          size="sm"
-          onClick={() => handleClose(false)}
-        >
-          {rejectText}
-        </Button>
-        <Button
-          className="w-full"
-          variant={variant}
-          size="sm"
-          onClick={() => handleClose(true)}
-        >
-          {confirmText}
-        </Button>
-      </ModalFooter>
-    </Modal>
-  );
-};
-
 /* --- Context --- */
 type DialogContextProps = {
   render: (modal: DialogProps, handleAction: (result: boolean) => void) => void;
 };
 
-export const DialogContext = createContext<DialogContextProps>({
+const DialogContext = createContext<DialogContextProps>({
   render: () => {},
 });
 
-export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
+export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState<DialogProps & DialogAction>();
+  const [modal, setModal] = useState<
+    DialogProps & { action: (value: boolean) => void }
+  >();
 
   const render = (
     modal: DialogProps,
@@ -130,6 +63,73 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
           document.body
         )}
     </DialogContext.Provider>
+  );
+};
+
+type DialogProps = {
+  header?: string;
+  content?: string;
+  confirmText?: string;
+  rejectText?: string;
+  variant?:
+    | "default"
+    | "secondary"
+    | "destructive"
+    | "outline"
+    | "ghost"
+    | "link";
+};
+
+/* --- DialogModal --- */
+const DialogModal = ({
+  open,
+  handleAction,
+  header = "Are you sure?",
+  content = "This action cannot be undone.",
+  rejectText = "Cancel",
+  confirmText = "Confirm",
+  variant = "default",
+}: DialogProps & {
+  open: boolean;
+  handleAction?: (value: boolean) => void;
+}) => {
+  function handleClose(value: boolean) {
+    if (!handleAction) return;
+    handleAction(value);
+  }
+
+  return (
+    <Modal
+      isOpen={open}
+      onCloseModal={() => handleClose(false)}
+      className={twMerge(dialogStyles())}
+    >
+      <ModalHeader>
+        <Text tag="h3" className="text-center">
+          {header}
+        </Text>
+      </ModalHeader>
+      <ModalContent>{content}</ModalContent>
+
+      <ModalFooter className="space-x-3">
+        <Button
+          className="w-full"
+          variant="outline"
+          size="sm"
+          onClick={() => handleClose(false)}
+        >
+          {rejectText}
+        </Button>
+        <Button
+          className="w-full"
+          variant={variant}
+          size="sm"
+          onClick={() => handleClose(true)}
+        >
+          {confirmText}
+        </Button>
+      </ModalFooter>
+    </Modal>
   );
 };
 

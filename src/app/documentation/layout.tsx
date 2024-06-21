@@ -10,6 +10,7 @@ import {
   BaseContent,
 } from "~/components/Base";
 import { DrawerItems } from "./components/DrawerItems";
+import { ThemeSwitch } from "~/components/Theme/ThemeSwitch";
 
 export default function DocumentationLayout({
   children,
@@ -27,13 +28,16 @@ export default function DocumentationLayout({
       <BaseDrawer isOpen={isOpen}>
         <BaseToggleDrawer
           onClick={() => handleToggleDrawer()}
-          className="block lg:hidden text-black"
+          className="block p-0 lg:p-3 lg:hidden text-black"
         />
         <DrawerItems isDrawerOpen={isOpen} />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader className="text-black">
-          <BaseToggleDrawer onClick={() => handleToggleDrawer()} />
+          <div className="flex items-center justify-start">
+            <BaseToggleDrawer onClick={() => handleToggleDrawer()} />
+            <ThemeSwitch />
+          </div>
         </BaseHeader>
         <BaseContent>{children}</BaseContent>
       </BaseContainer>

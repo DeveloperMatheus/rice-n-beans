@@ -32,9 +32,7 @@ const baseDrawerStyles = cva(
 const baseHeaderStyles = cva(
   "bg-white dark:bg-zinc-900 w-full sticky top-0 shadow-md p-3 lg:border-t border-zinc-200 dark:border-zinc-800"
 );
-const baseCloseDrawerStyles = cva(
-  "text-black dark:text-white text-2xl focus:ring-offset-0 dark:focus:ring-offset-0 focus:ring-0 dark:focus:ring-0 hover:bg-transparent dark:hover:bg-transparent"
-);
+const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
 
 /* --- Base --- */
 export const Base = forwardRef<

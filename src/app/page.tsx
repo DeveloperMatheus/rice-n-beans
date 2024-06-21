@@ -90,7 +90,9 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <Button className="mt-5">Documentation</Button>
+        <Link href="/documentation">
+          <Button className="mt-5">Documentation</Button>
+        </Link>
       </div>
 
       {/* <Link href="/base-test">Go to base test</Link>

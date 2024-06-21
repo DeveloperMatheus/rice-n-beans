@@ -134,10 +134,10 @@ const DialogModal = ({
 };
 
 /* --- Hook --- */
-export const useModal = () => {
+export const useConfirm = () => {
   const dialogContext = useContext(DialogContext);
 
-  const open = async (modal: DialogProps): Promise<boolean> => {
+  const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
     const reactionPromise = new Promise<boolean>((resolve) => {
       dialogContext.render(modal, resolve);
     });
@@ -146,6 +146,6 @@ export const useModal = () => {
   };
 
   return {
-    open,
+    getConfirmation,
   };
 };

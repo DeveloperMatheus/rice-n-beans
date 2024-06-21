@@ -1,13 +1,14 @@
 "use client";
 
-import { useModal } from "~/components/Dialog";
+import { useConfirm } from "~/components/Dialog";
 import { Button } from "~/components/Layout";
 
 export default function DialogPage() {
-  const { open } = useModal();
+  // const { open } = useModal();
+  const { getConfirmation } = useConfirm();
 
   async function callmyDialog() {
-    const res = await open({
+    const res = await getConfirmation({
       header: "oi",
       content: "contentete",
       confirmText: "Of Course :)",

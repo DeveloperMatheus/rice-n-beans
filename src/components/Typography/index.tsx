@@ -6,14 +6,14 @@ import React from "react";
 const textStyles = cva("font-sans text-black dark:text-white", {
   variants: {
     tag: {
-      h1: "text-4xl font-bold",
-      h2: "text-3xl font-bold",
-      h3: "text-2xl font-bold",
-      h4: "text-xl font-bold",
-      h5: "text-lg font-bold",
-      h6: "text-base font-bold",
-      p: "text-base font-normal",
-      span: "text-base font-normal",
+      h1: "text-3xl lg:text-4xl font-bold",
+      h2: "text-2xl lg:text-3xl font-bold",
+      h3: "text-xl lg:text-2xl font-bold",
+      h4: "text-lg lg:text-xl font-bold",
+      h5: "text-base lg:text-lg font-bold",
+      h6: "text-sm lg:text-base font-bold",
+      p: "text-sm lg:text-base font-normal",
+      span: "text-sm lg:text-base font-normal",
     },
   },
 });

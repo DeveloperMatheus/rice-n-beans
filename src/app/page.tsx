@@ -1,5 +1,3 @@
-"use client";
-
 import { Badge, Button, Card } from "~/components/Layout";
 
 import {
@@ -44,29 +42,58 @@ import {
 import Link from "next/link";
 
 export default function Home() {
-  const [testModal, setTestModal] = useState(false);
+  // const [testModal, setTestModal] = useState(false);
 
-  const testRef = useRef<HTMLInputElement>(null);
+  // const testRef = useRef<HTMLInputElement>(null);
 
-  function handleTestSubmit(evt: z.infer<typeof testDateFormSchema>) {
-    console.log("🚀 ~ handleTestSubmit ~ evt:", evt.testDate);
-  }
+  // function handleTestSubmit(evt: z.infer<typeof testDateFormSchema>) {
+  //   console.log("🚀 ~ handleTestSubmit ~ evt:", evt.testDate);
+  // }
 
-  const {
-    handleSubmit,
-    reset,
-    control,
-    setValue,
-    formState: { errors },
-  } = useForm<z.infer<typeof testDateFormSchema>>({
-    resolver: zodResolver(testDateFormSchema),
-  });
+  // const {
+  //   handleSubmit,
+  //   reset,
+  //   control,
+  //   setValue,
+  //   formState: { errors },
+  // } = useForm<z.infer<typeof testDateFormSchema>>({
+  //   resolver: zodResolver(testDateFormSchema),
+  // });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <Text tag="h1">Page title</Text>
+    <main className="flex min-h-screen flex-col items-center justify-center p-3 lg:p-5">
+      <div className="text-center space-y-3">
+        <Text tag="h1" className="lg:text-5xl">
+          Rice and Beans
+        </Text>
+      </div>
 
-      <Link href="/base-test">Go to base test</Link>
+      <div className="text-center  mt-5">
+        <Text tag="h2">
+          Rice and beans is a list of React components,{" "}
+          <br className="hidden lg:inline" /> built with a careful combination
+          of tools, <br className="hidden lg:inline" /> in order to give you
+          more control over the components you use.{" "}
+        </Text>
+
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-10 mt-5">
+          <div>
+            <Text tag="h2">Rice and Beans uses:</Text>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <ul className="list-disc list-inside text-left text-xl">
+              <li>React</li>
+              <li>Typescript</li>
+              <li>Tailwind CSS</li>
+              <li>CVA</li>
+              <li>Tailwind Merge</li>
+            </ul>
+          </div>
+        </div>
+        <Button className="mt-5">Documentation</Button>
+      </div>
+
+      {/* <Link href="/base-test">Go to base test</Link>
       <Button className="rounded-none">fsafsafasfasfas</Button>
 
       <div className="relative bg-blue-800">
@@ -312,7 +339,7 @@ export default function Home() {
         <Text className="text-red-600 dark:text-purple-400">
           Me cagué todito
         </Text>
-      </div>
+      </div> */}
     </main>
   );
 }

@@ -26,7 +26,7 @@ import {
 
 import { Modal, ModalContent, ModalFooter } from "~/components/Modal";
 
-import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
+// import { ThemeDropdown } from "~/components/Theme/ThemeDropdown";
 import { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -94,6 +94,22 @@ export default function Home() {
           <Button className="mt-5">Documentation</Button>
         </Link>
       </div>
+
+      {/* <div>
+        <h2>Modal: </h2>
+        <Button size="lg" onClick={() => setTestModal(true)}>
+          Open Modal
+        </Button>
+
+        <Modal isOpen={testModal} onCloseModal={() => setTestModal(false)}>
+          <ModalContent>test</ModalContent>
+          <ModalFooter>
+            <Button size="sm" onClick={() => setTestModal(false)}>
+              Close
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div> */}
 
       {/* <Link href="/base-test">Go to base test</Link>
       <Button className="rounded-none">fsafsafasfasfas</Button>

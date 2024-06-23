@@ -1,4 +1,3 @@
-import { Button, Card } from "~/components/Layout";
 import { Text } from "~/components/Typography";
 import { ButtonSection } from "./components/ButtonSection";
 import { BadgeSection } from "./components/BadgeSection";
@@ -14,22 +13,6 @@ export default function DocumentationLayoutPage() {
           Layout is a group of components made to compose your... Layout
         </Text>
       </div>
-
-      {/* <div className="flex flex-row items-center justify-center gap-3">
-        <Link href="/documentation/layout/button">
-        <Card>
-        <Button>Button</Button>
-        </Card>
-        </Link>
-        <Link href="/documentation/layout/button">
-        <Card>
-        <Badge>Badge</Badge>
-        </Card>
-        </Link>
-        <Link href="/documentation/layout/button">
-        <Card>Card</Card>
-        </Link>
-        </div> */}
       <ButtonSection />
       <BadgeSection />
       <CardSection />

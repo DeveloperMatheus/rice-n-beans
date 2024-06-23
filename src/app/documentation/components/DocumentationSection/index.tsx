@@ -20,7 +20,7 @@ export const DocumentationSection = ({
 
   return (
     <>
-      <section>
+      <section className="mt-5 lg:mt-8">
         <div className="flex items-center justify-start gap-3">
           <Text tag="h3">{title}</Text>
           <Button onClick={() => setOpen(!isOpen)}>See the code</Button>

@@ -3,15 +3,22 @@ import { DocumentationSection } from "../components/DocumentationSection";
 import { Card } from "~/components/Layout";
 import {
   Checkbox,
+  DatePicker,
+  ErrorMessage,
   Input,
   Label,
   Radio,
+  Range,
   Select,
   Switch,
 } from "~/components/Form";
 
 const CODE_LABEL_STLYES = `
 const labelStyles = "inline-block font-sans font-bold text-primary select-none";
+`;
+
+const CODE_ERROR_STLYES = `
+const errorMessageStyles = cva("text-red-500 font-sans");
 `;
 
 const CODE_INPUT_STLYES = `
@@ -39,6 +46,16 @@ const switchStyles =
   "appearance-none cursor-pointer w-12 h-6 dark:border-zinc-800 rounded-full relative bg-zinc-400 checked:bg-green-700 checked:dark:bg-green-800 before:w-[0.8rem] before:h-[0.8rem] before:bg-white before:rounded-full before:absolute before:top-1/2 before:-translate-y-1/2 before:translate-x-1 checked:before:translate-x-[1.95rem] before:transition-all focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300 disabled:opacity-30 disabled:cursor-not-allowed";
 `;
 
+const CODE_RANGE_STLYES = `
+const rangeStyles =
+  "appearance-none focus:outline-none cursor-pointer h-2 border border-zinc-200 dark:bg-zinc-950 dark:border-zinc-800 rounded-full disabled:cursor-not-allowed disabled:opacity-50 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:dark:bg-white [&::-webkit-slider-thumb]:border-0 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:focus:outline-none [&::-webkit-slider-thumb]:focus:ring-2 [&::-webkit-slider-thumb]:focus:ring-offset-2 [&::-webkit-slider-thumb]:focus:ring-black [&::-webkit-slider-thumb]:focus:dark:ring-zinc-300 [&::-webkit-slider-thumb]:focus:dark:ring-offset-zinc-800 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:dark:bg-white [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:focus:outline-none [&::-moz-range-thumb]:focus:ring-2 [&::-moz-range-thumb]:focus:ring-offset-2 [&::-moz-range-thumb]:focus:ring-black [&::-moz-range-thumb]:focus:dark:ring-zinc-300 [&::-moz-range-thumb]:focus:dark:ring-offset-zinc-800";
+`;
+
+const CODE_DATEPICKER_STLYES = `
+const datePickerStyles =
+  "appearance-none font-sans w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 ring-offset-white file:border-0 file:bg-transparent file:font-medium placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:ring-offset-zinc-950 dark:placeholder:text-zinc-400 dark:focus-visible:ring-zinc-300";
+`;
+
 const CODE_LABEL_COMPONENT = `
 export const Label = forwardRef<HTMLLabelElement, ComponentProps<"label">>(
   ({ children, className, ...props }, ref) => (
@@ -49,6 +66,23 @@ export const Label = forwardRef<HTMLLabelElement, ComponentProps<"label">>(
 );
 
 Label.displayName = "Label";
+`;
+
+const CODE_ERROR_COMPONENT = `
+export const ErrorMessage = forwardRef<
+  HTMLParagraphElement,
+  ComponentProps<"p">
+>(({ children, className, ...props }, ref) => (
+  <p
+    className={twMerge(errorMessageStyles({ className }))}
+    ref={ref}
+    {...props}
+  >
+    {children}
+  </p>
+));
+
+ErrorMessage.displayName = "ErrorMessage";
 `;
 
 const CODE_INPUT_COMPONENT = `
@@ -119,6 +153,46 @@ export const Switch = forwardRef<HTMLInputElement, ComponentProps<"input">>(
 Switch.displayName = "Switch";
 `;
 
+const CODE_RANGE_COMPONENT = `
+export const Range = forwardRef<HTMLInputElement, ComponentProps<"input">>(
+  ({ className, ...props }, ref) => (
+    <input
+      type="range"
+      className={twMerge(rangeStyles, className)}
+      ref={ref}
+      {...props}
+    />
+  )
+);
+
+Range.displayName = "Range";
+`;
+
+const CODE_DATEPICKER_COMPONENT = `
+type DatePickerProps = {
+  type?: "date" | "time" | "datetime-local";
+} & ComponentProps<"input">;
+/*
+Possible values:
+- type="date" -> 2024-02-06 (yyyy-mm-dd)
+- type="datetime-local" -> 2024-02-06T02:36 (yyyy-mm-ddThh:mm)
+- type="time" -> 02:36 (hh:mm)
+*/
+export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
+  ({ className, type = "date", ...props }, ref) => (
+    <input
+      type={type}
+      pattern="\d{4}-\d{2}-\d{2}"
+      className={twMerge(datePickerStyles, className)}
+      ref={ref}
+      {...props}
+    />
+  )
+);
+
+DatePicker.displayName = "DatePicker";
+`;
+
 export default function DocumentationFormPage() {
   return (
     <section>
@@ -143,6 +217,19 @@ export default function DocumentationFormPage() {
       >
         <Card className="mt-3">
           <Label>This is a label</Label>
+        </Card>
+      </DocumentationSection>
+
+      <DocumentationSection
+        title="Error"
+        codeStyle={CODE_ERROR_STLYES}
+        codeComponent={CODE_ERROR_COMPONENT}
+      >
+        <Card className="mt-3">
+          <ErrorMessage>
+            This is an error message to be displayed when your fields are
+            invalid or not satisfying the requirements
+          </ErrorMessage>
         </Card>
       </DocumentationSection>
 
@@ -218,8 +305,31 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_SWITCH_STLYES}
         codeComponent={CODE_SWITCH_COMPONENT}
       >
-        <Card className="flex items-center justify-start mt-3 bg-green">
-          <Switch />
+        <Card className="flex items-center justify-start mt-3">
+          <Label htmlFor="test-switch" className="mr-2">
+            This is a switch
+          </Label>
+          <Switch id="test-switch" />
+        </Card>
+      </DocumentationSection>
+
+      <DocumentationSection
+        title="Range"
+        codeStyle={CODE_RANGE_STLYES}
+        codeComponent={CODE_RANGE_COMPONENT}
+      >
+        <Card className="mt-3">
+          <Range />
+        </Card>
+      </DocumentationSection>
+
+      <DocumentationSection
+        title="Date Picker"
+        codeStyle={CODE_DATEPICKER_STLYES}
+        codeComponent={CODE_DATEPICKER_COMPONENT}
+      >
+        <Card className="mt-3">
+          <DatePicker min="1900-01-01" className="w-fit" />
         </Card>
       </DocumentationSection>
     </section>

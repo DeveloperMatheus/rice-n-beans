@@ -3,12 +3,7 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { Button, Card } from "~/components/Layout";
-import {
-  Modal,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-} from "~/components/Modal";
+import { Modal, ModalContent, ModalHeader } from "~/components/Modal";
 import { Text } from "~/components/Typography";
 
 const BUTTON_CODE_STYLE = `

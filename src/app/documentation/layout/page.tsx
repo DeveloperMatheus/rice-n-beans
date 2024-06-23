@@ -1,6 +1,7 @@
 import { Button, Card } from "~/components/Layout";
 import { Text } from "~/components/Typography";
 import { ButtonSection } from "./components/ButtonSection";
+import { BadgeSection } from "./components/BadgeSection";
 
 export default function DocumentationLayoutPage() {
   return (
@@ -29,6 +30,7 @@ export default function DocumentationLayoutPage() {
         </Link>
         </div> */}
       <ButtonSection />
+      <BadgeSection />
     </section>
   );
 }

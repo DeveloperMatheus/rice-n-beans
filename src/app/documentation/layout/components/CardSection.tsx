@@ -36,7 +36,7 @@ export const CardSection = () => {
 
         <div className="space-y-3 mt-3">
           <Card>
-            <div className="flex items-center justify-center flex-wrap w-fit gap-5">
+            <div className="w-fit">
               <Card>This is a card inside another card</Card>
             </div>
           </Card>

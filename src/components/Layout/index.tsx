@@ -2,8 +2,27 @@ import { VariantProps, cva } from "class-variance-authority";
 import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-const badgeStyles =
-  "px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900";
+const badgeStyles = cva(
+  "px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none",
+  {
+    variants: {
+      variant: {
+        default:
+          "text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 bg-zinc-900 dark:bg-zinc-50",
+        destructive:
+          "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
+        outline:
+          "border border-zinc-200 bg-white hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+        secondary:
+          "bg-zinc-100 text-zinc-900 hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
 const buttonStyles = cva(
   "appearance-none font-sans rounded-lg disabled:cursor-not-allowed disabled:opacity-50",
   {
@@ -33,17 +52,23 @@ const buttonStyles = cva(
     },
   }
 );
+
 const cardStyles =
   "bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-sm";
 
 /* --- Badge --- */
-export const Badge = forwardRef<HTMLSpanElement, ComponentProps<"span">>(
-  ({ children, className, ...props }, ref) => (
-    <span className={twMerge(badgeStyles, className)} ref={ref} {...props}>
-      {children}
-    </span>
-  )
-);
+export const Badge = forwardRef<
+  HTMLSpanElement,
+  ComponentProps<"span"> & VariantProps<typeof badgeStyles>
+>(({ children, className, variant, ...props }, ref) => (
+  <span
+    className={twMerge(badgeStyles({ className, variant }))}
+    ref={ref}
+    {...props}
+  >
+    {children}
+  </span>
+));
 
 Badge.displayName = "Badge";
 

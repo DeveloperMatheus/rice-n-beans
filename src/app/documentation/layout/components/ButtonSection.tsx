@@ -33,7 +33,6 @@ const buttonStyles = cva(
         default: "min-h-[2.625rem] px-3 py-2",
         sm: "min-h-9 rounded-md px-3",
         lg: "min-h-11 rounded-md px-8",
-        icon: "min-h-10 w-10",
       },
     },
     defaultVariants: {
@@ -93,7 +92,7 @@ export const ButtonSection = () => {
               <Button size="sm">Small</Button>
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>
-              <Button size="icon" className="flex items-center justify-center">
+              <Button>
                 <Search size={22} />
               </Button>
             </Card>

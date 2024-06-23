@@ -3,7 +3,7 @@ import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const badgeStyles =
-  "inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900";
+  "px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900";
 const buttonStyles = cva(
   "appearance-none font-sans rounded-lg disabled:cursor-not-allowed disabled:opacity-50",
   {

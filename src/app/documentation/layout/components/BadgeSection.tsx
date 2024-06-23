@@ -37,9 +37,11 @@ export const BadgeSection = () => {
 
         <div className="space-y-3 mt-3">
           <div>
-            <Text tag="h4">Test variant</Text>
-            <Card className="flex items-center justify-center flex-wrap w-fit gap-5">
-              <Badge>Defaut</Badge>
+            <Card>
+              <Text tag="h4">Test variant</Text>
+              <div className="flex items-center justify-center flex-wrap w-fit gap-5">
+                <Badge>Defaut</Badge>
+              </div>
             </Card>
           </div>
         </div>

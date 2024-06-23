@@ -57,17 +57,15 @@ export const BadgeSection = () => {
         </div>
 
         <div className="space-y-3 mt-3">
-          <div>
-            <Card>
-              <Text tag="h4">Variants</Text>
-              <div className="flex items-center justify-center flex-wrap w-fit gap-5">
-                <Badge>Defaut</Badge>
-                <Badge variant="destructive">Destructive</Badge>
-                <Badge variant="outline">Outline</Badge>
-                <Badge variant="secondary">Secondary</Badge>
-              </div>
-            </Card>
-          </div>
+          <Card>
+            <Text tag="h4">Variants</Text>
+            <div className="flex items-center justify-center flex-wrap w-fit gap-5">
+              <Badge>Defaut</Badge>
+              <Badge variant="destructive">Destructive</Badge>
+              <Badge variant="outline">Outline</Badge>
+              <Badge variant="secondary">Secondary</Badge>
+            </div>
+          </Card>
         </div>
       </section>
       <Modal

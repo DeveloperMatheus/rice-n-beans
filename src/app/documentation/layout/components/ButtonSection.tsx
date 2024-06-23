@@ -69,31 +69,29 @@ export const ButtonSection = () => {
         </div>
 
         <div className="space-y-3 mt-3">
-          <div>
-            <Card>
-              <Text tag="h4">Variants</Text>
-              <div className="flex items-center justify-center flex-wrap w-fit gap-5">
-                <Button>Default</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="link">Link</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="secondary">Secondary</Button>
-              </div>
+          <Card>
+            <Text tag="h4">Variants</Text>
+            <div className="flex items-center justify-center flex-wrap w-fit gap-5">
+              <Button>Default</Button>
+              <Button variant="destructive">Destructive</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="link">Link</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="secondary">Secondary</Button>
+            </div>
 
-              <Text tag="h4" className="mt-3">
-                Size
-              </Text>
-              <div className="flex items-center justify-center flex-wrap w-fit gap-5">
-                <Button size="sm">Small</Button>
-                <Button size="default">Default</Button>
-                <Button size="lg">Large</Button>
-                <Button>
-                  <Search size={22} />
-                </Button>
-              </div>
-            </Card>
-          </div>
+            <Text tag="h4" className="mt-3">
+              Size
+            </Text>
+            <div className="flex items-center justify-center flex-wrap w-fit gap-5">
+              <Button size="sm">Small</Button>
+              <Button size="default">Default</Button>
+              <Button size="lg">Large</Button>
+              <Button>
+                <Search size={22} />
+              </Button>
+            </div>
+          </Card>
         </div>
       </section>
       <Modal

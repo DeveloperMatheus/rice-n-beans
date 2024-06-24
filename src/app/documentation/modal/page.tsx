@@ -1,6 +1,5 @@
 import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
-import { Button, Card } from "~/components/Layout";
 import Link from "next/link";
 
 const CODE_MODAL_STLYES = `
@@ -110,7 +109,7 @@ export const ModalFooter = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 ModalFooter.displayName = "ModalFooter";
 `;
-export default function DocumentationFormPage() {
+export default function DocumentationModalPage() {
   return (
     <section>
       <div className="space-y-3">
@@ -123,7 +122,7 @@ export default function DocumentationFormPage() {
         </Text>
 
         <Text tag="span">
-          The modal is compose by the following components: {`<Modal>`},{" "}
+          The modal is composed by the following components: {`<Modal>`},{" "}
           {`<ModalContent>`}, {`<ModalHeader>`} and {`<ModalFooter>`}. See:
           <Link href="https://developer.mozilla.org/es/docs/Web/HTML/Element/dialog">
             {" "}

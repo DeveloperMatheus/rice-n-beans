@@ -227,6 +227,15 @@ const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
 </div>
 `;
 
+const CODE_SELECT_VIEW = `<Select>
+  <option defaultChecked hidden>
+    Select an option
+  </option>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+</Select>`;
+
 export default function DocumentationFormPage() {
   return (
     <section>
@@ -373,16 +382,25 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_SELECT_STLYES}
         codeComponent={CODE_SELECT_COMPONENT}
       >
-        <Card className="mt-3">
-          <Select>
-            <option defaultChecked hidden>
-              Select an option
-            </option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </Select>
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <Select>
+              <option defaultChecked hidden>
+                Select an option
+              </option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </Select>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_SELECT_VIEW}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection

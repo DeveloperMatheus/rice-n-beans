@@ -236,6 +236,13 @@ const CODE_SELECT_VIEW = `<Select>
   <option value="3">Option 3</option>
 </Select>`;
 
+const CODE_SWITCH_VIEW = `<div className="flex items-center justify-start">
+  <Label htmlFor="test-switch" className="mr-2">
+    This is a switch
+  </Label>
+  <Switch id="test-switch" />
+</div>`;
+
 export default function DocumentationFormPage() {
   return (
     <section>
@@ -408,12 +415,23 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_SWITCH_STLYES}
         codeComponent={CODE_SWITCH_COMPONENT}
       >
-        <Card className="flex items-center justify-start mt-3">
-          <Label htmlFor="test-switch" className="mr-2">
-            This is a switch
-          </Label>
-          <Switch id="test-switch" />
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <div className="flex items-center justify-start">
+              <Label htmlFor="test-switch" className="mr-2">
+                This is a switch
+              </Label>
+              <Switch id="test-switch" />
+            </div>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_SWITCH_VIEW}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection

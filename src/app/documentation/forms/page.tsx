@@ -12,6 +12,7 @@ import {
   Select,
   Switch,
 } from "~/components/Form";
+import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 
 const CODE_LABEL_STLYES = `
 const labelStyles = "inline-block font-sans font-bold text-primary select-none";
@@ -193,6 +194,39 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 DatePicker.displayName = "DatePicker";
 `;
 
+const CODE_ERROR_VIEW = `<ErrorMessage>
+  This is an error message to be displayed when your fields are invalid or not satisfying the requirements
+</ErrorMessage>
+`;
+
+const CODE_CHECKBOX_VIEW = `<div className="flex items-center justify-start">
+  <Label className="mr-3" htmlFor="test-check">This is a checkbox</Label>
+  <Checkbox id="test-check" />
+</div>
+`;
+
+const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio1" />
+    <Label className="ml-2" htmlFor="test-radio1">
+      This is a Radio
+    </Label>
+  </div>
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio2" />
+    <Label className="ml-2" htmlFor="test-radio2">
+      Yes it is
+    </Label>
+  </div>
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio3" />
+    <Label className="ml-2" htmlFor="test-radio3">
+      Nahh it is not
+    </Label>
+  </div>
+</div>
+`;
+
 export default function DocumentationFormPage() {
   return (
     <section>
@@ -215,9 +249,18 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_LABEL_STLYES}
         codeComponent={CODE_LABEL_COMPONENT}
       >
-        <Card className="mt-3">
-          <Label>This is a label</Label>
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <Label>This is a label</Label>
+          </TabPanel>
+          <TabPanel id="code">
+            <code>{`<Label>This is a label</Label>`}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection
@@ -225,12 +268,21 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_ERROR_STLYES}
         codeComponent={CODE_ERROR_COMPONENT}
       >
-        <Card className="mt-3">
-          <ErrorMessage>
-            This is an error message to be displayed when your fields are
-            invalid or not satisfying the requirements
-          </ErrorMessage>
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <ErrorMessage>
+              This is an error message to be displayed when your fields are
+              invalid or not satisfying the requirements
+            </ErrorMessage>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_ERROR_VIEW}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection
@@ -238,9 +290,20 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_INPUT_STLYES}
         codeComponent={CODE_INPUT_COMPONENT}
       >
-        <Card className="mt-3">
-          <Input placeholder="This is an input, type something!" />
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <Input placeholder="This is an input, type something!" />
+          </TabPanel>
+          <TabPanel id="code">
+            <code>
+              {`<Input placeholder="This is an input, type something!" />`}
+            </code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection
@@ -248,12 +311,23 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_CHECKBOX_STLYES}
         codeComponent={CODE_CHECKBOX_COMPONENT}
       >
-        <Card className="flex items-center justify-start mt-3">
-          <Label className="mr-3" htmlFor="test-check">
-            This is a checkbox
-          </Label>
-          <Checkbox id="test-check" />
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <div className="flex items-center justify-start">
+              <Label className="mr-3" htmlFor="test-check">
+                This is a checkbox
+              </Label>
+              <Checkbox id="test-check" />
+            </div>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_CHECKBOX_VIEW}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection
@@ -261,26 +335,37 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_RADIO_STLYES}
         codeComponent={CODE_RADIO_COMPONENT}
       >
-        <Card className="flex items-center justify-start mt-3 gap-3">
-          <div className="flex items-center justify-center">
-            <Radio name="test-radio" id="test-radio1" />
-            <Label className="ml-2" htmlFor="test-radio1">
-              This is a Radio
-            </Label>
-          </div>
-          <div className="flex items-center justify-center">
-            <Radio name="test-radio" id="test-radio2" />
-            <Label className="ml-2" htmlFor="test-radio2">
-              Yes it is
-            </Label>
-          </div>
-          <div className="flex items-center justify-center">
-            <Radio name="test-radio" id="test-radio3" />
-            <Label className="ml-2" htmlFor="test-radio3">
-              Nahh it is not
-            </Label>
-          </div>
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <div className="flex items-center justify-start gap-5">
+              <div className="flex items-center justify-center">
+                <Radio name="test-radio" id="test-radio1" />
+                <Label className="ml-2" htmlFor="test-radio1">
+                  This is a Radio
+                </Label>
+              </div>
+              <div className="flex items-center justify-center">
+                <Radio name="test-radio" id="test-radio2" />
+                <Label className="ml-2" htmlFor="test-radio2">
+                  Yes it is
+                </Label>
+              </div>
+              <div className="flex items-center justify-center">
+                <Radio name="test-radio" id="test-radio3" />
+                <Label className="ml-2" htmlFor="test-radio3">
+                  Nahh it is not
+                </Label>
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_RADIO_VIEW}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection

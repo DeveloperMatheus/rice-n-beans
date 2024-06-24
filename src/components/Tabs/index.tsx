@@ -17,7 +17,7 @@ const tabsStyles =
   "border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 rounded-lg p-3";
 const tabListStyles =
   "flex flex-row items-center justify-start list-none overflow-x-auto space-x-3";
-const tabPanelStyles = "p-3 w-full rounded-b-lg";
+const tabPanelStyles = "mt-3 w-full rounded-b-lg";
 const tabButtonStyles =
   "focus:ring-0 focus:ring-transparent dark:focus:ring-transparent";
 
@@ -60,7 +60,7 @@ export const Tabs = ({
 }: TabsProps) => {
   const refList = useRef<HTMLDivElement>(null);
 
-  function clickAndFocus(
+  function arrowFocus(
     tabButton: HTMLElement,
     evt: React.KeyboardEvent<HTMLDivElement>
   ) {
@@ -91,13 +91,13 @@ export const Tabs = ({
       switch (event.key) {
         case "ArrowLeft": {
           const prev = (index - 1 + tabs.length) % tabs.length;
-          clickAndFocus(tabs[prev], event);
+          arrowFocus(tabs[prev], event);
           break;
         }
 
         case "ArrowRight": {
           const next = (index + 1 + tabs.length) % tabs.length;
-          clickAndFocus(tabs[next], event);
+          arrowFocus(tabs[next], event);
           break;
         }
       }
@@ -196,11 +196,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabButtonProps>(
       tabButton: HTMLElement,
       evt: React.MouseEvent<HTMLButtonElement>
     ) {
-      tabButton.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
+      tabButton.focus();
       evt.preventDefault();
     }
 

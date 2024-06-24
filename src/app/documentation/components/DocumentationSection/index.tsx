@@ -14,7 +14,7 @@ export const DocumentationSection = ({
   title: string;
   codeStyle: string;
   codeComponent: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
   const [isOpen, setOpen] = useState(false);
 

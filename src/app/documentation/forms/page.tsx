@@ -439,9 +439,18 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_RANGE_STLYES}
         codeComponent={CODE_RANGE_COMPONENT}
       >
-        <Card className="mt-3">
-          <Range />
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <Range />
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{`<Range />`}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
 
       <DocumentationSection
@@ -449,9 +458,18 @@ export default function DocumentationFormPage() {
         codeStyle={CODE_DATEPICKER_STLYES}
         codeComponent={CODE_DATEPICKER_COMPONENT}
       >
-        <Card className="mt-3">
-          <DatePicker min="1900-01-01" className="w-fit" />
-        </Card>
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <DatePicker min="1991-01-01" className="w-fit" />
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{`<DatePicker min="1900-01-01" className="w-fit" />`}</code>
+          </TabPanel>
+        </Tabs>
       </DocumentationSection>
     </section>
   );

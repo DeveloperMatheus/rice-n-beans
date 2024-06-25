@@ -38,8 +38,7 @@ const buttonStyles = cva(
 );
 `;
 
-const BUTTON_CODE_COMPONENT = `
-export const Button = forwardRef<
+const BUTTON_CODE_COMPONENT = `export const Button = forwardRef<
   HTMLButtonElement,
   ComponentProps<"button"> & VariantProps<typeof buttonStyles>
 >(({ children, className, variant, size, ...props }, ref) => (

@@ -104,8 +104,7 @@ export const TableFooter = forwardRef<
 TableFooter.displayName = "TableFooter";
 `;
 
-const CODE_TABLE_VIEW = `
-<Table>
+const CODE_TABLE_VIEW = `<Table>
   <TableHeader>
     <TableRow>
       <TableHead>Action</TableHead>

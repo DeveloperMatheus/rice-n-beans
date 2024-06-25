@@ -1,9 +1,9 @@
 import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
 import Link from "next/link";
+import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 
-const CODE_MODAL_STLYES = `
-"use client";
+const CODE_MODAL_STLYES = `"use client";
 
 import {
   ComponentProps,
@@ -12,6 +12,7 @@ import {
   useEffect,
   useRef,
 } from "react";
+
 import { twMerge } from "tailwind-merge";
 
 const modalStyles =
@@ -72,7 +73,6 @@ export const Modal = ({
 
 Modal.displayName = "Modal";
 
-/* --- ModalContent --- */
 export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => (
     <div
@@ -87,7 +87,6 @@ export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 ModalContent.displayName = "ModalContent";
 
-/* --- ModalHeader --- */
 export const ModalHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => (
     <div className={twMerge(modalHeaderStyles, className)} ref={ref} {...props}>
@@ -98,7 +97,6 @@ export const ModalHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 ModalHeader.displayName = "ModalHeader";
 
-/* --- ModalFooter --- */
 export const ModalFooter = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ children, className, ...props }, ref) => (
     <div className={twMerge(modalFooterStyles, className)} ref={ref} {...props}>
@@ -109,6 +107,27 @@ export const ModalFooter = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 
 ModalFooter.displayName = "ModalFooter";
 `;
+
+const CODE_MODAL_VIEW = `<Modal
+  className="max-w-[60rem]"
+  isOpen={isOpen}
+  onCloseModal={() => setOpen(false)}
+>
+  <ModalHeader className="flex items-center justify-between">
+    <Text tag="h3">{title}</Text>
+    <Button size="sm" onClick={() => setOpen(false)}>
+      Close
+    </Button>
+  </ModalHeader>
+  <ModalContent className="mt-3">
+    <Card className="overflow-x-auto whitespace-pre">
+      <code>{codeStyle}</code>
+      <code>{codeComponent}</code>
+    </Card>
+  </ModalContent>
+</Modal>
+`;
+
 export default function DocumentationModalPage() {
   return (
     <section>
@@ -135,7 +154,26 @@ export default function DocumentationModalPage() {
         title="Modal"
         codeStyle={CODE_MODAL_STLYES}
         codeComponent={CODE_MODAL_COMPONENT}
-      />
+      >
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <div className="w-fit">
+              {/* <Card>This is a card inside a tab</Card> */}
+              <Text>
+                The button &rsquo;See the component Code&rsquo; is literally
+                showing a modal
+              </Text>
+            </div>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CODE_MODAL_VIEW}</code>
+          </TabPanel>
+        </Tabs>
+      </DocumentationSection>
     </section>
   );
 }

@@ -28,8 +28,7 @@ const badgeStyles = cva(
 );
 `;
 
-const BADGE_CODE_COMPONENT = `
-export const Badge = forwardRef<
+const BADGE_CODE_COMPONENT = `export const Badge = forwardRef<
   HTMLSpanElement,
   ComponentProps<"span"> & VariantProps<typeof badgeStyles>
 >(({ children, className, variant, ...props }, ref) => (

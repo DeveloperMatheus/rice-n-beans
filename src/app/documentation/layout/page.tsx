@@ -2,7 +2,7 @@ import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 import { Label } from "~/components/Form";
-import { Badge, Button } from "~/components/Layout";
+import { Badge, Button, Card } from "~/components/Layout";
 import { Search } from "lucide-react";
 
 const BUTTON_CODE_STYLE = `const buttonStyles = cva(
@@ -36,6 +36,32 @@ const BUTTON_CODE_STYLE = `const buttonStyles = cva(
 );
 `;
 
+const BADGE_CODE_STYLE = `const badgeStyles = cva(
+  "px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none",
+  {
+    variants: {
+      variant: {
+        default:
+          "text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 bg-zinc-900 dark:bg-zinc-50",
+        destructive:
+          "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
+        outline:
+          "border border-zinc-200 bg-white hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+        secondary:
+          "bg-zinc-100 text-zinc-900 hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+`;
+
+const CARD_CODE_STYLE = `const cardStyles =
+  "bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 shadow-sm";
+`;
+
 const BUTTON_CODE_COMPONENT = `export const Button = forwardRef<
   HTMLButtonElement,
   ComponentProps<"button"> & VariantProps<typeof buttonStyles>
@@ -50,6 +76,32 @@ const BUTTON_CODE_COMPONENT = `export const Button = forwardRef<
 ));
 
 Button.displayName = "Button";
+`;
+
+const BADGE_CODE_COMPONENT = `export const Badge = forwardRef<
+  HTMLSpanElement,
+  ComponentProps<"span"> & VariantProps<typeof badgeStyles>
+>(({ children, className, variant, ...props }, ref) => (
+  <span
+    className={twMerge(badgeStyles({ className, variant }))}
+    ref={ref}
+    {...props}
+  >
+    {children}
+  </span>
+));
+`;
+
+const CARD_CODE_COMPONENT = `
+export const Card = forwardRef<HTMLDivElement, ComponentProps<"div">>(
+  ({ children, className, ...props }, ref) => (
+    <div className={twMerge(cardStyles, className)} ref={ref} {...props}>
+      {children}
+    </div>
+  )
+);
+
+Card.displayName = "Card";
 `;
 
 const BUTTON_CODE_VIEW = `<Text tag="h4">Variants</Text>
@@ -74,48 +126,17 @@ const BUTTON_CODE_VIEW = `<Text tag="h4">Variants</Text>
 </div>
 `;
 
-const BADGE_CODE_STYLE = `const badgeStyles = cva(
-  "px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none",
-  {
-    variants: {
-      variant: {
-        default:
-          "text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 bg-zinc-900 dark:bg-zinc-50",
-        destructive:
-          "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
-        outline:
-          "border border-zinc-200 bg-white hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
-        secondary:
-          "bg-zinc-100 text-zinc-900 hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-);
-`;
-
-const BADGE_CODE_COMPONENT = `export const Badge = forwardRef<
-  HTMLSpanElement,
-  ComponentProps<"span"> & VariantProps<typeof badgeStyles>
->(({ children, className, variant, ...props }, ref) => (
-  <span
-    className={twMerge(badgeStyles({ className, variant }))}
-    ref={ref}
-    {...props}
-  >
-    {children}
-  </span>
-));
-`;
-
 const BADGE_CODE_VIEW = `<Text tag="h4">Variants</Text>
 <div className="flex items-center justify-center flex-wrap gap-5">
   <Badge>Defaut</Badge>
   <Badge variant="destructive">Destructive</Badge>
   <Badge variant="outline">Outline</Badge>
   <Badge variant="secondary">Secondary</Badge>
+</div>
+`;
+
+const CARD_CODE_VIEW = `<div className="w-fit">
+  <Card>This is a card inside a tab</Card>
 </div>
 `;
 
@@ -193,9 +214,27 @@ export default function DocumentationLayoutPage() {
           </TabPanel>
         </Tabs>
       </DocumentationSection>
-      {/* <ButtonSection />
-      <BadgeSection />
-      <CardSection /> */}
+
+      <DocumentationSection
+        title="Card"
+        codeStyle={CARD_CODE_STYLE}
+        codeComponent={CARD_CODE_COMPONENT}
+      >
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <div className="w-fit">
+              <Card>This is a card inside a tab</Card>
+            </div>
+          </TabPanel>
+          <TabPanel id="code">
+            <code className="whitespace-pre">{CARD_CODE_VIEW}</code>
+          </TabPanel>
+        </Tabs>
+      </DocumentationSection>
     </section>
   );
 }

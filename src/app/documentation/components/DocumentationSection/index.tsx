@@ -23,7 +23,9 @@ export const DocumentationSection = ({
       <section className="mt-5 lg:mt-8">
         <div className="flex items-center justify-start gap-3">
           <Text tag="h3">{title}</Text>
-          <Button onClick={() => setOpen(!isOpen)}>See the code</Button>
+          <Button onClick={() => setOpen(!isOpen)}>
+            See the component Code
+          </Button>
         </div>
 
         {children}

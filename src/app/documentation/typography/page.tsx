@@ -50,7 +50,7 @@ export default function DocumentationTypographyPage() {
         <Text tag="h1">Typography</Text>
 
         <Text tag="h2">
-          Typography is a set of component made to help you style your text
+          Typography is a set of components made to help you style your text
         </Text>
 
         <Text>

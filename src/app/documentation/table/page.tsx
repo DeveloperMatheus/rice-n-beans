@@ -18,7 +18,7 @@ const CODE_TABLE_STLYES = `
 import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-const tableStyles = "border-collapse";
+const tableStyles = "border-collapse text-black dark:text-zinc-200";
 const tableDataStyles = "px-2 py-1 text-center";
 const tableRowStyles =
   "[&:not(:last-child)]:border-b border-zinc-200 dark:border-zinc-800";

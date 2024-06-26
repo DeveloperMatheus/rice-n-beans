@@ -2,7 +2,7 @@ import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 
-const CODE_TYPOGRAPHY_STLYES = `const textStyles = cva("font-sans text-black dark:text-white", {
+const CODE_TYPOGRAPHY_STLYES = `const textStyles = cva("font-sans text-black dark:text-zinc-200", {
   variants: {
     tag: {
       h1: "text-3xl lg:text-4xl font-bold",

@@ -1,7 +1,6 @@
 import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
-import { Label } from "~/components/Form";
 import { Badge, Button, Card } from "~/components/Layout";
 import { Search } from "lucide-react";
 
@@ -11,7 +10,7 @@ const BUTTON_CODE_STYLE = `const buttonStyles = cva(
     variants: {
       variant: {
         default:
-          "bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300",
+          "bg-zinc-900 text-zinc-50 hover:bg-zinc-900/90 dark:bg-zinc-300 dark:text-zinc-900 dark:hover:bg-zinc-50/90 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300",
         destructive:
           "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-red-900",
         outline:
@@ -42,7 +41,7 @@ const BADGE_CODE_STYLE = `const badgeStyles = cva(
     variants: {
       variant: {
         default:
-          "text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 bg-zinc-900 dark:bg-zinc-50",
+          "text-zinc-50 dark:text-zinc-900 hover:bg-zinc-900/90 bg-zinc-900 dark:bg-zinc-300",
         destructive:
           "bg-red-500 text-zinc-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
         outline:

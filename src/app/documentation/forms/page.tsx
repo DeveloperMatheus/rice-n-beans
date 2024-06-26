@@ -13,7 +13,7 @@ import {
 } from "~/components/Form";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 
-const CODE_LABEL_STLYES = `const labelStyles = "inline-block font-sans font-bold text-primary select-none";
+const CODE_LABEL_STLYES = `const labelStyles = "inline-block font-sans font-bold text-black dark:text-zinc-200 select-none";
 `;
 
 const CODE_ERROR_STLYES = `const errorMessageStyles = cva("text-red-500 font-sans");

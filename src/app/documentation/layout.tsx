@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   Base,
   BaseToggleDrawer,
@@ -23,17 +23,28 @@ export default function DocumentationLayout({
     setIsOpen(!isOpen);
   }
 
+  const isMobile = useCallback(() => /Mobi/i.test(navigator.userAgent), []);
+
   return (
     <Base>
       <BaseDrawer isOpen={isOpen}>
-        <BaseToggleDrawer
-          onClick={() => handleToggleDrawer()}
-          className="block p-0 lg:p-3 lg:hidden text-black"
+        <div className="flex items-center justify-start lg:hidden px-3 pb-3 gap-3">
+          <BaseToggleDrawer
+            onClick={() => handleToggleDrawer()}
+            className="block p-0 lg:p-3 lg:hidden text-black"
+          />
+          <ThemeSwitch />
+        </div>
+        <DrawerItems
+          isDrawerOpen={isOpen}
+          onDrawerClick={() => {
+            if (!isMobile()) return;
+            handleToggleDrawer();
+          }}
         />
-        <DrawerItems isDrawerOpen={isOpen} />
       </BaseDrawer>
       <BaseContainer>
-        <BaseHeader className="text-black">
+        <BaseHeader>
           <div className="flex items-center justify-start">
             <BaseToggleDrawer onClick={() => handleToggleDrawer()} />
             <ThemeSwitch />

@@ -45,8 +45,10 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
 
 export const DrawerItems = ({
   isDrawerOpen = true,
+  onDrawerClick,
 }: {
   isDrawerOpen: boolean;
+  onDrawerClick: () => void;
 }) => {
   function renderOpenContent(element: React.ReactNode): React.ReactNode {
     if (!isDrawerOpen) return;
@@ -61,6 +63,7 @@ export const DrawerItems = ({
             key={`${sidenavItem.title}--${index}`}
             className="flex items-center space-x-2"
             href={sidenavItem.url}
+            onClick={() => onDrawerClick()}
           >
             {sidenavItem.icon}
             {renderOpenContent(<Text>{sidenavItem.title}</Text>)}

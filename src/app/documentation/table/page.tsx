@@ -14,8 +14,7 @@ import {
 import { Mail } from "lucide-react";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 
-const CODE_TABLE_STLYES = `
-import { ComponentProps, forwardRef } from "react";
+const CODE_TABLE_STLYES = `import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const tableStyles = "border-collapse text-black dark:text-zinc-200";

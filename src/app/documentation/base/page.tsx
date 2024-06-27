@@ -16,18 +16,16 @@ export default function DocumentationBasePage() {
           {`<BaseContainer>`}, {`<BaseContent>`}, {`<BaseDrawer>`},{" "}
           {`<BaseHeader>`}, {`<BaseToggleDrawer>`}.
         </Text>
-
-        {/* <Text>
-          The {`<BaseDrawer>`} is responsible for open and close the drawer
-          through a prop called isOpen. You just need to pass a boolean to it
-          from outside. <br />
-          On the mobile version (until the lg breakpoint of tailwind), when the
-          drawer is open, it takes the full height and width of the screen. To
-          close the drawer after you click in one of it&rsquo;s items, i get a
-          call from an event handler of the {`<BaseDrawer>`} called
-          onDrawerClick. And if the user is on a mobile device, then i also
-          close the drawer (i will show you one example on how to do it below).
-        </Text> */}
+        <Text>
+          The {`<Base>`} is the main component that will wrap all the others. It
+          has an internal state to control the drawer through a Provider.
+        </Text>
+        <Text>
+          The {`<BaseToggleDrawer>`} is the component that will be responsible
+          to open and close the drawer. But you can use the BaseContext to
+          extract the isOpen state and the function to toggle it and use it
+          however you want.
+        </Text>
       </div>
     </section>
   );

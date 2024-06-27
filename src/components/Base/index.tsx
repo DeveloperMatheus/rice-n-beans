@@ -10,7 +10,7 @@ import {
 
 import { VariantProps, cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
-import { PanelLeft } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { Button } from "~/components/Layout";
 
@@ -167,7 +167,7 @@ export const BaseToggleDrawer = forwardRef<
       {...props}
       onClick={() => setOpen(!isOpen)}
     >
-      <PanelLeft size={32} />
+      <Menu size={32} />
     </Button>
   );
 });

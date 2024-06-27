@@ -41,6 +41,11 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
       title: "Typography",
       url: "/documentation/typography",
     },
+    {
+      icon: <BookType size={26} />,
+      title: "Base",
+      url: "/documentation/base",
+    },
   ];
 
 export const DrawerItems = ({

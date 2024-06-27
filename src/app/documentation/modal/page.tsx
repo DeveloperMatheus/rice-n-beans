@@ -140,7 +140,7 @@ export default function DocumentationModalPage() {
           with the rest of the page until the modal is closed.
         </Text>
 
-        <Text tag="span">
+        <Text>
           The modal is composed by the following components: {`<Modal>`},{" "}
           {`<ModalContent>`}, {`<ModalHeader>`} and {`<ModalFooter>`}. See:
           <Link href="https://developer.mozilla.org/es/docs/Web/HTML/Element/dialog">

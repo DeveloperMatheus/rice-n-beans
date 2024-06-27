@@ -1,7 +1,15 @@
-import { VariantProps, cva } from "class-variance-authority";
-import { ComponentProps, forwardRef } from "react";
-import { twMerge } from "tailwind-merge";
+"use client";
 
+import {
+  ComponentProps,
+  createContext,
+  forwardRef,
+  useContext,
+  useState,
+} from "react";
+
+import { VariantProps, cva } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 import { PanelLeft } from "lucide-react";
 
 import { Button } from "~/components/Layout";
@@ -34,19 +42,44 @@ const baseHeaderStyles = cva(
 );
 const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
 
+/* --- Context --- */
+type BaseContextProps = {
+  isOpen: boolean;
+  setOpen: (value: boolean) => void;
+};
+
+const initBase: BaseContextProps = {
+  isOpen: true,
+  setOpen: () => {},
+};
+
+export const BaseContext = createContext<BaseContextProps>(initBase);
+
+const BaseProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setOpen] = useState(true);
+
+  return (
+    <BaseContext.Provider value={{ isOpen, setOpen }}>
+      {children}
+    </BaseContext.Provider>
+  );
+};
+
 /* --- Base --- */
 export const Base = forwardRef<
   HTMLDivElement,
   ComponentProps<"div"> & VariantProps<typeof baseStyles>
 >(({ children, className, orientation = "left", ...props }, ref) => {
   return (
-    <div
-      className={twMerge(baseStyles({ className, orientation }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
+    <BaseProvider>
+      <div
+        className={twMerge(baseStyles({ className, orientation }))}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </div>
+    </BaseProvider>
   );
 });
 
@@ -86,7 +119,9 @@ BaseContent.displayName = "BaseContent";
 export const BaseDrawer = forwardRef<
   HTMLDivElement,
   ComponentProps<"div"> & VariantProps<typeof baseDrawerStyles>
->(({ children, isOpen = true, className, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
+  const { isOpen } = useContext(BaseContext);
+
   return (
     <div
       className={twMerge(baseDrawerStyles({ className, isOpen }))}
@@ -120,14 +155,17 @@ BaseHeader.displayName = "BaseHeader";
 /* --- BaseCloseDrawer --- */
 export const BaseToggleDrawer = forwardRef<
   HTMLButtonElement,
-  ComponentProps<"button">
+  Omit<ComponentProps<"button">, "onClick">
 >(({ className, ...props }, ref) => {
+  const { setOpen, isOpen } = useContext(BaseContext);
+
   return (
     <Button
       variant="ghost"
       className={twMerge(baseCloseDrawerStyles({ className }))}
       ref={ref}
       {...props}
+      onClick={() => setOpen(!isOpen)}
     >
       <PanelLeft size={32} />
     </Button>

@@ -5,6 +5,7 @@ import {
   BookType,
   InspectionPanel,
   LayoutPanelLeft,
+  PanelLeftDashed,
   TableProperties,
   TableRowsSplit,
 } from "lucide-react";
@@ -46,7 +47,7 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
       url: "/documentation/typography",
     },
     {
-      icon: <BookType size={26} />,
+      icon: <PanelLeftDashed size={26} />,
       title: "Base",
       url: "/documentation/base",
     },

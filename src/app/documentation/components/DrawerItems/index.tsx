@@ -6,6 +6,7 @@ import {
   PanelLeftDashed,
   TableProperties,
   TableRowsSplit,
+  TriangleAlert,
 } from "lucide-react";
 import Link from "next/link";
 import { Text } from "~/components/Typography";
@@ -46,6 +47,11 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
       icon: <PanelLeftDashed size={26} />,
       title: "Base",
       url: "/documentation/base",
+    },
+    {
+      icon: <TriangleAlert size={26} />,
+      title: "Dialog",
+      url: "/documentation/dialog",
     },
   ];
 

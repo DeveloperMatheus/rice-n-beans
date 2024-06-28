@@ -22,10 +22,10 @@ export const DocumentationBaseExample = () => {
   return (
     <Base>
       <BaseDrawer isOpen={isOpen}>
-        <div className="lg:hidden">
-          <BaseToggleDrawer onClick={() => toggleDrawer()} />
-          <div>Your drawer menu</div>
-        </div>
+        <BaseToggleDrawer
+          className="lg:hidden"
+          onClick={() => toggleDrawer()}
+        />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader>

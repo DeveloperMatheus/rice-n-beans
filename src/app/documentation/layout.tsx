@@ -10,7 +10,7 @@ import {
 } from "~/components/Base";
 import { DrawerItems } from "./components/DrawerItems";
 import { ThemeSwitch } from "~/components/Theme/ThemeSwitch";
-import { use, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function DocumentationLayout({
   children,

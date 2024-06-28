@@ -11,7 +11,7 @@ export default function DocumentationBasePage() {
 
         <Text tag="h2">
           Base is a group of components made to compose your scaffolding layout
-          (this is good to make dashboards)
+          with a side navigation drawer.
         </Text>
 
         <Text>
@@ -20,14 +20,19 @@ export default function DocumentationBasePage() {
           {`<BaseHeader>`}, {`<BaseToggleDrawer>`}.
         </Text>
         <Text>
-          The {`<Base>`} is the main component that will wrap all the others. It
-          has an internal state to control the drawer through a Provider.
+          The {`<Base>`} has a prop called <strong>orientation</strong>. This
+          prop is meant to control the the position of the {`<BaseDrawer>`}, vs
+          the other components (container, content). This prop value can be:{" "}
+          <strong>{'"left" | "right"'}</strong>.
         </Text>
         <Text>
-          The {`<BaseToggleDrawer>`} is the component that will be responsible
-          to open and close the drawer. But you can use the BaseContext to
-          extract the isOpen state and the function to toggle it (setOpen), and
-          use it however you want.
+          The {`<BaseDrawer>`} has a prop called <strong>isOpen</strong>, which
+          is a <strong>boolean</strong>. This prop is meant to control the
+          drawer state. How you will control it is up to you.
+        </Text>
+        <Text>
+          The {`<BaseToggleDrawer>`} is just a button that has an icon inside,
+          and it is meant to be used to toggle the drawer.
         </Text>
       </div>
 

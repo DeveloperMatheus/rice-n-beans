@@ -1,7 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Base,
   BaseContainer,

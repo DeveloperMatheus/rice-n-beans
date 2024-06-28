@@ -45,16 +45,16 @@ const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
 /* --- Base --- */
 export const Base = forwardRef<
   HTMLDivElement,
-  ComponentProps<"nav"> & VariantProps<typeof baseStyles>
+  ComponentProps<"div"> & VariantProps<typeof baseStyles>
 >(({ children, className, orientation = "left", ...props }, ref) => {
   return (
-    <nav
+    <div
       className={twMerge(baseStyles({ className, orientation }))}
       ref={ref}
       {...props}
     >
       {children}
-    </nav>
+    </div>
   );
 });
 

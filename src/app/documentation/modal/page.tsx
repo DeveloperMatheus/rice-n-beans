@@ -162,7 +162,6 @@ export default function DocumentationModalPage() {
           </TabList>
           <TabPanel id="view">
             <div className="w-fit">
-              {/* <Card>This is a card inside a tab</Card> */}
               <Text>
                 The button &rsquo;See the component Code&rsquo; is literally
                 showing a modal

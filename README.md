@@ -22,8 +22,8 @@ So that means, to make a component inside of this list, i had taken a few rules 
 
 > If an idea of a component is listed on the Mozilla for Devs for example, and it is possible to make an idea of customization (even if it is parcial), and, it has a nice support for modern browsers, it is mandatory that i have to pick from the native HTML5 rather than building from scratch.
 
-> The components needs to be accesible, whether from the HTML5 or built from scratch.
+> The components should to be accesible, whether from the HTML5 or built from scratch.
 
-> The components also needs to have at least one prop for the className (because they're built using Tailwind), preferably, using the forwardRefs function.
+> The components also should have at least one prop for the className (because they're built using Tailwind), preferably, using the forwardRefs function.
 
-> Last but not least, the components needs to be built using the composition pattern (if we need more than one element). I'm allowed to use some client side processing such as useState/useRef/ContextAPI (But the rule 2 needs to be checked before doing this).
+> Last but not least, the components should be built using the composition pattern (if we need more than one element). I'm allowed to use some client side processing such as useState/useRef/ContextAPI (But the rule 2 needs to be checked before doing this).

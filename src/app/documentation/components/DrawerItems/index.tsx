@@ -1,5 +1,3 @@
-"use client";
-
 import {
   BookText,
   BookType,
@@ -10,8 +8,6 @@ import {
   TableRowsSplit,
 } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useContext } from "react";
-import { BaseContext } from "~/components/Base";
 import { Text } from "~/components/Typography";
 
 const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
@@ -53,19 +49,16 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
     },
   ];
 
-export const DrawerItems = () => {
-  const { isOpen, setOpen } = useContext(BaseContext);
-
-  const isMobile = useCallback(() => /Mobi/i.test(navigator.userAgent), []);
-
+export const DrawerItems = ({
+  isOpen,
+  onClickDrawerItem,
+}: {
+  isOpen: boolean;
+  onClickDrawerItem: () => void;
+}) => {
   function renderOpenContent(element: React.ReactNode): React.ReactNode {
     if (!isOpen) return;
     return element;
-  }
-
-  function handleToggleDrawer() {
-    if (!isMobile()) return;
-    setOpen(!isOpen);
   }
 
   function renderMockComponents() {
@@ -76,7 +69,7 @@ export const DrawerItems = () => {
             key={`${sidenavItem.title}--${index}`}
             className="flex items-center space-x-2"
             href={sidenavItem.url}
-            onClick={() => handleToggleDrawer()}
+            onClick={() => onClickDrawerItem()}
           >
             {sidenavItem.icon}
             {renderOpenContent(<Text>{sidenavItem.title}</Text>)}

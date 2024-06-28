@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Base,
   BaseToggleDrawer,
@@ -8,27 +10,52 @@ import {
 } from "~/components/Base";
 import { DrawerItems } from "./components/DrawerItems";
 import { ThemeSwitch } from "~/components/Theme/ThemeSwitch";
+import { use, useCallback, useEffect, useState } from "react";
 
 export default function DocumentationLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isClient, setIsClient] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+
+  const isMobile = useCallback(() => /Mobi/i.test(navigator.userAgent), []);
+
+  function toggleDrawer() {
+    setOpen(!isOpen);
+  }
+
+  function handleToggleDrawer() {
+    if (!isMobile()) return;
+    setOpen(false);
+  }
+
+  useEffect(() => {
+    setIsClient(true);
+
+    if (isMobile()) return;
+    setOpen(true);
+  }, [isMobile]);
+
+  if (!isClient) return;
+
   return (
     <Base>
-      <BaseDrawer>
-        <div className="flex items-center justify-start lg:hidden px-3 pb-3 gap-3">
-          <BaseToggleDrawer className="block p-0 lg:p-3 lg:hidden" />
+      <BaseDrawer isOpen={isOpen}>
+        <div className="lg:hidden">
+          <BaseToggleDrawer onClick={() => toggleDrawer()} />
           <ThemeSwitch />
         </div>
-        <DrawerItems />
+        <DrawerItems
+          isOpen={isOpen}
+          onClickDrawerItem={() => handleToggleDrawer()}
+        />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader>
-          <div className="flex items-center justify-start">
-            <BaseToggleDrawer />
-            <ThemeSwitch />
-          </div>
+          <BaseToggleDrawer onClick={() => toggleDrawer()} />
+          <ThemeSwitch />
         </BaseHeader>
         <BaseContent>{children}</BaseContent>
       </BaseContainer>

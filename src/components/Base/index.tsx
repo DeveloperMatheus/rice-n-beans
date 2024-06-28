@@ -27,7 +27,7 @@ const baseContentStyles = cva(
   "bg-white dark:bg-zinc-900 px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
 );
 const baseDrawerStyles = cva(
-  "p-3 bg-white dark:bg-zinc-900 fixed lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-",
+  "p-3 bg-white dark:bg-zinc-900 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden",
   {
     variants: {
       isOpen: {
@@ -42,44 +42,19 @@ const baseHeaderStyles = cva(
 );
 const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
 
-/* --- Context --- */
-type BaseContextProps = {
-  isOpen: boolean;
-  setOpen: (value: boolean) => void;
-};
-
-const initBase: BaseContextProps = {
-  isOpen: true,
-  setOpen: () => {},
-};
-
-export const BaseContext = createContext<BaseContextProps>(initBase);
-
-const BaseProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setOpen] = useState(true);
-
-  return (
-    <BaseContext.Provider value={{ isOpen, setOpen }}>
-      {children}
-    </BaseContext.Provider>
-  );
-};
-
 /* --- Base --- */
 export const Base = forwardRef<
   HTMLDivElement,
-  ComponentProps<"div"> & VariantProps<typeof baseStyles>
+  ComponentProps<"nav"> & VariantProps<typeof baseStyles>
 >(({ children, className, orientation = "left", ...props }, ref) => {
   return (
-    <BaseProvider>
-      <div
-        className={twMerge(baseStyles({ className, orientation }))}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </div>
-    </BaseProvider>
+    <nav
+      className={twMerge(baseStyles({ className, orientation }))}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </nav>
   );
 });
 
@@ -117,19 +92,17 @@ BaseContent.displayName = "BaseContent";
 
 /* --- BaseDrawer --- */
 export const BaseDrawer = forwardRef<
-  HTMLDivElement,
-  ComponentProps<"div"> & VariantProps<typeof baseDrawerStyles>
->(({ children, className, ...props }, ref) => {
-  const { isOpen } = useContext(BaseContext);
-
+  HTMLElement,
+  ComponentProps<"nav"> & VariantProps<typeof baseDrawerStyles>
+>(({ children, className, isOpen, ...props }, ref) => {
   return (
-    <div
+    <nav
       className={twMerge(baseDrawerStyles({ className, isOpen }))}
       ref={ref}
       {...props}
     >
       {children}
-    </div>
+    </nav>
   );
 });
 
@@ -155,17 +128,14 @@ BaseHeader.displayName = "BaseHeader";
 /* --- BaseCloseDrawer --- */
 export const BaseToggleDrawer = forwardRef<
   HTMLButtonElement,
-  Omit<ComponentProps<"button">, "onClick">
+  ComponentProps<"button">
 >(({ className, ...props }, ref) => {
-  const { setOpen, isOpen } = useContext(BaseContext);
-
   return (
     <Button
       variant="ghost"
       className={twMerge(baseCloseDrawerStyles({ className }))}
       ref={ref}
       {...props}
-      onClick={() => setOpen(!isOpen)}
     >
       <Menu size={32} />
     </Button>

@@ -1,16 +1,7 @@
 import { Text } from "~/components/Typography";
 import { DocumentationSection } from "../components/DocumentationSection";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
-import {
-  Base,
-  BaseContainer,
-  BaseContent,
-  BaseDrawer,
-  BaseHeader,
-  BaseToggleDrawer,
-} from "~/components/Base";
-import { ThemeSwitch } from "~/components/Theme/ThemeSwitch";
-import { DrawerItems } from "../components/DrawerItems";
+import { DocumentationBaseExample } from "./components/DocumentationBaseExample";
 
 export default function DocumentationBasePage() {
   return (
@@ -46,27 +37,8 @@ export default function DocumentationBasePage() {
             <Tab id="view">View</Tab>
             <Tab id="code">Code</Tab>
           </TabList>
-          <TabPanel id="view">
-            <Base>
-              <BaseDrawer>
-                <div className="flex items-center justify-start lg:hidden px-3 pb-3 gap-3">
-                  <BaseToggleDrawer className="block p-0 lg:p-3 lg:hidden" />
-                  <ThemeSwitch />
-                </div>
-                <DrawerItems />
-              </BaseDrawer>
-              <BaseContainer>
-                <BaseHeader>
-                  <div className="flex items-center justify-start">
-                    <BaseToggleDrawer />
-                    <ThemeSwitch />
-                  </div>
-                </BaseHeader>
-                <BaseContent>
-                  <Text>Your page rendered here</Text>
-                </BaseContent>
-              </BaseContainer>
-            </Base>
+          <TabPanel id="view" className="overflow-hidden">
+            <DocumentationBaseExample />
           </TabPanel>
           <TabPanel id="code">
             <code className="whitespace-pre">{"c"}</code>

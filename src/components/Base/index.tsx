@@ -131,7 +131,7 @@ export const BaseToggleDrawer = forwardRef<
       ref={ref}
       {...props}
     >
-      <Menu size={32} />
+      <Menu size={26} />
     </Button>
   );
 });

@@ -1,28 +1,16 @@
-import { Checkbox, Input, Label, Select, Switch } from "~/components/Form";
-import { Button, Card } from "~/components/Layout";
 import { Text } from "~/components/Typography";
+import { ExampleFormLogin } from "./components/ExampleFormLogin";
 
 export default function DocumentationExampleFormPage() {
   return (
     <section>
       <div className="space-y-3">
         <Text tag="h1">Example Form</Text>
-
-        <Card className="w-fit">
-          <form className="space-y-3">
-            <div className="space-y-1">
-              <Label>Login</Label>
-              <Input type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label>Password</Label>
-              <Input type="password" />
-            </div>
-            <div className="text-center">
-              <Button className="w-32">Submit</Button>
-            </div>
-          </form>
-        </Card>
+        <Text tag="h3">
+          This is not necessary, since i created uncontrolled components, but
+          you can use the Controller HOC from RHF if you want
+        </Text>
+        <ExampleFormLogin />
       </div>
     </section>
   );

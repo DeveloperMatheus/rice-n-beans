@@ -1,6 +1,6 @@
 import { Braces, CodeXml } from "lucide-react";
 import Link from "next/link";
-import { Card } from "~/components/Layout";
+import { Button, Card } from "~/components/Layout";
 import { Text } from "~/components/Typography";
 
 const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
@@ -54,6 +54,30 @@ export default function DocumentationPage() {
             </Card>
           </Link>
         ))}
+      </div>
+
+      <Text tag="h2" className="text-center mt-3">
+        Special thanks to:
+      </Text>
+
+      <div className="flex items-center justify-center gap-3">
+        <Link href="https://tailwindcss.com">
+          <Button variant="link" className="text-2xl">
+            TailwindCSS
+          </Button>
+        </Link>
+
+        <Link href="https://cva.style">
+          <Button variant="link" className="text-2xl">
+            Class Variance Authority
+          </Button>
+        </Link>
+
+        <Link href="https://github.com/dcastil/tailwind-merge">
+          <Button variant="link" className="text-2xl">
+            Tailwind Merge
+          </Button>
+        </Link>
       </div>
     </section>
   );

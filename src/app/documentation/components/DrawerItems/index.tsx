@@ -17,7 +17,7 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
     {
       icon: <CodeXml size={26} />,
       title: "Installation",
-      url: "/documentation",
+      url: "/documentation/installation",
     },
     {
       icon: <BookText size={26} />,

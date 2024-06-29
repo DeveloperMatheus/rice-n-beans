@@ -1,156 +1,59 @@
+import { Braces, CodeXml } from "lucide-react";
+import Link from "next/link";
 import { Card } from "~/components/Layout";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 import { Text } from "~/components/Typography";
 
-const CODE_ARROW_VIEW = `<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 20 20"
-  fill="none"
-  stroke="#aaa"
-  stroke-width="4"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <polyline points="17 7 10 15 2 7"></polyline>
-</svg>
-`;
-
-const CODE_CHECK_VIEW = `<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="#aaa"
-  stroke-width="4"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M20 6L9 17L4 12"></path>
-</svg>
-`;
-
-const CODE_TAILWIND_VIEW = `import type { Config } from "tailwindcss";
-
-const config: Config = {
-  darkMode: ["class", "[class~='dark']"],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      keyframes: {
-        "fade-in": {
-          "0%": { opacity: "0%" },
-          "100%": { opacity: "100%" },
-        },
-        modal: {
-          "0%": { transform: "scale(1.05)" },
-          "100%": { transform: "scale(1)" },
-        },
-      },
-      animation: {
-        "fade-in": "fade-in 0.2s ease-in-out",
-        modal: "modal 0.2s ease-in-out",
-      },
+const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
+  [
+    {
+      title: "Installation",
+      icon: <CodeXml size={26} />,
+      url: "/documentation/installation",
     },
-    content: {
-      checkIcon: 'url("/icon/check.svg")',
-      arrowIcon: 'url("/icon/arrow.svg")',
+    {
+      title: "Examples",
+      icon: <Braces size={26} />,
+      url: "/documentation/examples",
     },
-  },
-  plugins: [],
-};
-export default config;
-`;
+    {
+      title: "Github",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+          />
+        </svg>
+      ),
+      url: "https://github.com/DeveloperMatheus/rice-n-beans",
+    },
+  ];
 
 export default function DocumentationPage() {
   return (
     <section>
-      <div className="space-y-3">
-        <Text tag="h1">Installation</Text>
+      <div className="space-y-3 text-center">
+        <Text tag="h1">Welcome to the Rice and Beans project!</Text>
 
-        <Text tag="h2">This is the summary of the installation process:</Text>
-
-        <div>
-          <Text tag="h3">
-            1) Install the packages from the node ecossystem (you can use{" "}
-            <code>npm, yarn, or pnpm</code>):
-          </Text>
-
-          <Card>
-            <div>
-              <code>$ typescript</code>
-            </div>
-            <div>
-              <code>$ tailwindcss postcss autoprefixer</code>
-            </div>
-            <div>
-              <code>$ class-variance-authority</code>
-            </div>
-          </Card>
-        </div>
-
-        <div>
-          <Text tag="h3">
-            2) Place two svg files in the folder of your project responsible to
-            store this type of asset:
-          </Text>
-          <Text>
-            This is important if you&rsquo;re using the{" "}
-            <strong>
-              <code>Select and Checkbox</code>
-            </strong>
-            , because the icons for those two form components are being injected
-            by using pseudo elements. So you can skip this step if you&rsquo;re
-            not going to use those two inputs.
-          </Text>
-          <Tabs defaultValue="arrow" className="mt-3">
-            <TabList>
-              <Tab id="arrow">Arrow Icon</Tab>
-              <Tab id="check">Check Icon</Tab>
-            </TabList>
-            <TabPanel id="arrow" className="overflow-x-auto">
-              <div className="w-fit">
-                <code className="whitespace-pre">{CODE_ARROW_VIEW}</code>
-              </div>
-            </TabPanel>
-            <TabPanel id="check" className="overflow-x-auto">
-              <code className="whitespace-pre">{CODE_CHECK_VIEW}</code>
-            </TabPanel>
-          </Tabs>
-        </div>
-
-        <div>
-          <Text tag="h3">
-            3) Add the following lines to your <code>tailwind.config.js</code>:
-          </Text>
-
-          <div className="space-y-2">
-            <Text>
-              This is to reference the svg files from step 2, setup the
-              darkmode, and add some animations for the Modal/Dialog component.
-            </Text>
-
-            <Text>
-              Some of this configuration is arbitrary and can be changed to fit
-              your needs. For instance, since i&rsquo;m using{" "}
-              <code>Next.js</code>, i have an specific place to reference the
-              content array, and the icons (i placed the check and the arrow
-              icons, in a folder called <code>icon</code> inside the{" "}
-              <code>public</code> folder).
-            </Text>
-          </div>
-
-          <Card>
-            <code className="whitespace-pre">{CODE_TAILWIND_VIEW}</code>
-          </Card>
-        </div>
-
-        <Text tag="h3">
-          4) It is over! Now you can start to use the components in your
-          project. Happy coding!
+        <Text tag="h2">
+          Here you can check some examples, or continue to the docs.
         </Text>
+      </div>
+
+      <div className="flex items-center justify-center gap-3 mt-3">
+        {listDocOptions.map((docOption, index) => (
+          <Link href={docOption.url} key={`${docOption.title}--${index}`}>
+            <Card className="flex flex-col items-center justify-center gap-2 min-w-40">
+              <div>{docOption.icon}</div>
+              <Text tag="h3">{docOption.title}</Text>
+            </Card>
+          </Link>
+        ))}
       </div>
     </section>
   );

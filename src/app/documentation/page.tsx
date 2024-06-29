@@ -101,9 +101,9 @@ export default function DocumentationPage() {
             <strong>
               <code>Select and Checkbox</code>
             </strong>
-            , because the icons for two form components are injected using a
-            pseudo elements. So you can skip this step if you&rsquo;re not going
-            to use those two inputs.
+            , because the icons for those two form components are being injected
+            by using pseudo elements. So you can skip this step if you&rsquo;re
+            not going to use those two inputs.
           </Text>
           <Tabs defaultValue="arrow" className="mt-3">
             <TabList>

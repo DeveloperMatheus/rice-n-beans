@@ -36,7 +36,7 @@ const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
 
 export default function DocumentationPage() {
   return (
-    <section>
+    <section className="flex flex-col items-center justify-center h-full">
       <div className="space-y-3 text-center">
         <Text tag="h1">Welcome to the Rice and Beans project!</Text>
 
@@ -45,7 +45,7 @@ export default function DocumentationPage() {
         </Text>
       </div>
 
-      <div className="flex items-center justify-center gap-3 mt-3">
+      <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
         {listDocOptions.map((docOption, index) => (
           <Link href={docOption.url} key={`${docOption.title}--${index}`}>
             <Card className="flex flex-col items-center justify-center gap-2 min-w-40">
@@ -60,20 +60,20 @@ export default function DocumentationPage() {
         Special thanks to:
       </Text>
 
-      <div className="flex items-center justify-center gap-3">
-        <Link href="https://tailwindcss.com">
+      <div className="flex items-center justify-center gap-3 flex-wrap">
+        <Link href="https://tailwindcss.com" target="_blank">
           <Button variant="link" className="text-2xl">
             TailwindCSS
           </Button>
         </Link>
 
-        <Link href="https://cva.style">
+        <Link href="https://cva.style" target="_blank">
           <Button variant="link" className="text-2xl">
             Class Variance Authority
           </Button>
         </Link>
 
-        <Link href="https://github.com/dcastil/tailwind-merge">
+        <Link href="https://github.com/dcastil/tailwind-merge" target="_blank">
           <Button variant="link" className="text-2xl">
             Tailwind Merge
           </Button>

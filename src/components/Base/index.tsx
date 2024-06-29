@@ -18,7 +18,7 @@ const baseStyles = cva("flex", {
 });
 const baseContainerStyles = cva("h-screen w-full overflow-hidden");
 const baseContentStyles = cva(
-  "bg-white dark:bg-zinc-900 px-3 py-2 h-screen overflow-auto h-[calc(100vh-4.5625rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
+  "bg-white dark:bg-zinc-900 p-3 h-screen overflow-auto h-[calc(100vh-4.5625rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
 );
 const baseDrawerStyles = cva(
   "p-3 bg-white dark:bg-zinc-900 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden",

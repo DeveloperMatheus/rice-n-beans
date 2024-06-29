@@ -1,6 +1,7 @@
 import {
   BookText,
   BookType,
+  CodeXml,
   InspectionPanel,
   LayoutPanelLeft,
   PanelLeftDashed,
@@ -13,6 +14,11 @@ import { Text } from "~/components/Typography";
 
 const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
   [
+    {
+      icon: <CodeXml size={26} />,
+      title: "Installation",
+      url: "/documentation",
+    },
     {
       icon: <BookText size={26} />,
       title: "Forms",

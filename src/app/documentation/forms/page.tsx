@@ -263,7 +263,7 @@ export default function DocumentationFormPage() {
           <TabPanel id="view">
             <Label>This is a label</Label>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code>{`<Label>This is a label</Label>`}</code>
           </TabPanel>
         </Tabs>
@@ -285,7 +285,7 @@ export default function DocumentationFormPage() {
               invalid or not satisfying the requirements
             </ErrorMessage>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_ERROR_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -304,7 +304,7 @@ export default function DocumentationFormPage() {
           <TabPanel id="view">
             <Input placeholder="This is an input, type something!" />
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code>
               {`<Input placeholder="This is an input, type something!" />`}
             </code>
@@ -330,7 +330,7 @@ export default function DocumentationFormPage() {
               <Checkbox id="test-check" />
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_CHECKBOX_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -368,7 +368,7 @@ export default function DocumentationFormPage() {
               </div>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_RADIO_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -394,7 +394,7 @@ export default function DocumentationFormPage() {
               <option value="3">Option 3</option>
             </Select>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_SELECT_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -418,7 +418,7 @@ export default function DocumentationFormPage() {
               <Switch id="test-switch" />
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_SWITCH_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -437,7 +437,7 @@ export default function DocumentationFormPage() {
           <TabPanel id="view">
             <Range />
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{`<Range />`}</code>
           </TabPanel>
         </Tabs>
@@ -456,7 +456,7 @@ export default function DocumentationFormPage() {
           <TabPanel id="view">
             <DatePicker min="1991-01-01" className="w-fit" />
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{`<DatePicker min="1900-01-01" className="w-fit" />`}</code>
           </TabPanel>
         </Tabs>

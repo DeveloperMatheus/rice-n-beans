@@ -228,7 +228,7 @@ export default function DocumentationBasePage() {
           <TabPanel id="view" className="overflow-hidden">
             <DocumentationBaseExample />
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{BASE_CODE_VIEW}</code>
           </TabPanel>
         </Tabs>

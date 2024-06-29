@@ -80,8 +80,8 @@ export default function DocumentationTypographyPage() {
             <Text tag="p">This is a paragraph</Text>
             <Text tag="span">This is a span</Text>
           </TabPanel>
-          <TabPanel id="code" className="whitespace-pre">
-            <code>{CODE_TYPOGRAPHY_VIEW}</code>
+          <TabPanel id="code" className="overflow-x-auto">
+            <code className="whitespace-pre">{CODE_TYPOGRAPHY_VIEW}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

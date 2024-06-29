@@ -183,7 +183,7 @@ export default function DocumentationLayoutPage() {
               </Button>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{BUTTON_CODE_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -208,7 +208,7 @@ export default function DocumentationLayoutPage() {
               <Badge variant="secondary">Secondary</Badge>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{BADGE_CODE_VIEW}</code>
           </TabPanel>
         </Tabs>
@@ -229,7 +229,7 @@ export default function DocumentationLayoutPage() {
               <Card>This is a card inside a tab</Card>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CARD_CODE_VIEW}</code>
           </TabPanel>
         </Tabs>

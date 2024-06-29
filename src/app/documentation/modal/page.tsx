@@ -168,7 +168,7 @@ export default function DocumentationModalPage() {
               </Text>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_MODAL_VIEW}</code>
           </TabPanel>
         </Tabs>

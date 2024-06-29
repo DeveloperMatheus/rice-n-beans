@@ -288,7 +288,7 @@ export default function DocumentationTabsPage() {
               </Text>
             </div>
           </TabPanel>
-          <TabPanel id="code">
+          <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CODE_TABS_VIEW}</code>
           </TabPanel>
         </Tabs>

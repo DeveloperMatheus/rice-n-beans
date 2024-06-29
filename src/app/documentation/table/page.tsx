@@ -183,7 +183,7 @@ export default function DocumentationTablePage() {
             <Tab id="code">Code</Tab>
           </TabList>
 
-          <TabPanel id="view" className="px-0">
+          <TabPanel id="view" className="px-0 overflow-x-auto">
             <Card className="w-fit">
               <Table>
                 <TableHeader>
@@ -237,8 +237,8 @@ export default function DocumentationTablePage() {
               </Table>
             </Card>
           </TabPanel>
-          <TabPanel id="code" className="whitespace-pre">
-            <code>{CODE_TABLE_VIEW}</code>
+          <TabPanel id="code" className="overflow-x-auto">
+            <code className="whitespace-pre">{CODE_TABLE_VIEW}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

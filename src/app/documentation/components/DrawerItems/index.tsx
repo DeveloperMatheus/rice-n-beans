@@ -15,11 +15,6 @@ import { Text } from "~/components/Typography";
 const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
   [
     {
-      icon: <CodeXml size={26} />,
-      title: "Installation",
-      url: "/documentation/installation",
-    },
-    {
       icon: <BookText size={26} />,
       title: "Forms",
       url: "/documentation/forms",
@@ -91,13 +86,31 @@ export const DrawerItems = ({
     );
   }
   return (
-    <div>
-      {renderOpenContent(
-        <Text tag="h2" className="mb-5">
-          Components
-        </Text>
-      )}
-      {renderMockComponents()}
+    <div className="space-y-5">
+      <div>
+        {renderOpenContent(
+          <Text tag="h2" className="mb-3">
+            Setup
+          </Text>
+        )}
+
+        <Link
+          className="flex items-center space-x-2"
+          href="/documentation/installation"
+          onClick={() => onClickDrawerItem()}
+        >
+          <CodeXml size={26} />
+          {renderOpenContent(<Text>Installation</Text>)}
+        </Link>
+      </div>
+      <div>
+        {renderOpenContent(
+          <Text tag="h2" className="mb-3">
+            Components
+          </Text>
+        )}
+        {renderMockComponents()}
+      </div>
     </div>
   );
 };

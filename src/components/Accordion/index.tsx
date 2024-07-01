@@ -122,7 +122,6 @@ export const AccordionTrigger = forwardRef<
       onClick={() => setAccordionOpen(!isAccordionOpen)}
     >
       {children}
-
       {renderAccordionIcon()}
     </Button>
   );

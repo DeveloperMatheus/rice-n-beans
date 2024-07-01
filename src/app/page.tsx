@@ -2,6 +2,11 @@ import { Button } from "~/components/Layout";
 
 import { Text } from "~/components/Typography";
 import Link from "next/link";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionTrigger,
+} from "~/components/Accordion";
 
 export default function Home() {
   // const [testModal, setTestModal] = useState(false);
@@ -55,6 +60,19 @@ export default function Home() {
         <Link href="/documentation">
           <Button className="mt-5">Documentation</Button>
         </Link>
+
+        <div className="space-y-4">
+          <h2>Accordion:</h2>
+          <Accordion>
+            <AccordionTrigger>Test</AccordionTrigger>
+            <AccordionContent>Test Content</AccordionContent>
+          </Accordion>
+
+          <Accordion>
+            <AccordionTrigger>Test2</AccordionTrigger>
+            <AccordionContent>Test Content2</AccordionContent>
+          </Accordion>
+        </div>
       </div>
 
       {/* <div>

@@ -98,10 +98,16 @@ export const AccordionTrigger = forwardRef<
   const { isAccordionOpen, setAccordionOpen, accordionId } =
     useContext(AccordionContext);
 
-  function renderAccordionIcon() {
-    if (isAccordionOpen) return "⬆";
+  function renderAccordionIcon(): React.ReactNode {
+    const iconAnimation = isAccordionOpen ? "rotate-180" : "rotate-0";
 
-    return "⬇";
+    return (
+      <div
+        aria-hidden="true"
+        tabIndex={-1}
+        className={`transition-all ${iconAnimation} bg-black dark:bg-white w-6 h-6 [clip-path:polygon(50%_56.75%,_72.84%_34.4%,_79.46%_41.16%,_50%_70%,_20.49%_41.6%,_27.11%_34.72%)]`}
+      ></div>
+    );
   }
 
   return (
@@ -116,9 +122,8 @@ export const AccordionTrigger = forwardRef<
       onClick={() => setAccordionOpen(!isAccordionOpen)}
     >
       {children}
-      <p aria-hidden="true" tabIndex={-1}>
-        {renderAccordionIcon()}
-      </p>
+
+      {renderAccordionIcon()}
     </Button>
   );
 });

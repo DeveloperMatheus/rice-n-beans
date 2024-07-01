@@ -24,10 +24,6 @@ const config: Config = {
         modal: "modal 0.2s ease-in-out",
       },
     },
-    content: {
-      checkIcon: 'url("/icon/check.svg")',
-      arrowIcon: 'url("/icon/arrow.svg")',
-    },
   },
   plugins: [],
 };

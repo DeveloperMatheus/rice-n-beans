@@ -1,32 +1,6 @@
 import { Card } from "~/components/Layout";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
 import { Text } from "~/components/Typography";
-
-const CODE_ARROW_VIEW = `<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 20 20"
-  fill="none"
-  stroke="#aaa"
-  stroke-width="4"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <polyline points="17 7 10 15 2 7"></polyline>
-</svg>
-`;
-
-const CODE_CHECK_VIEW = `<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="#aaa"
-  stroke-width="4"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M20 6L9 17L4 12"></path>
-</svg>
-`;
+import { InstallationStep1 } from "./components/InstallationStep1";
 
 const CODE_TAILWIND_VIEW = `import type { Config } from "tailwindcss";
 
@@ -39,6 +13,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "select-arrow":
+          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")",
+      },
       keyframes: {
         "fade-in": {
           "0%": { opacity: "0%" },
@@ -53,6 +31,10 @@ const config: Config = {
         "fade-in": "fade-in 0.2s ease-in-out",
         modal: "modal 0.2s ease-in-out",
       },
+    },
+    content: {
+      "input-checkmark":
+        "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
     },
   },
   plugins: [],
@@ -74,77 +56,36 @@ export default function DocumentationInstallationPage() {
             <code>npm, yarn, or pnpm</code>):
           </Text>
 
-          <Card>
-            <div>
-              <code>$ typescript</code>
-            </div>
-            <div>
-              <code>$ tailwindcss postcss autoprefixer</code>
-            </div>
-            <div>
-              <code>$ class-variance-authority</code>
-            </div>
-          </Card>
+          <InstallationStep1 />
         </div>
 
         <div>
           <Text tag="h3">
-            2) Place two svg files in the folder of your project responsible to
-            store this type of asset:
-          </Text>
-          <Text>
-            This is important if you&rsquo;re using the{" "}
-            <strong>
-              <code>Select and Checkbox</code>
-            </strong>
-            , because the icons for those two form components are being injected
-            by using pseudo elements. So you can skip this step if you&rsquo;re
-            not going to use those two inputs.
-          </Text>
-          <Tabs defaultValue="arrow" className="mt-3">
-            <TabList>
-              <Tab id="arrow">Arrow Icon</Tab>
-              <Tab id="check">Check Icon</Tab>
-            </TabList>
-            <TabPanel id="arrow" className="overflow-x-auto">
-              <div className="w-fit">
-                <code className="whitespace-pre">{CODE_ARROW_VIEW}</code>
-              </div>
-            </TabPanel>
-            <TabPanel id="check" className="overflow-x-auto">
-              <code className="whitespace-pre">{CODE_CHECK_VIEW}</code>
-            </TabPanel>
-          </Tabs>
-        </div>
-
-        <div>
-          <Text tag="h3">
-            3) Add the following lines to your <code>tailwind.config.js</code>:
+            2) Add the following lines to your <code>tailwind.config.js</code>:
           </Text>
 
           <div className="space-y-2">
             <Text>
-              This is to reference the svg files from step 2, setup the
-              darkmode, and add some animations for the Modal/Dialog component.
+              This is to reference the svg files for some components (Checkbox,
+              Select, Accordion), setup the darkmode, and add some animations
+              for the Modal/Dialog component.
             </Text>
 
             <Text>
-              Some of this configuration is arbitrary and can be changed to fit
-              your needs. For instance, since i&rsquo;m using{" "}
+              Keep in mind, this configuration is arbitrary and can be changed
+              to fit your needs. For instance, since i&rsquo;m using{" "}
               <code>Next.js</code>, i have an specific place to reference the
-              content array, and the icons (i placed the check and the arrow
-              icons, in a folder called <code>icon</code> inside the{" "}
-              <code>public</code> folder).
+              content array.
             </Text>
           </div>
 
-          <Card>
+          <Card className="overflow-x-auto" tabIndex={0}>
             <code className="whitespace-pre">{CODE_TAILWIND_VIEW}</code>
           </Card>
         </div>
 
         <Text tag="h3">
-          4) It is over! Now you can start to use the components in your
+          3) It is over! Now you can start to use the components in your
           project. Happy coding!
         </Text>
       </div>

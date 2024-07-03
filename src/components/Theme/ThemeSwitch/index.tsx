@@ -31,7 +31,11 @@ export const ThemeSwitch = () => {
   }
 
   return (
-    <Button variant="ghost" onClick={() => switchTheme(theme)}>
+    <Button
+      aria-label="Toggle theme"
+      variant="ghost"
+      onClick={() => switchTheme(theme)}
+    >
       {renderThemeIcon(theme)}
     </Button>
   );

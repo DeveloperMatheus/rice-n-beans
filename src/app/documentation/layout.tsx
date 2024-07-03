@@ -44,7 +44,10 @@ export default function DocumentationLayout({
     <Base>
       <BaseDrawer isOpen={isOpen}>
         <div className="lg:hidden">
-          <BaseToggleDrawer onClick={() => toggleDrawer()} />
+          <BaseToggleDrawer
+            aria-label="Toggle drawer"
+            onClick={() => toggleDrawer()}
+          />
           <ThemeSwitch />
         </div>
         <DrawerItems
@@ -54,7 +57,10 @@ export default function DocumentationLayout({
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader>
-          <BaseToggleDrawer onClick={() => toggleDrawer()} />
+          <BaseToggleDrawer
+            aria-label="Toggle drawer"
+            onClick={() => toggleDrawer()}
+          />
           <ThemeSwitch />
         </BaseHeader>
         <BaseContent>{children}</BaseContent>

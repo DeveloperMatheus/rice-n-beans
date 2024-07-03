@@ -385,7 +385,8 @@ export default function DocumentationFormPage() {
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <Select>
+            <Label htmlFor="input-select">This is a select</Label>
+            <Select id="input-select">
               <option defaultChecked hidden>
                 Select an option
               </option>
@@ -435,7 +436,8 @@ export default function DocumentationFormPage() {
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <Range />
+            <Label htmlFor="input-range">Range</Label>
+            <Range id="input-range" />
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{`<Range />`}</code>
@@ -454,7 +456,12 @@ export default function DocumentationFormPage() {
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <DatePicker min="1991-01-01" className="w-fit" />
+            <Label htmlFor="input-date-picker">Date Picker</Label>
+            <DatePicker
+              id="input-date-picker"
+              min="1991-01-01"
+              className="w-fit"
+            />
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{`<DatePicker min="1900-01-01" className="w-fit" />`}</code>

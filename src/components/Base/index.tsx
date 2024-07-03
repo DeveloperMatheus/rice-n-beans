@@ -70,15 +70,15 @@ export const BaseContainer = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 BaseContainer.displayName = "BaseContainer";
 
 /* --- BaseContent --- */
-export const BaseContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
+export const BaseContent = forwardRef<HTMLElement, ComponentProps<"main">>(
   ({ children, className, ...props }, ref) => (
-    <div
+    <main
       className={twMerge(baseContentStyles({ className }))}
       ref={ref}
       {...props}
     >
       {children}
-    </div>
+    </main>
   )
 );
 

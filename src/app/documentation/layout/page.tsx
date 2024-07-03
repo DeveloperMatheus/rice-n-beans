@@ -178,7 +178,7 @@ export default function DocumentationLayoutPage() {
               <Button size="sm">Small</Button>
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>
-              <Button>
+              <Button aria-label="button-search">
                 <Search size={22} />
               </Button>
             </div>

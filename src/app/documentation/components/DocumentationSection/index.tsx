@@ -42,7 +42,7 @@ export const DocumentationSection = ({
           </Button>
         </ModalHeader>
         <ModalContent className="mt-3">
-          <Card className="overflow-x-auto whitespace-pre">
+          <Card className="overflow-x-auto whitespace-pre" tabIndex={0}>
             <code>{codeStyle}</code>
             <code>{codeComponent}</code>
           </Card>

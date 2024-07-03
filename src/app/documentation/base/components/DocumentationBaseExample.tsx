@@ -23,13 +23,17 @@ export const DocumentationBaseExample = () => {
     <Base>
       <BaseDrawer isOpen={isOpen}>
         <BaseToggleDrawer
+          aria-label="Toggle drawer"
           className="lg:hidden"
           onClick={() => toggleDrawer()}
         />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader>
-          <BaseToggleDrawer onClick={() => toggleDrawer()} />
+          <BaseToggleDrawer
+            aria-label="Toggle drawer"
+            onClick={() => toggleDrawer()}
+          />
         </BaseHeader>
         <BaseContent>
           <Text>Your content here</Text>

@@ -198,7 +198,7 @@ export default function DocumentationTablePage() {
                   <TableRow>
                     <TableData className="flex items-center justify-center gap-3">
                       <Button size="sm">Collect Debt</Button>
-                      <Button size="sm">
+                      <Button aria-label="button-message" size="sm">
                         <Mail size={26} />
                       </Button>
                     </TableData>
@@ -213,7 +213,7 @@ export default function DocumentationTablePage() {
                   <TableRow>
                     <TableData className="flex items-center justify-center gap-3">
                       <Button size="sm">Collect Debt</Button>
-                      <Button size="sm">
+                      <Button aria-label="button-message" size="sm">
                         <Mail size={26} />
                       </Button>
                     </TableData>

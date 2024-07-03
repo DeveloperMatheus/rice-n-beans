@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
-const textStyles = cva("font-sans text-black dark:text-zinc-200", {
+const textStyles = cva("font-sans text-black dark:text-white", {
   variants: {
     tag: {
       h1: "text-3xl lg:text-4xl font-bold",

@@ -69,7 +69,7 @@ export default function Home() {
           </Accordion>
 
           <Accordion>
-            <AccordionTrigger>Test2</AccordionTrigger>
+            <AccordionTrigger>Teste exibir 2</AccordionTrigger>
             <AccordionContent>Test Content2</AccordionContent>
           </Accordion>
         </div>

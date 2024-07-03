@@ -10,7 +10,7 @@
     "generate": "pnpm plop --plopfile ./generators/plopfile.js"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.6.0",
+    "@hookform/resolvers": "^3.7.0",
     "@maskito/core": "^1.9.0",
     "@maskito/kit": "^1.9.0",
     "@maskito/react": "^1.9.0",

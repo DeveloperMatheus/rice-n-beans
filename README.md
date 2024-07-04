@@ -1,6 +1,6 @@
 # Welcome Rice and Beans!
 
-## Rice and Beans is a list of curated components (inspired by Shadcn) using React and Typescript and a few libraries, that are meant to be simple, used with HTML5 (if it is possible), and with a certain degree of flexibility.
+## Rice and Beans is a list of components (inspired by Shadcn) using React and Typescript and a few libraries, that are meant to be simple, used with HTML5 (if it is possible), and with a certain degree of flexibility.
 
 ## Instalation
 

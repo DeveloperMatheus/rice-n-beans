@@ -30,9 +30,19 @@ export default function DocumentationAccordionPage() {
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <Accordion className="border-none p-0">
-              <AccordionTrigger>Test</AccordionTrigger>
-              <AccordionContent>Test Content</AccordionContent>
+            <Accordion className="border-none p-0 space-y-3">
+              <div>
+                <AccordionTrigger id="test1">Accordion 1</AccordionTrigger>
+                <AccordionContent id="test1">Content 1</AccordionContent>
+              </div>
+              <div>
+                <AccordionTrigger id="test2">Accordion 2</AccordionTrigger>
+                <AccordionContent id="test2">Content 2</AccordionContent>
+              </div>
+              <div>
+                <AccordionTrigger id="test3">Accordion 3</AccordionTrigger>
+                <AccordionContent id="test3">Content 3</AccordionContent>
+              </div>
             </Accordion>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">

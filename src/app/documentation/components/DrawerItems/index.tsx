@@ -8,6 +8,7 @@ import {
   TableProperties,
   TableRowsSplit,
   TriangleAlert,
+  ListCollapse,
 } from "lucide-react";
 import Link from "next/link";
 import { Text } from "~/components/Typography";
@@ -53,6 +54,11 @@ const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
       icon: <TriangleAlert size={26} />,
       title: "Dialog",
       url: "/documentation/dialog",
+    },
+    {
+      icon: <ListCollapse size={26} />,
+      title: "Accordion",
+      url: "/documentation/accordion",
     },
   ];
 

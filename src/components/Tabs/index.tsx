@@ -26,6 +26,7 @@ type TabsProviderProps = {
   children: React.ReactNode;
   defaultValue: string;
 };
+
 type TabsContextProps = {
   activeTab: string;
   setActiveTab: (selectedTab: string) => void;
@@ -144,24 +145,21 @@ type TabPanelProps = {
 } & ComponentProps<"div">;
 
 export const TabPanel = ({ children, id, className }: TabPanelProps) => {
-  const tabActive = useContext(TabsContext);
+  const { activeTab } = useContext(TabsContext);
 
-  function renderActiveTabPanel() {
-    if (tabActive?.activeTab !== id) return;
-    return (
-      <div
-        className={twMerge(tabPanelStyles, className)}
-        id={`tabpanel-${id}`}
-        aria-labelledby={`tab-${id}`}
-        role="tabpanel"
-        tabIndex={0}
-      >
-        {children}
-      </div>
-    );
-  }
+  if (activeTab !== id) return;
 
-  return renderActiveTabPanel();
+  return (
+    <div
+      className={twMerge(tabPanelStyles, className)}
+      id={`tabpanel-${id}`}
+      aria-labelledby={`tab-${id}`}
+      role="tabpanel"
+      tabIndex={0}
+    >
+      {children}
+    </div>
+  );
 };
 
 TabPanel.displayName = "TabPanel";

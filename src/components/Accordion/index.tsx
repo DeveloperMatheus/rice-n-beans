@@ -18,28 +18,31 @@ const accordionTriggerStyles =
   "w-full flex flex-row items-center justify-between";
 
 /* --- Context --- */
+type AccordionProviderProps = {
+  children: React.ReactNode;
+  defaultValue?: string;
+};
+
 type AccordionContextProps = {
-  isAccordionOpen: boolean;
-  setAccordionOpen: (value: boolean) => void;
-  accordionId: string;
+  activeAccordion?: string;
+  setActiveAccordion: (value?: string) => void;
 };
 
 const InitAccordion: AccordionContextProps = {
-  isAccordionOpen: false,
-  setAccordionOpen: () => {},
-  accordionId: "",
+  activeAccordion: undefined,
+  setActiveAccordion: (value?: string) => {},
 };
 
 const AccordionContext = createContext<AccordionContextProps>(InitAccordion);
 
-const AccordionProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isAccordionOpen, setAccordionOpen] = useState(false);
-  const accordionId = useId();
+const AccordionProvider = ({
+  children,
+  defaultValue,
+}: AccordionProviderProps) => {
+  const [activeAccordion, setActiveAccordion] = useState(defaultValue);
 
   return (
-    <AccordionContext.Provider
-      value={{ isAccordionOpen, setAccordionOpen, accordionId }}
-    >
+    <AccordionContext.Provider value={{ activeAccordion, setActiveAccordion }}>
       {children}
     </AccordionContext.Provider>
   );
@@ -65,22 +68,30 @@ export const Accordion = forwardRef<HTMLDivElement, ComponentProps<"div">>(
 Accordion.displayName = "Accordion";
 
 /* --- Content --- */
+type AccordionContentProps = {
+  id: string;
+} & ComponentProps<"div">;
+
 export const AccordionContent = forwardRef<
   HTMLDivElement,
-  ComponentProps<"div">
->(({ children, className, ...props }, ref) => {
-  const { isAccordionOpen, accordionId } = useContext(AccordionContext);
+  AccordionContentProps
+>(({ children, className, id, ...props }, ref) => {
+  const { activeAccordion } = useContext(AccordionContext);
 
-  if (!isAccordionOpen) return;
+  function isAccordionOpen(): boolean {
+    return activeAccordion === id;
+  }
+
+  if (!isAccordionOpen()) return;
 
   return (
     <div
       className={twMerge(accordionContentStyles, className)}
       ref={ref}
       {...props}
-      id={`accordion-${accordionId}`}
-      aria-labelledby={accordionId}
-      hidden={!isAccordionOpen}
+      id={`accordion-${id}`}
+      aria-labelledby={id}
+      hidden={!isAccordionOpen()}
       role="region"
     >
       {children}
@@ -91,15 +102,22 @@ export const AccordionContent = forwardRef<
 AccordionContent.displayName = "AccordionContent";
 
 /* --- Trigger --- */
+type AccordionTriggerProps = {
+  id: string;
+} & ComponentProps<"button">;
+
 export const AccordionTrigger = forwardRef<
   HTMLButtonElement,
-  ComponentProps<"button">
->(({ children, className, ...props }, ref) => {
-  const { isAccordionOpen, setAccordionOpen, accordionId } =
-    useContext(AccordionContext);
+  AccordionTriggerProps
+>(({ children, className, id, ...props }, ref) => {
+  const { activeAccordion, setActiveAccordion } = useContext(AccordionContext);
+
+  function isAccordionOpen(): boolean {
+    return activeAccordion === id;
+  }
 
   function renderAccordionIcon(): React.ReactNode {
-    const iconAnimation = isAccordionOpen ? "rotate-180" : "rotate-0";
+    const iconAnimation = isAccordionOpen() ? "rotate-180" : "rotate-0";
 
     return (
       <div
@@ -116,10 +134,12 @@ export const AccordionTrigger = forwardRef<
       ref={ref}
       {...props}
       variant="outline"
-      id={accordionId}
-      aria-expanded={isAccordionOpen}
-      aria-controls={`accordion-${accordionId}`}
-      onClick={() => setAccordionOpen(!isAccordionOpen)}
+      id={id}
+      aria-expanded={isAccordionOpen()}
+      aria-controls={`accordion-${id}`}
+      onClick={() => {
+        setActiveAccordion(isAccordionOpen() ? undefined : id);
+      }}
     >
       {children}
       {renderAccordionIcon()}

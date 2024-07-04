@@ -158,6 +158,7 @@ export const AccordionTrigger = forwardRef<
 
 AccordionTrigger.displayName = "AccordionTrigger";
 `;
+
 const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
   <div>
     <AccordionTrigger id="test1">Accordion 1</AccordionTrigger>

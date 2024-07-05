@@ -122,7 +122,7 @@ export const AccordionTrigger = forwardRef<
       <div
         aria-hidden="true"
         tabIndex={-1}
-        className={`transition-all ${iconAnimation} bg-black dark:bg-white w-6 h-6 [clip-path:polygon(50%_56.75%,_72.84%_34.4%,_79.46%_41.16%,_50%_70%,_20.49%_41.6%,_27.11%_34.72%)]`}
+        className={`transition-all ${iconAnimation} min-w-6 min-h-6 bg-arrow-icon`}
       ></div>
     );
   }

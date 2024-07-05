@@ -24,7 +24,7 @@ const CODE_INPUT_STLYES = `const inputStyles =
 `;
 
 const CODE_CHECKBOX_STLYES = `const checkboxStyles =
-  "relative bg-white dark:bg-zinc-950 rounded-md h-5 w-5 cursor-pointer appearance-none border border-zinc-200 dark:border-zinc-800 checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:w-[0.8rem] checked:before:h-[0.8rem] checked:before:leading-none checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:content-checkIcon checked:before:brightness-0 dark:checked:before:brightness-200 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300";
+  "relative bg-white dark:bg-zinc-950 rounded-md min-h-5 min-w-5 cursor-pointer appearance-none border border-zinc-200 dark:border-zinc-800 checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:w-[1rem] checked:before:h-[1rem] checked:before:leading-none checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:content-checkmark-icon checked:before:brightness-0 dark:checked:before:brightness-200 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300";
 `;
 
 const CODE_RADIO_STLYES = `const radioStyles =
@@ -32,7 +32,7 @@ const CODE_RADIO_STLYES = `const radioStyles =
 `;
 
 const CODE_SELECT_STLYES = `const selectStyles =
-  "text-black dark:text-white w-full font-sans appearance-none rounded-lg border border-zinc-200 bg-white bg-[url('/icon/arrow.svg')] bg-no-repeat bg-[position:center_right_0.75rem] bg-[length:0.8rem] pl-3 pr-8 py-2 ring-offset-white placeholder:text-zinc-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300 dark:placeholder:text-zinc-400";
+  "text-black dark:text-white w-full font-sans appearance-none rounded-lg border border-zinc-200 bg-white bg-arrow-icon bg-no-repeat bg-[position:center_right_0.75rem] bg-[length:1.6rem] pl-3 pr-8 py-2 ring-offset-white placeholder:text-zinc-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-zinc-950 focus:ring-offset-2 dark:ring-offset-zinc-950 dark:focus:ring-zinc-300 dark:placeholder:text-zinc-400";
 `;
 
 const CODE_SWITCH_STLYES = `const switchStyles =

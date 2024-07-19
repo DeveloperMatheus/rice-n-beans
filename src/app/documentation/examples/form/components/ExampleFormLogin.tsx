@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 
-import { ErrorMessage, Input, Label } from "~/components/Form";
+import { Checkbox, ErrorMessage, Input, Label } from "~/components/Form";
 import { Button } from "~/components/Layout";
 import { Controller, useForm } from "react-hook-form";
 
@@ -19,17 +19,6 @@ import { Controller, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
-
-const loginFormSchema = z.object({
-  email: z.string().email({
-    message: "This field must be a valid email",
-  }),
-  password: z.string().min(8, {
-    message: "This field must have at least 8 characters",
-  }),
-});
-
-type LoginForm = z.infer<typeof loginFormSchema>;
 
 const loginFormSchema = z.object({
   email: z.string().email({
@@ -108,11 +97,20 @@ const loginFormSchema = z.object({
   password: z.string().min(8, {
     message: "This field must have at least 8 characters",
   }),
+  isLoginStored: z.boolean(),
 });
 
 type LoginForm = z.infer<typeof loginFormSchema>;
 
-export const ExampleFormLogin = () => {
+export const ExampleFormLogin = ({
+  email,
+  password,
+  isLoginStored,
+}: {
+  email?: string;
+  password?: string;
+  isLoginStored?: boolean;
+}) => {
   const {
     handleSubmit,
     register,
@@ -120,6 +118,10 @@ export const ExampleFormLogin = () => {
     formState: { errors },
   } = useForm<LoginForm>({
     resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email,
+      isLoginStored,
+    },
   });
 
   function handleLoginSubmit(evt: LoginForm) {
@@ -155,10 +157,15 @@ export const ExampleFormLogin = () => {
                 <Input
                   onChange={(evt) => field.onChange(evt.target.value)}
                   type="password"
+                  defaultValue={password}
                 />
               )}
             />
             {renderErrorMessage(errors.password?.message)}
+          </div>
+          <div className="space-y-1 space-x-1 flex items-center justify-start">
+            <Label htmlFor="input-remind">Remind me</Label>
+            <Checkbox {...register("isLoginStored")} id="input-remind" />
           </div>
           <div className="text-center">
             <Button className="w-32">Submit</Button>

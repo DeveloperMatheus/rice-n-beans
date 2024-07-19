@@ -144,7 +144,11 @@ export const ExampleFormLogin = ({
         <form className="space-y-3" onSubmit={handleSubmit(handleLoginSubmit)}>
           <div className="space-y-1">
             <Label>Login</Label>
-            <Input {...register("email")} type="text" />
+            <Input
+              {...register("email")}
+              type="text"
+              isInvalid={!!errors.email?.message}
+            />
             {renderErrorMessage(errors.email?.message)}
           </div>
           <div className="space-y-1">
@@ -158,6 +162,7 @@ export const ExampleFormLogin = ({
                   onChange={(evt) => field.onChange(evt.target.value)}
                   type="password"
                   defaultValue={password}
+                  isInvalid={!!errors.password?.message}
                 />
               )}
             />

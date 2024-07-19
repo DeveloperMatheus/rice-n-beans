@@ -10,11 +10,7 @@ export default function DocumentationExampleFormPage() {
           This is not necessary, since i created uncontrolled components, but
           you can use the Controller HOC from RHF if you want
         </Text>
-        <ExampleFormLogin
-          email="rice@beans.com"
-          isLoginStored={true}
-          password="riceandbeans"
-        />
+        <ExampleFormLogin />
       </div>
     </section>
   );

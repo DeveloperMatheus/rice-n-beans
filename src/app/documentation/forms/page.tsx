@@ -202,6 +202,12 @@ const CODE_ERROR_VIEW = `<ErrorMessage>
 </ErrorMessage>
 `;
 
+const CODE_INPUT_VIEW = `<div className="space-y-3">
+  <Input placeholder="This is an input, type something!" />
+  <Input placeholder="Oops! I have an error!" isInvalid />
+</div>
+`;
+
 const CODE_CHECKBOX_VIEW = `<div className="flex items-center justify-start">
   <Label className="mr-3" htmlFor="test-check">This is a checkbox</Label>
   <Checkbox id="test-check" />
@@ -321,9 +327,7 @@ export default function DocumentationFormPage() {
             </div>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
-            <code>
-              {`<Input placeholder="This is an input, type something!" />`}
-            </code>
+            <code className="whitespace-pre">{CODE_INPUT_VIEW}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

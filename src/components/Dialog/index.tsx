@@ -1,34 +1,34 @@
-"use client";
+'use client'
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react'
 import {
   Modal,
   ModalContent,
   ModalFooter,
-  ModalHeader,
-} from "~/components/Modal";
-import { Text } from "~/components/Typography";
-import { Button } from "~/components/Layout";
-import { cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
-import { createPortal } from "react-dom";
+  ModalHeader
+} from '~/components/Modal'
+import { Text } from '~/components/Typography'
+import { Button } from '~/components/Layout'
+import { cva } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+import { createPortal } from 'react-dom'
 
-const dialogStyles = cva("max-w-[20rem] select-text");
+const dialogStyles = cva('max-w-[20rem] select-text')
 
 /* --- Context --- */
 type DialogContextProps = {
-  render: (modal: DialogProps, handleAction: (result: boolean) => void) => void;
-};
+  render: (modal: DialogProps, handleAction: (result: boolean) => void) => void
+}
 
 const DialogContext = createContext<DialogContextProps>({
-  render: () => {},
-});
+  render: () => {}
+})
 
 export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const [modal, setModal] = useState<
     DialogProps & { action: (value: boolean) => void }
-  >();
+  >()
 
   const render = (
     modal: DialogProps,
@@ -36,14 +36,14 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   ) => {
     setModal({
       ...modal,
-      action: (result) => {
-        setIsOpen(false);
-        handleAction(result);
-      },
-    });
+      action: result => {
+        setIsOpen(false)
+        handleAction(result)
+      }
+    })
 
-    setIsOpen(true);
-  };
+    setIsOpen(true)
+  }
 
   return (
     <DialogContext.Provider value={{ render }}>
@@ -63,39 +63,39 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
           document.body
         )}
     </DialogContext.Provider>
-  );
-};
+  )
+}
 
 type DialogProps = {
-  header?: string;
-  content?: string;
-  confirmText?: string;
-  rejectText?: string;
+  header?: string
+  content?: string
+  confirmText?: string
+  rejectText?: string
   variant?:
-    | "default"
-    | "secondary"
-    | "destructive"
-    | "outline"
-    | "ghost"
-    | "link";
-};
+    | 'default'
+    | 'secondary'
+    | 'destructive'
+    | 'outline'
+    | 'ghost'
+    | 'link'
+}
 
 /* --- DialogModal --- */
 const DialogModal = ({
   open,
   handleAction,
-  header = "Are you sure?",
-  content = "This action cannot be undone.",
-  rejectText = "Cancel",
-  confirmText = "Confirm",
-  variant = "default",
+  header = 'Are you sure?',
+  content = 'This action cannot be undone.',
+  rejectText = 'Cancel',
+  confirmText = 'Confirm',
+  variant = 'default'
 }: DialogProps & {
-  open: boolean;
-  handleAction?: (value: boolean) => void;
+  open: boolean
+  handleAction?: (value: boolean) => void
 }) => {
   function handleClose(value: boolean) {
-    if (!handleAction) return;
-    handleAction(value);
+    if (!handleAction) return
+    handleAction(value)
   }
 
   return (
@@ -130,22 +130,22 @@ const DialogModal = ({
         </Button>
       </ModalFooter>
     </Modal>
-  );
-};
+  )
+}
 
 /* --- Hook --- */
 export const useConfirm = () => {
-  const dialogContext = useContext(DialogContext);
+  const dialogContext = useContext(DialogContext)
 
   const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
-    const reactionPromise = new Promise<boolean>((resolve) => {
-      dialogContext.render(modal, resolve);
-    });
+    const reactionPromise = new Promise<boolean>(resolve => {
+      dialogContext.render(modal, resolve)
+    })
 
-    return reactionPromise;
-  };
+    return reactionPromise
+  }
 
   return {
-    getConfirmation,
-  };
-};
+    getConfirmation
+  }
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentProps, forwardRef } from 'react'
+import { ComponentProps } from 'react'
 
 import { VariantProps, cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
@@ -80,23 +80,21 @@ const BaseContent = ({
 BaseContent.displayName = 'BaseContent'
 
 /* --- BaseDrawer --- */
-const BaseDrawer = forwardRef(
-  ({
-    children,
-    className,
-    isOpen,
-    ...props
-  }: ComponentProps<'nav'> & VariantProps<typeof baseDrawerStyles>) => {
-    return (
-      <nav
-        className={twMerge(baseDrawerStyles({ className, isOpen }))}
-        {...props}
-      >
-        {children}
-      </nav>
-    )
-  }
-)
+const BaseDrawer = ({
+  children,
+  className,
+  isOpen,
+  ...props
+}: ComponentProps<'nav'> & VariantProps<typeof baseDrawerStyles>) => {
+  return (
+    <nav
+      className={twMerge(baseDrawerStyles({ className, isOpen }))}
+      {...props}
+    >
+      {children}
+    </nav>
+  )
+}
 
 BaseDrawer.displayName = 'BaseDrawer'
 

@@ -1,139 +1,143 @@
-"use client";
+'use client'
 
-import { ComponentProps, forwardRef } from "react";
+import { ComponentProps, forwardRef } from 'react'
 
-import { VariantProps, cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
-import { Menu } from "lucide-react";
+import { VariantProps, cva } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+import { Menu } from 'lucide-react'
 
-import { Button } from "~/components/Layout";
+import { Button } from '~/components/Layout'
 
-const baseStyles = cva("flex", {
+const baseStyles = cva('flex', {
   variants: {
     orientation: {
-      left: "flex-row",
-      right: "flex-row-reverse",
-    },
-  },
-});
-const baseContainerStyles = cva("h-screen w-full overflow-hidden");
+      left: 'flex-row',
+      right: 'flex-row-reverse'
+    }
+  }
+})
+const baseContainerStyles = cva('h-screen w-full overflow-hidden')
 const baseContentStyles = cva(
-  "bg-white dark:bg-zinc-900 p-3 h-screen overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
-);
+  'bg-white dark:bg-zinc-900 p-3 h-screen overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800'
+)
 const baseDrawerStyles = cva(
-  "p-3 bg-white dark:bg-zinc-900 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden",
+  'p-3 bg-white dark:bg-zinc-900 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
   {
     variants: {
       isOpen: {
-        true: "w-full lg:w-72 lg:p-5",
-        false: "hidden lg:block lg:w-14",
-      },
-    },
+        true: 'w-full lg:w-72 lg:p-5',
+        false: 'hidden lg:block lg:w-14'
+      }
+    }
   }
-);
+)
 const baseHeaderStyles = cva(
-  "bg-white dark:bg-zinc-900 w-full sticky top-0 shadow-md p-3 lg:border-t border-zinc-200 dark:border-zinc-800"
-);
-const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
+  'bg-white dark:bg-zinc-900 w-full sticky top-0 shadow-md p-3 lg:border-t border-zinc-200 dark:border-zinc-800'
+)
+const baseCloseDrawerStyles = cva('text-black dark:text-white text-2xl')
 
 /* --- Base --- */
-export const Base = forwardRef<
-  HTMLDivElement,
-  ComponentProps<"div"> & VariantProps<typeof baseStyles>
->(({ children, className, orientation = "left", ...props }, ref) => {
+
+const Base = ({
+  children,
+  className,
+  orientation = 'left',
+  ...props
+}: ComponentProps<'div'> & VariantProps<typeof baseStyles>) => {
   return (
-    <div
-      className={twMerge(baseStyles({ className, orientation }))}
-      ref={ref}
-      {...props}
-    >
+    <div className={twMerge(baseStyles({ className, orientation }))} {...props}>
       {children}
     </div>
-  );
-});
+  )
+}
 
-Base.displayName = "Base";
+Base.displayName = 'Base'
 
 /* --- BaseContainer --- */
-export const BaseContainer = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      className={twMerge(baseContainerStyles({ className }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+const BaseContainer = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(baseContainerStyles({ className }))} {...props}>
+    {children}
+  </div>
+)
 
-BaseContainer.displayName = "BaseContainer";
+BaseContainer.displayName = 'BaseContainer'
 
 /* --- BaseContent --- */
-export const BaseContent = forwardRef<HTMLElement, ComponentProps<"main">>(
-  ({ children, className, ...props }, ref) => (
-    <main
-      className={twMerge(baseContentStyles({ className }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </main>
-  )
-);
+const BaseContent = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'main'>) => (
+  <main className={twMerge(baseContentStyles({ className }))} {...props}>
+    {children}
+  </main>
+)
 
-BaseContent.displayName = "BaseContent";
+BaseContent.displayName = 'BaseContent'
 
 /* --- BaseDrawer --- */
-export const BaseDrawer = forwardRef<
-  HTMLElement,
-  ComponentProps<"nav"> & VariantProps<typeof baseDrawerStyles>
->(({ children, className, isOpen, ...props }, ref) => {
-  return (
-    <nav
-      className={twMerge(baseDrawerStyles({ className, isOpen }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </nav>
-  );
-});
-
-BaseDrawer.displayName = "BaseDrawer";
-
-/* --- BaseHeader --- */
-export const BaseHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => {
+const BaseDrawer = forwardRef(
+  ({
+    children,
+    className,
+    isOpen,
+    ...props
+  }: ComponentProps<'nav'> & VariantProps<typeof baseDrawerStyles>) => {
     return (
-      <div
-        className={twMerge(baseHeaderStyles({ className }))}
-        ref={ref}
+      <nav
+        className={twMerge(baseDrawerStyles({ className, isOpen }))}
         {...props}
       >
         {children}
-      </div>
-    );
+      </nav>
+    )
   }
-);
+)
 
-BaseHeader.displayName = "BaseHeader";
+BaseDrawer.displayName = 'BaseDrawer'
+
+/* --- BaseHeader --- */
+const BaseHeader = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => {
+  return (
+    <div className={twMerge(baseHeaderStyles({ className }))} {...props}>
+      {children}
+    </div>
+  )
+}
+
+BaseHeader.displayName = 'BaseHeader'
 
 /* --- BaseCloseDrawer --- */
-export const BaseToggleDrawer = forwardRef<
-  HTMLButtonElement,
-  ComponentProps<"button">
->(({ className, ...props }, ref) => {
+const BaseToggleDrawer = ({
+  className,
+  ...props
+}: ComponentProps<'button'>) => {
   return (
     <Button
       variant="ghost"
       className={twMerge(baseCloseDrawerStyles({ className }))}
-      ref={ref}
       {...props}
     >
       <Menu size={26} />
     </Button>
-  );
-});
+  )
+}
 
-BaseToggleDrawer.displayName = "BaseToggleDrawer";
+BaseToggleDrawer.displayName = 'BaseToggleDrawer'
+
+export {
+  Base,
+  BaseContainer,
+  BaseContent,
+  BaseDrawer,
+  BaseHeader,
+  BaseToggleDrawer
+}

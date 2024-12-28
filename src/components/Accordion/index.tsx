@@ -42,7 +42,7 @@ const AccordionProvider = ({
 }
 
 /* --- Wrapper --- */
-export const Accordion = ({
+const Accordion = ({
   children,
   className,
   ...props
@@ -63,7 +63,7 @@ type AccordionContentProps = {
   id: string
 } & ComponentProps<'div'>
 
-export const AccordionContent = ({
+const AccordionContent = ({
   children,
   className,
   id,
@@ -98,7 +98,7 @@ type AccordionTriggerProps = {
   id: string
 } & ComponentProps<'button'>
 
-export const AccordionTrigger = ({
+const AccordionTrigger = ({
   children,
   className,
   id,
@@ -141,3 +141,5 @@ export const AccordionTrigger = ({
 }
 
 AccordionTrigger.displayName = 'AccordionTrigger'
+
+export { Accordion, AccordionContent, AccordionTrigger }

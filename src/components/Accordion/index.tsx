@@ -35,9 +35,9 @@ const AccordionProvider = ({
   const [activeAccordion, setActiveAccordion] = useState(defaultValue)
 
   return (
-    <AccordionContext.Provider value={{ activeAccordion, setActiveAccordion }}>
+    <AccordionContext value={{ activeAccordion, setActiveAccordion }}>
       {children}
-    </AccordionContext.Provider>
+    </AccordionContext>
   )
 }
 

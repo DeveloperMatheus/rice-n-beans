@@ -1,56 +1,50 @@
-"use client";
+'use client'
 
-import {
-  ComponentProps,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
-import { twMerge } from "tailwind-merge";
+import { ComponentProps, useCallback, useEffect, useRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const modalStyles =
-  "rounded-lg w-full max-w-[40rem] open:animate-modal backdrop:backdrop-blur-sm open:backdrop:animate-fade-in";
-const modalContentStyles = "px-3 pb-3";
-const modalHeaderStyles = "px-3 pt-3";
+  'rounded-lg w-full max-w-[40rem] open:animate-modal backdrop:backdrop-blur-sm open:backdrop:animate-fade-in'
+const modalContentStyles = 'px-3 pb-3'
+const modalHeaderStyles = 'px-3 pt-3'
 const modalFooterStyles =
-  "border-t border-zinc-200 dark:border-zinc-800 flex justify-end p-3";
+  'border-t border-zinc-200 dark:border-zinc-800 flex justify-end p-3'
 
 /* --- Modal --- */
 type ModalProps = {
-  isOpen: boolean;
-  onCloseModal: () => void;
-} & ComponentProps<"dialog">;
+  isOpen: boolean
+  onCloseModal: () => void
+} & ComponentProps<'dialog'>
 
-export const Modal = ({
+const Modal = ({
   children,
   className,
   isOpen,
   onCloseModal,
   ...props
 }: ModalProps) => {
-  const ref = useRef<HTMLDialogElement>(null);
+  const ref = useRef<HTMLDialogElement>(null)
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (ref.current !== event.target) return;
-      onCloseModal();
+      if (ref.current !== event.target) return
+      onCloseModal()
     },
     [onCloseModal]
-  );
+  )
 
   useEffect(() => {
     if (isOpen) {
-      ref.current?.showModal();
-      document.addEventListener("click", handleClickOutside);
-      return;
+      ref.current?.showModal()
+      document.addEventListener('click', handleClickOutside)
+      return
     }
 
-    ref.current?.close();
+    ref.current?.close()
     return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
+      document.removeEventListener('click', handleClickOutside)
+    }
+  })
 
   return (
     <dialog
@@ -61,44 +55,48 @@ export const Modal = ({
     >
       {children}
     </dialog>
-  );
-};
+  )
+}
 
-Modal.displayName = "Modal";
+Modal.displayName = 'Modal'
 
 /* --- ModalContent --- */
-export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      className={twMerge(modalContentStyles, className)}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+const ModalContent = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalContentStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-ModalContent.displayName = "ModalContent";
+ModalContent.displayName = 'ModalContent'
 
 /* --- ModalHeader --- */
-export const ModalHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div className={twMerge(modalHeaderStyles, className)} ref={ref} {...props}>
-      {children}
-    </div>
-  )
-);
+const ModalHeader = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalHeaderStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-ModalHeader.displayName = "ModalHeader";
+ModalHeader.displayName = 'ModalHeader'
 
 /* --- ModalFooter --- */
-export const ModalFooter = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div className={twMerge(modalFooterStyles, className)} ref={ref} {...props}>
-      {children}
-    </div>
-  )
-);
+const ModalFooter = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalFooterStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-ModalFooter.displayName = "ModalFooter";
+ModalFooter.displayName = 'ModalFooter'
+
+export { Modal, ModalContent, ModalHeader, ModalFooter }

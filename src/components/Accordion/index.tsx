@@ -1,92 +1,85 @@
-"use client";
+'use client'
 
-import {
-  ComponentProps,
-  createContext,
-  forwardRef,
-  useContext,
-  useState,
-} from "react";
-import { twMerge } from "tailwind-merge";
-import { Button } from "~/components/Layout";
+import { ComponentProps, createContext, useContext, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
+import { Button } from '~/components/Layout'
 
 const accordionStyles =
-  "w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg";
-const accordionContentStyles = "mt-3";
+  'w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 p-3 rounded-lg'
+const accordionContentStyles = 'mt-3'
 const accordionTriggerStyles =
-  "w-full flex flex-row items-center justify-between";
+  'w-full flex flex-row items-center justify-between'
 
 /* --- Context --- */
 type AccordionProviderProps = {
-  children: React.ReactNode;
-  defaultValue?: string;
-};
+  children: React.ReactNode
+  defaultValue?: string
+}
 
 type AccordionContextProps = {
-  activeAccordion?: string;
-  setActiveAccordion: (value?: string) => void;
-};
+  activeAccordion?: string
+  setActiveAccordion: (value?: string) => void
+}
 
 const InitAccordion: AccordionContextProps = {
   activeAccordion: undefined,
-  setActiveAccordion: (value?: string) => {},
-};
+  setActiveAccordion: (value?: string) => {}
+}
 
-const AccordionContext = createContext<AccordionContextProps>(InitAccordion);
+const AccordionContext = createContext<AccordionContextProps>(InitAccordion)
 
 const AccordionProvider = ({
   children,
-  defaultValue,
+  defaultValue
 }: AccordionProviderProps) => {
-  const [activeAccordion, setActiveAccordion] = useState(defaultValue);
+  const [activeAccordion, setActiveAccordion] = useState(defaultValue)
 
   return (
     <AccordionContext.Provider value={{ activeAccordion, setActiveAccordion }}>
       {children}
     </AccordionContext.Provider>
-  );
-};
+  )
+}
 
 /* --- Wrapper --- */
-export const Accordion = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <AccordionProvider>
-        <div
-          className={twMerge(accordionStyles, className)}
-          ref={ref}
-          {...props}
-        >
-          {children}
-        </div>
-      </AccordionProvider>
-    );
-  }
-);
+export const Accordion = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => {
+  return (
+    <AccordionProvider>
+      <div className={twMerge(accordionStyles, className)} {...props}>
+        {children}
+      </div>
+    </AccordionProvider>
+  )
+}
 
-Accordion.displayName = "Accordion";
+Accordion.displayName = 'Accordion'
 
 /* --- Content --- */
 type AccordionContentProps = {
-  id: string;
-} & ComponentProps<"div">;
+  id: string
+} & ComponentProps<'div'>
 
-export const AccordionContent = forwardRef<
-  HTMLDivElement,
-  AccordionContentProps
->(({ children, className, id, ...props }, ref) => {
-  const { activeAccordion } = useContext(AccordionContext);
+export const AccordionContent = ({
+  children,
+  className,
+  id,
+  ...props
+}: AccordionContentProps) => {
+  const { activeAccordion } = useContext(AccordionContext)
 
   function isAccordionOpen(): boolean {
-    return activeAccordion === id;
+    return activeAccordion === id
   }
 
-  if (!isAccordionOpen()) return;
+  if (!isAccordionOpen()) return
 
   return (
     <div
       className={twMerge(accordionContentStyles, className)}
-      ref={ref}
       {...props}
       id={`accordion-${id}`}
       aria-labelledby={id}
@@ -95,28 +88,30 @@ export const AccordionContent = forwardRef<
     >
       {children}
     </div>
-  );
-});
+  )
+}
 
-AccordionContent.displayName = "AccordionContent";
+AccordionContent.displayName = 'AccordionContent'
 
 /* --- Trigger --- */
 type AccordionTriggerProps = {
-  id: string;
-} & ComponentProps<"button">;
+  id: string
+} & ComponentProps<'button'>
 
-export const AccordionTrigger = forwardRef<
-  HTMLButtonElement,
-  AccordionTriggerProps
->(({ children, className, id, ...props }, ref) => {
-  const { activeAccordion, setActiveAccordion } = useContext(AccordionContext);
+export const AccordionTrigger = ({
+  children,
+  className,
+  id,
+  ...props
+}: AccordionTriggerProps) => {
+  const { activeAccordion, setActiveAccordion } = useContext(AccordionContext)
 
   function isAccordionOpen(): boolean {
-    return activeAccordion === id;
+    return activeAccordion === id
   }
 
   function renderAccordionIcon(): React.ReactNode {
-    const iconAnimation = isAccordionOpen() ? "rotate-180" : "rotate-0";
+    const iconAnimation = isAccordionOpen() ? 'rotate-180' : 'rotate-0'
 
     return (
       <div
@@ -124,26 +119,25 @@ export const AccordionTrigger = forwardRef<
         tabIndex={-1}
         className={`transition-all ${iconAnimation} min-w-6 min-h-6 bg-arrow-icon`}
       ></div>
-    );
+    )
   }
 
   return (
     <Button
       className={twMerge(accordionTriggerStyles, className)}
-      ref={ref}
       {...props}
       variant="outline"
       id={id}
       aria-expanded={isAccordionOpen()}
       aria-controls={`accordion-${id}`}
       onClick={() => {
-        setActiveAccordion(isAccordionOpen() ? undefined : id);
+        setActiveAccordion(isAccordionOpen() ? undefined : id)
       }}
     >
       {children}
       {renderAccordionIcon()}
     </Button>
-  );
-});
+  )
+}
 
-AccordionTrigger.displayName = "AccordionTrigger";
+AccordionTrigger.displayName = 'AccordionTrigger'

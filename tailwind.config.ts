@@ -11,11 +11,18 @@ const config: Config = {
     extend: {
       colors: {
         'light-primary': '#e64a19',
+        'light-layout': '#fff',
+
+        'dark-layout': '#18181b',
         'dark-primary': '#09090b'
       },
       borderColor: {
         light: '#e4e4e7',
         dark: '#27272a'
+      },
+      page: {
+        light: '#fff',
+        dark: '#18181b'
       },
       backgroundImage: {
         'arrow-icon':

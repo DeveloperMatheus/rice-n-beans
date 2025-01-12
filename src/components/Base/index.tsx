@@ -18,10 +18,10 @@ const baseStyles = cva('flex', {
 })
 const baseContainerStyles = 'h-screen w-full overflow-hidden'
 const baseContentStyles =
-  'bg-white dark:bg-dark-layout p-3 overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-light dark:border-dark'
+  'bg-white dark:bg-dark-base p-3 overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-light dark:border-dark'
 
 const baseDrawerStyles = cva(
-  'bg-white dark:bg-dark-layout p-3 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-light dark:border-dark overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
+  'bg-white dark:bg-dark-base p-3 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-light dark:border-dark overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
   {
     variants: {
       isOpen: {
@@ -32,7 +32,7 @@ const baseDrawerStyles = cva(
   }
 )
 const baseHeaderStyles =
-  'bg-white dark:bg-dark-layout w-full sticky top-0 shadow-md p-3 lg:border-t border-light dark:border-dark'
+  'bg-white dark:bg-dark-base w-full sticky top-0 shadow-md p-3 lg:border-t border-light dark:border-dark'
 
 const baseToggleDrawerStyles = 'text-black dark:text-white text-2xl'
 

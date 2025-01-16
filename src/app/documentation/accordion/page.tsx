@@ -18,7 +18,8 @@ const accordionContentStyles = 'mt-3'
 const accordionTriggerStyles = 'w-full flex flex-row items-center justify-between'
 `
 
-const ACCORDION_CODE_COMPONENT = `/* --- Context --- */
+const ACCORDION_CODE_COMPONENT = `
+/* --- Context --- */
 type AccordionProviderProps = {
   children: React.ReactNode
   defaultValue?: string

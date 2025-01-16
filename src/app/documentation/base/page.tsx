@@ -1,144 +1,151 @@
-import { Text } from "~/components/Typography";
-import { DocumentationSection } from "../components/DocumentationSection";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
-import { DocumentationBaseExample } from "./components/DocumentationBaseExample";
+import { Text } from '~/components/Typography'
+import { DocumentationSection } from '../components/DocumentationSection'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { DocumentationBaseExample } from './components/DocumentationBaseExample'
 
-const BASE_CODE_STLYE = `"use client";
+const BASE_CODE_STLYE = `'use client'
 
-import { ComponentProps, forwardRef } from "react";
+import { ComponentProps } from 'react'
 
-import { VariantProps, cva } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
-import { Menu } from "lucide-react";
+import { VariantProps, cva } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+import { Menu } from 'lucide-react'
 
-import { Button } from "~/components/Layout";
+import { Button } from '~/components/Layout'
 
-const baseStyles = cva("flex", {
+const baseStyles = cva('flex', {
   variants: {
     orientation: {
-      left: "flex-row",
-      right: "flex-row-reverse",
-    },
-  },
-});
-const baseContainerStyles = cva("h-screen w-full");
-const baseContentStyles = cva(
-  "bg-white dark:bg-zinc-900 px-3 py-2 overflow-y-auto h-screen h-[calc(100vh-4.5625rem)] border-t lg:border-y border-zinc-200 dark:border-zinc-800"
-);
+      left: 'flex-row',
+      right: 'flex-row-reverse'
+    }
+  }
+})
+const baseContainerStyles = 'h-screen w-full overflow-hidden'
+const baseContentStyles =
+  'bg-scaffold p-3 overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-default'
+
 const baseDrawerStyles = cva(
-  "p-3 bg-white dark:bg-zinc-900 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-zinc-200 dark:border-zinc-800 overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden",
+  'bg-scaffold p-3 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-default overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
   {
     variants: {
       isOpen: {
-        true: "w-full lg:w-72 lg:p-5",
-        false: "hidden lg:block lg:w-14",
-      },
-    },
+        true: 'w-full lg:w-72 lg:p-5',
+        false: 'hidden lg:block lg:w-14'
+      }
+    }
   }
-);
-const baseHeaderStyles = cva(
-  "bg-white dark:bg-zinc-900 w-full sticky top-0 shadow-md p-3 lg:border-t border-zinc-200 dark:border-zinc-800"
-);
-const baseCloseDrawerStyles = cva("text-black dark:text-white text-2xl");
-`;
+)
+const baseHeaderStyles =
+  'bg-scaffold w-full sticky top-0 shadow-md p-3 lg:border-t border-default'
+
+const baseToggleDrawerStyles = 'text-contrast text-2xl'
+`
 
 const BASE_CODE_COMPONENT = `
-export const Base = forwardRef<
-  HTMLDivElement,
-  ComponentProps<"div"> & VariantProps<typeof baseStyles>
->(({ children, className, orientation = "left", ...props }, ref) => {
+/* --- Base --- */
+const Base = ({
+  children,
+  className,
+  orientation = 'left',
+  ...props
+}: ComponentProps<'div'> & VariantProps<typeof baseStyles>) => {
   return (
-    <div
-      className={twMerge(baseStyles({ className, orientation }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-});
-
-Base.displayName = "Base";
-
-export const BaseContainer = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      className={twMerge(baseContainerStyles({ className }))}
-      ref={ref}
-      {...props}
-    >
+    <div className={twMerge(baseStyles({ className, orientation }))} {...props}>
       {children}
     </div>
   )
-);
+}
 
-BaseContainer.displayName = "BaseContainer";
+Base.displayName = 'Base'
 
-export const BaseContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      className={twMerge(baseContentStyles({ className }))}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
-  )
-);
+/* --- BaseContainer --- */
+const BaseContainer = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(baseContainerStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-BaseContent.displayName = "BaseContent";
+BaseContainer.displayName = 'BaseContainer'
 
-export const BaseDrawer = forwardRef<
-  HTMLElement,
-  ComponentProps<"nav"> & VariantProps<typeof baseDrawerStyles>
->(({ children, className, isOpen, ...props }, ref) => {
+/* --- BaseContent --- */
+const BaseContent = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'main'>) => (
+  <main className={twMerge(baseContentStyles, className)} {...props}>
+    {children}
+  </main>
+)
+
+BaseContent.displayName = 'BaseContent'
+
+/* --- BaseDrawer --- */
+const BaseDrawer = ({
+  children,
+  className,
+  isOpen,
+  ...props
+}: ComponentProps<'nav'> & VariantProps<typeof baseDrawerStyles>) => {
   return (
     <nav
       className={twMerge(baseDrawerStyles({ className, isOpen }))}
-      ref={ref}
       {...props}
     >
       {children}
     </nav>
-  );
-});
+  )
+}
 
-BaseDrawer.displayName = "BaseDrawer";
+BaseDrawer.displayName = 'BaseDrawer'
 
-export const BaseHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <div
-        className={twMerge(baseHeaderStyles({ className }))}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+/* --- BaseHeader --- */
+const BaseHeader = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => {
+  return (
+    <div className={twMerge(baseHeaderStyles, className)} {...props}>
+      {children}
+    </div>
+  )
+}
 
-BaseHeader.displayName = "BaseHeader";
+BaseHeader.displayName = 'BaseHeader'
 
-export const BaseToggleDrawer = forwardRef<
-  HTMLButtonElement,
-  ComponentProps<"button">
->(({ className, ...props }, ref) => {
+/* --- BaseToggleDrawer --- */
+const BaseToggleDrawer = ({
+  className,
+  ...props
+}: ComponentProps<'button'>) => {
   return (
     <Button
       variant="ghost"
-      className={twMerge(baseCloseDrawerStyles({ className }))}
-      ref={ref}
+      className={twMerge(baseToggleDrawerStyles, className)}
       {...props}
     >
-      <Menu size={32} />
+      <Menu size={26} />
     </Button>
-  );
-});
+  )
+}
 
-BaseToggleDrawer.displayName = "BaseToggleDrawer";
-`;
+BaseToggleDrawer.displayName = 'BaseToggleDrawer'
+
+export {
+  Base,
+  BaseContainer,
+  BaseContent,
+  BaseDrawer,
+  BaseHeader,
+  BaseToggleDrawer
+}
+`
 
 const BASE_CODE_VIEW = `"use client";
 
@@ -180,7 +187,7 @@ export const DocumentationBaseExample = () => {
     </Base>
   );
 };
-`;
+`
 
 export default function DocumentationBasePage() {
   return (
@@ -194,14 +201,14 @@ export default function DocumentationBasePage() {
         </Text>
 
         <Text>
-          The base is composed by the following components: {`<Base>`},{" "}
-          {`<BaseContainer>`}, {`<BaseContent>`}, {`<BaseDrawer>`},{" "}
+          The base is composed by the following components: {`<Base>`},{' '}
+          {`<BaseContainer>`}, {`<BaseContent>`}, {`<BaseDrawer>`},{' '}
           {`<BaseHeader>`}, {`<BaseToggleDrawer>`}.
         </Text>
         <Text>
           The {`<Base>`} has a prop called <strong>orientation</strong>. This
           prop is meant to control the the position of the {`<BaseDrawer>`}, vs
-          the other components (container, content). This prop value can be:{" "}
+          the other components (container, content). This prop value can be:{' '}
           <strong>{'"left" | "right"'}</strong>.
         </Text>
         <Text>
@@ -234,5 +241,5 @@ export default function DocumentationBasePage() {
         </Tabs>
       </DocumentationSection>
     </section>
-  );
+  )
 }

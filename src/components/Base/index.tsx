@@ -37,7 +37,6 @@ const baseHeaderStyles =
 const baseToggleDrawerStyles = 'text-contrast text-2xl'
 
 /* --- Base --- */
-
 const Base = ({
   children,
   className,
@@ -113,7 +112,7 @@ const BaseHeader = ({
 
 BaseHeader.displayName = 'BaseHeader'
 
-/* --- BaseCloseDrawer --- */
+/* --- BaseToggleDrawer --- */
 const BaseToggleDrawer = ({
   className,
   ...props

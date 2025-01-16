@@ -8,70 +8,70 @@ import {
   TableProperties,
   TableRowsSplit,
   TriangleAlert,
-  ListCollapse,
-} from "lucide-react";
-import Link from "next/link";
-import { Text } from "~/components/Typography";
+  ListCollapse
+} from 'lucide-react'
+import Link from 'next/link'
+import { Text } from '~/components/Typography'
 
 const MOCK_COMPONENTS: { icon: React.ReactNode; title: string; url: string }[] =
   [
     {
       icon: <BookText size={26} />,
-      title: "Forms",
-      url: "/documentation/forms",
+      title: 'Forms',
+      url: '/documentation/forms'
     },
     {
       icon: <LayoutPanelLeft size={26} />,
-      title: "Layout",
-      url: "/documentation/layout",
+      title: 'Layout',
+      url: '/documentation/layout'
     },
     {
       icon: <InspectionPanel size={26} />,
-      title: "Modal",
-      url: "/documentation/modal",
+      title: 'Modal',
+      url: '/documentation/modal'
     },
     {
       icon: <TableProperties size={26} />,
-      title: "Table",
-      url: "/documentation/table",
+      title: 'Table',
+      url: '/documentation/table'
     },
     {
       icon: <TableRowsSplit size={26} />,
-      title: "Tabs",
-      url: "/documentation/tabs",
+      title: 'Tabs',
+      url: '/documentation/tabs'
     },
     {
       icon: <BookType size={26} />,
-      title: "Typography",
-      url: "/documentation/typography",
+      title: 'Typography',
+      url: '/documentation/typography'
     },
     {
       icon: <PanelLeftDashed size={26} />,
-      title: "Base",
-      url: "/documentation/base",
+      title: 'Base',
+      url: '/documentation/base'
     },
     {
       icon: <TriangleAlert size={26} />,
-      title: "Dialog",
-      url: "/documentation/dialog",
+      title: 'Dialog',
+      url: '/documentation/dialog'
     },
     {
       icon: <ListCollapse size={26} />,
-      title: "Accordion",
-      url: "/documentation/accordion",
-    },
-  ];
+      title: 'Accordion',
+      url: '/documentation/accordion'
+    }
+  ]
 
 export const DrawerItems = ({
   isOpen,
-  onClickDrawerItem,
+  onClickDrawerItem
 }: {
-  isOpen: boolean;
-  onClickDrawerItem: () => void;
+  isOpen: boolean
+  onClickDrawerItem: () => void
 }) => {
   function renderOpenContent(element: React.ReactNode): React.ReactNode {
-    if (!isOpen) return;
-    return element;
+    if (!isOpen) return
+    return element
   }
 
   function renderMockComponents() {
@@ -89,7 +89,7 @@ export const DrawerItems = ({
           </Link>
         ))}
       </div>
-    );
+    )
   }
   return (
     <div className="space-y-5">
@@ -118,5 +118,5 @@ export const DrawerItems = ({
         {renderMockComponents()}
       </div>
     </div>
-  );
-};
+  )
+}

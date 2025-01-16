@@ -10,36 +10,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        light: {
-          primary: '#e64a19',
-          success: '#15803d',
-          error: '#ef4444'
-        },
-        dark: {
-          primary: '#09090b',
-          base: '#18181b',
-          success: '#166534',
-          error: '#7f1d1d'
-        }
+        primary: 'hsl(var(--primary))',
+        secondary: 'hsl(var(--secondary))',
+        scaffold: 'hsl(var(--scaffold))',
+        success: 'hsl(var(--success))',
+        error: 'hsl(var(--error))',
+        accent: 'hsl(var(--accent))',
+        contrast: 'hsl(var(--contrast))'
       },
       textColor: {
-        light: '#313131',
-        dark: '#e4e4e7'
+        'primary-contrast': 'hsl(var(--primary-contrast))'
       },
       borderColor: {
-        light: '#e4e4e7',
-        dark: '#27272a'
+        default: 'hsl(var(--border))'
       },
       placeholderColor: {
-        light: '#71717a',
-        dark: '#a1a1aa'
+        default: 'hsl(var(--placeholder))'
       },
       ringColor: {
-        light: '#09090b',
-        dark: '#d4d4d8'
-      },
-      ringOffsetColor: {
-        dark: '#09090b'
+        default: 'hsl(var(--ring))'
       },
       backgroundImage: {
         'arrow-icon':

@@ -7,8 +7,7 @@ const modalStyles =
   'rounded-lg w-full max-w-[40rem] open:animate-modal backdrop:backdrop-blur-sm open:backdrop:animate-fade-in'
 const modalContentStyles = 'px-3 pb-3'
 const modalHeaderStyles = 'px-3 pt-3'
-const modalFooterStyles =
-  'border-t border-zinc-200 dark:border-zinc-800 flex justify-end p-3'
+const modalFooterStyles = 'border-t border-default flex justify-end p-3'
 
 /* --- Modal --- */
 type ModalProps = {

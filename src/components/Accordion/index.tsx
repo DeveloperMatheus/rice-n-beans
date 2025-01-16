@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 import { Button } from '~/components/Layout'
 
 const accordionStyles =
-  'w-full bg-white dark:bg-dark-primary border border-light dark:border-dark p-3 rounded-lg'
+  'w-full bg-scaffold border border-default p-3 rounded-lg'
 const accordionContentStyles = 'mt-3'
 const accordionTriggerStyles =
   'w-full flex flex-row items-center justify-between'

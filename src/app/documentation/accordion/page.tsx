@@ -1,11 +1,11 @@
-import { Text } from "~/components/Typography";
-import { DocumentationSection } from "../components/DocumentationSection";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
+import { Text } from '~/components/Typography'
+import { DocumentationSection } from '../components/DocumentationSection'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import {
   Accordion,
   AccordionContent,
-  AccordionTrigger,
-} from "~/components/Accordion";
+  AccordionTrigger
+} from '~/components/Accordion'
 
 const ACCORDION_CODE_STLYE = `"use client";
 
@@ -24,7 +24,7 @@ const accordionStyles =
 const accordionContentStyles = "mt-3";
 const accordionTriggerStyles =
   "w-full flex flex-row items-center justify-between";
-`;
+`
 
 const ACCORDION_CODE_COMPONENT = `/* --- Context --- */
 type AccordionProviderProps = {
@@ -157,7 +157,7 @@ export const AccordionTrigger = forwardRef<
 });
 
 AccordionTrigger.displayName = "AccordionTrigger";
-`;
+`
 
 const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
   <div>
@@ -173,7 +173,7 @@ const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
     <AccordionContent id="test3">Content 3</AccordionContent>
   </div>
 </Accordion>
-`;
+`
 
 export default function DocumentationAccordionPage() {
   return (
@@ -219,5 +219,5 @@ export default function DocumentationAccordionPage() {
         </Tabs>
       </DocumentationSection>
     </section>
-  );
+  )
 }

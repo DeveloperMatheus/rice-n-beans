@@ -12,13 +12,10 @@ import {
 import { twMerge } from 'tailwind-merge'
 import { Button } from '~/components/Layout'
 
-const tabsStyles =
-  'border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 rounded-lg p-3'
+const tabsStyles = 'border border-default bg-scaffold rounded-lg p-3'
 const tabListStyles =
   'flex flex-row items-center justify-start list-none overflow-x-auto space-x-3'
 const tabPanelStyles = 'mt-3 w-full rounded-b-lg'
-const tabButtonStyles =
-  'focus:ring-0 focus:ring-transparent dark:focus:ring-transparent'
 
 /* --- Context --- */
 type TabsProviderProps = {
@@ -197,7 +194,6 @@ const Tab = ({ children, className, id, ...props }: TabButtonProps) => {
 
   return (
     <Button
-      className={twMerge(tabButtonStyles, className)}
       onClick={evt => {
         setActiveTab(id)
         onClickDown(evt)

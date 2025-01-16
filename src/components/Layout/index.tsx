@@ -30,7 +30,7 @@ const buttonStyles = cva(
         destructive:
           'bg-error text-white dark:text-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'border border-default text-contrast bg-scaffold hover:bg-scaffold/90 active:text-contrast/85',
+          'border border-default text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
         secondary:
           'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:

@@ -1,6 +1,6 @@
-import { Text } from "~/components/Typography";
-import { DocumentationSection } from "../components/DocumentationSection";
-import { Badge, Button, Card } from "~/components/Layout";
+import { Text } from '~/components/Typography'
+import { DocumentationSection } from '../components/DocumentationSection'
+import { Badge, Button, Card } from '~/components/Layout'
 import {
   Table,
   TableBody,
@@ -8,100 +8,109 @@ import {
   TableFooter,
   TableHead,
   TableHeader,
-  TableRow,
-} from "~/components/Table";
+  TableRow
+} from '~/components/Table'
 
-import { Mail } from "lucide-react";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
+import { Mail } from 'lucide-react'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 
-const CODE_TABLE_STLYES = `import { ComponentProps, forwardRef } from "react";
-import { twMerge } from "tailwind-merge";
+const CODE_TABLE_STLYES = `import { ComponentProps } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const tableStyles = "border-collapse text-black dark:text-zinc-200";
-const tableDataStyles = "px-2 py-1 text-center";
-const tableRowStyles =
-  "[&:not(:last-child)]:border-b border-zinc-200 dark:border-zinc-800";
-const tableHeadStyles = "px-2 py-1 text-center";
-const tableHeaderStyles =
-  "border-b border-zinc-200 dark:border-zinc-800 text-center";
-const tableFooterStyles =
-  "border-t border-zinc-200 dark:border-zinc-800 font-bold";
-`;
+const tableStyles = 'border-collapse text-contrast'
+const tableDataStyles = 'px-2 py-1 text-center'
+const tableRowStyles = '[&:not(:last-child)]:border-b border-default'
+const tableHeadStyles = 'px-2 py-1 text-center'
+const tableHeaderStyles = 'border-b border-default text-center'
+const tableFooterStyles = 'border-t border-default font-bold'
+`
 
 const CODE_TABLE_COMPONENT = `
-export const Table = forwardRef<HTMLTableElement, ComponentProps<"table">>(
-  ({ children, className, ...props }, ref) => (
-    <table className={twMerge(tableStyles, className)} ref={ref} {...props}>
-      {children}
-    </table>
-  )
-);
+/* --- Table --- */
+const Table = ({ children, className, ...props }: ComponentProps<'table'>) => (
+  <table className={twMerge(tableStyles, className)} {...props}>
+    {children}
+  </table>
+)
 
-Table.displayName = "Table";
+Table.displayName = 'Table'
 
-export const TableBody = forwardRef<
-  HTMLTableSectionElement,
-  ComponentProps<"tbody">
->(({ children, className, ...props }, ref) => (
-  <tbody className={twMerge(className)} ref={ref} {...props}>
+/* --- TableBody --- */
+const TableBody = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'tbody'>) => (
+  <tbody className={twMerge(className)} {...props}>
     {children}
   </tbody>
-));
+)
 
-TableBody.displayName = "TableBody";
+TableBody.displayName = 'TableBody'
 
-export const TableData = forwardRef<HTMLTableCellElement, ComponentProps<"td">>(
-  ({ children, className, ...props }, ref) => (
-    <td className={twMerge(tableDataStyles, className)} ref={ref} {...props}>
-      {children}
-    </td>
-  )
-);
+/* --- TableData --- */
+const TableData = ({ children, className, ...props }: ComponentProps<'td'>) => (
+  <td className={twMerge(tableDataStyles, className)} {...props}>
+    {children}
+  </td>
+)
 
-TableData.displayName = "TableData";
+TableData.displayName = 'TableData'
 
-export const TableRow = forwardRef<HTMLTableRowElement, ComponentProps<"tr">>(
-  ({ children, className, ...props }, ref) => (
-    <tr className={twMerge(tableRowStyles, className)} ref={ref} {...props}>
-      {children}
-    </tr>
-  )
-);
+/* --- TableRow --- */
+const TableRow = ({ children, className, ...props }: ComponentProps<'tr'>) => (
+  <tr className={twMerge(tableRowStyles, className)} {...props}>
+    {children}
+  </tr>
+)
 
-TableRow.displayName = "TableRow";
+TableRow.displayName = 'TableRow'
 
-export const TableHead = forwardRef<HTMLTableCellElement, ComponentProps<"th">>(
-  ({ children, className, ...props }, ref) => (
-    <th className={twMerge(tableHeadStyles, className)} ref={ref} {...props}>
-      {children}
-    </th>
-  )
-);
+/* --- TableHead --- */
+const TableHead = ({ children, className, ...props }: ComponentProps<'th'>) => (
+  <th className={twMerge(tableHeadStyles, className)} {...props}>
+    {children}
+  </th>
+)
 
-TableHead.displayName = "TableHead";
+TableHead.displayName = 'TableHead'
 
-export const TableHeader = forwardRef<
-  HTMLTableSectionElement,
-  ComponentProps<"thead">
->(({ children, className, ...props }, ref) => (
-  <thead className={twMerge(tableHeaderStyles, className)} ref={ref} {...props}>
+/* --- TableHeader --- */
+const TableHeader = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'thead'>) => (
+  <thead className={twMerge(tableHeaderStyles, className)} {...props}>
     {children}
   </thead>
-));
+)
 
-TableHeader.displayName = "TableHeader";
+TableHeader.displayName = 'TableHeader'
 
-export const TableFooter = forwardRef<
-  HTMLTableSectionElement,
-  ComponentProps<"tfoot">
->(({ children, className, ...props }, ref) => (
-  <tfoot className={twMerge(tableFooterStyles, className)} ref={ref} {...props}>
+/* --- TableFooter --- */
+const TableFooter = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'tfoot'>) => (
+  <tfoot className={twMerge(tableFooterStyles, className)} {...props}>
     {children}
   </tfoot>
-));
+)
 
-TableFooter.displayName = "TableFooter";
-`;
+TableFooter.displayName = 'TableFooter'
+
+export {
+  Table,
+  TableBody,
+  TableData,
+  TableRow,
+  TableHead,
+  TableHeader,
+  TableFooter
+}
+`
 
 const CODE_TABLE_VIEW = `<Table>
   <TableHeader>
@@ -153,7 +162,7 @@ const CODE_TABLE_VIEW = `<Table>
     </TableRow>
   </TableFooter>
 </Table>
-`;
+`
 export default function DocumentationTablePage() {
   return (
     <section>
@@ -166,8 +175,8 @@ export default function DocumentationTablePage() {
         </Text>
 
         <Text>
-          The table is composed by the following components: {`<Table>`},{" "}
-          {`<TableHeader>`}, {`<TableHead>`}, {`<TableBody>`}, {`<TableRow>`}{" "}
+          The table is composed by the following components: {`<Table>`},{' '}
+          {`<TableHeader>`}, {`<TableHead>`}, {`<TableBody>`}, {`<TableRow>`}{' '}
           {`<TableData>`}, and {`<TableFooter>`}.
         </Text>
       </div>
@@ -243,5 +252,5 @@ export default function DocumentationTablePage() {
         </Tabs>
       </DocumentationSection>
     </section>
-  );
+  )
 }

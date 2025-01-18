@@ -1,63 +1,56 @@
-import { Text } from "~/components/Typography";
-import { DocumentationSection } from "../components/DocumentationSection";
-import Link from "next/link";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
+import { Text } from '~/components/Typography'
+import { DocumentationSection } from '../components/DocumentationSection'
+import Link from 'next/link'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 
-const CODE_MODAL_STLYES = `"use client";
+const CODE_MODAL_STLYES = `'use client'
 
-import {
-  ComponentProps,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
-
-import { twMerge } from "tailwind-merge";
+import { ComponentProps, useCallback, useEffect, useRef } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const modalStyles =
-  "rounded-lg w-full max-w-[40rem] open:animate-modal backdrop:backdrop-blur-sm open:backdrop:animate-fade-in";
-const modalContentStyles = "px-3 pb-3";
-const modalHeaderStyles = "px-3 pt-3";
-const modalFooterStyles =
-  "border-t border-zinc-200 dark:border-zinc-800 p-3 flex justify-end";
-`;
+  'rounded-lg w-full max-w-[40rem] open:animate-modal backdrop:backdrop-blur-sm open:backdrop:animate-fade-in'
+const modalContentStyles = 'px-3 pb-3'
+const modalHeaderStyles = 'px-3 pt-3'
+const modalFooterStyles = 'border-t border-default flex justify-end p-3'
+`
 
 const CODE_MODAL_COMPONENT = `
+/* --- Modal --- */
 type ModalProps = {
-  isOpen: boolean;
-  onCloseModal: () => void;
-} & ComponentProps<"dialog">;
+  isOpen: boolean
+  onCloseModal: () => void
+} & ComponentProps<'dialog'>
 
-export const Modal = ({
+const Modal = ({
   children,
   className,
   isOpen,
   onCloseModal,
   ...props
 }: ModalProps) => {
-  const ref = useRef<HTMLDialogElement>(null);
+  const ref = useRef<HTMLDialogElement>(null)
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (ref.current !== event.target) return;
-      onCloseModal();
+      if (ref.current !== event.target) return
+      onCloseModal()
     },
     [onCloseModal]
-  );
+  )
 
   useEffect(() => {
     if (isOpen) {
-      ref.current?.showModal();
-      document.addEventListener("click", handleClickOutside);
-      return;
+      ref.current?.showModal()
+      document.addEventListener('click', handleClickOutside)
+      return
     }
 
-    ref.current?.close();
+    ref.current?.close()
     return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
+      document.removeEventListener('click', handleClickOutside)
+    }
+  })
 
   return (
     <dialog
@@ -68,45 +61,52 @@ export const Modal = ({
     >
       {children}
     </dialog>
-  );
-};
-
-Modal.displayName = "Modal";
-
-export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div
-      className={twMerge(modalContentStyles, className)}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </div>
   )
-);
+}
 
-ModalContent.displayName = "ModalContent";
+Modal.displayName = 'Modal'
 
-export const ModalHeader = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div className={twMerge(modalHeaderStyles, className)} ref={ref} {...props}>
-      {children}
-    </div>
-  )
-);
+/* --- ModalContent --- */
+const ModalContent = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalContentStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-ModalHeader.displayName = "ModalHeader";
+ModalContent.displayName = 'ModalContent'
 
-export const ModalFooter = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ children, className, ...props }, ref) => (
-    <div className={twMerge(modalFooterStyles, className)} ref={ref} {...props}>
-      {children}
-    </div>
-  )
-);
+/* --- ModalHeader --- */
+const ModalHeader = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalHeaderStyles, className)} {...props}>
+    {children}
+  </div>
+)
 
-ModalFooter.displayName = "ModalFooter";
-`;
+ModalHeader.displayName = 'ModalHeader'
+
+/* --- ModalFooter --- */
+const ModalFooter = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<'div'>) => (
+  <div className={twMerge(modalFooterStyles, className)} {...props}>
+    {children}
+  </div>
+)
+
+ModalFooter.displayName = 'ModalFooter'
+
+export { Modal, ModalContent, ModalHeader, ModalFooter }
+`
 
 const CODE_MODAL_VIEW = `<Modal
   className="max-w-[60rem]"
@@ -126,7 +126,7 @@ const CODE_MODAL_VIEW = `<Modal
     </Card>
   </ModalContent>
 </Modal>
-`;
+`
 
 export default function DocumentationModalPage() {
   return (
@@ -135,16 +135,16 @@ export default function DocumentationModalPage() {
         <Text tag="h1">Modal</Text>
 
         <Text tag="h2">
-          Modal is a controlled component made through the use of the{" "}
+          Modal is a controlled component made through the use of the{' '}
           {`<dialog>`} api. It is a blocking element so the user cannot interact
           with the rest of the page until the modal is closed.
         </Text>
 
         <Text>
-          The modal is composed by the following components: {`<Modal>`},{" "}
+          The modal is composed by the following components: {`<Modal>`},{' '}
           {`<ModalContent>`}, {`<ModalHeader>`} and {`<ModalFooter>`}. See:
           <Link href="https://developer.mozilla.org/es/docs/Web/HTML/Element/dialog">
-            {" "}
+            {' '}
             https://developer.mozilla.org/es/docs/Web/HTML/Element/dialog
           </Link>
         </Text>
@@ -174,5 +174,5 @@ export default function DocumentationModalPage() {
         </Tabs>
       </DocumentationSection>
     </section>
-  );
+  )
 }

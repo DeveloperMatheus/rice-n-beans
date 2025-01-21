@@ -10,7 +10,7 @@ const badgeStyles = cva(
         default: 'bg-primary text-primary-contrast hover:bg-primary/90',
         destructive: 'bg-error text-white dark:text-contrast hover:bg-error/90',
         outline:
-          'border border-default text-contrast bg-scaffold hover:bg-scaffold/90',
+          'border border-muted text-contrast bg-scaffold hover:bg-scaffold/90',
         secondary: 'bg-secondary text-contrast hover:bg-secondary/70'
       }
     },
@@ -30,7 +30,7 @@ const buttonStyles = cva(
         destructive:
           'bg-error text-white dark:text-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'border border-default text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
+          'border border-muted text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
         secondary:
           'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
@@ -50,7 +50,19 @@ const buttonStyles = cva(
   }
 )
 
-const cardStyles = 'bg-accent border border-default rounded-lg p-3 shadow-sm'
+const cardStyles = 'bg-accent border border-muted rounded-lg p-3 shadow-sm'
+
+const separatorStyles = cva('shrink-0 bg-muted', {
+  variants: {
+    orientation: {
+      horizontal: 'h-px w-full',
+      vertical: 'h-full w-px'
+    }
+  },
+  defaultVariants: {
+    orientation: 'horizontal'
+  }
+})
 
 /* --- Badge --- */
 const Badge = ({
@@ -93,4 +105,22 @@ const Card = ({ children, className, ...props }: ComponentProps<'div'>) => (
 
 Card.displayName = 'Card'
 
-export { Badge, Button, Card }
+/* --- Separator --- */
+const Separator = ({
+  children,
+  className,
+  orientation = 'horizontal',
+  ...props
+}: Omit<ComponentProps<'div'>, 'role' | 'aria-orientation'> &
+  VariantProps<typeof separatorStyles>) => (
+  <div
+    role="separator"
+    aria-orientation={orientation ?? 'horizontal'}
+    className={twMerge(separatorStyles({ orientation, className }))}
+    {...props}
+  ></div>
+)
+
+Separator.displayName = 'Separator'
+
+export { Badge, Button, Card, Separator }

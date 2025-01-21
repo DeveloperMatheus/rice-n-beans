@@ -1,7 +1,7 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { Badge, Button, Card } from '~/components/Layout'
+import { Badge, Button, Card, Separator } from '~/components/Layout'
 import { Search } from 'lucide-react'
 
 const BUTTON_CODE_STYLE = `const buttonStyles = cva(
@@ -14,7 +14,7 @@ const BUTTON_CODE_STYLE = `const buttonStyles = cva(
         destructive:
           'bg-error text-white dark:text-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'border border-default text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
+          'border border-muted text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
         secondary:
           'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
@@ -42,7 +42,7 @@ const BADGE_CODE_STYLE = `const badgeStyles = cva(
         default: 'bg-primary text-primary-contrast hover:bg-primary/90',
         destructive: 'bg-error text-white dark:text-contrast hover:bg-error/90',
         outline:
-          'border border-default text-contrast bg-scaffold hover:bg-scaffold/90',
+          'border border-muted text-contrast bg-scaffold hover:bg-scaffold/90',
         secondary: 'bg-secondary text-contrast hover:bg-secondary/70'
       }
     },
@@ -52,7 +52,20 @@ const BADGE_CODE_STYLE = `const badgeStyles = cva(
   }
 )`
 
-const CARD_CODE_STYLE = `const cardStyles = 'bg-accent border border-default rounded-lg p-3 shadow-sm'
+const CARD_CODE_STYLE = `const cardStyles = 'bg-accent border border-muted rounded-lg p-3 shadow-sm'
+`
+
+const SEPARATOR_CODE_STYLE = `const separatorStyles = cva('shrink-0 bg-muted', {
+  variants: {
+    orientation: {
+      horizontal: 'h-px w-full',
+      vertical: 'h-full w-px'
+    }
+  },
+  defaultVariants: {
+    orientation: 'horizontal'
+  }
+})
 `
 
 const BUTTON_CODE_COMPONENT = `const Button = ({
@@ -97,6 +110,25 @@ const Card = ({ children, className, ...props }: ComponentProps<'div'>) => (
 Card.displayName = 'Card'
 `
 
+const SEPARATOR_CODE_COMPONENT = `
+const Separator = ({
+  children,
+  className,
+  orientation = 'horizontal',
+  ...props
+}: Omit<ComponentProps<'div'>, 'role' | 'aria-orientation'> &
+  VariantProps<typeof separatorStyles>) => (
+  <div
+    role="separator"
+    aria-orientation={orientation ?? 'horizontal'}
+    className={twMerge(separatorStyles({ orientation, className }))}
+    {...props}
+  ></div>
+)
+
+Separator.displayName = 'Separator'
+`
+
 const BUTTON_CODE_VIEW = `<Text tag="h4">Variants</Text>
 <div className="flex items-center justify-center flex-wrap gap-5">
   <Button>Default</Button>
@@ -132,6 +164,8 @@ const CARD_CODE_VIEW = `<div className="w-fit">
   <Card>This is a card inside a tab</Card>
 </div>
 `
+
+const SEPARATOR_CODE_VIEW = `<Separator/>`
 
 export default function DocumentationLayoutPage() {
   return (
@@ -225,6 +259,25 @@ export default function DocumentationLayoutPage() {
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
             <code className="whitespace-pre">{CARD_CODE_VIEW}</code>
+          </TabPanel>
+        </Tabs>
+      </DocumentationSection>
+
+      <DocumentationSection
+        title="Separator"
+        codeStyle={SEPARATOR_CODE_STYLE}
+        codeComponent={SEPARATOR_CODE_COMPONENT}
+      >
+        <Tabs defaultValue="view" className="mt-3">
+          <TabList>
+            <Tab id="view">View</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+          <TabPanel id="view">
+            <Separator />
+          </TabPanel>
+          <TabPanel id="code" className="overflow-x-auto">
+            <code className="whitespace-pre">{SEPARATOR_CODE_VIEW}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

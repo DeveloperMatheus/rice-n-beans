@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Base,
@@ -6,39 +6,39 @@ import {
   BaseContainer,
   BaseDrawer,
   BaseHeader,
-  BaseContent,
-} from "~/components/Base";
-import { DrawerItems } from "./components/DrawerItems";
-import { ThemeSwitch } from "~/components/Theme/ThemeSwitch";
-import { useCallback, useEffect, useState } from "react";
+  BaseContent
+} from '~/components/Base'
+import { DrawerItems } from './components/DrawerItems'
+import { ThemeSwitch } from '~/components/Theme/ThemeSwitch'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function DocumentationLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const [isClient, setIsClient] = useState(false);
-  const [isOpen, setOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false)
+  const [isOpen, setOpen] = useState(false)
 
-  const isMobile = useCallback(() => /Mobi/i.test(navigator.userAgent), []);
+  const isMobile = useCallback(() => /Mobi/i.test(navigator.userAgent), [])
 
   function toggleDrawer() {
-    setOpen(!isOpen);
+    setOpen(!isOpen)
   }
 
   function handleToggleDrawer() {
-    if (!isMobile()) return;
-    setOpen(false);
+    if (!isMobile()) return
+    setOpen(false)
   }
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true)
 
-    if (isMobile()) return;
-    setOpen(true);
-  }, [isMobile]);
+    if (isMobile()) return
+    setOpen(true)
+  }, [isMobile])
 
-  if (!isClient) return;
+  if (!isClient) return
 
   return (
     <Base>
@@ -66,5 +66,5 @@ export default function DocumentationLayout({
         <BaseContent>{children}</BaseContent>
       </BaseContainer>
     </Base>
-  );
+  )
 }

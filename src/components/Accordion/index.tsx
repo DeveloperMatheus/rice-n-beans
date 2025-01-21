@@ -4,8 +4,7 @@ import { ComponentProps, createContext, useContext, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Button } from '~/components/Layout'
 
-const accordionStyles =
-  'w-full bg-scaffold border border-default p-3 rounded-lg'
+const accordionStyles = 'w-full bg-scaffold border border-muted p-3 rounded-lg'
 const accordionContentStyles = 'mt-3'
 const accordionTriggerStyles =
   'w-full flex flex-row items-center justify-between'

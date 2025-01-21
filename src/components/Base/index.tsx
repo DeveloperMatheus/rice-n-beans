@@ -18,10 +18,10 @@ const baseStyles = cva('flex', {
 })
 const baseContainerStyles = 'h-screen w-full overflow-hidden'
 const baseContentStyles =
-  'bg-scaffold p-3 overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-default'
+  'bg-scaffold p-3 overflow-auto h-[calc(100vh-4.1875rem)] border-t lg:border-y border-muted'
 
 const baseDrawerStyles = cva(
-  'bg-scaffold p-3 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-default overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
+  'bg-scaffold p-3 fixed top-0 left-0 right-0 lg:sticky h-screen transition-all z-10 border border-muted overflow-x-hidden overflow-y-auto lg:overflow-y-auto lg:overflow-x-hidden',
   {
     variants: {
       isOpen: {
@@ -32,7 +32,7 @@ const baseDrawerStyles = cva(
   }
 )
 const baseHeaderStyles =
-  'bg-scaffold w-full sticky top-0 shadow-md p-3 lg:border-t border-default'
+  'bg-scaffold w-full sticky top-0 shadow-md p-3 lg:border-t border-muted'
 
 const baseToggleDrawerStyles = 'text-contrast text-2xl'
 

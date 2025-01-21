@@ -20,13 +20,11 @@ const config: Config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         accent: 'hsl(var(--accent))',
-        contrast: 'hsl(var(--contrast))'
+        contrast: 'hsl(var(--contrast))',
+        muted: 'hsl(var(--muted))'
       },
       textColor: {
         'primary-contrast': 'hsl(var(--primary-contrast))'
-      },
-      borderColor: {
-        default: 'hsl(var(--border))'
       },
       placeholderColor: {
         default: 'hsl(var(--placeholder))'
@@ -68,14 +66,14 @@ const CODE_CSS_VIEW = `@tailwind base;
 @tailwind utilities;
 
 /* CSS vars */
-.light {
+:root {
   --primary: 240 6% 10%;
   --primary-contrast: 240 6% 90%;
   --secondary: 240 5% 96%;
   --success: 142 72% 29%;
   --error: 0 84% 60%;
   --accent: 0 0% 95%;
-  --border: 240 6% 90%;
+  --muted: 240 6% 90%;
 
   --scaffold: 0 0% 100%;
   --contrast: 0 0% 19%;
@@ -90,7 +88,7 @@ const CODE_CSS_VIEW = `@tailwind base;
   --success: 143 64% 24%;
   --error: 0 63% 31%;
   --accent: 240 10% 4%;
-  --border: 240 4% 16%;
+  --muted: 240 4% 16%;
 
   --scaffold: 240 6% 10%;
   --contrast: 240 6% 90%;

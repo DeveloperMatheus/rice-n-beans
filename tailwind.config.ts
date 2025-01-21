@@ -16,13 +16,11 @@ const config: Config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         accent: 'hsl(var(--accent))',
-        contrast: 'hsl(var(--contrast))'
+        contrast: 'hsl(var(--contrast))',
+        muted: 'hsl(var(--muted))'
       },
       textColor: {
         'primary-contrast': 'hsl(var(--primary-contrast))'
-      },
-      borderColor: {
-        default: 'hsl(var(--border))'
       },
       placeholderColor: {
         default: 'hsl(var(--placeholder))'

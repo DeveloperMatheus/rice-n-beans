@@ -12,7 +12,7 @@ import {
 import { twMerge } from 'tailwind-merge'
 import { Button } from '~/components/Layout'
 
-const tabsStyles = 'bg-accent border border-default rounded-lg p-3'
+const tabsStyles = 'bg-accent border border-muted rounded-lg p-3'
 const tabListStyles =
   'flex flex-row items-center justify-start list-none overflow-x-auto space-x-3'
 const tabPanelStyles = 'mt-3 w-full rounded-b-lg'

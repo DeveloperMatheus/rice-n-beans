@@ -22,6 +22,9 @@ const config: Config = {
       textColor: {
         'primary-contrast': 'hsl(var(--primary-contrast))'
       },
+      borderColor: {
+        default: 'hsl(var(--border))'
+      },
       placeholderColor: {
         default: 'hsl(var(--placeholder))'
       },

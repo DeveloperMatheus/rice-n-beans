@@ -7,7 +7,7 @@ const CODE_TYPOGRAPHY_STLYES = `import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { VariantProps, cva } from 'class-variance-authority'
 
-const textStyles = cva('font-sans text-contrast', {
+const textStyles = cva('font-sans', {
   variants: {
     tag: {
       h1: 'text-3xl lg:text-4xl font-bold',
@@ -18,7 +18,15 @@ const textStyles = cva('font-sans text-contrast', {
       h6: 'text-sm lg:text-base font-bold',
       p: 'text-sm lg:text-base font-normal',
       span: 'text-sm lg:text-base font-normal'
+    },
+    variant: {
+      normal: 'text-contrast',
+      muted: 'text-muted'
     }
+  },
+  defaultVariants: {
+    tag: 'p',
+    variant: 'normal'
   }
 })
 `
@@ -30,10 +38,15 @@ type TextProps = {
   className?: string
 } & VariantProps<typeof textStyles>
 
-export const Text = ({ tag = 'p', children, className }: TextProps) =>
+export const Text = ({
+  tag = 'p',
+  variant = 'normal',
+  children,
+  className
+}: TextProps) =>
   React.createElement(
     tag,
-    { className: twMerge(textStyles({ className, tag })) },
+    { className: twMerge(textStyles({ className, tag, variant })) },
     children
   )
 `
@@ -45,6 +58,7 @@ const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 <Text tag="h5">This is a heading 5</Text>
 <Text tag="h6">This is a heading 6</Text>
 <Text tag="p">This is a paragraph</Text>
+<Text variant="muted">This is a paragraph (with muted styles)</Text>
 <Text tag="span">This is a span</Text>
 `
 
@@ -83,6 +97,7 @@ export default function DocumentationTypographyPage() {
             <Text tag="h5">This is a heading 5</Text>
             <Text tag="h6">This is a heading 6</Text>
             <Text tag="p">This is a paragraph</Text>
+            <Text variant="muted">This is a paragraph (with muted styles)</Text>
             <Text tag="span">This is a span</Text>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">

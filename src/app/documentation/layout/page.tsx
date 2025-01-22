@@ -14,7 +14,7 @@ const BUTTON_CODE_STYLE = `const buttonStyles = cva(
         destructive:
           'bg-error text-white dark:text-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'border border-muted text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
+          'border border-default text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85',
         secondary:
           'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
@@ -42,7 +42,7 @@ const BADGE_CODE_STYLE = `const badgeStyles = cva(
         default: 'bg-primary text-primary-contrast hover:bg-primary/90',
         destructive: 'bg-error text-white dark:text-contrast hover:bg-error/90',
         outline:
-          'border border-muted text-contrast bg-scaffold hover:bg-scaffold/90',
+          'border border-default text-contrast bg-scaffold hover:bg-scaffold/90',
         secondary: 'bg-secondary text-contrast hover:bg-secondary/70'
       }
     },
@@ -52,7 +52,7 @@ const BADGE_CODE_STYLE = `const badgeStyles = cva(
   }
 )`
 
-const CARD_CODE_STYLE = `const cardStyles = 'bg-accent border border-muted rounded-lg p-3 shadow-sm'
+const CARD_CODE_STYLE = `const cardStyles = 'bg-accent border border-default rounded-lg p-3 shadow-sm'
 `
 
 const SEPARATOR_CODE_STYLE = `const separatorStyles = cva('shrink-0 bg-muted', {

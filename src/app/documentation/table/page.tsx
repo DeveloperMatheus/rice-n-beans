@@ -19,10 +19,10 @@ import { twMerge } from 'tailwind-merge'
 
 const tableStyles = 'border-collapse text-contrast'
 const tableDataStyles = 'px-2 py-1 text-center'
-const tableRowStyles = '[&:not(:last-child)]:border-b border-muted'
+const tableRowStyles = '[&:not(:last-child)]:border-b border-default'
 const tableHeadStyles = 'px-2 py-1 text-center'
-const tableHeaderStyles = 'border-b border-muted text-center'
-const tableFooterStyles = 'border-t border-muted font-bold'
+const tableHeaderStyles = 'border-b border-default text-center'
+const tableFooterStyles = 'border-t border-default font-bold'
 `
 
 const CODE_TABLE_COMPONENT = `

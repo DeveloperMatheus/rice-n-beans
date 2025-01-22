@@ -3,7 +3,7 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { VariantProps, cva } from 'class-variance-authority'
 
-const textStyles = cva('font-sans text-contrast', {
+const textStyles = cva('font-sans', {
   variants: {
     tag: {
       h1: 'text-3xl lg:text-4xl font-bold',
@@ -14,7 +14,15 @@ const textStyles = cva('font-sans text-contrast', {
       h6: 'text-sm lg:text-base font-bold',
       p: 'text-sm lg:text-base font-normal',
       span: 'text-sm lg:text-base font-normal'
+    },
+    variant: {
+      normal: 'text-contrast',
+      muted: 'text-muted'
     }
+  },
+  defaultVariants: {
+    tag: 'p',
+    variant: 'normal'
   }
 })
 
@@ -24,9 +32,14 @@ type TextProps = {
   className?: string
 } & VariantProps<typeof textStyles>
 
-export const Text = ({ tag = 'p', children, className }: TextProps) =>
+export const Text = ({
+  tag = 'p',
+  variant = 'normal',
+  children,
+  className
+}: TextProps) =>
   React.createElement(
     tag,
-    { className: twMerge(textStyles({ className, tag })) },
+    { className: twMerge(textStyles({ className, tag, variant })) },
     children
   )

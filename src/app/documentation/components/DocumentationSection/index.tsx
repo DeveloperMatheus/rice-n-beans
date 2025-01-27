@@ -1,22 +1,20 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Button, Card } from "~/components/Layout";
-import { Modal, ModalContent, ModalHeader } from "~/components/Modal";
-import { Text } from "~/components/Typography";
+import { useState } from 'react'
+import { Button, Card } from '~/components/Layout'
+import { Modal, ModalContent, ModalHeader } from '~/components/Modal'
+import { Text } from '~/components/Typography'
 
 export const DocumentationSection = ({
+  code,
   title,
-  codeStyle,
-  codeComponent,
-  children,
+  children
 }: {
-  title: string;
-  codeStyle: string;
-  codeComponent: string;
-  children?: React.ReactNode;
+  code: string
+  title: string
+  children?: React.ReactNode
 }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   return (
     <>
@@ -43,11 +41,10 @@ export const DocumentationSection = ({
         </ModalHeader>
         <ModalContent className="mt-3">
           <Card className="overflow-x-auto whitespace-pre" tabIndex={0}>
-            <code>{codeStyle}</code>
-            <code>{codeComponent}</code>
+            <code>{code}</code>
           </Card>
         </ModalContent>
       </Modal>
     </>
-  );
-};
+  )
+}

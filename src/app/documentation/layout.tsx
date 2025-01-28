@@ -56,7 +56,7 @@ export default function DocumentationLayout({
         />
       </BaseDrawer>
       <BaseContainer>
-        <BaseHeader>
+        <BaseHeader className="flex items-center justify-start gap-3">
           <BaseToggleDrawer
             aria-label="Toggle drawer"
             onClick={() => toggleDrawer()}

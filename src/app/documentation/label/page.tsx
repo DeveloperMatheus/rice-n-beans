@@ -1,6 +1,6 @@
 import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
-import { DocumentationSection } from '../../components/DocumentationSection'
+import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Label } from '~/components/Label'

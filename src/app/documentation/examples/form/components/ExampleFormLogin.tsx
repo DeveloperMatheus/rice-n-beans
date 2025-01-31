@@ -1,13 +1,16 @@
-"use client";
+'use client'
 
-import * as z from "zod";
+import * as z from 'zod'
 
-import { Checkbox, ErrorMessage, Input, Label } from "~/components/Form";
-import { Button } from "~/components/Layout";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm } from 'react-hook-form'
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Tab, TabList, TabPanel, Tabs } from "~/components/Tabs";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { ErrorMessage } from '~/components/ErrorMessage'
+import { Label } from '~/components/Label'
+import { Input } from '~/components/Input'
+import { Checkbox } from '~/components/Checkbox'
+import { Button } from '~/components/Button'
 
 const CODE_LOGIN_SETUP = `"use client";
 
@@ -88,50 +91,50 @@ export const ExampleFormLogin = () => {
     </Tabs>
   );
 };
-`;
+`
 
 const loginFormSchema = z.object({
   email: z.string().email({
-    message: "This field must be a valid email",
+    message: 'This field must be a valid email'
   }),
   password: z.string().min(8, {
-    message: "This field must have at least 8 characters",
+    message: 'This field must have at least 8 characters'
   }),
-  isLoginStored: z.boolean(),
-});
+  isLoginStored: z.boolean()
+})
 
-type LoginForm = z.infer<typeof loginFormSchema>;
+type LoginForm = z.infer<typeof loginFormSchema>
 
 export const ExampleFormLogin = ({
   email,
   password,
-  isLoginStored,
+  isLoginStored
 }: {
-  email?: string;
-  password?: string;
-  isLoginStored?: boolean;
+  email?: string
+  password?: string
+  isLoginStored?: boolean
 }) => {
   const {
     handleSubmit,
     register,
     control,
-    formState: { errors },
+    formState: { errors }
   } = useForm<LoginForm>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email,
-      isLoginStored,
-    },
-  });
+      isLoginStored
+    }
+  })
 
   function handleLoginSubmit(evt: LoginForm) {
-    console.log("🚀 ~ handleTestSubmit ~ evt:", evt);
+    console.log('🚀 ~ handleTestSubmit ~ evt:', evt)
   }
 
   function renderErrorMessage(error?: string): React.ReactNode {
-    if (!error) return;
+    if (!error) return
 
-    return <ErrorMessage>{error}</ErrorMessage>;
+    return <ErrorMessage>{error}</ErrorMessage>
   }
 
   return (
@@ -145,7 +148,7 @@ export const ExampleFormLogin = ({
           <div className="space-y-1">
             <Label>Login</Label>
             <Input
-              {...register("email")}
+              {...register('email')}
               type="text"
               isInvalid={!!errors.email?.message}
             />
@@ -159,7 +162,7 @@ export const ExampleFormLogin = ({
               control={control}
               render={({ field }) => (
                 <Input
-                  onChange={(evt) => field.onChange(evt.target.value)}
+                  onChange={evt => field.onChange(evt.target.value)}
                   type="password"
                   defaultValue={password}
                   isInvalid={!!errors.password?.message}
@@ -170,7 +173,7 @@ export const ExampleFormLogin = ({
           </div>
           <div className="space-y-1 space-x-1 flex items-center justify-start">
             <Label htmlFor="input-remind">Remind me</Label>
-            <Checkbox {...register("isLoginStored")} id="input-remind" />
+            <Checkbox {...register('isLoginStored')} id="input-remind" />
           </div>
           <div className="text-center">
             <Button className="w-32">Submit</Button>
@@ -181,5 +184,5 @@ export const ExampleFormLogin = ({
         <code className="whitespace-pre">{CODE_LOGIN_SETUP}</code>
       </TabPanel>
     </Tabs>
-  );
-};
+  )
+}

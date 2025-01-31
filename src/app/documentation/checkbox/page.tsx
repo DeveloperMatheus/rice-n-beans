@@ -1,14 +1,19 @@
 import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
-import { DocumentationSection } from '../../components/DocumentationSection'
+import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
+import { Checkbox } from '~/components/Checkbox'
 import Link from 'next/link'
-import { DatePicker } from '~/components/Datepicker'
 
-export default async function DocumentationDatePickerPage() {
-  const codeResponse = await getCode('DatePicker')
+export default async function DocumentationCheckboxPage() {
+  const codeResponse = await getCode('Checkbox')
 
+  const CODE_CHECKBOX_VIEW = `<div className="flex items-center justify-start">
+  <Label className="mr-3" htmlFor="test-check">This is a checkbox</Label>
+  <Checkbox id="test-check" />
+</div>
+`
   return (
     <section>
       <div className="space-y-3">
@@ -29,22 +34,22 @@ export default async function DocumentationDatePickerPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Date Picker" code={codeResponse.code}>
+      <DocumentationSection title="Checkbox" code={codeResponse.code}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <Label htmlFor="input-date-picker">Date Picker</Label>
-            <DatePicker
-              id="input-date-picker"
-              min="1991-01-01"
-              className="w-fit"
-            />
+            <div className="flex items-center justify-start">
+              <Label className="mr-3" htmlFor="test-check">
+                This is a checkbox
+              </Label>
+              <Checkbox id="test-check" />
+            </div>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
-            <code className="whitespace-pre">{`<DatePicker min="1900-01-01" className="w-fit" />`}</code>
+            <code className="whitespace-pre">{CODE_CHECKBOX_VIEW}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

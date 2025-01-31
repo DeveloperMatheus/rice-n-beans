@@ -1,21 +1,21 @@
-import { Braces, CodeXml } from "lucide-react";
-import Link from "next/link";
-import { Button, Card } from "~/components/Layout";
-import { Text } from "~/components/Typography";
+import { Braces, CodeXml } from 'lucide-react'
+import Link from 'next/link'
+import { Card } from '~/components/Card'
+import { Text } from '~/components/Typography'
 
 const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
   [
     {
-      title: "Form",
+      title: 'Form',
       icon: <CodeXml size={26} />,
-      url: "/documentation/examples/form",
+      url: '/documentation/examples/form'
     },
     {
-      title: "Layout",
+      title: 'Layout',
       icon: <Braces size={26} />,
-      url: "/documentation/examples/layout",
-    },
-  ];
+      url: '/documentation/examples/layout'
+    }
+  ]
 
 export default function DocumentationExamplesPage() {
   return (
@@ -37,5 +37,5 @@ export default function DocumentationExamplesPage() {
         ))}
       </div>
     </section>
-  );
+  )
 }

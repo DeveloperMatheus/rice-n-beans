@@ -1,30 +1,21 @@
 import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
-import { DocumentationSection } from '../../components/DocumentationSection'
+import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
+import { Range } from '~/components/Range'
 import Link from 'next/link'
-import { Switch } from '~/components/Switch'
 
-export default async function DocumentationSwitchPage() {
-  const codeResponse = await getCode('Switch')
-
-  const CODE_SWITCH_VIEW = `<div className="flex items-center justify-start">
-  <Label htmlFor="test-switch" className="mr-2">
-    This is a switch
-  </Label>
-  <Switch id="test-switch" />
-</div>`
+export default async function DocumentationRangePage() {
+  const codeResponse = await getCode('Range')
 
   return (
     <section>
       <div className="space-y-3">
-        <Text tag="h1">Switch</Text>
+        <Text tag="h1">Range</Text>
 
         <Text tag="h2">
-          Switch is a component made with the{' '}
-          {'<input type="checkbox"> HTML5 tag'}, along with the role of{' '}
-          <code>switch</code>
+          Range is a component made with the {'<input> HTML5 tag'}
         </Text>
 
         <Text tag="h3">
@@ -38,22 +29,18 @@ export default async function DocumentationSwitchPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Switch" code={codeResponse.code}>
+      <DocumentationSection title="Range" code={codeResponse.code}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <div className="flex items-center justify-start">
-              <Label htmlFor="test-switch" className="mr-2">
-                This is a switch
-              </Label>
-              <Switch id="test-switch" />
-            </div>
+            <Label htmlFor="input-range">Range</Label>
+            <Range id="input-range" />
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
-            <code className="whitespace-pre">{CODE_SWITCH_VIEW}</code>
+            <code className="whitespace-pre">{`<Range />`}</code>
           </TabPanel>
         </Tabs>
       </DocumentationSection>

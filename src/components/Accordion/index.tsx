@@ -2,7 +2,7 @@
 
 import { ComponentProps, createContext, useContext, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Button } from '~/components/Layout'
+import { Button } from '~/components/Button'
 
 const accordionStyles = 'w-full'
 const accordionContentStyles = 'mt-3'

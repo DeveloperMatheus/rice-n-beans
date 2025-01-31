@@ -13,7 +13,6 @@ const inputStyles = cva(
   }
 )
 
-/* --- Input --- */
 const Input = ({
   className,
   isInvalid,

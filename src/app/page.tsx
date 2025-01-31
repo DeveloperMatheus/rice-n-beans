@@ -1,7 +1,6 @@
-import { Button } from '~/components/Layout'
-
 import { Text } from '~/components/Typography'
 import Link from 'next/link'
+import { Button } from '~/components/Button'
 
 export default function Home() {
   return (

@@ -10,7 +10,7 @@ import {
   useState
 } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Button } from '~/components/Layout'
+import { Button } from '~/components/Button'
 
 const tabsStyles = 'bg-accent border border-default rounded-lg p-3'
 const tabListStyles =

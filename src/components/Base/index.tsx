@@ -6,7 +6,7 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { Menu } from 'lucide-react'
 
-import { Button } from '~/components/Layout'
+import { Button } from '~/components/Button'
 
 const baseStyles = cva('flex', {
   variants: {

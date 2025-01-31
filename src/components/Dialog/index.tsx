@@ -8,7 +8,7 @@ import {
   ModalHeader
 } from '~/components/Modal'
 import { Text } from '~/components/Typography'
-import { Button } from '~/components/Layout'
+import { Button } from '~/components/Button'
 import { cva } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { createPortal } from 'react-dom'

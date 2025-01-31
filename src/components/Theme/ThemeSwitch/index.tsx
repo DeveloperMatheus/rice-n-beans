@@ -2,8 +2,8 @@
 
 import { LaptopMinimal, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { Button } from '~/components/Layout'
 import { useEffect, useRef } from 'react'
+import { Button } from '~/components/Button'
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme()

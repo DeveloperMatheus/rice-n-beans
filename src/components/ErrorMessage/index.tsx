@@ -3,7 +3,6 @@ import { twMerge } from 'tailwind-merge'
 
 const errorMessageStyles = 'text-error font-sans'
 
-/* --- ErrorMessage --- */
 const ErrorMessage = ({
   children,
   className,

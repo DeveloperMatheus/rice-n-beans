@@ -13,7 +13,6 @@ const selectStyles = cva(
   }
 )
 
-/* --- Select --- */
 const Select = ({
   className,
   isInvalid,

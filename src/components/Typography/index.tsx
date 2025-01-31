@@ -32,7 +32,7 @@ type TextProps = {
   className?: string
 } & VariantProps<typeof textStyles>
 
-export const Text = ({
+const Text = ({
   tag = 'p',
   variant = 'normal',
   children,
@@ -43,3 +43,5 @@ export const Text = ({
     { className: twMerge(textStyles({ className, tag, variant })) },
     children
   )
+
+export { Text }

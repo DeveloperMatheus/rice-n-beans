@@ -121,6 +121,7 @@ const BaseToggleDrawer = ({
     <Button
       variant="ghost"
       className={twMerge(baseToggleDrawerStyles, className)}
+      size="icon"
       {...props}
     >
       <Menu size={26} />

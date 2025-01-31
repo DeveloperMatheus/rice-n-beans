@@ -44,12 +44,13 @@ const ThemeSwitch = () => {
   function renderThemeButtons(): React.ReactNode {
     return Object.entries(mapThemeIcons).map(([key, value], index) => (
       <Button
-        className="capitalize min-h-9 min-w-9"
+        className="capitalize"
         variant={applyActiveClass(key)}
         key={`theme--${key}--${index}`}
         onClick={() => setTheme(key)}
         aria-selected={isThemeSelected(key)}
         role="radio"
+        size="icon"
         tabIndex={applyTabIndex(key)}
         onKeyDown={e => handleKeyDown(e, index)}
         ref={el => {

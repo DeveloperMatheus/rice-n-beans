@@ -1,22 +1,23 @@
-import { Braces, CodeXml } from "lucide-react";
-import Link from "next/link";
-import { Button, Card } from "~/components/Layout";
-import { Text } from "~/components/Typography";
+import { Braces, CodeXml } from 'lucide-react'
+import Link from 'next/link'
+import { Button } from '~/components/Button'
+import { Card } from '~/components/Card'
+import { Text } from '~/components/Typography'
 
 const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
   [
     {
-      title: "Installation",
+      title: 'Installation',
       icon: <CodeXml size={26} />,
-      url: "/documentation/installation",
+      url: '/documentation/installation'
     },
     {
-      title: "Examples",
+      title: 'Examples',
       icon: <Braces size={26} />,
-      url: "/documentation/examples",
+      url: '/documentation/examples'
     },
     {
-      title: "Github",
+      title: 'Github',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,9 +31,9 @@ const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
           />
         </svg>
       ),
-      url: "https://github.com/DeveloperMatheus/rice-n-beans",
-    },
-  ];
+      url: 'https://github.com/DeveloperMatheus/rice-n-beans'
+    }
+  ]
 
 export default function DocumentationPage() {
   return (
@@ -80,5 +81,5 @@ export default function DocumentationPage() {
         </Link>
       </div>
     </section>
-  );
+  )
 }

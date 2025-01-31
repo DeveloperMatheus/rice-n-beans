@@ -3,7 +3,7 @@ import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const badgeStyles = cva(
-  'px-2 py-1 inline-block text-center font-bold text-sm min-w-[3rem] min-h-[1.3rem] rounded-full select-none',
+  'px-2.5 py-0.5 inline-block text-center font-bold text-sm rounded-full select-none',
   {
     variants: {
       variant: {

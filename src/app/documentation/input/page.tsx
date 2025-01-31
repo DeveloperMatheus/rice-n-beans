@@ -41,8 +41,10 @@ export default async function DocumentationInputPage() {
             <Tab id="code">Code</Tab>
           </TabList>
           <TabPanel id="view">
-            <Input placeholder="This is an input, type something!" />
-            <Input placeholder="Oops! I have an error!" isInvalid />
+            <div className="space-y-3">
+              <Input placeholder="This is an input, type something!" />
+              <Input placeholder="Oops! I have an error!" isInvalid />
+            </div>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">
             <code>{CODE_INPUT_VIEW}</code>

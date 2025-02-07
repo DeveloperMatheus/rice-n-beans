@@ -1,6 +1,8 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
-import { Badge, Button, Card } from '~/components/Layout'
+import { Badge } from '~/components/Badge'
+import { Button } from '~/components/Button'
+import { Card } from '~/components/Card'
 import {
   Table,
   TableBody,
@@ -13,104 +15,7 @@ import {
 
 import { Mail } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-
-const CODE_TABLE_STLYES = `import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
-
-const tableStyles = 'border-collapse text-contrast'
-const tableDataStyles = 'px-2 py-1 text-center'
-const tableRowStyles = '[&:not(:last-child)]:border-b border-default'
-const tableHeadStyles = 'px-2 py-1 text-center'
-const tableHeaderStyles = 'border-b border-default text-center'
-const tableFooterStyles = 'border-t border-default font-bold'
-`
-
-const CODE_TABLE_COMPONENT = `
-/* --- Table --- */
-const Table = ({ children, className, ...props }: ComponentProps<'table'>) => (
-  <table className={twMerge(tableStyles, className)} {...props}>
-    {children}
-  </table>
-)
-
-Table.displayName = 'Table'
-
-/* --- TableBody --- */
-const TableBody = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'tbody'>) => (
-  <tbody className={twMerge(className)} {...props}>
-    {children}
-  </tbody>
-)
-
-TableBody.displayName = 'TableBody'
-
-/* --- TableData --- */
-const TableData = ({ children, className, ...props }: ComponentProps<'td'>) => (
-  <td className={twMerge(tableDataStyles, className)} {...props}>
-    {children}
-  </td>
-)
-
-TableData.displayName = 'TableData'
-
-/* --- TableRow --- */
-const TableRow = ({ children, className, ...props }: ComponentProps<'tr'>) => (
-  <tr className={twMerge(tableRowStyles, className)} {...props}>
-    {children}
-  </tr>
-)
-
-TableRow.displayName = 'TableRow'
-
-/* --- TableHead --- */
-const TableHead = ({ children, className, ...props }: ComponentProps<'th'>) => (
-  <th className={twMerge(tableHeadStyles, className)} {...props}>
-    {children}
-  </th>
-)
-
-TableHead.displayName = 'TableHead'
-
-/* --- TableHeader --- */
-const TableHeader = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'thead'>) => (
-  <thead className={twMerge(tableHeaderStyles, className)} {...props}>
-    {children}
-  </thead>
-)
-
-TableHeader.displayName = 'TableHeader'
-
-/* --- TableFooter --- */
-const TableFooter = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'tfoot'>) => (
-  <tfoot className={twMerge(tableFooterStyles, className)} {...props}>
-    {children}
-  </tfoot>
-)
-
-TableFooter.displayName = 'TableFooter'
-
-export {
-  Table,
-  TableBody,
-  TableData,
-  TableRow,
-  TableHead,
-  TableHeader,
-  TableFooter
-}
-`
+import { getCode } from '~/services/code'
 
 const CODE_TABLE_VIEW = `<Table>
   <TableHeader>
@@ -163,7 +68,9 @@ const CODE_TABLE_VIEW = `<Table>
   </TableFooter>
 </Table>
 `
-export default function DocumentationTablePage() {
+export default async function DocumentationTablePage() {
+  const codeResponse = await getCode('Table')
+
   return (
     <section>
       <div className="space-y-3">
@@ -181,11 +88,7 @@ export default function DocumentationTablePage() {
         </Text>
       </div>
 
-      <DocumentationSection
-        title="Table"
-        codeStyle={CODE_TABLE_STLYES}
-        codeComponent={CODE_TABLE_COMPONENT}
-      >
+      <DocumentationSection title="Table" code={codeResponse.code}>
         <Tabs defaultValue="view" className="mt-5">
           <TabList>
             <Tab id="view">View</Tab>

@@ -1,4 +1,4 @@
-import { Card } from '~/components/Layout'
+import { Card } from '~/components/Card'
 import { Text } from '~/components/Typography'
 import { InstallationStep1 } from './components/InstallationStep1'
 

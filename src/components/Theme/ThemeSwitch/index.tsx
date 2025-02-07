@@ -2,25 +2,27 @@
 
 import { LaptopMinimal, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { Button } from '~/components/Button'
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme()
   const buttonRefs = useRef<Array<HTMLButtonElement | null>>([])
 
-  const mapThemeIcons: Record<string, React.ReactNode> = {
-    dark: <MoonIcon size={16} />,
-    light: <SunIcon size={16} />,
-    system: <LaptopMinimal size={16} />
-  }
+  const mapThemeIcons: Record<string, React.ReactNode> = useMemo(() => {
+    return {
+      dark: <MoonIcon size={16} />,
+      light: <SunIcon size={16} />,
+      system: <LaptopMinimal size={16} />
+    }
+  }, [])
 
   useEffect(() => {
     const selectedIndex = Object.keys(mapThemeIcons).indexOf(theme || 'system')
     if (buttonRefs.current[selectedIndex]) {
       buttonRefs.current[selectedIndex]?.focus()
     }
-  }, [theme])
+  }, [theme, mapThemeIcons])
 
   function handleKeyDown(event: React.KeyboardEvent, index: number) {
     const totalButtons = Object.keys(mapThemeIcons).length
@@ -48,7 +50,7 @@ const ThemeSwitch = () => {
         variant={applyActiveClass(key)}
         key={`theme--${key}--${index}`}
         onClick={() => setTheme(key)}
-        aria-selected={isThemeSelected(key)}
+        aria-checked={isThemeSelected(key)}
         role="radio"
         size="icon"
         tabIndex={applyTabIndex(key)}

@@ -15,8 +15,9 @@ export default async function DocumentationDatePickerPage() {
         <Text tag="h1">Date Picker</Text>
 
         <Text tag="h2">
-          Checkbox is a component made with the {'<input> HTML5 tag'}, that can
-          be three types: 'date' | 'time' | 'datetime-local'
+          Date Picker is a component made with the {'<input> HTML5 tag'}, that
+          can be three types: &rsquo;date&rsquo; | &rsquo;time&rsquo; |
+          &rsquo;datetime-local&rsquo;
         </Text>
 
         <Text tag="h3">

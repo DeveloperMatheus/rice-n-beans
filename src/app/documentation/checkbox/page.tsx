@@ -20,7 +20,8 @@ export default async function DocumentationCheckboxPage() {
         <Text tag="h1">Checkbox</Text>
 
         <Text tag="h2">
-          Checkbox is a component made with the {'<input> HTML5 tag'}
+          Checkbox is a component made with the{' '}
+          {'<input type="checkbox"> HTML5 tag'}
         </Text>
 
         <Text tag="h3">

@@ -26,9 +26,9 @@ export default async function DocumentationTypographyPage() {
           Typography is a set of components made to help you style your text
         </Text>
 
-        <Text>
-          The table is composed by using the createElement function from React.
-          This way we can render the component with the tag that we want.
+        <Text tag="h3">
+          It ranges between the {'<h1>'} to {'<h6>'}, also {'<p>'} and{' '}
+          {'<span>'} tags.
         </Text>
       </div>
 

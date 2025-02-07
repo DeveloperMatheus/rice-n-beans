@@ -28,11 +28,11 @@ const MOCK_COMPONENTS: {
   },
   {
     title: 'Datepicker',
-    url: '/documentation/datepicker'
+    url: '/documentation/date-picker'
   },
   {
     title: 'Dialog',
-    url: '/documentation/Dialog'
+    url: '/documentation/dialog'
   },
   {
     title: 'Error Message',

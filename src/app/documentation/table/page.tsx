@@ -16,6 +16,7 @@ import {
 import { Mail } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
+import Link from 'next/link'
 
 const CODE_TABLE_VIEW = `<Table>
   <TableHeader>
@@ -79,6 +80,16 @@ export default async function DocumentationTablePage() {
         <Text tag="h2">
           Table is a component that allows you to display data in a structured
           way.
+        </Text>
+
+        <Text tag="h3">
+          See the api reference here:{' '}
+          <Link
+            target="_blank"
+            href="https://developer.mozilla.org/es/docs/Web/HTML/Element/table"
+          >
+            https://developer.mozilla.org/es/docs/Web/HTML/Element/table
+          </Link>
         </Text>
 
         <Text>

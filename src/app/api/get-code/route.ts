@@ -24,14 +24,12 @@ export async function GET(req: Request) {
 
   // Dynamically build the path to the component file
   const filePath = path.resolve(
-    process.cwd(),
-    `src/components/${componentName}/index.tsx`
+    `../../../components/${componentName}/index.tsx`
   )
 
   try {
     // Read the file content as a string
     const fileContent = fs.readFileSync(filePath, 'utf-8')
-    console.log('fileContent => ', fileContent)
 
     // Return the content as JSON response
     return NextResponse.json({ code: fileContent })

@@ -24,7 +24,7 @@ export const DocumentationSection = ({
     const fetchCode = async () => {
       setIsLoading(true)
       try {
-        const response = await getCode(title.toLowerCase())
+        const response = await getCode(title)
         setCode(response.code)
       } catch {
         setCode('Error fetching code')

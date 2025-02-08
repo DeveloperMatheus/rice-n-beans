@@ -15,7 +15,6 @@ import {
 
 import { Mail } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { getCode } from '~/services/code'
 import Link from 'next/link'
 
 const CODE_TABLE_VIEW = `<Table>
@@ -70,8 +69,6 @@ const CODE_TABLE_VIEW = `<Table>
 </Table>
 `
 export default async function DocumentationTablePage() {
-  const codeResponse = await getCode('Table')
-
   return (
     <section>
       <div className="space-y-3">
@@ -99,7 +96,7 @@ export default async function DocumentationTablePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Table" code={codeResponse.code}>
+      <DocumentationSection title="Table">
         <Tabs defaultValue="view" className="mt-5">
           <TabList>
             <Tab id="view">View</Tab>

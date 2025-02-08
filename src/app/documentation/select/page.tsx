@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -7,8 +6,6 @@ import Link from 'next/link'
 import { Select } from '~/components/Select'
 
 export default async function DocumentationSelectPage() {
-  const codeResponse = await getCode('Select')
-
   const CODE_SELECT_VIEW = `<Select>
   <option defaultChecked hidden>
     Select an option
@@ -38,7 +35,7 @@ export default async function DocumentationSelectPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Select" code={codeResponse.code}>
+      <DocumentationSection title="Select">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

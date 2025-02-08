@@ -2,7 +2,6 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DialogSection } from './components/DialogSection'
-import { getCode } from '~/services/code'
 
 const DIALOG_CODE_VIEW = `"use client";
 
@@ -29,8 +28,6 @@ export const DialogSection = () => {
 `
 
 export default async function DocumentationDialogPage() {
-  const codeResponse = await getCode('Dialog')
-
   return (
     <section>
       <div className="space-y-3">
@@ -48,7 +45,7 @@ export default async function DocumentationDialogPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Dialog" code={codeResponse.code}>
+      <DocumentationSection title="Dialog">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

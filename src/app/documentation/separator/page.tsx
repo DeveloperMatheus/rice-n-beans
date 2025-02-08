@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -6,8 +5,6 @@ import { Separator } from '~/components/Separator'
 import Link from 'next/link'
 
 export default async function DocumentationSeparatorPage() {
-  const codeResponse = await getCode('Separator')
-
   const CODE_SEPARATOR_VIEW = `<Text tag="h4">Orientation:</Text>
 <div className="flex items-center justify-start gap-5 h-9">
   <Text>Horizontal:</Text> <Separator className="w-9" />
@@ -35,7 +32,7 @@ export default async function DocumentationSeparatorPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Separator" code={codeResponse.code}>
+      <DocumentationSection title="Separator">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

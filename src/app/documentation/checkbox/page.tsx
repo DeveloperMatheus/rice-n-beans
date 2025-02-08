@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -7,8 +6,6 @@ import { Checkbox } from '~/components/Checkbox'
 import Link from 'next/link'
 
 export default async function DocumentationCheckboxPage() {
-  const codeResponse = await getCode('Checkbox')
-
   const CODE_CHECKBOX_VIEW = `<div className="flex items-center justify-start">
   <Label className="mr-3" htmlFor="test-check">This is a checkbox</Label>
   <Checkbox id="test-check" />
@@ -35,7 +32,7 @@ export default async function DocumentationCheckboxPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Checkbox" code={codeResponse.code}>
+      <DocumentationSection title="Checkbox">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

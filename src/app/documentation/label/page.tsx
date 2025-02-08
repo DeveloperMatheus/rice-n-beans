@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -6,8 +5,6 @@ import Link from 'next/link'
 import { Label } from '~/components/Label'
 
 export default async function DocumentationLabelPage() {
-  const codeResponse = await getCode('Label')
-
   return (
     <section>
       <div className="space-y-3">
@@ -28,7 +25,7 @@ export default async function DocumentationLabelPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Label" code={codeResponse.code}>
+      <DocumentationSection title="Label">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

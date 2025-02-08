@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -7,8 +6,6 @@ import { Range } from '~/components/Range'
 import Link from 'next/link'
 
 export default async function DocumentationRangePage() {
-  const codeResponse = await getCode('Range')
-
   return (
     <section>
       <div className="space-y-3">
@@ -29,7 +26,7 @@ export default async function DocumentationRangePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Range" code={codeResponse.code}>
+      <DocumentationSection title="Range">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

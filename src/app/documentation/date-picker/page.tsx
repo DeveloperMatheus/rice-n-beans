@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -7,8 +6,6 @@ import Link from 'next/link'
 import { DatePicker } from '~/components/Datepicker'
 
 export default async function DocumentationDatePickerPage() {
-  const codeResponse = await getCode('DatePicker')
-
   return (
     <section>
       <div className="space-y-3">
@@ -31,7 +28,7 @@ export default async function DocumentationDatePickerPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Date Picker" code={codeResponse.code}>
+      <DocumentationSection title="Date Picker">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

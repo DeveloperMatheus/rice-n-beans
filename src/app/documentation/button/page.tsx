@@ -1,15 +1,11 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Button } from '~/components/Button'
 import { Search } from 'lucide-react'
 
 export default async function DocumentationButtonPage() {
-  const codeResponse = await getCode('Button')
-
   const CODE_BUTTON_VIEW = `<Text tag="h4">Variants</Text>
 <div className="flex items-center justify-start flex-wrap gap-5">
   <Button>Default</Button>
@@ -51,7 +47,7 @@ export default async function DocumentationButtonPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Button" code={codeResponse.code}>
+      <DocumentationSection title="Button">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

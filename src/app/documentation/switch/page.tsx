@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -7,8 +6,6 @@ import Link from 'next/link'
 import { Switch } from '~/components/Switch'
 
 export default async function DocumentationSwitchPage() {
-  const codeResponse = await getCode('Switch')
-
   const CODE_SWITCH_VIEW = `<div className="flex items-center justify-start">
   <Label htmlFor="test-switch" className="mr-2">
     This is a switch
@@ -38,7 +35,7 @@ export default async function DocumentationSwitchPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Switch" code={codeResponse.code}>
+      <DocumentationSection title="Switch">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

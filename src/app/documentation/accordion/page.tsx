@@ -6,7 +6,6 @@ import {
   AccordionContent,
   AccordionTrigger
 } from '~/components/Accordion'
-import { getCode } from '~/services/code'
 
 const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
   <div>
@@ -25,8 +24,6 @@ const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
 `
 
 export default async function DocumentationAccordionPage() {
-  const codeResponse = await getCode('Accordion')
-
   return (
     <section>
       <div className="space-y-3">
@@ -38,7 +35,7 @@ export default async function DocumentationAccordionPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Accordion" code={codeResponse.code}>
+      <DocumentationSection title="Accordion">
         <Tabs defaultValue="view" className="mt-3">
           <TabList className="p-0">
             <Tab id="view">View</Tab>

@@ -1,14 +1,10 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { Label } from '~/components/Label'
 import { Card } from '~/components/Card'
 import Link from 'next/link'
 
 export default async function DocumentationCardPage() {
-  const codeResponse = await getCode('Card')
-
   const CODE_CARD_VIEW = `<div className="w-fit">
   <Card>This is a card inside a tab</Card>
 </div>
@@ -33,7 +29,7 @@ export default async function DocumentationCardPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Card" code={codeResponse.code}>
+      <DocumentationSection title="Card">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

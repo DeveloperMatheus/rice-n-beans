@@ -1,7 +1,6 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { getCode } from '~/services/code'
 
 const CODE_TABS_VIEW = `<Tabs defaultValue="view" className="mt-3">
   <TabList>
@@ -23,8 +22,6 @@ const CODE_TABS_VIEW = `<Tabs defaultValue="view" className="mt-3">
 `
 
 export default async function DocumentationTabsPage() {
-  const codeResponse = await getCode('Tabs')
-
   return (
     <section>
       <Text tag="h1">Tabs</Text>
@@ -41,7 +38,7 @@ export default async function DocumentationTabsPage() {
         will not work.
       </Text>
 
-      <DocumentationSection title="Tabs" code={codeResponse.code}>
+      <DocumentationSection title="Tabs">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

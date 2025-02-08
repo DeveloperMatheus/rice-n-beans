@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -29,8 +28,6 @@ const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
 `
 
 export default async function DocumentationRadioPage() {
-  const codeResponse = await getCode('Radio')
-
   return (
     <section>
       <div className="space-y-3">
@@ -51,7 +48,7 @@ export default async function DocumentationRadioPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Radio" code={codeResponse.code}>
+      <DocumentationSection title="Radio">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

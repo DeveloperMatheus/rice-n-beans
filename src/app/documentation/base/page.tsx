@@ -2,7 +2,6 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DocumentationBaseExample } from './components/DocumentationBaseExample'
-import { getCode } from '~/services/code'
 
 const BASE_CODE_VIEW = `"use client";
 
@@ -47,8 +46,6 @@ export const DocumentationBaseExample = () => {
 `
 
 export default async function DocumentationBasePage() {
-  const codeResponse = await getCode('Base')
-
   return (
     <section>
       <div className="space-y-3">
@@ -81,7 +78,7 @@ export default async function DocumentationBasePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Base" code={codeResponse.code}>
+      <DocumentationSection title="Base">
         <Tabs defaultValue="view" className="mt-3">
           <TabList className="p-0">
             <Tab id="view">View</Tab>

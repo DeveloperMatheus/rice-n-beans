@@ -1,7 +1,6 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { getCode } from '~/services/code'
 import { Badge } from '~/components/Badge'
 
 const BADGE_CODE_VIEW = `<div className="flex items-center justify-start gap-3">
@@ -13,8 +12,6 @@ const BADGE_CODE_VIEW = `<div className="flex items-center justify-start gap-3">
 `
 
 export default async function DocumentationBadgePage() {
-  const codeResponse = await getCode('Badge')
-
   return (
     <section>
       <div className="space-y-3">
@@ -23,7 +20,7 @@ export default async function DocumentationBadgePage() {
         <Text tag="h2">Badge allows you to display data in a quick way</Text>
       </div>
 
-      <DocumentationSection title="Badge" code={codeResponse.code}>
+      <DocumentationSection title="Badge">
         <Tabs defaultValue="view" className="mt-3">
           <TabList className="p-0">
             <Tab id="view">View</Tab>

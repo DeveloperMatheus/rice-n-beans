@@ -1,12 +1,9 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { ErrorMessage } from '~/components/ErrorMessage'
 
 export default async function DocumentationErrorMessagePage() {
-  const codeResponse = await getCode('ErrorMessage')
-
   const CODE_ERROR_VIEW = `<ErrorMessage>
   This is an error message to be displayed when your fields are invalid or not satisfying the requirements
 </ErrorMessage>
@@ -22,7 +19,7 @@ export default async function DocumentationErrorMessagePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Error" code={codeResponse.code}>
+      <DocumentationSection title="Error">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

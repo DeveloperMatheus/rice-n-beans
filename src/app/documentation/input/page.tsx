@@ -1,4 +1,3 @@
-import { getCode } from '~/services/code'
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -6,8 +5,6 @@ import Link from 'next/link'
 import { Input } from '~/components/Input'
 
 export default async function DocumentationInputPage() {
-  const codeResponse = await getCode('Input')
-
   const CODE_INPUT_VIEW = `<div className="space-y-3">
   <Input placeholder="This is an input, type something!" />
   <Input placeholder="Oops! I have an error!" isInvalid />
@@ -34,7 +31,7 @@ export default async function DocumentationInputPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Input" code={codeResponse.code}>
+      <DocumentationSection title="Input">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

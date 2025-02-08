@@ -1,7 +1,6 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { getCode } from '~/services/code'
 
 const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 <Text tag="h2">This is a heading 2</Text>
@@ -15,8 +14,6 @@ const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 `
 
 export default async function DocumentationTypographyPage() {
-  const codeResponse = await getCode('Typography')
-
   return (
     <section>
       <div className="space-y-3">
@@ -32,7 +29,7 @@ export default async function DocumentationTypographyPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Typography" code={codeResponse.code}>
+      <DocumentationSection title="Typography">
         <Tabs defaultValue="view" className="mt-5">
           <TabList>
             <Tab id="view">View</Tab>

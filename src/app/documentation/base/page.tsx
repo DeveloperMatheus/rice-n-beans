@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DocumentationBaseExample } from './components/DocumentationBaseExample'
 import { getCode } from '~/services/code'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const BASE_CODE_VIEW = `"use client";
 
@@ -47,7 +48,8 @@ export const DocumentationBaseExample = () => {
 `
 
 export default async function DocumentationBasePage() {
-  const codeResponse = await getCode('Base')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Base')
 
   return (
     <section>

@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
 import { Badge } from '~/components/Badge'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const BADGE_CODE_VIEW = `<div className="flex items-center justify-start gap-3">
   <Badge>Default</Badge>
@@ -13,7 +14,8 @@ const BADGE_CODE_VIEW = `<div className="flex items-center justify-start gap-3">
 `
 
 export default async function DocumentationBadgePage() {
-  const codeResponse = await getCode('Badge')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Badge')
 
   return (
     <section>

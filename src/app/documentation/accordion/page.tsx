@@ -7,6 +7,7 @@ import {
   AccordionTrigger
 } from '~/components/Accordion'
 import { getCode } from '~/services/code'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
   <div>
@@ -25,7 +26,8 @@ const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
 `
 
 export default async function DocumentationAccordionPage() {
-  const codeResponse = await getCode('Accordion')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Accordion')
 
   return (
     <section>

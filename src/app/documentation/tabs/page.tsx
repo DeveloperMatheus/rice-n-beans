@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const CODE_TABS_VIEW = `<Tabs defaultValue="view" className="mt-3">
   <TabList>
@@ -23,7 +24,8 @@ const CODE_TABS_VIEW = `<Tabs defaultValue="view" className="mt-3">
 `
 
 export default async function DocumentationTabsPage() {
-  const codeResponse = await getCode('Tabs')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Tabs')
 
   return (
     <section>

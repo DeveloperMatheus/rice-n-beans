@@ -5,9 +5,11 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import { Card } from '~/components/Card'
 import Link from 'next/link'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationCardPage() {
-  const codeResponse = await getCode('Card')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Card')
 
   const CODE_CARD_VIEW = `<div className="w-fit">
   <Card>This is a card inside a tab</Card>

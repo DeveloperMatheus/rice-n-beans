@@ -3,9 +3,11 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { ErrorMessage } from '~/components/ErrorMessage'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationErrorMessagePage() {
-  const codeResponse = await getCode('ErrorMessage')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'ErrorMessage')
 
   const CODE_ERROR_VIEW = `<ErrorMessage>
   This is an error message to be displayed when your fields are invalid or not satisfying the requirements

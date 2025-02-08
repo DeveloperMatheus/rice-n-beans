@@ -17,6 +17,7 @@ import { Mail } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
 import Link from 'next/link'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const CODE_TABLE_VIEW = `<Table>
   <TableHeader>
@@ -70,7 +71,8 @@ const CODE_TABLE_VIEW = `<Table>
 </Table>
 `
 export default async function DocumentationTablePage() {
-  const codeResponse = await getCode('Table')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Table')
 
   return (
     <section>

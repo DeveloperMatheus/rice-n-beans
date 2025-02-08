@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import Link from 'next/link'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const CODE_MODAL_VIEW = `<Modal
   className="max-w-[60rem]"
@@ -25,7 +26,8 @@ const CODE_MODAL_VIEW = `<Modal
 `
 
 export default async function DocumentationModalPage() {
-  const codeResponse = await getCode('Modal')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Modal')
 
   return (
     <section>

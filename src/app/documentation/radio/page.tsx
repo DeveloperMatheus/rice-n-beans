@@ -5,6 +5,7 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Radio } from '~/components/Radio'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
 <div className="flex items-center justify-center">
@@ -29,7 +30,8 @@ const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
 `
 
 export default async function DocumentationRadioPage() {
-  const codeResponse = await getCode('Radio')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Radio')
 
   return (
     <section>

@@ -5,9 +5,11 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Switch } from '~/components/Switch'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationSwitchPage() {
-  const codeResponse = await getCode('Switch')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Switch')
 
   const CODE_SWITCH_VIEW = `<div className="flex items-center justify-start">
   <Label htmlFor="test-switch" className="mr-2">

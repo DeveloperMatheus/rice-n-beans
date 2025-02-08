@@ -6,9 +6,11 @@ import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Button } from '~/components/Button'
 import { Search } from 'lucide-react'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationButtonPage() {
-  const codeResponse = await getCode('Button')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Button')
 
   const CODE_BUTTON_VIEW = `<Text tag="h4">Variants</Text>
 <div className="flex items-center justify-start flex-wrap gap-5">

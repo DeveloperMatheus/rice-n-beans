@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { getCode } from '~/services/code'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 <Text tag="h2">This is a heading 2</Text>
@@ -15,7 +16,8 @@ const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 `
 
 export default async function DocumentationTypographyPage() {
-  const codeResponse = await getCode('Typography')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Typography')
 
   return (
     <section>

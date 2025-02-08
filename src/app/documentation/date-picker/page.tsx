@@ -5,9 +5,11 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { DatePicker } from '~/components/Datepicker'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationDatePickerPage() {
-  const codeResponse = await getCode('DatePicker')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'DatePicker')
 
   return (
     <section>

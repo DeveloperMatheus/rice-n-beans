@@ -5,9 +5,11 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Select } from '~/components/Select'
+import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationSelectPage() {
-  const codeResponse = await getCode('Select')
+  const baseUrl = await getBaseUrl()
+  const codeResponse = await getCode(baseUrl, 'Select')
 
   const CODE_SELECT_VIEW = `<Select>
   <option defaultChecked hidden>

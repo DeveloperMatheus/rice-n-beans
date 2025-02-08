@@ -31,10 +31,12 @@ export async function GET(req: Request) {
   try {
     // Read the file content as a string
     const fileContent = fs.readFileSync(filePath, 'utf-8')
+    console.log('fileContent => ', fileContent)
 
     // Return the content as JSON response
     return NextResponse.json({ code: fileContent })
   } catch (error) {
+    console.log('error => ', error)
     // If file reading fails, return an error
     return NextResponse.json(
       { error: `Failed to read the file: ${componentName}` },

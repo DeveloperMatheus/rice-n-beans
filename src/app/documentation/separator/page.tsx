@@ -4,11 +4,9 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Separator } from '~/components/Separator'
 import Link from 'next/link'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationSeparatorPage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Separator')
+  const codeResponse = await getCode('Separator')
 
   const CODE_SEPARATOR_VIEW = `<Text tag="h4">Orientation:</Text>
 <div className="flex items-center justify-start gap-5 h-9">

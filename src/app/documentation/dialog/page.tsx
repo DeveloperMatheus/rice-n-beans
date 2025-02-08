@@ -3,7 +3,6 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DialogSection } from './components/DialogSection'
 import { getCode } from '~/services/code'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 const DIALOG_CODE_VIEW = `"use client";
 
@@ -30,8 +29,7 @@ export const DialogSection = () => {
 `
 
 export default async function DocumentationDialogPage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Dialog')
+  const codeResponse = await getCode('Dialog')
 
   return (
     <section>

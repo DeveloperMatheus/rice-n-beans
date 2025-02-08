@@ -4,11 +4,9 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Label } from '~/components/Label'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationLabelPage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Label')
+  const codeResponse = await getCode('Label')
 
   return (
     <section>

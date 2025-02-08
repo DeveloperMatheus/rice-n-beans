@@ -5,11 +5,9 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import { Range } from '~/components/Range'
 import Link from 'next/link'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationRangePage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Range')
+  const codeResponse = await getCode('Range')
 
   return (
     <section>

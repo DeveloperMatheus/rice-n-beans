@@ -5,11 +5,9 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import { Checkbox } from '~/components/Checkbox'
 import Link from 'next/link'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationCheckboxPage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Checkbox')
+  const codeResponse = await getCode('Checkbox')
 
   const CODE_CHECKBOX_VIEW = `<div className="flex items-center justify-start">
   <Label className="mr-3" htmlFor="test-check">This is a checkbox</Label>

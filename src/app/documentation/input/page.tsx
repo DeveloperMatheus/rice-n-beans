@@ -4,11 +4,9 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Input } from '~/components/Input'
-import { getBaseUrl } from '~/utils/getBaseUrl'
 
 export default async function DocumentationInputPage() {
-  const baseUrl = await getBaseUrl()
-  const codeResponse = await getCode(baseUrl, 'Input')
+  const codeResponse = await getCode('Input')
 
   const CODE_INPUT_VIEW = `<div className="space-y-3">
   <Input placeholder="This is an input, type something!" />

@@ -2,7 +2,6 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import Link from 'next/link'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { getCode } from '~/services/code'
 
 const CODE_MODAL_VIEW = `<Modal
   className="max-w-[60rem]"
@@ -25,8 +24,6 @@ const CODE_MODAL_VIEW = `<Modal
 `
 
 export default async function DocumentationModalPage() {
-  const codeResponse = await getCode('Modal')
-
   return (
     <section>
       <div className="space-y-3">
@@ -48,7 +45,7 @@ export default async function DocumentationModalPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Modal" code={codeResponse.code}>
+      <DocumentationSection title="Modal">
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

@@ -4,6 +4,7 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Select } from '~/components/Select'
+import { SELECT_CODE } from '~/components/Select/mockCode'
 
 export default async function DocumentationSelectPage() {
   const CODE_SELECT_VIEW = `<Select>
@@ -35,7 +36,7 @@ export default async function DocumentationSelectPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Select">
+      <DocumentationSection title="Select" code={SELECT_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

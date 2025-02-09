@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { ErrorMessage } from '~/components/ErrorMessage'
+import { ERROR_CODE } from '~/components/ErrorMessage/mockCode'
 
 export default async function DocumentationErrorMessagePage() {
   const CODE_ERROR_VIEW = `<ErrorMessage>
@@ -19,7 +20,7 @@ export default async function DocumentationErrorMessagePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Error">
+      <DocumentationSection title="Error" code={ERROR_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

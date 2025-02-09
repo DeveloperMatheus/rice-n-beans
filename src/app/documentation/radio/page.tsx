@@ -4,26 +4,27 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Radio } from '~/components/Radio'
+import { RADIO_CODE } from '~/components/Radio/mockCode'
 
 const CODE_RADIO_VIEW = `<div className="flex items-center justify-start gap-5">
-<div className="flex items-center justify-center">
-  <Radio name="test-radio" id="test-radio1" />
-  <Label className="ml-2" htmlFor="test-radio1">
-    This is a Radio
-  </Label>
-</div>
-<div className="flex items-center justify-center">
-  <Radio name="test-radio" id="test-radio2" />
-  <Label className="ml-2" htmlFor="test-radio2">
-    Yes it is
-  </Label>
-</div>
-<div className="flex items-center justify-center">
-  <Radio name="test-radio" id="test-radio3" />
-  <Label className="ml-2" htmlFor="test-radio3">
-    Nahh it is not
-  </Label>
-</div>
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio1" />
+    <Label className="ml-2" htmlFor="test-radio1">
+      This is a Radio
+    </Label>
+  </div>
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio2" />
+    <Label className="ml-2" htmlFor="test-radio2">
+      Yes it is
+    </Label>
+  </div>
+  <div className="flex items-center justify-center">
+    <Radio name="test-radio" id="test-radio3" />
+    <Label className="ml-2" htmlFor="test-radio3">
+      Nahh it is not
+    </Label>
+  </div>
 </div>
 `
 
@@ -48,7 +49,7 @@ export default async function DocumentationRadioPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Radio">
+      <DocumentationSection title="Radio" code={RADIO_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import Link from 'next/link'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { MODAL_CODE } from '~/components/Modal/mockCode'
 
 const CODE_MODAL_VIEW = `<Modal
   className="max-w-[60rem]"
@@ -45,7 +46,7 @@ export default async function DocumentationModalPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Modal">
+      <DocumentationSection title="Modal" code={MODAL_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

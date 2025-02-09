@@ -4,6 +4,7 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { Switch } from '~/components/Switch'
+import { SWITCH_CODE } from '~/components/Switch/mockCode'
 
 export default async function DocumentationSwitchPage() {
   const CODE_SWITCH_VIEW = `<div className="flex items-center justify-start">
@@ -35,7 +36,7 @@ export default async function DocumentationSwitchPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Switch">
+      <DocumentationSection title="Switch" code={SWITCH_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DocumentationBaseExample } from './components/DocumentationBaseExample'
+import { BASE_CODE } from '~/components/Base/mockCode'
 
 const BASE_CODE_VIEW = `"use client";
 
@@ -78,7 +79,7 @@ export default async function DocumentationBasePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Base">
+      <DocumentationSection title="Base" code={BASE_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList className="p-0">
             <Tab id="view">View</Tab>

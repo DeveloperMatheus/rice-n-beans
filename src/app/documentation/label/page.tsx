@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Label } from '~/components/Label'
+import { LABEL_CODE } from '~/components/Label/mockCode'
 
 export default async function DocumentationLabelPage() {
   return (
@@ -25,7 +26,7 @@ export default async function DocumentationLabelPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Label">
+      <DocumentationSection title="Label" code={LABEL_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

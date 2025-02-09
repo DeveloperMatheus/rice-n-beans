@@ -4,6 +4,7 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import Link from 'next/link'
 import { DatePicker } from '~/components/Datepicker'
+import { DATEPICKER_CODE } from '~/components/Datepicker/mockCode'
 
 export default async function DocumentationDatePickerPage() {
   return (
@@ -28,7 +29,7 @@ export default async function DocumentationDatePickerPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Date Picker">
+      <DocumentationSection title="Date Picker" code={DATEPICKER_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

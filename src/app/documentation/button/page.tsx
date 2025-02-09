@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Button } from '~/components/Button'
+import { BUTTON_CODE } from '~/components/Button/mockCode'
 import { Search } from 'lucide-react'
 
 export default async function DocumentationButtonPage() {
@@ -47,7 +48,7 @@ export default async function DocumentationButtonPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Button">
+      <DocumentationSection title="Button" code={BUTTON_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

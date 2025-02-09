@@ -1,6 +1,7 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { TABS_CODE } from '~/components/Tabs/mockCode'
 
 const CODE_TABS_VIEW = `<Tabs defaultValue="view" className="mt-3">
   <TabList>
@@ -38,7 +39,7 @@ export default async function DocumentationTabsPage() {
         will not work.
       </Text>
 
-      <DocumentationSection title="Tabs">
+      <DocumentationSection title="Tabs" code={TABS_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

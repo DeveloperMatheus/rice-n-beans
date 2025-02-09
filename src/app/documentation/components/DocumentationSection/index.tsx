@@ -1,48 +1,21 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { toast } from 'sonner'
+import { useState } from 'react'
 import { Button } from '~/components/Button'
 import { Card } from '~/components/Card'
 import { Modal, ModalContent, ModalHeader } from '~/components/Modal'
 import { Text } from '~/components/Typography'
-import { getCode } from '~/services/code'
 
 export const DocumentationSection = ({
+  code,
   title,
   children
 }: {
+  code: string
   title: string
   children?: React.ReactNode
 }) => {
   const [isOpen, setOpen] = useState(false)
-
-  const [code, setCode] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchCode = async () => {
-      setIsLoading(true)
-      try {
-        const response = await getCode(title)
-        setCode(response.code)
-      } catch {
-        setCode('Error fetching code')
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchCode()
-  }, [title])
-
-  function renderCode(): React.ReactNode {
-    if (isLoading) return 'Loading...'
-
-    if (!code) return
-
-    return <code>{code}</code>
-  }
 
   return (
     <>
@@ -69,7 +42,7 @@ export const DocumentationSection = ({
         </ModalHeader>
         <ModalContent className="mt-3">
           <Card className="overflow-x-auto whitespace-pre" tabIndex={0}>
-            {renderCode()}
+            <code>{code}</code>
           </Card>
         </ModalContent>
       </Modal>

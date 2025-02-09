@@ -1,4 +1,5 @@
 import { Text } from '~/components/Typography'
+import { TYPOGRAPHY_CODE } from '~/components/Typography/mockCode'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 
@@ -29,7 +30,7 @@ export default async function DocumentationTypographyPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Typography">
+      <DocumentationSection title="Typography" code={TYPOGRAPHY_CODE}>
         <Tabs defaultValue="view" className="mt-5">
           <TabList>
             <Tab id="view">View</Tab>

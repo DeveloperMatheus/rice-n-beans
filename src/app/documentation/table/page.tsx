@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow
 } from '~/components/Table'
+import { TABLE_CODE } from '~/components/Table/mockCode'
 
 import { Mail } from 'lucide-react'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
@@ -96,7 +97,7 @@ export default async function DocumentationTablePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Table">
+      <DocumentationSection title="Table" code={TABLE_CODE}>
         <Tabs defaultValue="view" className="mt-5">
           <TabList>
             <Tab id="view">View</Tab>

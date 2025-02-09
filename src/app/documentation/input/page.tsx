@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import Link from 'next/link'
 import { Input } from '~/components/Input'
+import { INPUT_CODE } from '~/components/Input/mockCode'
 
 export default async function DocumentationInputPage() {
   const CODE_INPUT_VIEW = `<div className="space-y-3">
@@ -31,7 +32,7 @@ export default async function DocumentationInputPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Input">
+      <DocumentationSection title="Input" code={INPUT_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

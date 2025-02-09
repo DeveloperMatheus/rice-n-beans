@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { DialogSection } from './components/DialogSection'
+import { DIALOG_CODE } from '~/components/Dialog/mockCode'
 
 const DIALOG_CODE_VIEW = `"use client";
 
@@ -45,7 +46,7 @@ export default async function DocumentationDialogPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Dialog">
+      <DocumentationSection title="Dialog" code={DIALOG_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

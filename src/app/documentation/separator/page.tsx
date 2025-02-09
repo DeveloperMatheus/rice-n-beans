@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Separator } from '~/components/Separator'
+import { SEPARATOR_CODE } from '~/components/Separator/mockCode'
 import Link from 'next/link'
 
 export default async function DocumentationSeparatorPage() {
@@ -32,7 +33,7 @@ export default async function DocumentationSeparatorPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Separator">
+      <DocumentationSection title="Separator" code={SEPARATOR_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

@@ -7,6 +7,8 @@ import {
   AccordionTrigger
 } from '~/components/Accordion'
 
+import { ACCORDION_CODE } from '~/components/Accordion/mockCode'
+
 const ACCORDION_CODE_VIEW = `<Accordion className="space-y-3">
   <div>
     <AccordionTrigger id="test1">Accordion 1</AccordionTrigger>
@@ -35,7 +37,7 @@ export default async function DocumentationAccordionPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Accordion">
+      <DocumentationSection title="Accordion" code={ACCORDION_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList className="p-0">
             <Tab id="view">View</Tab>

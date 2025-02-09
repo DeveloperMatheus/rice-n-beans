@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import { Range } from '~/components/Range'
+import { RANGE_CODE } from '~/components/Range/mockCode'
 import Link from 'next/link'
 
 export default async function DocumentationRangePage() {
@@ -26,7 +27,7 @@ export default async function DocumentationRangePage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Range">
+      <DocumentationSection title="Range" code={RANGE_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

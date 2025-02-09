@@ -2,6 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Card } from '~/components/Card'
+import { CARD_CODE } from '~/components/Card/mockCode'
 import Link from 'next/link'
 
 export default async function DocumentationCardPage() {
@@ -29,7 +30,7 @@ export default async function DocumentationCardPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Card">
+      <DocumentationSection title="Card" code={CARD_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

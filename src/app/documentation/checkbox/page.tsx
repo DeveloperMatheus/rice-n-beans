@@ -3,6 +3,7 @@ import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { Label } from '~/components/Label'
 import { Checkbox } from '~/components/Checkbox'
+import { CHECKBOX_CODE } from '~/components/Checkbox/mockCode'
 import Link from 'next/link'
 
 export default async function DocumentationCheckboxPage() {
@@ -32,7 +33,7 @@ export default async function DocumentationCheckboxPage() {
         </Text>
       </div>
 
-      <DocumentationSection title="Checkbox">
+      <DocumentationSection title="Checkbox" code={CHECKBOX_CODE}>
         <Tabs defaultValue="view" className="mt-3">
           <TabList>
             <Tab id="view">View</Tab>

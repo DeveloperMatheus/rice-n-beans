@@ -23,7 +23,7 @@ export async function GET(req: Request) {
   }
 
   // Dynamically build the path to the component file
-  const filePath = path.resolve(
+  const filePath = path.join(
     process.cwd(),
     'src',
     'components',

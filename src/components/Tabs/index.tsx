@@ -4,7 +4,6 @@ import {
   ComponentProps,
   ComponentPropsWithoutRef,
   createContext,
-  useCallback,
   useContext,
   useRef,
   useState
@@ -64,36 +63,33 @@ const Tabs = ({ children, className, defaultValue, ...props }: TabsProps) => {
     evt.preventDefault()
   }
 
-  const onKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      const list = refList.current
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const list = refList.current
 
-      if (!list) return
+    if (!list) return
 
-      const tabs = Array.from<HTMLElement>(
-        list.querySelectorAll('[role="tab"]:not([disabled])')
-      )
+    const tabs = Array.from<HTMLElement>(
+      list.querySelectorAll('[role="tab"]:not([disabled])')
+    )
 
-      const index = tabs.indexOf(document.activeElement as HTMLElement)
+    const index = tabs.indexOf(document.activeElement as HTMLElement)
 
-      if (index < 0) return
+    if (index < 0) return
 
-      switch (event.key) {
-        case 'ArrowLeft': {
-          const prev = (index - 1 + tabs.length) % tabs.length
-          arrowFocus(tabs[prev], event)
-          break
-        }
-
-        case 'ArrowRight': {
-          const next = (index + 1 + tabs.length) % tabs.length
-          arrowFocus(tabs[next], event)
-          break
-        }
+    switch (event.key) {
+      case 'ArrowLeft': {
+        const prev = (index - 1 + tabs.length) % tabs.length
+        arrowFocus(tabs[prev], event)
+        break
       }
-    },
-    []
-  )
+
+      case 'ArrowRight': {
+        const next = (index + 1 + tabs.length) % tabs.length
+        arrowFocus(tabs[next], event)
+        break
+      }
+    }
+  }
 
   return (
     <TabsProvider defaultValue={defaultValue}>
@@ -185,12 +181,11 @@ const Tab = ({ children, className, id, ...props }: TabButtonProps) => {
     evt.preventDefault()
   }
 
-  const onClickDown = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      clickAndFocus(event.currentTarget, event)
-    },
-    []
-  )
+  const onClickDown = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    clickAndFocus(event.currentTarget, event)
+  }
 
   return (
     <Button

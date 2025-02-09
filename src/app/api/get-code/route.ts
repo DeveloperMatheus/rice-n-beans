@@ -25,7 +25,10 @@ export async function GET(req: Request) {
   // Dynamically build the path to the component file
   const filePath = path.resolve(
     process.cwd(),
-    `src/components/${componentName}/index.tsx`
+    'src',
+    'components',
+    componentName,
+    'index.tsx'
   )
 
   try {

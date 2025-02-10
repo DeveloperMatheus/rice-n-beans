@@ -49,10 +49,10 @@ type TabsProps = {
 const Tabs = ({ children, className, defaultValue, ...props }: TabsProps) => {
   const refList = useRef<HTMLDivElement>(null)
 
-  function arrowFocus(
+  const arrowFocus = (
     tabButton: HTMLElement,
     evt: React.KeyboardEvent<HTMLDivElement>
-  ) {
+  ) => {
     tabButton.click()
     tabButton.focus()
     tabButton.scrollIntoView({
@@ -155,28 +155,28 @@ type TabButtonProps = {
 const Tab = ({ children, className, id, ...props }: TabButtonProps) => {
   const { activeTab, setActiveTab } = useContext(TabsContext)
 
-  function isTabActive() {
+  const isTabActive = () => {
     if (activeTab !== id) return false
 
     return true
   }
 
-  function applyActiveStyle() {
+  const applyActiveStyle = () => {
     if (!isTabActive()) return 'outline'
 
     return 'default'
   }
 
-  function applyTabIndex() {
+  const applyTabIndex = () => {
     if (!isTabActive()) return -1
 
     return 0
   }
 
-  function clickAndFocus(
+  const clickAndFocus = (
     tabButton: HTMLElement,
     evt: React.MouseEvent<HTMLButtonElement>
-  ) {
+  ) => {
     tabButton.focus()
     evt.preventDefault()
   }

@@ -93,7 +93,7 @@ const DialogModal = ({
   open: boolean
   handleAction?: (value: boolean) => void
 }) => {
-  function handleClose(value: boolean) {
+  const handleClose = (value: boolean) => {
     if (!handleAction) return
     handleAction(value)
   }
@@ -111,7 +111,7 @@ const DialogModal = ({
       </ModalHeader>
       <ModalContent>{content}</ModalContent>
 
-      <ModalFooter className="space-x-3">
+      <ModalFooter className="flex justify-end space-x-3">
         <Button
           className="w-full"
           variant="outline"

@@ -3,7 +3,7 @@ import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const buttonStyles = cva(
-  'inline-flex items-center justify-center appearance-none font-sans rounded-lg disabled:cursor-not-allowed disabled:opacity-50',
+  'cursor-pointer inline-flex items-center justify-center appearance-none font-sans rounded-lg disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {

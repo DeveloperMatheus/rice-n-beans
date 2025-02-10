@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 
 const tableStyles = 'border-collapse text-contrast'
 const tableDataStyles = 'px-2 py-1 text-center'
-const tableRowStyles = '[&:not(:last-child)]:border-b border-default'
+const tableRowStyles = 'not-last:border-b border-default'
 const tableHeadStyles = 'px-2 py-1 text-center'
 const tableHeaderStyles = 'border-b border-default text-center'
 const tableFooterStyles = 'border-t border-default font-bold'

@@ -17,7 +17,7 @@ const buttonStyles = cva(
           'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
           'bg-transparent text-contrast hover:bg-secondary/90 active:bg-secondary/80',
-        link: 'text-contrast underline-offset-4 hover:underline active:text-contrast/85'
+        link: 'text-contrast underline-offset-4 hover:underline'
       },
       size: {
         default: 'h-9 px-4 py-2',

@@ -25,10 +25,10 @@ const Badge = ({
   className,
   variant,
   ...props
-}: ComponentProps<'span'> & VariantProps<typeof badgeStyles>) => (
-  <span className={twMerge(badgeStyles({ className, variant }))} {...props}>
+}: ComponentProps<'div'> & VariantProps<typeof badgeStyles>) => (
+  <div className={twMerge(badgeStyles({ className, variant }))} {...props}>
     {children}
-  </span>
+  </div>
 )
 
 Badge.displayName = 'Badge'

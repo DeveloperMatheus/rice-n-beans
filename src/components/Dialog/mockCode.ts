@@ -24,7 +24,7 @@ const DialogContext = createContext<DialogContextProps>({
   render: () => {}
 })
 
-export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
+const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [modal, setModal] = useState<
     DialogProps & { action: (value: boolean) => void }
@@ -134,7 +134,7 @@ const DialogModal = ({
 }
 
 /* --- Hook --- */
-export const useConfirm = () => {
+const useConfirm = () => {
   const dialogContext = useContext(DialogContext)
 
   const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
@@ -149,4 +149,6 @@ export const useConfirm = () => {
     getConfirmation
   }
 }
+
+export { DialogProvider, DialogModal, useConfirm }
 `

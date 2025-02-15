@@ -4,7 +4,7 @@ import { Button } from '~/components/Button'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-3 lg:p-5">
+    <main className="flex min-h-screen flex-col items-center justify-center p-3 lg:p-5 checked:before:content-">
       <div className="text-center space-y-3">
         <Text tag="h1" className="lg:text-5xl border-zinc-200">
           Rice and Beans

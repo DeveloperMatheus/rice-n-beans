@@ -24,7 +24,7 @@ const DialogContext = createContext<DialogContextProps>({
   render: () => {}
 })
 
-export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
+const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [modal, setModal] = useState<
     DialogProps & { action: (value: boolean) => void }
@@ -93,7 +93,7 @@ const DialogModal = ({
   open: boolean
   handleAction?: (value: boolean) => void
 }) => {
-  function handleClose(value: boolean) {
+  const handleClose = (value: boolean) => {
     if (!handleAction) return
     handleAction(value)
   }
@@ -111,7 +111,7 @@ const DialogModal = ({
       </ModalHeader>
       <ModalContent>{content}</ModalContent>
 
-      <ModalFooter className="space-x-3">
+      <ModalFooter className="flex justify-end space-x-3">
         <Button
           className="w-full"
           variant="outline"
@@ -134,7 +134,7 @@ const DialogModal = ({
 }
 
 /* --- Hook --- */
-export const useConfirm = () => {
+const useConfirm = () => {
   const dialogContext = useContext(DialogContext)
 
   const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
@@ -149,3 +149,5 @@ export const useConfirm = () => {
     getConfirmation
   }
 }
+
+export { DialogProvider, DialogModal, useConfirm }

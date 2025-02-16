@@ -3,14 +3,14 @@ import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const badgeStyles = cva(
-  'px-2.5 py-0.5 inline-block text-center font-bold text-sm rounded-full select-none',
+  'inline-block rounded-full px-2.5 py-0.5 text-center text-sm font-bold select-none',
   {
     variants: {
       variant: {
         default: 'bg-primary text-primary-contrast hover:bg-primary/90',
-        destructive: 'bg-error text-white dark:text-contrast hover:bg-error/90',
+        destructive: 'bg-error dark:text-contrast hover:bg-error/90 text-white',
         outline:
-          'border border-default text-contrast bg-scaffold hover:bg-scaffold/90',
+          'border-default text-contrast bg-scaffold hover:bg-scaffold/90 border',
         secondary: 'bg-secondary text-contrast hover:bg-secondary/70'
       }
     },
@@ -25,10 +25,10 @@ const Badge = ({
   className,
   variant,
   ...props
-}: ComponentProps<'span'> & VariantProps<typeof badgeStyles>) => (
-  <span className={twMerge(badgeStyles({ className, variant }))} {...props}>
+}: ComponentProps<'div'> & VariantProps<typeof badgeStyles>) => (
+  <div className={twMerge(badgeStyles({ className, variant }))} {...props}>
     {children}
-  </span>
+  </div>
 )
 
 Badge.displayName = 'Badge'

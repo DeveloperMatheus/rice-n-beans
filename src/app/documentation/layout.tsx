@@ -43,7 +43,7 @@ export default function DocumentationLayout({
   return (
     <Base>
       <BaseDrawer isOpen={isOpen}>
-        <div className="lg:hidden">
+        <div className="flex flex-row items-center justify-between lg:hidden">
           <BaseToggleDrawer
             aria-label="Toggle drawer"
             onClick={() => toggleDrawer()}

@@ -1,12 +1,12 @@
 export const TABLE_CODE = `import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const tableStyles = 'border-collapse text-contrast'
+const tableStyles = 'text-contrast border-collapse'
 const tableDataStyles = 'px-2 py-1 text-center'
-const tableRowStyles = '[&:not(:last-child)]:border-b border-default'
+const tableRowStyles = 'border-default not-last:border-b'
 const tableHeadStyles = 'px-2 py-1 text-center'
-const tableHeaderStyles = 'border-b border-default text-center'
-const tableFooterStyles = 'border-t border-default font-bold'
+const tableHeaderStyles = 'border-default border-b text-center'
+const tableFooterStyles = 'border-default border-t font-bold'
 
 /* --- Table --- */
 const Table = ({ children, className, ...props }: ComponentProps<'table'>) => (

@@ -5,9 +5,9 @@ import { twMerge } from 'tailwind-merge'
 import { Button } from '~/components/Button'
 
 const accordionStyles = 'w-full'
-const accordionContentStyles = 'mt-3'
+const accordionContentStyles = 'mt-3 px-5'
 const accordionTriggerStyles =
-  'w-full flex flex-row items-center justify-between'
+  'flex w-full flex-row items-center justify-between'
 
 /* --- Context --- */
 type AccordionProviderProps = {
@@ -24,6 +24,9 @@ const InitAccordion: AccordionContextProps = {
   activeAccordion: undefined,
   setActiveAccordion: (value?: string) => {}
 }
+
+const isAccordionOpen = (id: string, activeAccordion?: string): boolean =>
+  id === activeAccordion
 
 const AccordionContext = createContext<AccordionContextProps>(InitAccordion)
 
@@ -70,11 +73,7 @@ const AccordionContent = ({
 }: AccordionContentProps) => {
   const { activeAccordion } = useContext(AccordionContext)
 
-  function isAccordionOpen(): boolean {
-    return activeAccordion === id
-  }
-
-  if (!isAccordionOpen()) return
+  if (!isAccordionOpen(id, activeAccordion)) return
 
   return (
     <div
@@ -82,7 +81,7 @@ const AccordionContent = ({
       {...props}
       id={`accordion-${id}`}
       aria-labelledby={id}
-      hidden={!isAccordionOpen()}
+      hidden={!isAccordionOpen(id, activeAccordion)}
       role="region"
     >
       {children}
@@ -105,21 +104,22 @@ const AccordionTrigger = ({
 }: AccordionTriggerProps) => {
   const { activeAccordion, setActiveAccordion } = useContext(AccordionContext)
 
-  function isAccordionOpen(): boolean {
-    return activeAccordion === id
-  }
-
-  function renderAccordionIcon(): React.ReactNode {
-    const iconAnimation = isAccordionOpen() ? 'rotate-180' : 'rotate-0'
+  const renderAccordionIcon = (): React.ReactNode => {
+    const iconAnimation = isAccordionOpen(id, activeAccordion)
+      ? 'rotate-180'
+      : 'rotate-0'
 
     return (
       <div
         aria-hidden="true"
         tabIndex={-1}
-        className={`transition-all ${iconAnimation} min-w-6 min-h-6 bg-arrow-icon`}
+        className={`bg-arrow-icon min-h-6 min-w-6 ${iconAnimation} transition-all`}
       ></div>
     )
   }
+
+  const handleToggle = () =>
+    setActiveAccordion(isAccordionOpen(id, activeAccordion) ? undefined : id)
 
   return (
     <Button
@@ -127,11 +127,9 @@ const AccordionTrigger = ({
       {...props}
       variant="outline"
       id={id}
-      aria-expanded={isAccordionOpen()}
+      aria-expanded={isAccordionOpen(id, activeAccordion)}
       aria-controls={`accordion-${id}`}
-      onClick={() => {
-        setActiveAccordion(isAccordionOpen() ? undefined : id)
-      }}
+      onClick={handleToggle}
     >
       {children}
       {renderAccordionIcon()}

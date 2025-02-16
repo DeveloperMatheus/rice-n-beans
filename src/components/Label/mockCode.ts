@@ -1,7 +1,7 @@
 export const LABEL_CODE = `import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const labelStyles = 'inline-block font-sans text-contrast font-bold select-none'
+const labelStyles = 'text-contrast inline-block font-sans font-bold select-none'
 
 const Label = ({ children, className, ...props }: ComponentProps<'label'>) => (
   <label className={twMerge(labelStyles, className)} {...props}>

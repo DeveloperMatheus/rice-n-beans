@@ -21,7 +21,7 @@ describe('Select Component', () => {
     expect(select).toHaveClass('border-default')
     expect(select).toHaveClass('bg-white')
     expect(select).toHaveClass('dark:bg-scaffold')
-    expect(select).toHaveClass('bg-arrow-icon')
+    expect(select).toHaveClass('bg-select-icon')
     expect(select).toHaveClass('bg-no-repeat')
     expect(select).toHaveClass('bg-[position:center_right_0.75rem]')
     expect(select).toHaveClass('bg-[length:1.6rem]')

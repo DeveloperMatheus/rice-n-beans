@@ -15,7 +15,7 @@ const twMerge = extendTailwindMerge({
 })
 
 const selectStyles = cva(
-  'text-contrast w-full font-sans appearance-none rounded-lg border border-default bg-white dark:bg-scaffold bg-arrow-icon bg-no-repeat bg-[position:center_right_0.75rem] bg-[length:1.6rem] pl-3 pr-8 py-2 placeholder:placeholder-muted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-default focus-visible:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50',
+  'text-contrast border-default dark:bg-scaffold bg-arrow-icon placeholder:placeholder-muted focus-visible:ring-default w-full appearance-none rounded-lg border bg-white bg-[length:1.6rem] bg-[position:center_right_0.75rem] bg-no-repeat py-2 pr-8 pl-3 font-sans focus-visible:ring-2 focus-visible:outline-hidden focus-visible:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       isInvalid: {

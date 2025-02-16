@@ -4,10 +4,10 @@ import { ComponentProps, useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const modalStyles =
-  'my-auto md:mx-auto w-full md:w-auto rounded-lg open:animate-modal backdrop:backdrop-blur-xs open:backdrop:animate-fade-in'
+  'open:animate-modal open:backdrop:animate-fade-in my-auto w-full rounded-lg backdrop:backdrop-blur-xs md:mx-auto md:w-auto'
 const modalContentStyles = 'px-3 pb-3'
 const modalHeaderStyles = 'px-3 pt-3'
-const modalFooterStyles = 'border-t border-default p-3'
+const modalFooterStyles = 'border-default border-t p-3'
 
 /* --- Modal --- */
 type ModalProps = {

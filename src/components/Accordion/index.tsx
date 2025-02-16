@@ -7,7 +7,7 @@ import { Button } from '~/components/Button'
 const accordionStyles = 'w-full'
 const accordionContentStyles = 'mt-3 px-5'
 const accordionTriggerStyles =
-  'w-full flex flex-row items-center justify-between'
+  'flex w-full flex-row items-center justify-between'
 
 /* --- Context --- */
 type AccordionProviderProps = {
@@ -113,7 +113,7 @@ const AccordionTrigger = ({
       <div
         aria-hidden="true"
         tabIndex={-1}
-        className={`transition-all ${iconAnimation} min-w-6 min-h-6 bg-arrow-icon`}
+        className={`bg-arrow-icon min-h-6 min-w-6 ${iconAnimation} transition-all`}
       ></div>
     )
   }

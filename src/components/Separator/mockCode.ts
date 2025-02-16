@@ -2,7 +2,7 @@ export const SEPARATOR_CODE = `import { cva, VariantProps } from 'class-variance
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const separatorStyles = cva('shrink-0 bg-muted', {
+const separatorStyles = cva('bg-muted shrink-0', {
   variants: {
     orientation: {
       horizontal: 'h-px w-full',

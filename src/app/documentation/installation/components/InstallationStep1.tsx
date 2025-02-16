@@ -51,7 +51,9 @@ export const InstallationStep1 = () => {
           <code>{renderCommandPrefix()} typescript</code>
         </div>
         <div>
-          <code>{renderCommandPrefix()} tailwindcss postcss autoprefixer</code>
+          <code>
+            {renderCommandPrefix()} tailwindcss @tailwindcss/postcss postcss
+          </code>
         </div>
         <div>
           <code>{renderCommandPrefix()} class-variance-authority</code>

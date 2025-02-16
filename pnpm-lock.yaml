@@ -93,9 +93,6 @@ importers:
       plop:
         specifier: ^4.0.1
         version: 4.0.1
-      postcss:
-        specifier: ^8
-        version: 8.5.1
       prettier:
         specifier: ^3.5.1
         version: 3.5.1

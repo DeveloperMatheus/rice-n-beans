@@ -39,7 +39,6 @@
 }
 
 @theme {
-  /* --content-*: initial; */
   --content-checkmark-icon: var(--checkmark-icon);
 
   --color-primary: hsl(var(--primary));

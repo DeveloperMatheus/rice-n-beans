@@ -2,68 +2,9 @@ import { Card } from '~/components/Card'
 import { Text } from '~/components/Typography'
 import { InstallationStep1 } from './components/InstallationStep1'
 
-const CODE_TAILWIND_VIEW = `import type { Config } from 'tailwindcss'
+const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
 
-const config: Config = {
-  darkMode: ['class', "[class~='dark']"],
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
-  ],
-  theme: {
-    extend: {
-      colors: {
-        primary: 'hsl(var(--primary))',
-        secondary: 'hsl(var(--secondary))',
-        scaffold: 'hsl(var(--scaffold))',
-        success: 'hsl(var(--success))',
-        error: 'hsl(var(--error))',
-        accent: 'hsl(var(--accent))',
-        contrast: 'hsl(var(--contrast))',
-        muted: 'hsl(var(--muted))'
-      },
-      textColor: {
-        'primary-contrast': 'hsl(var(--primary-contrast))'
-      },
-      placeholderColor: {
-        default: 'hsl(var(--placeholder))'
-      },
-      ringColor: {
-        default: 'hsl(var(--ring))'
-      },
-      backgroundImage: {
-        'arrow-icon':
-          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e\")"
-      },
-      keyframes: {
-        'fade-in': {
-          '0%': { opacity: '0%' },
-          '100%': { opacity: '100%' }
-        },
-        modal: {
-          '0%': { transform: 'scale(1.05)' },
-          '100%': { transform: 'scale(1)' }
-        }
-      },
-      animation: {
-        'fade-in': 'fade-in 0.2s ease-in-out',
-        modal: 'modal 0.2s ease-in-out'
-      }
-    },
-    content: {
-      'checkmark-icon':
-        "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")"
-    }
-  },
-  plugins: []
-}
-export default config
-`
-
-const CODE_CSS_VIEW = `@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:is([class~='dark'] *));
 
 /* CSS vars */
 :root {
@@ -72,13 +13,17 @@ const CODE_CSS_VIEW = `@tailwind base;
   --secondary: 240 5% 96%;
   --success: 142 72% 29%;
   --error: 0 84% 60%;
-  --accent: 0 0% 95%;
-  --muted: 240 6% 90%;
+  --accent: 0 0% 100%;
+  --border: 240 6% 90%;
+  --muted: 220 9% 46%;
 
   --scaffold: 0 0% 100%;
   --contrast: 0 0% 19%;
   --placeholder: 240 4% 46%;
   --ring: 240 10% 4%;
+
+  --checkmark-icon: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  --arrow-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
 }
 
 .dark {
@@ -88,12 +33,56 @@ const CODE_CSS_VIEW = `@tailwind base;
   --success: 143 64% 24%;
   --error: 0 63% 31%;
   --accent: 240 10% 4%;
-  --muted: 240 4% 16%;
+  --border: 240 4% 16%;
+  --muted: 218 11% 65%;
 
   --scaffold: 240 6% 10%;
   --contrast: 240 6% 90%;
   --placeholder: 240 5% 65%;
   --ring: 240 5% 84%;
+}
+
+@theme {
+  --content-checkmark-icon: var(--checkmark-icon);
+
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-scaffold: hsl(var(--scaffold));
+  --color-success: hsl(var(--success));
+  --color-error: hsl(var(--error));
+  --color-accent: hsl(var(--accent));
+  --color-contrast: hsl(var(--contrast));
+  --color-muted: hsl(var(--muted));
+
+  --text-color-primary-contrast: hsl(var(--primary-contrast));
+
+  --border-color-default: hsl(var(--border));
+
+  --placeholder-color-default: hsl(var(--placeholder));
+
+  --ring-color-default: hsl(var(--ring));
+
+  --background-image-select-icon: var(--arrow-icon);
+
+  --animate-fade-in: fade-in 0.2s ease-in-out;
+  --animate-modal: modal 0.2s ease-in-out;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+  @keyframes modal {
+    0% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 }
 `
 
@@ -116,52 +105,32 @@ export default function DocumentationInstallationPage() {
 
         <div>
           <Text tag="h3">
-            2) Add the following lines to your <code>tailwind.config.js</code>:
+            2) Add the following lines to your <code>globals.css</code> or any
+            central css file for the tailwind:
           </Text>
 
           <div className="space-y-2">
             <Text>
               This is to reference the css vars, the svg files for some
-              components (Checkbox, Select, Accordion), setup the darkmode, and
-              add some animations for the Modal/Dialog component.
+              components (Checkbox, Select, Accordion), add the colors, setup
+              the darkmode, and add some animations for the Modal/Dialog
+              component. Keep in mind, those numbers on the CSS vars are written
+              in HSL!
             </Text>
 
             <Text>
               Keep in mind, this configuration is arbitrary and can be changed
-              to fit your needs. For instance, since i&rsquo;m using{' '}
-              <code>Next.js</code>, i have a specific place to reference the
-              content array.
+              to fit your needs.
             </Text>
           </div>
 
-          <Card className="overflow-x-auto mt-3" tabIndex={0}>
+          <Card className="mt-3 overflow-x-auto" tabIndex={0}>
             <code className="whitespace-pre">{CODE_TAILWIND_VIEW}</code>
-          </Card>
-        </div>
-        <div>
-          <Text tag="h3">
-            3) Add the following lines to your <code>globals.css</code>:
-          </Text>
-
-          <div className="space-y-2">
-            <Text>
-              Here we reference with css variables, to pass the colors to
-              tailwind (keep in mind, the numbers are in hsl!)
-            </Text>
-
-            <Text>
-              You can change those values to your liking. Each of those colors
-              represent a portion of those components:
-            </Text>
-          </div>
-
-          <Card className="overflow-x-auto mt-3" tabIndex={0}>
-            <code className="whitespace-pre">{CODE_CSS_VIEW}</code>
           </Card>
         </div>
 
         <Text tag="h3">
-          4) It is over! Now you can start to use the components in your
+          3) It is over! Now you can start to use the components in your
           project. Happy coding!
         </Text>
       </div>

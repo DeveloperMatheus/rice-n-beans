@@ -25,7 +25,7 @@ export const InstallationStep1 = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center xl:justify-start gap-3 my-3">
+      <div className="my-3 flex items-center justify-center gap-3 xl:justify-start">
         <Button
           variant={handleSelectedCommand('yarn')}
           onClick={() => setCommandSelected('yarn')}
@@ -55,6 +55,9 @@ export const InstallationStep1 = () => {
         </div>
         <div>
           <code>{renderCommandPrefix()} class-variance-authority</code>
+        </div>
+        <div>
+          <code>{renderCommandPrefix()} lucide-react</code>
         </div>
       </Card>
     </div>

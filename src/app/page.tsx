@@ -30,6 +30,7 @@ export default function Home() {
               <li>Tailwind CSS</li>
               <li>CVA</li>
               <li>Tailwind Merge</li>
+              <li>Lucide React</li>
             </ul>
           </div>
         </div>

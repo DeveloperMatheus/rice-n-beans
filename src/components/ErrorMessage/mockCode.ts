@@ -1,7 +1,7 @@
 export const ERROR_CODE = `import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const errorMessageStyles = 'text-error font-sans'
+const errorMessageStyles = 'text-error'
 
 const ErrorMessage = ({
   children,

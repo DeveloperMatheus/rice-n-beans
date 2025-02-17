@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { ThemeProvider } from '~/components/Theme/ThemeProvider'
 import { DialogProvider } from '~/components/Dialog'
 import { Toaster } from 'sonner'
 
-const inter = Inter({ subsets: ['latin'] })
+const cascadiaMono = localFont({
+  src: '../../public/font/CascadiaMono.woff2',
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'Rice and Beans',
@@ -20,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cascadiaMono.className}>
         <Toaster />
         <DialogProvider>
           <ThemeProvider

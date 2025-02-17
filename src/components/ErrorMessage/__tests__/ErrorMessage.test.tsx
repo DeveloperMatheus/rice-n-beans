@@ -7,8 +7,7 @@ describe('ErrorMessage Component', () => {
 
     const errorMessage = screen.getByText('Test Error')
     expect(errorMessage).toBeInTheDocument()
-    expect(errorMessage).toHaveClass('text-error') // Default text color
-    expect(errorMessage).toHaveClass('font-sans') // Default font family
+    expect(errorMessage).toHaveClass('text-error')
   })
 
   it('should render the ErrorMessage component with children', () => {

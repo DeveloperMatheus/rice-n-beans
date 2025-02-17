@@ -3,7 +3,7 @@ export const TYPOGRAPHY_CODE = `import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { VariantProps, cva } from 'class-variance-authority'
 
-const textStyles = cva('font-sans', {
+const textStyles = cva('text-contrast', {
   variants: {
     tag: {
       h1: 'text-3xl font-bold lg:text-4xl',
@@ -14,15 +14,10 @@ const textStyles = cva('font-sans', {
       h6: 'text-sm font-bold lg:text-base',
       p: 'text-sm font-normal lg:text-base',
       span: 'text-sm font-normal lg:text-base'
-    },
-    variant: {
-      normal: 'text-contrast',
-      muted: 'text-muted'
     }
   },
   defaultVariants: {
-    tag: 'p',
-    variant: 'normal'
+    tag: 'p'
   }
 })
 
@@ -32,15 +27,10 @@ type TextProps = {
   className?: string
 } & VariantProps<typeof textStyles>
 
-const Text = ({
-  tag = 'p',
-  variant = 'normal',
-  children,
-  className
-}: TextProps) =>
+const Text = ({ tag = 'p', children, className }: TextProps) =>
   React.createElement(
     tag,
-    { className: twMerge(textStyles({ className, tag, variant })) },
+    { className: twMerge(textStyles({ className, tag })) },
     children
   )
 

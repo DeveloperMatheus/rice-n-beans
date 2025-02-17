@@ -8,7 +8,6 @@ describe('Label Component', () => {
     const label = screen.getByText('Test Label')
     expect(label).toBeInTheDocument()
     expect(label).toHaveClass('inline-block') // Default display style
-    expect(label).toHaveClass('font-sans') // Default font family
     expect(label).toHaveClass('text-contrast') // Default text color
     expect(label).toHaveClass('font-bold') // Default font weight
     expect(label).toHaveClass('select-none') // Default user-select style
@@ -26,6 +25,5 @@ describe('Label Component', () => {
 
     const label = screen.getByText('Custom Class Label')
     expect(label).toHaveClass('custom-class') // Custom class
-    expect(label).toHaveClass('font-sans') // Default font family
   })
 })

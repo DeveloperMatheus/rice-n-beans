@@ -45,7 +45,9 @@ export default async function DocumentationTypographyPage() {
             <Text tag="h5">This is a heading 5</Text>
             <Text tag="h6">This is a heading 6</Text>
             <Text tag="p">This is a paragraph</Text>
-            <Text variant="muted">This is a paragraph (with muted styles)</Text>
+            <Text className="text-muted">
+              This is a paragraph (with muted styles)
+            </Text>
             <Text tag="span">This is a span</Text>
           </TabPanel>
           <TabPanel id="code" className="overflow-x-auto">

@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { DialogProvider, useConfirm, DialogModal } from '..'
 import { Button } from '~/components/Button'

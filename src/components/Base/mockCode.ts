@@ -34,7 +34,7 @@ const baseDrawerStyles = cva(
 const baseHeaderStyles =
   'bg-scaffold border-default sticky top-0 w-full p-3 shadow-md lg:border-t'
 
-const baseToggleDrawerStyles = 'text-contrast text-2xl'
+const baseToggleDrawerStyles = 'text-2xl'
 
 /* --- Base --- */
 const Base = ({

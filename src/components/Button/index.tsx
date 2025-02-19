@@ -9,12 +9,14 @@ const buttonStyles = cva(
       variant: {
         default:
           'bg-primary text-primary-contrast hover:bg-primary/90 active:bg-primary/85',
+        success:
+          'bg-success text-success-contrast hover:bg-success/90 active:bg-success/85',
         destructive:
-          'bg-error dark:text-contrast hover:bg-error/90 active:bg-error/85 text-white',
+          'bg-error text-error-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'border-default text-contrast bg-accent hover:bg-accent/90 active:text-contrast/85 border',
+          'bg-accent border-default text-contrast hover:bg-accent/90 active:text-contrast/85 border',
         secondary:
-          'bg-secondary text-contrast hover:bg-secondary/90 active:bg-secondary/80',
+          'bg-secondary text-secondary-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
           'text-contrast hover:bg-secondary/90 active:bg-secondary/80 bg-transparent',
         link: 'text-contrast underline-offset-4 hover:underline'

@@ -10,6 +10,7 @@ export default async function DocumentationButtonPage() {
   const CODE_BUTTON_VIEW = `<Text tag="h4">Variants</Text>
 <div className="flex items-center justify-start flex-wrap gap-5">
   <Button>Default</Button>
+  <Button variant="success">Success</Button>
   <Button variant="destructive">Destructive</Button>
   <Button variant="ghost">Ghost</Button>
   <Button variant="link">Link</Button>
@@ -56,8 +57,9 @@ export default async function DocumentationButtonPage() {
           </TabList>
           <TabPanel id="view">
             <Text tag="h4">Variants</Text>
-            <div className="flex items-center justify-start flex-wrap gap-5">
+            <div className="flex flex-wrap items-center justify-start gap-5">
               <Button>Default</Button>
+              <Button variant="success">Success</Button>
               <Button variant="destructive">Destructive</Button>
               <Button variant="ghost">Ghost</Button>
               <Button variant="link">Link</Button>
@@ -67,7 +69,7 @@ export default async function DocumentationButtonPage() {
             <Text tag="h4" className="mt-3">
               Size
             </Text>
-            <div className="flex items-center justify-start flex-wrap gap-5">
+            <div className="flex flex-wrap items-center justify-start gap-5">
               <Button size="sm">Small</Button>
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>

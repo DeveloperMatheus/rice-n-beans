@@ -17,7 +17,7 @@ describe('DialogProvider and useConfirm Hook', () => {
           header: 'Test Header',
           content: 'Test Content'
         })
-        console.log(result) // For testing purposes
+        console.log(result)
       }
 
       return <Button onClick={handleClick}>Open Dialog</Button>
@@ -29,10 +29,8 @@ describe('DialogProvider and useConfirm Hook', () => {
       </DialogProvider>
     )
 
-    // Click the button to open the dialog
     fireEvent.click(screen.getByText('Open Dialog'))
 
-    // Check if the DialogModal is rendered
     const dialogHeader = await screen.findByText('Test Header')
     expect(dialogHeader).toBeInTheDocument()
     expect(screen.getByText('Test Content')).toBeInTheDocument()
@@ -47,7 +45,7 @@ describe('DialogProvider and useConfirm Hook', () => {
           header: 'Test Header',
           content: 'Test Content'
         })
-        console.log(result) // For testing purposes
+        console.log(result)
       }
 
       return <Button onClick={handleClick}>Open Dialog</Button>
@@ -59,14 +57,11 @@ describe('DialogProvider and useConfirm Hook', () => {
       </DialogProvider>
     )
 
-    // Click the button to open the dialog
     fireEvent.click(screen.getByText('Open Dialog'))
 
-    // Click the Confirm button
     const confirmButton = await screen.findByText('Confirm')
     fireEvent.click(confirmButton)
 
-    // Check if the DialogModal is closed
     expect(screen.queryByText('Test Header')).not.toBeInTheDocument()
   })
 
@@ -79,7 +74,7 @@ describe('DialogProvider and useConfirm Hook', () => {
           header: 'Test Header',
           content: 'Test Content'
         })
-        console.log(result) // For testing purposes
+        console.log(result)
       }
 
       return <Button onClick={handleClick}>Open Dialog</Button>
@@ -91,14 +86,11 @@ describe('DialogProvider and useConfirm Hook', () => {
       </DialogProvider>
     )
 
-    // Click the button to open the dialog
     fireEvent.click(screen.getByText('Open Dialog'))
 
-    // Click the Cancel button
     const cancelButton = await screen.findByText('Cancel')
     fireEvent.click(cancelButton)
 
-    // Check if the DialogModal is closed
     expect(screen.queryByText('Test Header')).not.toBeInTheDocument()
   })
 })
@@ -116,13 +108,10 @@ describe('DialogModal Component', () => {
       />
     )
 
-    // Check if the default header and content are rendered
     expect(screen.getByText('Are you sure?')).toBeInTheDocument()
     expect(
       screen.getByText('This action cannot be undone.')
     ).toBeInTheDocument()
-
-    // Check if the default buttons are rendered
     expect(screen.getByText('Cancel')).toBeInTheDocument()
     expect(screen.getByText('Confirm')).toBeInTheDocument()
   })
@@ -139,11 +128,8 @@ describe('DialogModal Component', () => {
       />
     )
 
-    // Check if the custom header and content are rendered
     expect(screen.getByText('Custom Header')).toBeInTheDocument()
     expect(screen.getByText('Custom Content')).toBeInTheDocument()
-
-    // Check if the custom buttons are rendered
     expect(screen.getByText('No')).toBeInTheDocument()
     expect(screen.getByText('Yes')).toBeInTheDocument()
   })
@@ -161,10 +147,8 @@ describe('DialogModal Component', () => {
       />
     )
 
-    // Click the Confirm button
     fireEvent.click(screen.getByText('Confirm'))
 
-    // Check if handleAction was called with true
     expect(handleAction).toHaveBeenCalledWith(true)
   })
 
@@ -181,10 +165,8 @@ describe('DialogModal Component', () => {
       />
     )
 
-    // Click the Cancel button
     fireEvent.click(screen.getByText('Cancel'))
 
-    // Check if handleAction was called with false
     expect(handleAction).toHaveBeenCalledWith(false)
   })
 })

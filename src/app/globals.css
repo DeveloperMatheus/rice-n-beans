@@ -16,7 +16,6 @@
   --secondary-contrast: 0 0% 19%;
   --success-contrast: 240 6% 100%;
   --error-contrast: 240 6% 100%;
-  /* --accent-contrast: 0 0% 19%; */
 
   --scaffold: 0 0% 100%;
   --contrast: 0 0% 19%;
@@ -40,7 +39,6 @@
   --secondary-contrast: 0 0% 85%;
   --success-contrast: 0 0% 85%;
   --error-contrast: 0 0% 85%;
-  /* --accent-contrast: 0 0% 0%; */
 
   --scaffold: 240 6% 10%;
   --contrast: 240 6% 90%;

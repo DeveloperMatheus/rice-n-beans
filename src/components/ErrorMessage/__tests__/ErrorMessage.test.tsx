@@ -23,7 +23,7 @@ describe('ErrorMessage Component', () => {
     )
 
     const errorMessage = screen.getByText('Custom Class Error')
-    expect(errorMessage).toHaveClass('custom-class') // Custom class
-    expect(errorMessage).toHaveClass('text-error') // Default text color
+    expect(errorMessage).toHaveClass('custom-class')
+    expect(errorMessage).toHaveClass('text-error')
   })
 })

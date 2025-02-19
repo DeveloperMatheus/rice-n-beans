@@ -5,17 +5,14 @@ import { extendTailwindMerge } from 'tailwind-merge'
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      'bg-color': ['bg-white', 'dark:bg-scaffold'],
-      'bg-image': ['bg-arrow-icon']
-    },
-    conflictingClassGroups: {
-      'bg-color': ['bg-image']
+      'bg-image': ['bg-select-icon'],
+      'bg-color': ['bg-scaffold']
     }
   }
 })
 
 const selectStyles = cva(
-  'text-contrast border-default dark:bg-scaffold bg-arrow-icon placeholder:placeholder-muted focus-visible:ring-default w-full appearance-none rounded-lg border bg-white bg-[length:1.6rem] bg-[position:center_right_0.75rem] bg-no-repeat py-2 pr-8 pl-3 focus-visible:ring-2 focus-visible:outline-hidden focus-visible:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50',
+  'text-contrast border-default placeholder:placeholder-muted focus-visible:ring-default bg-scaffold bg-select-icon w-full appearance-none rounded-lg border bg-[length:1.6rem] bg-[position:center_right_0.75rem] bg-no-repeat py-2 pr-8 pl-3 focus-visible:ring-2 focus-visible:outline-hidden focus-visible:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       isInvalid: {

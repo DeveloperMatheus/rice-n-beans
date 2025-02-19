@@ -8,10 +8,11 @@ const badgeStyles = cva(
     variants: {
       variant: {
         default: 'bg-primary text-primary-contrast hover:bg-primary/90',
-        destructive: 'bg-error dark:text-contrast hover:bg-error/90 text-white',
+        destructive: 'bg-error text-error-contrast hover:bg-error/90',
         outline:
           'border-default text-contrast bg-scaffold hover:bg-scaffold/90 border',
-        secondary: 'bg-secondary text-contrast hover:bg-secondary/70'
+        secondary: 'bg-secondary text-secondary-contrast hover:bg-secondary/70',
+        success: 'bg-success text-success-contrast hover:bg-success/70'
       }
     },
     defaultVariants: {

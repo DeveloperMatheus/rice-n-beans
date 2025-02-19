@@ -6,6 +6,7 @@ import { BADGE_CODE } from '~/components/Badge/mockCode'
 
 const BADGE_CODE_VIEW = `<div className="flex items-center justify-start gap-3">
   <Badge>Default</Badge>
+  <Badge variant="success">Success</Badge>
   <Badge variant="destructive">Destructive</Badge>
   <Badge variant="outline">Outline</Badge>
   <Badge variant="secondary">Secondary</Badge>
@@ -30,6 +31,7 @@ export default async function DocumentationBadgePage() {
           <TabPanel id="view">
             <div className="flex items-center justify-start gap-3">
               <Badge>Default</Badge>
+              <Badge variant="success">Success</Badge>
               <Badge variant="destructive">Destructive</Badge>
               <Badge variant="outline">Outline</Badge>
               <Badge variant="secondary">Secondary</Badge>

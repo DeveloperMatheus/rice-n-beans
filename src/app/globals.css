@@ -70,7 +70,7 @@
 
   --ring-color-default: hsl(var(--ring));
 
-  --background-image-select-icon: var(--arrow-icon);
+  --background-image-arrow-icon: var(--arrow-icon);
 
   --animate-fade-in: fade-in 0.2s ease-in-out;
   --animate-modal: modal 0.2s ease-in-out;

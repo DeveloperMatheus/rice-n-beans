@@ -2,20 +2,24 @@ import { Card } from '~/components/Card'
 import { Text } from '~/components/Typography'
 import { InstallationStep1 } from './components/InstallationStep1'
 
-const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
+export const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
 
 @custom-variant dark (&:is([class~='dark'] *));
 
 /* CSS vars */
 :root {
   --primary: 240 6% 10%;
-  --primary-contrast: 240 6% 90%;
   --secondary: 240 5% 96%;
   --success: 142 72% 29%;
   --error: 0 84% 60%;
   --accent: 0 0% 100%;
   --border: 240 6% 90%;
   --muted: 220 9% 46%;
+
+  --primary-contrast: 240 6% 90%;
+  --secondary-contrast: 0 0% 19%;
+  --success-contrast: 240 6% 100%;
+  --error-contrast: 240 6% 100%;
 
   --scaffold: 0 0% 100%;
   --contrast: 0 0% 19%;
@@ -28,13 +32,17 @@ const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
 
 .dark {
   --primary: 240 5% 84%;
-  --primary-contrast: 0 0% 19%;
   --secondary: 240 4% 16%;
   --success: 143 64% 24%;
   --error: 0 63% 31%;
   --accent: 240 10% 4%;
   --border: 240 4% 16%;
   --muted: 218 11% 65%;
+
+  --primary-contrast: 0 0% 19%;
+  --secondary-contrast: 0 0% 85%;
+  --success-contrast: 0 0% 85%;
+  --error-contrast: 0 0% 85%;
 
   --scaffold: 240 6% 10%;
   --contrast: 240 6% 90%;
@@ -55,6 +63,10 @@ const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
   --color-muted: hsl(var(--muted));
 
   --text-color-primary-contrast: hsl(var(--primary-contrast));
+  --text-color-secondary-contrast: hsl(var(--secondary-contrast));
+  --text-color-success-contrast: hsl(var(--success-contrast));
+  --text-color-error-contrast: hsl(var(--error-contrast));
+  --text-color-accent-contrast: hsl(var(--accent-contrast));
 
   --border-color-default: hsl(var(--border));
 
@@ -75,6 +87,7 @@ const CODE_TAILWIND_VIEW = `@import 'tailwindcss';
       opacity: 100%;
     }
   }
+
   @keyframes modal {
     0% {
       transform: scale(1.05);

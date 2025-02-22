@@ -7,10 +7,10 @@ describe('Label Component', () => {
 
     const label = screen.getByText('Test Label')
     expect(label).toBeInTheDocument()
-    expect(label).toHaveClass('inline-block') // Default display style
-    expect(label).toHaveClass('text-contrast') // Default text color
-    expect(label).toHaveClass('font-bold') // Default font weight
-    expect(label).toHaveClass('select-none') // Default user-select style
+    expect(label).toHaveClass('inline-block')
+    expect(label).toHaveClass('text-scaffold-contrast')
+    expect(label).toHaveClass('font-bold')
+    expect(label).toHaveClass('select-none')
   })
 
   it('should render the Label component with children', () => {
@@ -24,6 +24,6 @@ describe('Label Component', () => {
     render(<Label className="custom-class">Custom Class Label</Label>)
 
     const label = screen.getByText('Custom Class Label')
-    expect(label).toHaveClass('custom-class') // Custom class
+    expect(label).toHaveClass('custom-class')
   })
 })

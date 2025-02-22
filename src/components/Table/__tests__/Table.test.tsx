@@ -20,7 +20,7 @@ describe('Table Components', () => {
       )
       const table = screen.getByRole('table')
       expect(table).toHaveClass('border-collapse')
-      expect(table).toHaveClass('text-contrast')
+      expect(table).toHaveClass('text-scaffold-contrast')
     })
 
     it('should merge custom class names', () => {

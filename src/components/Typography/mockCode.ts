@@ -3,7 +3,7 @@ export const TYPOGRAPHY_CODE = `import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { VariantProps, cva } from 'class-variance-authority'
 
-const textStyles = cva('text-contrast', {
+const textStyles = cva('text-scaffold-contrast', {
   variants: {
     tag: {
       h1: 'text-3xl font-bold lg:text-4xl',

@@ -21,7 +21,7 @@ describe('Text Component', () => {
       'text-sm',
       'lg:text-base',
       'font-normal',
-      'text-contrast'
+      'text-scaffold-contrast'
     )
   })
 
@@ -37,7 +37,7 @@ describe('Text Component', () => {
       'text-2xl',
       'lg:text-3xl',
       'font-bold',
-      'text-contrast'
+      'text-scaffold-contrast'
     )
   })
 })

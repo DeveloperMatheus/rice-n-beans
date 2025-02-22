@@ -43,7 +43,7 @@ describe('Button Component', () => {
     const button = screen.getByRole('button', { name: 'Outline Button' })
     expect(button).toHaveClass('border')
     expect(button).toHaveClass('border-default')
-    expect(button).toHaveClass('text-contrast')
+    expect(button).toHaveClass('text-scaffold-contrast')
     expect(button).toHaveClass('bg-scaffold')
   })
 
@@ -60,14 +60,14 @@ describe('Button Component', () => {
 
     const button = screen.getByRole('button', { name: 'Ghost Button' })
     expect(button).toHaveClass('bg-transparent')
-    expect(button).toHaveClass('text-contrast')
+    expect(button).toHaveClass('text-scaffold-contrast')
   })
 
   it('should apply the correct styles for the "link" variant', () => {
     render(<Button variant="link">Link Button</Button>)
 
     const button = screen.getByRole('button', { name: 'Link Button' })
-    expect(button).toHaveClass('text-contrast')
+    expect(button).toHaveClass('text-scaffold-contrast')
     expect(button).toHaveClass('underline-offset-4')
   })
 

@@ -12,7 +12,7 @@ describe('Select Component', () => {
 
     const select = screen.getByRole('combobox')
     expect(select).toBeInTheDocument()
-    expect(select).toHaveClass('text-contrast')
+    expect(select).toHaveClass('text-scaffold-contrast')
     expect(select).toHaveClass('w-full')
     expect(select).toHaveClass('rounded-lg')
     expect(select).toHaveClass('border')
@@ -41,7 +41,7 @@ describe('Select Component', () => {
     )
 
     const select = screen.getByRole('combobox')
-    expect(select).toHaveClass('focus-visible:ring-error') // Invalid state class
+    expect(select).toHaveClass('focus-visible:ring-error')
   })
 
   it('should apply the correct styles when disabled', () => {
@@ -53,9 +53,9 @@ describe('Select Component', () => {
     )
 
     const select = screen.getByRole('combobox')
-    expect(select).toBeDisabled() // Ensure the select is disabled
-    expect(select).toHaveClass('disabled:cursor-not-allowed') // Disabled state class
-    expect(select).toHaveClass('disabled:opacity-50') // Disabled state class
+    expect(select).toBeDisabled()
+    expect(select).toHaveClass('disabled:cursor-not-allowed')
+    expect(select).toHaveClass('disabled:opacity-50')
   })
 
   it('should merge custom class names with the base styles', () => {
@@ -67,8 +67,8 @@ describe('Select Component', () => {
     )
 
     const select = screen.getByRole('combobox')
-    expect(select).toHaveClass('custom-class') // Custom class
-    expect(select).toHaveClass('text-contrast') // Default class
+    expect(select).toHaveClass('custom-class')
+    expect(select).toHaveClass('text-scaffold-contrast')
   })
 
   it('should render children (options) correctly', () => {

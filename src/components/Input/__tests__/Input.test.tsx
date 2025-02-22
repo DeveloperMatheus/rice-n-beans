@@ -7,7 +7,7 @@ describe('Input Component', () => {
 
     const input = screen.getByRole('textbox')
     expect(input).toBeInTheDocument()
-    expect(input).toHaveClass('text-contrast')
+    expect(input).toHaveClass('text-scaffold-contrast')
     expect(input).toHaveClass('rounded-lg')
     expect(input).toHaveClass('border')
     expect(input).toHaveClass('border-default')

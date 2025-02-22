@@ -41,7 +41,7 @@ describe('Badge Component', () => {
     const badge = screen.getByText('Outline Badge')
     expect(badge).toHaveClass('border')
     expect(badge).toHaveClass('border-default')
-    expect(badge).toHaveClass('text-contrast')
+    expect(badge).toHaveClass('text-scaffold-contrast')
   })
 
   it('should apply the correct styles for the "secondary" variant', () => {

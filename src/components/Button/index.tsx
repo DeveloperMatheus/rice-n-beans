@@ -14,12 +14,12 @@ const buttonStyles = cva(
         destructive:
           'bg-error text-error-contrast hover:bg-error/90 active:bg-error/85',
         outline:
-          'bg-scaffold border-default text-contrast hover:bg-scaffold/90 active:text-contrast/85 border',
+          'bg-scaffold border-default text-scaffold-contrast hover:bg-scaffold/90 active:text-scaffold-contrast/85 border',
         secondary:
           'bg-secondary text-secondary-contrast hover:bg-secondary/90 active:bg-secondary/80',
         ghost:
-          'text-contrast hover:bg-secondary/90 active:bg-secondary/80 bg-transparent',
-        link: 'text-contrast underline-offset-4 hover:underline'
+          'text-scaffold-contrast hover:bg-secondary/90 active:bg-secondary/80 bg-transparent',
+        link: 'text-scaffold-contrast underline-offset-4 hover:underline'
       },
       size: {
         default: 'h-9 px-4 py-2',

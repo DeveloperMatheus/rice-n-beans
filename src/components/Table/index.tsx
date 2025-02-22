@@ -1,7 +1,7 @@
 import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const tableStyles = 'text-contrast border-collapse'
+const tableStyles = 'text-scaffold-contrast border-collapse'
 const tableDataStyles = 'px-2 py-1 text-center'
 const tableRowStyles = 'border-default not-last:border-b'
 const tableHeadStyles = 'px-2 py-1 text-center'

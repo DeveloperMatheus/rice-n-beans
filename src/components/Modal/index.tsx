@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentProps, useEffect, useRef } from 'react'
+import { ComponentProps, useCallback, useEffect, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const modalStyles =
@@ -24,10 +24,13 @@ const Modal = ({
 }: ModalProps) => {
   const ref = useRef<HTMLDialogElement>(null)
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (ref.current !== event.target) return
-    onCloseModal()
-  }
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (ref.current !== event.target) return
+      onCloseModal()
+    },
+    [onCloseModal]
+  )
 
   useEffect(() => {
     if (isOpen) {

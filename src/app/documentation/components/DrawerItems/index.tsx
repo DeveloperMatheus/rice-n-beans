@@ -1,4 +1,4 @@
-import { CodeXml } from 'lucide-react'
+import { CodeXml, Paintbrush } from 'lucide-react'
 import Link from 'next/link'
 import { Text } from '~/components/Typography'
 import { MOCK_COMPONENTS } from '~/mocks/componentList'
@@ -17,7 +17,7 @@ export const DrawerItems = ({
 
   function renderMockComponents() {
     return (
-      <div className="space-y-3 flex flex-col items-start justify-center">
+      <div className="flex flex-col items-start justify-center space-y-3">
         {MOCK_COMPONENTS.map((sidenavItem, index) => (
           <Link
             key={`${sidenavItem.title}--${index}`}
@@ -41,14 +41,25 @@ export const DrawerItems = ({
           </Text>
         )}
 
-        <Link
-          className="flex items-center space-x-2"
-          href="/documentation/installation"
-          onClick={() => onClickDrawerItem()}
-        >
-          <CodeXml size={26} />
-          {renderOpenContent(<Text>Installation</Text>)}
-        </Link>
+        <div className="space-y-2">
+          <Link
+            className="flex items-center space-x-2"
+            href="/documentation/installation"
+            onClick={() => onClickDrawerItem()}
+          >
+            <CodeXml size={26} />
+            {renderOpenContent(<Text>Installation</Text>)}
+          </Link>
+
+          <Link
+            className="flex items-center space-x-2"
+            href="/documentation/colors"
+            onClick={() => onClickDrawerItem()}
+          >
+            <Paintbrush size={26} />
+            {renderOpenContent(<Text>Colors</Text>)}
+          </Link>
+        </div>
       </div>
       <div>
         {renderOpenContent(

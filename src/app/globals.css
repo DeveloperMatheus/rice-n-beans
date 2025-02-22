@@ -17,7 +17,7 @@
   --error-contrast: 240 6% 100%;
 
   --scaffold: 0 0% 100%;
-  --contrast: 0 0% 19%;
+  --scaffold-contrast: 0 0% 19%;
   --ring: 240 10% 4%;
 
   --checkmark-icon: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
@@ -38,7 +38,7 @@
   --error-contrast: 0 0% 85%;
 
   --scaffold: 240 6% 10%;
-  --contrast: 240 6% 90%;
+  --scaffold-contrast: 240 6% 90%;
   --ring: 240 5% 84%;
 }
 
@@ -47,25 +47,25 @@
 
   --color-primary: hsl(var(--primary));
   --color-secondary: hsl(var(--secondary));
-  --color-scaffold: hsl(var(--scaffold));
   --color-success: hsl(var(--success));
   --color-error: hsl(var(--error));
-  --color-scaffold-contrast: hsl(var(--contrast));
+  --color-scaffold: hsl(var(--scaffold));
   --color-muted: hsl(var(--muted));
 
-  --text-color-primary-contrast: hsl(var(--primary-contrast));
-  --text-color-secondary-contrast: hsl(var(--secondary-contrast));
-  --text-color-success-contrast: hsl(var(--success-contrast));
-  --text-color-error-contrast: hsl(var(--error-contrast));
+  --color-primary-contrast: hsl(var(--primary-contrast));
+  --color-secondary-contrast: hsl(var(--secondary-contrast));
+  --color-success-contrast: hsl(var(--success-contrast));
+  --color-error-contrast: hsl(var(--error-contrast));
+  --color-scaffold-contrast: hsl(var(--scaffold-contrast));
 
   --border-color-default: hsl(var(--border));
-
   --ring-color-default: hsl(var(--ring));
-
   --background-image-arrow-icon: var(--arrow-icon);
-
   --animate-fade-in: fade-in 0.2s ease-in-out;
   --animate-modal: modal 0.2s ease-in-out;
+
+  /* Just for the docs, don't copy it */
+  --color-border-default: hsl(var(--border));
 
   @keyframes fade-in {
     0% {

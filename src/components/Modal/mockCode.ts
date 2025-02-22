@@ -40,7 +40,7 @@ const Modal = ({
     return () => {
       document.removeEventListener('click', handleClickOutside)
     }
-  }, [isOpen])
+  }, [isOpen, handleClickOutside])
 
   return (
     <dialog

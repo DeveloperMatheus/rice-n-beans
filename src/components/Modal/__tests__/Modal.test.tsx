@@ -3,10 +3,10 @@ import { Modal, ModalContent, ModalHeader, ModalFooter } from '..'
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = jest.fn(function () {
-    this.open = true // Set the open property to true
+    this.open = true
   })
   HTMLDialogElement.prototype.close = jest.fn(function () {
-    this.open = false // Set the open property to false
+    this.open = false
   })
 })
 
@@ -19,11 +19,11 @@ describe('Modal Component', () => {
       </Modal>
     )
 
-    const modal = screen.getByRole('dialog', { hidden: true }) // Use { hidden: true } to find the dialog
+    const modal = screen.getByRole('dialog', { hidden: true })
     expect(modal).toHaveProperty('open', true)
-    expect(modal).toHaveClass('rounded-lg') // Default modal styles
-    expect(modal).toHaveClass('open:animate-modal') // Default modal styles
-    expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled() // Ensure showModal was called
+    expect(modal).toHaveClass('rounded-lg')
+    expect(modal).toHaveClass('open:animate-modal')
+    expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled()
   })
 
   it('should not render the Modal component when isOpen is false', () => {
@@ -47,7 +47,7 @@ describe('Modal Component', () => {
     )
 
     const modal = screen.getByRole('dialog', { hidden: true })
-    fireEvent.click(modal) // Simulate clicking outside the modal
+    fireEvent.click(modal)
     expect(onCloseModal).toHaveBeenCalled()
   })
 
@@ -59,19 +59,16 @@ describe('Modal Component', () => {
       </Modal>
     )
 
-    // Initially, the modal should be open
     const modal = screen.getByRole('dialog', { hidden: true })
     expect(modal).toHaveProperty('open', true)
 
-    // Rerender with isOpen set to false
     rerender(
       <Modal isOpen={false} onCloseModal={onCloseModal}>
         <ModalContent>Modal Content</ModalContent>
       </Modal>
     )
 
-    // The modal should no longer be in the document
-    expect(HTMLDialogElement.prototype.close).toHaveBeenCalled() // Ensure close was called
+    expect(HTMLDialogElement.prototype.close).toHaveBeenCalled()
     expect(modal).toHaveProperty('open', false)
   })
 })
@@ -82,8 +79,8 @@ describe('ModalContent Component', () => {
 
     const content = screen.getByText('Modal Content')
     expect(content).toBeInTheDocument()
-    expect(content).toHaveClass('px-3') // Default padding
-    expect(content).toHaveClass('pb-3') // Default padding
+    expect(content).toHaveClass('px-3')
+    expect(content).toHaveClass('pb-3')
   })
 
   it('should merge custom class names with the base styles', () => {
@@ -92,8 +89,8 @@ describe('ModalContent Component', () => {
     )
 
     const content = screen.getByText('Custom Class Content')
-    expect(content).toHaveClass('custom-class') // Custom class
-    expect(content).toHaveClass('px-3') // Default padding
+    expect(content).toHaveClass('custom-class')
+    expect(content).toHaveClass('px-3')
   })
 })
 
@@ -103,8 +100,8 @@ describe('ModalHeader Component', () => {
 
     const header = screen.getByText('Modal Header')
     expect(header).toBeInTheDocument()
-    expect(header).toHaveClass('px-3') // Default padding
-    expect(header).toHaveClass('pt-3') // Default padding
+    expect(header).toHaveClass('px-3')
+    expect(header).toHaveClass('pt-3')
   })
 
   it('should merge custom class names with the base styles', () => {
@@ -113,8 +110,8 @@ describe('ModalHeader Component', () => {
     )
 
     const header = screen.getByText('Custom Class Header')
-    expect(header).toHaveClass('custom-class') // Custom class
-    expect(header).toHaveClass('px-3') // Default padding
+    expect(header).toHaveClass('custom-class')
+    expect(header).toHaveClass('px-3')
   })
 })
 
@@ -124,9 +121,9 @@ describe('ModalFooter Component', () => {
 
     const footer = screen.getByText('Modal Footer')
     expect(footer).toBeInTheDocument()
-    expect(footer).toHaveClass('border-t') // Default border
-    expect(footer).toHaveClass('border-default') // Default border color
-    expect(footer).toHaveClass('p-3') // Default padding
+    expect(footer).toHaveClass('border-t')
+    expect(footer).toHaveClass('border-default')
+    expect(footer).toHaveClass('p-3')
   })
 
   it('should merge custom class names with the base styles', () => {
@@ -135,7 +132,7 @@ describe('ModalFooter Component', () => {
     )
 
     const footer = screen.getByText('Custom Class Footer')
-    expect(footer).toHaveClass('custom-class') // Custom class
-    expect(footer).toHaveClass('p-3') // Default padding
+    expect(footer).toHaveClass('custom-class')
+    expect(footer).toHaveClass('p-3')
   })
 })

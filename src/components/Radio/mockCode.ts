@@ -2,7 +2,7 @@ export const RADIO_CODE = `import { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const radioStyles =
-  "bg-scaffold border-default checked:before:bg-contrast relative min-h-5 min-w-5 cursor-pointer appearance-none rounded-full border checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:h-[0.6rem] checked:before:w-[0.6rem] checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:rounded-full checked:before:content-[''] disabled:cursor-not-allowed disabled:opacity-50"
+  "bg-scaffold border-default checked:before:bg-scaffold-contrast relative min-h-5 min-w-5 cursor-pointer appearance-none rounded-full border checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:h-[0.6rem] checked:before:w-[0.6rem] checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:rounded-full checked:before:content-[''] disabled:cursor-not-allowed disabled:opacity-50"
 
 const Radio = ({ className, ...props }: ComponentProps<'input'>) => (
   <input type="radio" className={twMerge(radioStyles, className)} {...props} />

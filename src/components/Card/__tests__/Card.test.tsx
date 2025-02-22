@@ -7,12 +7,12 @@ describe('Card Component', () => {
 
     const card = screen.getByText('Card Content')
     expect(card).toBeInTheDocument()
-    expect(card).toHaveClass('bg-accent') // Default background color
-    expect(card).toHaveClass('border') // Default border
-    expect(card).toHaveClass('border-default') // Default border color
-    expect(card).toHaveClass('rounded-lg') // Default border radius
-    expect(card).toHaveClass('p-3') // Default padding
-    expect(card).toHaveClass('shadow-xs') // Default shadow
+    expect(card).toHaveClass('bg-scaffold')
+    expect(card).toHaveClass('border')
+    expect(card).toHaveClass('border-default')
+    expect(card).toHaveClass('rounded-lg')
+    expect(card).toHaveClass('p-3')
+    expect(card).toHaveClass('shadow-xs')
   })
 
   it('should render the Card component with children', () => {
@@ -26,8 +26,8 @@ describe('Card Component', () => {
     render(<Card className="custom-class">Custom Class Card</Card>)
 
     const card = screen.getByText('Custom Class Card')
-    expect(card).toHaveClass('custom-class') // Custom class
-    expect(card).toHaveClass('bg-accent') // Default background color
-    expect(card).toHaveClass('border') // Default border
+    expect(card).toHaveClass('custom-class')
+    expect(card).toHaveClass('bg-scaffold')
+    expect(card).toHaveClass('border')
   })
 })

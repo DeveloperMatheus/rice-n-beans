@@ -44,6 +44,7 @@ describe('Button Component', () => {
     expect(button).toHaveClass('border')
     expect(button).toHaveClass('border-default')
     expect(button).toHaveClass('text-contrast')
+    expect(button).toHaveClass('bg-scaffold')
   })
 
   it('should apply the correct styles for the "secondary" variant', () => {

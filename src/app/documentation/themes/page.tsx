@@ -26,8 +26,8 @@ export default function DocumentationColorsPage() {
         <Text>
           You can grow this list of themes in your globals.css file. Just add a
           new theme class, place the same css var names, and tweak the color
-          values! (Don't forget to align with your approach of the theme changer
-          setup)
+          values! (Don&rsquo;t forget to align with your approach of the theme
+          changer setup)
         </Text>
 
         <Separator />

@@ -18,9 +18,9 @@ export default function DocumentationColorsPage() {
         <Separator />
 
         <Text tag="h3">
-          In RnB, every theme that does not belong to a theme class, will fall
-          to the :root selector in the css vars (see the globals.css file on
-          installation section).
+          In RnB, a theme name that does not belong to any theme class (eg.:
+          &rsquo;System&rsquo;), will fall to the :root selector in the css vars
+          (see the globals.css file on installation section).
         </Text>
 
         <Text>
@@ -43,10 +43,14 @@ export default function DocumentationColorsPage() {
         <Text>
           You can also see how i did the integration of this library in the Rice
           n Beans github repo as well:{' '}
-          <Link href="https://github.com/DeveloperMatheus/rice-n-beans/tree/dev">
-            https://github.com/DeveloperMatheus/rice-n-beans/tree/dev
-          </Link>{' '}
-          but somehow, the strategy must be done by you.
+          <Link href="https://github.com/DeveloperMatheus/rice-n-beans/tree/main/src/components/Theme">
+            https://github.com/DeveloperMatheus/rice-n-beans/tree/main/src/components/Theme
+          </Link>
+        </Text>
+
+        <Text>
+          Basically the integration must be done by you, taking in mind the
+          class approach.
         </Text>
       </Card>
     </section>

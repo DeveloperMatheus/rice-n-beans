@@ -58,9 +58,6 @@ export const InstallationStep1 = () => {
         <div>
           <code>{renderCommandPrefix()} class-variance-authority</code>
         </div>
-        <div>
-          <code>{renderCommandPrefix()} lucide-react</code>
-        </div>
       </Card>
     </div>
   )

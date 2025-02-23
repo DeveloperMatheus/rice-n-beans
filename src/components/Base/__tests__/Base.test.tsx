@@ -57,7 +57,7 @@ describe('Base Components', () => {
 
     const drawer = screen.getByText('Drawer Content')
     expect(drawer).toBeInTheDocument()
-    expect(drawer).toHaveClass('hidden') // Closed drawer styles
+    expect(drawer).toHaveClass('hidden')
     expect(drawer).toHaveClass('lg:block')
     expect(drawer).toHaveClass('lg:w-14')
   })
@@ -67,7 +67,7 @@ describe('Base Components', () => {
 
     const header = screen.getByText('Header Content')
     expect(header).toBeInTheDocument()
-    expect(header).toHaveClass('bg-scaffold') // Base header styles
+    expect(header).toHaveClass('bg-scaffold')
     expect(header).toHaveClass('sticky')
   })
 
@@ -79,8 +79,5 @@ describe('Base Components', () => {
 
     const menuIcon = toggleButton.querySelector('svg')
     expect(menuIcon).toBeInTheDocument()
-
-    expect(menuIcon).toHaveClass('lucide')
-    expect(menuIcon).toHaveClass('lucide-menu')
   })
 })

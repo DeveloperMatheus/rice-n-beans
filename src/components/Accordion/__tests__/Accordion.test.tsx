@@ -107,4 +107,10 @@ describe('Accordion Component', () => {
     // The icon should no longer have the rotation class
     expect(icon).not.toHaveClass('rotate-180')
   })
+
+  it('should not render without a provider', async () => {
+    expect(() => {
+      render(<AccordionTrigger id="accordion-1">Trigger 1</AccordionTrigger>)
+    }).toThrow('useCount must be used inside an AccordionProvider')
+  })
 })

@@ -1,13 +1,18 @@
 'use client'
 
 import { ComponentProps, createContext, useContext, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 import { Button } from '~/components/Button'
 
-const accordionStyles = 'w-full'
-const accordionContentStyles = 'mt-3 px-5'
-const accordionTriggerStyles =
-  'flex w-full flex-row items-center justify-between'
+const accordionStyles = tv({
+  slots: {
+    wrapper: 'w-full space-y-3',
+    content: 'mt-3 px-5',
+    trigger: 'flex w-full flex-row items-center justify-between'
+  }
+})
+
+const { wrapper, content, trigger } = accordionStyles()
 
 /* --- Context --- */
 type AccordionProviderProps = {
@@ -28,7 +33,19 @@ const InitAccordion: AccordionContextProps = {
 const isAccordionOpen = (id: string, activeAccordion?: string): boolean =>
   id === activeAccordion
 
-const AccordionContext = createContext<AccordionContextProps>(InitAccordion)
+const AccordionContext = createContext<AccordionContextProps | undefined>(
+  undefined
+)
+
+const useAccordionContext = () => {
+  const context = useContext(AccordionContext)
+
+  if (!context) {
+    throw new Error('useCount must be used inside an AccordionProvider')
+  }
+
+  return context
+}
 
 const AccordionProvider = ({
   children,
@@ -51,7 +68,7 @@ const Accordion = ({
 }: ComponentProps<'div'>) => {
   return (
     <AccordionProvider>
-      <div className={twMerge(accordionStyles, className)} {...props}>
+      <div className={wrapper({ className })} {...props}>
         {children}
       </div>
     </AccordionProvider>
@@ -71,13 +88,13 @@ const AccordionContent = ({
   id,
   ...props
 }: AccordionContentProps) => {
-  const { activeAccordion } = useContext(AccordionContext)
+  const { activeAccordion } = useAccordionContext()
 
   if (!isAccordionOpen(id, activeAccordion)) return
 
   return (
     <div
-      className={twMerge(accordionContentStyles, className)}
+      className={content({ className })}
       {...props}
       id={`accordion-${id}`}
       aria-labelledby={id}
@@ -102,7 +119,7 @@ const AccordionTrigger = ({
   id,
   ...props
 }: AccordionTriggerProps) => {
-  const { activeAccordion, setActiveAccordion } = useContext(AccordionContext)
+  const { activeAccordion, setActiveAccordion } = useAccordionContext()
 
   const renderAccordionIcon = (): React.ReactNode => {
     const iconAnimation = isAccordionOpen(id, activeAccordion)
@@ -123,7 +140,7 @@ const AccordionTrigger = ({
 
   return (
     <Button
-      className={twMerge(accordionTriggerStyles, className)}
+      className={trigger({ className })}
       {...props}
       variant="outline"
       id={id}

@@ -11,7 +11,7 @@ const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    'lucide-react': require.resolve('lucide-react')
+    'lucide-react': new URL('lucide-react', import.meta.url).pathname
   },
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],

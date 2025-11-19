@@ -1,8 +1,9 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const separatorStyles = cva('bg-muted shrink-0', {
+const separatorStyles = tv({
+  base: 'bg-muted shrink-0',
   variants: {
     orientation: {
       horizontal: 'h-px w-full',
@@ -24,7 +25,7 @@ const Separator = ({
   <div
     role="separator"
     aria-orientation={orientation ?? 'horizontal'}
-    className={twMerge(separatorStyles({ orientation, className }))}
+    className={separatorStyles({ className, orientation })}
     {...props}
   ></div>
 )

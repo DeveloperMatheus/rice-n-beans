@@ -7,36 +7,36 @@ describe('Range Component', () => {
 
     const range = screen.getByRole('slider')
     expect(range).toBeInTheDocument()
-    expect(range).toHaveClass('appearance-none') // Default class
-    expect(range).toHaveClass('cursor-pointer') // Default class
-    expect(range).toHaveClass('h-2') // Default class
-    expect(range).toHaveClass('border') // Default class
-    expect(range).toHaveClass('border-default') // Default class
-    expect(range).toHaveClass('bg-scaffold') // Default class
-    expect(range).toHaveClass('rounded-full') // Default class
+    expect(range).toHaveClass('appearance-none')
+    expect(range).toHaveClass('cursor-pointer')
+    expect(range).toHaveClass('h-2')
+    expect(range).toHaveClass('border')
+    expect(range).toHaveClass('border-default')
+    expect(range).toHaveClass('bg-scaffold')
+    expect(range).toHaveClass('rounded-full')
   })
 
   it('should render the Range component as an input of type range', () => {
     render(<Range />)
 
     const range = screen.getByRole('slider')
-    expect(range).toHaveAttribute('type', 'range') // Ensure it's a range input
+    expect(range).toHaveAttribute('type', 'range')
   })
 
   it('should apply the correct styles when disabled', () => {
     render(<Range disabled />)
 
     const range = screen.getByRole('slider')
-    expect(range).toBeDisabled() // Ensure the range is disabled
-    expect(range).toHaveClass('disabled:cursor-not-allowed') // Disabled state class
-    expect(range).toHaveClass('disabled:opacity-50') // Disabled state class
+    expect(range).toBeDisabled()
+    expect(range).toHaveClass('disabled:cursor-not-allowed')
+    expect(range).toHaveClass('disabled:opacity-50')
   })
 
   it('should merge custom class names with the base styles', () => {
     render(<Range className="custom-class" />)
 
     const range = screen.getByRole('slider')
-    expect(range).toHaveClass('custom-class') // Custom class
-    expect(range).toHaveClass('appearance-none') // Default class
+    expect(range).toHaveClass('custom-class')
+    expect(range).toHaveClass('appearance-none')
   })
 })

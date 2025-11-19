@@ -1,14 +1,16 @@
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const errorMessageStyles = 'text-error'
+const errorMessageStyles = tv({
+  base: 'text-error'
+})
 
 const ErrorMessage = ({
   children,
   className,
   ...props
 }: ComponentProps<'p'>) => (
-  <p className={twMerge(errorMessageStyles, className)} {...props}>
+  <p className={errorMessageStyles({ className })} {...props}>
     {children}
   </p>
 )

@@ -1,16 +1,23 @@
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const tableStyles = 'text-scaffold-contrast border-collapse'
-const tableDataStyles = 'px-2 py-1 text-center'
-const tableRowStyles = 'border-default not-last:border-b'
-const tableHeadStyles = 'px-2 py-1 text-center'
-const tableHeaderStyles = 'border-default border-b text-center'
-const tableFooterStyles = 'border-default border-t font-bold'
+const tableStyles = tv({
+  slots: {
+    wrapper: 'text-scaffold-contrast border-collapse',
+    body: 'w-auto',
+    data: 'px-2 py-1 text-center',
+    row: 'border-default not-last:border-b',
+    head: 'px-2 py-1 text-center',
+    header: 'border-default border-b text-center',
+    footer: 'border-default border-t font-bold'
+  }
+})
+
+const { wrapper, body, data, row, head, header, footer } = tableStyles()
 
 /* --- Table --- */
 const Table = ({ children, className, ...props }: ComponentProps<'table'>) => (
-  <table className={twMerge(tableStyles, className)} {...props}>
+  <table className={wrapper({ className })} {...props}>
     {children}
   </table>
 )
@@ -23,7 +30,7 @@ const TableBody = ({
   className,
   ...props
 }: ComponentProps<'tbody'>) => (
-  <tbody className={twMerge(className)} {...props}>
+  <tbody className={body({ className })} {...props}>
     {children}
   </tbody>
 )
@@ -32,7 +39,7 @@ TableBody.displayName = 'TableBody'
 
 /* --- TableData --- */
 const TableData = ({ children, className, ...props }: ComponentProps<'td'>) => (
-  <td className={twMerge(tableDataStyles, className)} {...props}>
+  <td className={data({ className })} {...props}>
     {children}
   </td>
 )
@@ -41,7 +48,7 @@ TableData.displayName = 'TableData'
 
 /* --- TableRow --- */
 const TableRow = ({ children, className, ...props }: ComponentProps<'tr'>) => (
-  <tr className={twMerge(tableRowStyles, className)} {...props}>
+  <tr className={row({ className })} {...props}>
     {children}
   </tr>
 )
@@ -50,7 +57,7 @@ TableRow.displayName = 'TableRow'
 
 /* --- TableHead --- */
 const TableHead = ({ children, className, ...props }: ComponentProps<'th'>) => (
-  <th className={twMerge(tableHeadStyles, className)} {...props}>
+  <th className={head({ className })} {...props}>
     {children}
   </th>
 )
@@ -63,7 +70,7 @@ const TableHeader = ({
   className,
   ...props
 }: ComponentProps<'thead'>) => (
-  <thead className={twMerge(tableHeaderStyles, className)} {...props}>
+  <thead className={header({ className })} {...props}>
     {children}
   </thead>
 )
@@ -76,7 +83,7 @@ const TableFooter = ({
   className,
   ...props
 }: ComponentProps<'tfoot'>) => (
-  <tfoot className={twMerge(tableFooterStyles, className)} {...props}>
+  <tfoot className={footer({ className })} {...props}>
     {children}
   </tfoot>
 )

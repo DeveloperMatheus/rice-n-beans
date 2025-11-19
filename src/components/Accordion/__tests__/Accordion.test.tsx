@@ -10,21 +10,16 @@ describe('Accordion Component', () => {
       </Accordion>
     )
 
-    // Initially, the content should not be visible
     expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
 
-    // Click the trigger to open the accordion
     const trigger = screen.getByText('Trigger 1')
     fireEvent.click(trigger)
 
-    // Content should now be visible
     expect(screen.getByText('Content 1')).toBeInTheDocument()
     expect(trigger).toHaveAttribute('aria-expanded', 'true')
 
-    // Click the trigger again to close the accordion
     fireEvent.click(trigger)
 
-    // Content should no longer be visible
     expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
     expect(trigger).toHaveAttribute('aria-expanded', 'false')
   })
@@ -39,21 +34,16 @@ describe('Accordion Component', () => {
       </Accordion>
     )
 
-    // Initially, no content should be visible
     expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
     expect(screen.queryByText('Content 2')).not.toBeInTheDocument()
 
-    // Click the first trigger
     fireEvent.click(screen.getByText('Trigger 1'))
 
-    // Only the first content should be visible
     expect(screen.getByText('Content 1')).toBeInTheDocument()
     expect(screen.queryByText('Content 2')).not.toBeInTheDocument()
 
-    // Click the second trigger
     fireEvent.click(screen.getByText('Trigger 2'))
 
-    // Only the second content should be visible
     expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
     expect(screen.getByText('Content 2')).toBeInTheDocument()
   })
@@ -68,14 +58,11 @@ describe('Accordion Component', () => {
 
     const trigger = screen.getByText('Trigger 1')
 
-    // Check aria attributes on the trigger
     expect(trigger).toHaveAttribute('aria-expanded', 'false')
     expect(trigger).toHaveAttribute('aria-controls', 'accordion-accordion-1')
 
-    // Click the trigger to open the accordion
     fireEvent.click(trigger)
 
-    // Check aria attributes on the content
     const content = screen.getByText('Content 1')
     expect(content).toHaveAttribute('aria-labelledby', 'accordion-1')
     expect(content).toHaveAttribute('role', 'region')
@@ -92,19 +79,14 @@ describe('Accordion Component', () => {
     const trigger = screen.getByText('Trigger 1')
     const icon = trigger.querySelector('div') // The icon is a div inside the trigger
 
-    // Initially, the icon should not have the rotation class
     expect(icon).not.toHaveClass('rotate-180')
 
-    // Click the trigger to open the accordion
     fireEvent.click(trigger)
 
-    // The icon should now have the rotation class
     expect(icon).toHaveClass('rotate-180')
 
-    // Click the trigger again to close the accordion
     fireEvent.click(trigger)
 
-    // The icon should no longer have the rotation class
     expect(icon).not.toHaveClass('rotate-180')
   })
 

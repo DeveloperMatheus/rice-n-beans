@@ -10,7 +10,6 @@ import {
 } from '..'
 
 describe('Table Components', () => {
-  // --- Table ---
   describe('Table Component', () => {
     it('should render the Table component with default styles', () => {
       render(
@@ -35,7 +34,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableBody ---
   describe('TableBody Component', () => {
     it('should render the TableBody component', () => {
       render(
@@ -62,7 +60,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableData ---
   describe('TableData Component', () => {
     it('should render the TableData component with default styles', () => {
       render(
@@ -96,7 +93,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableRow ---
   describe('TableRow Component', () => {
     it('should render the TableRow component with default styles', () => {
       render(
@@ -129,7 +125,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableHead ---
   describe('TableHead Component', () => {
     it('should render the TableHead component with default styles', () => {
       render(
@@ -163,7 +158,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableHeader ---
   describe('TableHeader Component', () => {
     it('should render the TableHeader component with default styles', () => {
       render(
@@ -197,7 +191,6 @@ describe('Table Components', () => {
     })
   })
 
-  // --- TableFooter ---
   describe('TableFooter Component', () => {
     it('should render the TableFooter component with default styles', () => {
       render(

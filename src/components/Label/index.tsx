@@ -1,10 +1,12 @@
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const labelStyles = 'text-scaffold-contrast inline-block font-bold select-none'
+const labelStyles = tv({
+  base: 'text-scaffold-contrast inline-block font-bold select-none'
+})
 
 const Label = ({ children, className, ...props }: ComponentProps<'label'>) => (
-  <label className={twMerge(labelStyles, className)} {...props}>
+  <label className={labelStyles({ className })} {...props}>
     {children}
   </label>
 )

@@ -1,13 +1,19 @@
 'use client'
 
 import { ComponentProps, useCallback, useEffect, useRef } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const modalStyles =
-  'open:animate-modal open:backdrop:animate-fade-in my-auto w-full rounded-lg backdrop:backdrop-blur-xs md:mx-auto md:w-auto'
-const modalContentStyles = 'px-3 pb-3'
-const modalHeaderStyles = 'px-3 pt-3'
-const modalFooterStyles = 'border-default border-t p-3'
+const modalStyles = tv({
+  slots: {
+    wrapper:
+      'open:animate-modal open:backdrop:animate-fade-in my-auto w-full rounded-lg backdrop:backdrop-blur-xs md:mx-auto md:w-auto',
+    content: 'px-3 pb-3',
+    header: 'px-3 pt-3',
+    footer: 'border-default border-t p-3'
+  }
+})
+
+const { wrapper, header, content, footer } = modalStyles()
 
 /* --- Modal --- */
 type ModalProps = {
@@ -47,7 +53,7 @@ const Modal = ({
 
   return (
     <dialog
-      className={twMerge(modalStyles, className)}
+      className={wrapper({ className })}
       onClose={() => onCloseModal()}
       ref={ref}
       {...props}
@@ -65,7 +71,7 @@ const ModalContent = ({
   className,
   ...props
 }: ComponentProps<'div'>) => (
-  <div className={twMerge(modalContentStyles, className)} {...props}>
+  <div className={content({ className })} {...props}>
     {children}
   </div>
 )
@@ -78,7 +84,7 @@ const ModalHeader = ({
   className,
   ...props
 }: ComponentProps<'div'>) => (
-  <div className={twMerge(modalHeaderStyles, className)} {...props}>
+  <div className={header({ className })} {...props}>
     {children}
   </div>
 )
@@ -91,7 +97,7 @@ const ModalFooter = ({
   className,
   ...props
 }: ComponentProps<'div'>) => (
-  <div className={twMerge(modalFooterStyles, className)} {...props}>
+  <div className={footer({ className })} {...props}>
     {children}
   </div>
 )

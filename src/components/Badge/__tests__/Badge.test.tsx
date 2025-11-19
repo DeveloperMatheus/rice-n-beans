@@ -7,9 +7,9 @@ describe('Badge Component', () => {
 
     const badge = screen.getByText('Default Badge')
     expect(badge).toBeInTheDocument()
-    expect(badge).toHaveClass('bg-primary') // Default variant class
-    expect(badge).toHaveClass('text-primary-contrast') // Default variant class
-    expect(badge).toHaveClass('px-2.5 py-0.5') // Base styles
+    expect(badge).toHaveClass('bg-primary')
+    expect(badge).toHaveClass('text-primary-contrast')
+    expect(badge).toHaveClass('px-2.5 py-0.5')
   })
 
   it('should render the Badge component with children', () => {

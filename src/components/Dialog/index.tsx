@@ -9,20 +9,19 @@ import {
 } from '~/components/Modal'
 import { Text } from '~/components/Typography'
 import { Button } from '~/components/Button'
-import { cva } from 'class-variance-authority'
-import { twMerge } from 'tailwind-merge'
 import { createPortal } from 'react-dom'
+import { tv } from 'tailwind-variants'
 
-const dialogStyles = cva('max-w-[20rem] select-text')
+const dialogStyles = tv({
+  base: 'max-w-80 select-text'
+})
 
 /* --- Context --- */
 type DialogContextProps = {
   render: (modal: DialogProps, handleAction: (result: boolean) => void) => void
 }
 
-const DialogContext = createContext<DialogContextProps>({
-  render: () => {}
-})
+const DialogContext = createContext<DialogContextProps | undefined>(undefined)
 
 const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,7 +45,7 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <DialogContext.Provider value={{ render }}>
+    <DialogContext value={{ render }}>
       {children}
 
       {isOpen &&
@@ -62,7 +61,7 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
           />,
           document.body
         )}
-    </DialogContext.Provider>
+    </DialogContext>
   )
 }
 
@@ -102,7 +101,7 @@ const DialogModal = ({
     <Modal
       isOpen={open}
       onCloseModal={() => handleClose(false)}
-      className={twMerge(dialogStyles())}
+      className={dialogStyles()}
     >
       <ModalHeader>
         <Text tag="h3" className="text-center">
@@ -136,6 +135,10 @@ const DialogModal = ({
 /* --- Hook --- */
 const useConfirm = () => {
   const dialogContext = useContext(DialogContext)
+
+  if (!dialogContext) {
+    throw new Error('useConfirm must be used inside an DialogProvider')
+  }
 
   const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
     const reactionPromise = new Promise<boolean>(resolve => {

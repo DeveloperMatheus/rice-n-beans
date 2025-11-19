@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, renderHook } from '@testing-library/react'
 import { DialogProvider, useConfirm, DialogModal } from '..'
 import { Button } from '~/components/Button'
 
@@ -92,6 +92,12 @@ describe('DialogProvider and useConfirm Hook', () => {
     fireEvent.click(cancelButton)
 
     expect(screen.queryByText('Test Header')).not.toBeInTheDocument()
+  })
+
+  it('should throw error when used without provider', () => {
+    expect(() => {
+      renderHook(() => useConfirm())
+    }).toThrow('useConfirm must be used inside an DialogProvider')
   })
 })
 

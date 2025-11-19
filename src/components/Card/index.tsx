@@ -1,10 +1,12 @@
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 
-const cardStyles = 'bg-scaffold border-default rounded-lg border p-3 shadow-xs'
+const cardStyles = tv({
+  base: 'bg-scaffold border-default rounded-lg border p-3 shadow-xs'
+})
 
 const Card = ({ children, className, ...props }: ComponentProps<'div'>) => (
-  <div className={twMerge(cardStyles, className)} {...props}>
+  <div className={cardStyles({ className })} {...props}>
     {children}
   </div>
 )

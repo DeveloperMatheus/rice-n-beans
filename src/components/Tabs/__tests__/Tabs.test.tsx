@@ -87,4 +87,10 @@ describe('Tabs Component', () => {
     expect(tab1).toHaveAttribute('aria-selected', 'false')
     expect(tab2).toHaveAttribute('aria-selected', 'true')
   })
+
+  it('should not render without a provider', async () => {
+    expect(() => {
+      render(<TabPanel id="test">Trigger 1</TabPanel>)
+    }).toThrow('useTabsContext must be used inside an TabsProvider')
+  })
 })

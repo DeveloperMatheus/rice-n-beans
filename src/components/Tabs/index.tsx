@@ -8,13 +8,18 @@ import {
   useRef,
   useState
 } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { tv } from 'tailwind-variants'
 import { Button } from '~/components/Button'
 
-const tabsStyles = 'bg-scaffold border-default rounded-lg border p-3'
-const tabListStyles =
-  'flex list-none flex-row items-center justify-start space-x-3 overflow-x-auto'
-const tabPanelStyles = 'mt-3 w-full rounded-b-lg'
+const tabsStyles = tv({
+  slots: {
+    wrapper: 'bg-scaffold border-default rounded-lg border p-3',
+    list: 'flex list-none flex-row items-center justify-start space-x-3 overflow-x-auto',
+    panel: 'mt-3 w-full rounded-b-lg'
+  }
+})
+
+const { wrapper, list, panel } = tabsStyles()
 
 /* --- Context --- */
 type TabsProviderProps = {
@@ -27,10 +32,17 @@ type TabsContextProps = {
   setActiveTab: (selectedTab: string) => void
 }
 
-const TabsContext = createContext<TabsContextProps>({
-  activeTab: '',
-  setActiveTab: () => null
-})
+const TabsContext = createContext<TabsContextProps | undefined>(undefined)
+
+const useTabsContext = () => {
+  const context = useContext(TabsContext)
+
+  if (!context) {
+    throw new Error('useTabsContext must be used inside an TabsProvider')
+  }
+
+  return context
+}
 
 const TabsProvider = ({ children, defaultValue }: TabsProviderProps) => {
   const [activeTab, setActiveTab] = useState(defaultValue)
@@ -96,7 +108,7 @@ const Tabs = ({ children, className, defaultValue, ...props }: TabsProps) => {
       <div
         ref={refList}
         onKeyDown={onKeyDown}
-        className={twMerge(tabsStyles, className)}
+        className={wrapper({ className })}
         {...props}
       >
         {children}
@@ -112,7 +124,7 @@ const TabList = ({ children, className, ...props }: ComponentProps<'div'>) => (
   <div
     role="tablist"
     aria-orientation="horizontal"
-    className={twMerge(tabListStyles, className)}
+    className={list({ className })}
     {...props}
   >
     {children}
@@ -127,13 +139,13 @@ type TabPanelProps = {
 } & ComponentProps<'div'>
 
 const TabPanel = ({ children, id, className, ...props }: TabPanelProps) => {
-  const { activeTab } = useContext(TabsContext)
+  const { activeTab } = useTabsContext()
 
   if (activeTab !== id) return
 
   return (
     <div
-      className={twMerge(tabPanelStyles, className)}
+      className={panel({ className })}
       id={`tabpanel-${id}`}
       aria-labelledby={`tab-${id}`}
       role="tabpanel"
@@ -153,7 +165,7 @@ type TabButtonProps = {
 } & ComponentProps<'button'>
 
 const Tab = ({ children, className, id, ...props }: TabButtonProps) => {
-  const { activeTab, setActiveTab } = useContext(TabsContext)
+  const { activeTab, setActiveTab } = useTabsContext()
 
   const isTabActive = () => {
     if (activeTab !== id) return false

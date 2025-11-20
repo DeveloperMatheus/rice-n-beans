@@ -7,7 +7,7 @@ import {
   AccordionTrigger
 } from '~/components/accordion'
 import { CODE_TAILWIND_VIEW } from '../installation/mockTailwindGlobals'
-import { Separator } from '~/components/Separator'
+import { Separator } from '~/components/separator'
 
 export default function DocumentationColorsPage() {
   return (

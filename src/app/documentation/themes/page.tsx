@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Card } from '~/components/card'
-import { Separator } from '~/components/Separator'
+import { Separator } from '~/components/separator'
 import { Text } from '~/components/Typography'
 
 export default function DocumentationColorsPage() {

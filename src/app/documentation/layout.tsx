@@ -7,7 +7,7 @@ import {
   BaseDrawer,
   BaseHeader,
   BaseContent
-} from '~/components/Base'
+} from '~/components/base'
 import { DrawerItems } from './components/DrawerItems'
 import { ThemeSwitch } from '~/components/Theme/ThemeSwitch'
 import { useCallback, useEffect, useState } from 'react'

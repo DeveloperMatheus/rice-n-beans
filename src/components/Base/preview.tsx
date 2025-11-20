@@ -1,44 +1,42 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 import {
   Base,
   BaseContainer,
   BaseContent,
   BaseDrawer,
   BaseHeader,
-  BaseToggleDrawer,
-} from "~/components/Base";
+  BaseToggleDrawer
+} from '~/components/base'
 
-import { Text } from "~/components/Typography";
+import { Text } from '~/components/Typography'
 
-export const DocumentationBaseExample = () => {
-  const [isOpen, setOpen] = useState(false);
+const Preview = () => {
+  const [isOpen, setOpen] = useState(false)
 
   function toggleDrawer() {
-    setOpen(!isOpen);
+    setOpen(!isOpen)
   }
 
   return (
     <Base>
       <BaseDrawer isOpen={isOpen}>
         <BaseToggleDrawer
-          aria-label="Toggle drawer"
           className="lg:hidden"
           onClick={() => toggleDrawer()}
         />
       </BaseDrawer>
       <BaseContainer>
         <BaseHeader>
-          <BaseToggleDrawer
-            aria-label="Toggle drawer"
-            onClick={() => toggleDrawer()}
-          />
+          <BaseToggleDrawer onClick={() => toggleDrawer()} />
         </BaseHeader>
         <BaseContent>
           <Text>Your content here</Text>
         </BaseContent>
       </BaseContainer>
     </Base>
-  );
-};
+  )
+}
+
+export { Preview }

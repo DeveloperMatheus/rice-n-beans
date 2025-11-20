@@ -1,6 +1,6 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
-import { Badge } from '~/components/Badge'
+import { Badge } from '~/components/badge'
 import { Button } from '~/components/Button'
 import { Card } from '~/components/Card'
 import {
@@ -104,7 +104,7 @@ export default async function DocumentationTablePage() {
             <Tab id="code">Code</Tab>
           </TabList>
 
-          <TabPanel id="view" className="px-0 overflow-x-auto">
+          <TabPanel id="view" className="overflow-x-auto px-0">
             <Card className="w-fit">
               <Table>
                 <TableHeader>

@@ -26,7 +26,7 @@ const getComponentSource = async (
     const [source, previewSource, exampleContent] = await Promise.all([
       readFile(path.join(componentDir, 'index.tsx'), 'utf-8'),
       readFile(path.join(componentDir, 'preview.tsx'), 'utf-8'),
-      readFile(path.join(componentDir, 'example.json'), 'utf-8')
+      readFile(path.join(componentDir, 'metadata.json'), 'utf-8')
     ])
 
     const { title, description } = JSON.parse(

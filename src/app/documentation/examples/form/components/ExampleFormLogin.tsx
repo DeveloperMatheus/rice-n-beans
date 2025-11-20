@@ -5,7 +5,7 @@ import * as z from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/tabs'
 import { ErrorMessage } from '~/components/error-message'
 import { Label } from '~/components/label'
 import { Input } from '~/components/input'

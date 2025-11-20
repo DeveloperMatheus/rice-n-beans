@@ -1,7 +1,7 @@
 import { Text } from '~/components/Typography'
 import { TYPOGRAPHY_CODE } from '~/components/Typography/mockCode'
 import { DocumentationSection } from '../components/DocumentationSection'
-import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
+import { Tab, TabList, TabPanel, Tabs } from '~/components/tabs'
 
 const CODE_TYPOGRAPHY_VIEW = `<Text tag="h1">This is a heading 1</Text>
 <Text tag="h2">This is a heading 2</Text>

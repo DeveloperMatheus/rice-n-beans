@@ -2,7 +2,7 @@ import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Badge } from '~/components/badge'
 import { Button } from '~/components/button'
-import { Card } from '~/components/Card'
+import { Card } from '~/components/card'
 import {
   Table,
   TableBody,

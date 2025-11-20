@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '~/components/button'
-import { Card } from '~/components/Card'
+import { Card } from '~/components/card'
 import { Modal, ModalContent, ModalHeader } from '~/components/Modal'
 import { Text } from '~/components/Typography'
 

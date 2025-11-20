@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Card } from '~/components/Card'
+import { Card } from '~/components/card'
 import { Separator } from '~/components/Separator'
 import { Text } from '~/components/Typography'
 

@@ -1,7 +1,7 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { Label } from '~/components/Label'
+import { Label } from '~/components/label'
 import { Range } from '~/components/Range'
 import { RANGE_CODE } from '~/components/Range/mockCode'
 import Link from 'next/link'

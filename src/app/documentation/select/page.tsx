@@ -1,7 +1,7 @@
 import { Text } from '~/components/Typography'
 import { DocumentationSection } from '../components/DocumentationSection'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { Label } from '~/components/Label'
+import { Label } from '~/components/label'
 import Link from 'next/link'
 import { Select } from '~/components/Select'
 import { SELECT_CODE } from '~/components/Select/mockCode'

@@ -1,9 +1,8 @@
 import React from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 
-import { twMerge } from 'tailwind-merge'
-import { VariantProps, cva } from 'class-variance-authority'
-
-const textStyles = cva('text-scaffold-contrast', {
+const textStyles = tv({
+  base: 'text-scaffold-contrast',
   variants: {
     tag: {
       h1: 'text-3xl font-bold lg:text-4xl',
@@ -30,7 +29,7 @@ type TextProps = {
 const Text = ({ tag = 'p', children, className }: TextProps) =>
   React.createElement(
     tag,
-    { className: twMerge(textStyles({ className, tag })) },
+    { className: textStyles({ className, tag }) },
     children
   )
 

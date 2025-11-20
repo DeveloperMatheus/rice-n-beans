@@ -9,7 +9,7 @@ import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { ErrorMessage } from '~/components/ErrorMessage'
 import { Label } from '~/components/Label'
 import { Input } from '~/components/Input'
-import { Checkbox } from '~/components/Checkbox'
+import { Checkbox } from '~/components/checkbox'
 import { Button } from '~/components/button'
 
 const CODE_LOGIN_SETUP = `"use client";

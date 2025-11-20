@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
 import { ErrorMessage } from '~/components/error-message'
 import { Label } from '~/components/Label'
-import { Input } from '~/components/Input'
+import { Input } from '~/components/input'
 import { Checkbox } from '~/components/checkbox'
 import { Button } from '~/components/button'
 

@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionTrigger
-} from '~/components/Accordion'
+} from '~/components/accordion'
 import { CODE_TAILWIND_VIEW } from '../installation/mockTailwindGlobals'
 import { Separator } from '~/components/Separator'
 

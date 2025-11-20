@@ -25,11 +25,6 @@ type AccordionContextProps = {
   setActiveAccordion: (value?: string) => void
 }
 
-const InitAccordion: AccordionContextProps = {
-  activeAccordion: undefined,
-  setActiveAccordion: (value?: string) => {}
-}
-
 const isAccordionOpen = (id: string, activeAccordion?: string): boolean =>
   id === activeAccordion
 

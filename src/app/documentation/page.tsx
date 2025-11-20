@@ -1,6 +1,6 @@
 import { Braces, CodeXml } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 import { Card } from '~/components/Card'
 import { Text } from '~/components/Typography'
 
@@ -37,7 +37,7 @@ const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
 
 export default function DocumentationPage() {
   return (
-    <section className="flex flex-col items-center justify-center h-full">
+    <section className="flex h-full flex-col items-center justify-center">
       <div className="space-y-3 text-center">
         <Text tag="h1">Welcome to the Rice and Beans project!</Text>
 
@@ -46,10 +46,10 @@ export default function DocumentationPage() {
         </Text>
       </div>
 
-      <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
         {listDocOptions.map((docOption, index) => (
           <Link href={docOption.url} key={`${docOption.title}--${index}`}>
-            <Card className="flex flex-col items-center justify-center gap-2 min-w-40">
+            <Card className="flex min-w-40 flex-col items-center justify-center gap-2">
               <div>{docOption.icon}</div>
               <Text tag="h3">{docOption.title}</Text>
             </Card>
@@ -57,11 +57,11 @@ export default function DocumentationPage() {
         ))}
       </div>
 
-      <Text tag="h2" className="text-center mt-3">
+      <Text tag="h2" className="mt-3 text-center">
         Special thanks to:
       </Text>
 
-      <div className="flex items-center justify-center gap-3 flex-wrap">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <Link href="https://tailwindcss.com" target="_blank">
           <Button variant="link" className="text-2xl">
             TailwindCSS

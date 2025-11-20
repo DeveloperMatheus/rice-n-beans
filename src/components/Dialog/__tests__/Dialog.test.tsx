@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, renderHook } from '@testing-library/react'
 import { DialogProvider, useConfirm, DialogModal } from '..'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 
 beforeAll(() => {
   HTMLDialogElement.prototype.showModal = jest.fn()

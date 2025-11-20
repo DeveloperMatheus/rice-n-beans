@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const baseStyles = tv({

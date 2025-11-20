@@ -3,7 +3,7 @@
 import { LaptopMinimal, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useMemo, useRef } from 'react'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme()

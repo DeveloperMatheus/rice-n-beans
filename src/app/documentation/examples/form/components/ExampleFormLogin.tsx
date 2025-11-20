@@ -10,7 +10,7 @@ import { ErrorMessage } from '~/components/ErrorMessage'
 import { Label } from '~/components/Label'
 import { Input } from '~/components/Input'
 import { Checkbox } from '~/components/Checkbox'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 
 const CODE_LOGIN_SETUP = `"use client";
 
@@ -171,7 +171,7 @@ export const ExampleFormLogin = ({
             />
             {renderErrorMessage(errors.password?.message)}
           </div>
-          <div className="space-y-1 space-x-1 flex items-center justify-start">
+          <div className="flex items-center justify-start space-y-1 space-x-1">
             <Label htmlFor="input-remind">Remind me</Label>
             <Checkbox {...register('isLoginStored')} id="input-remind" />
           </div>

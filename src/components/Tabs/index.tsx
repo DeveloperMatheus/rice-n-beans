@@ -9,7 +9,7 @@ import {
   useState
 } from 'react'
 import { tv } from 'tailwind-variants'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 
 const tabsStyles = tv({
   slots: {

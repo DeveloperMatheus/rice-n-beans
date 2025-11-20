@@ -2,7 +2,7 @@
 
 import { ComponentProps, createContext, useContext, useState } from 'react'
 import { tv } from 'tailwind-variants'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 
 const accordionStyles = tv({
   slots: {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '~/components/Button'
+import { Button } from '~/components/button'
 import { Card } from '~/components/Card'
 import { Modal, ModalContent, ModalHeader } from '~/components/Modal'
 import { Text } from '~/components/Typography'

@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalHeader
 } from '~/components/modal'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import { Button } from '~/components/button'
 import { createPortal } from 'react-dom'
 import { tv } from 'tailwind-variants'

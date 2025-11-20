@@ -1,5 +1,5 @@
 import { Card } from '~/components/card'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import { InstallationStep1 } from './components/InstallationStep1'
 import { CODE_TAILWIND_VIEW } from './mockTailwindGlobals'
 

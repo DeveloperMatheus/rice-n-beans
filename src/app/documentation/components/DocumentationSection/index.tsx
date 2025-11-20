@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from '~/components/button'
 import { Card } from '~/components/card'
 import { Modal, ModalContent, ModalHeader } from '~/components/modal'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 
 export const DocumentationSection = ({
   code,

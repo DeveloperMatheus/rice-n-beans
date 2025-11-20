@@ -1,6 +1,6 @@
 import { CodeXml, Paintbrush, PaintRoller } from 'lucide-react'
 import Link from 'next/link'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import { MOCK_COMPONENTS } from '~/mocks/componentList'
 
 export const DrawerItems = ({

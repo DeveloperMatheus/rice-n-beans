@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '~/components/button'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import { Modal, ModalContent, ModalHeader } from '.'
 
 const Example = () => {

@@ -1,5 +1,5 @@
-import { Text } from "~/components/Typography";
-import { ExampleFormLogin } from "./components/ExampleFormLogin";
+import { Text } from '~/components/typography'
+import { ExampleFormLogin } from './components/ExampleFormLogin'
 
 export default function DocumentationExampleFormPage() {
   return (
@@ -13,5 +13,5 @@ export default function DocumentationExampleFormPage() {
         <ExampleFormLogin />
       </div>
     </section>
-  );
+  )
 }

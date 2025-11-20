@@ -1,4 +1,4 @@
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/tabs'
 import { DocumentationSection } from '~/app/documentation/components/DocumentationSection'
 import { getComponentSource } from '~/services/file-service'

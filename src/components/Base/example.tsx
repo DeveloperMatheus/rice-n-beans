@@ -10,7 +10,7 @@ import {
   BaseToggleDrawer
 } from '~/components/base'
 
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 
 const Example = () => {
   const [isOpen, setOpen] = useState(false)

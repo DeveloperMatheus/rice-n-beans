@@ -1,4 +1,4 @@
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import Link from 'next/link'
 import { Button } from '~/components/button'
 

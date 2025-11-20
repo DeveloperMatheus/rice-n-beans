@@ -2,7 +2,7 @@ import { Braces, CodeXml } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '~/components/button'
 import { Card } from '~/components/card'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 
 const listDocOptions: { icon: React.ReactNode; title: string; url: string }[] =
   [

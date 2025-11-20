@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Card } from '~/components/card'
-import { Text } from '~/components/Typography'
+import { Text } from '~/components/typography'
 import {
   Accordion,
   AccordionContent,

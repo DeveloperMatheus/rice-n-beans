@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 import { ThemeProvider } from '~/components/Theme/ThemeProvider'
-import { DialogProvider } from '~/components/Dialog'
+import { DialogProvider } from '~/components/dialog'
 import { Toaster } from 'sonner'
 
 const cascadiaMono = localFont({

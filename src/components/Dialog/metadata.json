@@ -1,0 +1,4 @@
+{
+  "title": "Dialog",
+  "description": "Dialog is a service that provides a way to create confirmation dialog through the use of a hook (therefore, it is a client side code), that calls an awaitable Modal component. \nDepending on where you click (outside the dialog or on the buttons), the promise will resolve with a boolean value."
+}

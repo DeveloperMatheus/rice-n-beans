@@ -1,9 +1,9 @@
 'use client'
 
-import { useConfirm } from '~/components/Dialog'
 import { Button } from '~/components/button'
+import { useConfirm } from '~/components/dialog'
 
-export const DialogSection = () => {
+const Example = () => {
   const { getConfirmation } = useConfirm()
 
   async function callDialog() {
@@ -20,3 +20,5 @@ export const DialogSection = () => {
 
   return <Button onClick={() => callDialog()}>Call dialog</Button>
 }
+
+export { Example }

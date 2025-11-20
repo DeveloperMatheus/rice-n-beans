@@ -6,7 +6,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader
-} from '~/components/Modal'
+} from '~/components/modal'
 import { Text } from '~/components/Typography'
 import { Button } from '~/components/button'
 import { createPortal } from 'react-dom'

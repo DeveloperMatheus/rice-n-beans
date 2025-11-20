@@ -1,0 +1,4 @@
+{
+  "title": "Modal",
+  "description": "Modal is a controlled component made through the use of the <dialog> api. It is a blocking element so the user cannot interact with the rest of the page until the modal is closed. \nhttps://developer.mozilla.org/es/docs/Web/HTML/Element/dialog"
+}

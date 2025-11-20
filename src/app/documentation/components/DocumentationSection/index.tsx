@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '~/components/button'
 import { Card } from '~/components/card'
-import { Modal, ModalContent, ModalHeader } from '~/components/Modal'
+import { Modal, ModalContent, ModalHeader } from '~/components/modal'
 import { Text } from '~/components/Typography'
 
 export const DocumentationSection = ({
@@ -30,7 +30,7 @@ export const DocumentationSection = ({
         {children}
       </section>
       <Modal
-        className="max-w-[60rem]"
+        className="max-w-240"
         isOpen={isOpen}
         onCloseModal={() => setOpen(false)}
       >

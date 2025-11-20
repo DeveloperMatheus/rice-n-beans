@@ -1,6 +1,6 @@
 import { Badge } from '.'
 
-const Preview = () => {
+const Example = () => {
   return (
     <div className="flex items-center justify-start gap-3">
       <Badge>Default</Badge>
@@ -12,4 +12,4 @@ const Preview = () => {
   )
 }
 
-export { Preview }
+export { Example }

@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionTrigger } from '.'
 
-const Preview = () => {
+const Example = () => {
   return (
     <Accordion className="space-y-3">
       <div>
@@ -15,4 +15,4 @@ const Preview = () => {
   )
 }
 
-export { Preview }
+export { Example }

@@ -5,8 +5,8 @@ import dynamic from 'next/dynamic'
 const ComponentPreview = ({ componentName }: { componentName: string }) => {
   const DynamicComponent = dynamic(
     () =>
-      import(`~/components/${componentName}/preview`).then(
-        mod => mod.Preview || mod.default
+      import(`~/components/${componentName}/example`).then(
+        mod => mod.Example || mod.default
       ),
     {
       loading: () => <div>Carregando...</div>,

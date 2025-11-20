@@ -12,7 +12,7 @@ import {
 
 import { Text } from '~/components/Typography'
 
-const Preview = () => {
+const Example = () => {
   const [isOpen, setOpen] = useState(false)
 
   function toggleDrawer() {
@@ -39,4 +39,4 @@ const Preview = () => {
   )
 }
 
-export { Preview }
+export { Example }

@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Tab, TabList, TabPanel, Tabs } from '~/components/Tabs'
-import { ErrorMessage } from '~/components/ErrorMessage'
+import { ErrorMessage } from '~/components/error-message'
 import { Label } from '~/components/Label'
 import { Input } from '~/components/Input'
 import { Checkbox } from '~/components/checkbox'

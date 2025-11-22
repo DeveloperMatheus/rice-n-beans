@@ -4,83 +4,83 @@ const MOCK_COMPONENTS: {
 }[] = [
   {
     title: 'Accordion',
-    url: '/documentation/accordion'
+    url: '/components/accordion'
   },
   {
     title: 'Badge',
-    url: '/documentation/badge'
+    url: '/components/badge'
   },
   {
     title: 'Base',
-    url: '/documentation/base'
+    url: '/components/base'
   },
   {
     title: 'Button',
-    url: '/documentation/button'
+    url: '/components/button'
   },
   {
     title: 'Card',
-    url: '/documentation/card'
+    url: '/components/card'
   },
   {
     title: 'Checkbox',
-    url: '/documentation/checkbox'
+    url: '/components/checkbox'
   },
   {
     title: 'Datepicker',
-    url: '/documentation/date-picker'
+    url: '/components/datepicker'
   },
   {
     title: 'Dialog',
-    url: '/documentation/dialog'
+    url: '/components/dialog'
   },
   {
     title: 'Error Message',
-    url: '/documentation/error-message'
+    url: '/components/error-message'
   },
   {
     title: 'Input',
-    url: '/documentation/input'
+    url: '/components/input'
   },
   {
     title: 'Label',
-    url: '/documentation/label'
+    url: '/components/label'
   },
   {
     title: 'Modal',
-    url: '/documentation/modal'
+    url: '/components/modal'
   },
   {
     title: 'Radio',
-    url: '/documentation/radio'
+    url: '/components/radio'
   },
   {
     title: 'Range',
-    url: '/documentation/range'
+    url: '/components/range'
   },
   {
     title: 'Select',
-    url: '/documentation/select'
+    url: '/components/select'
   },
   {
     title: 'Separator',
-    url: '/documentation/separator'
+    url: '/components/separator'
   },
   {
     title: 'Switch',
-    url: '/documentation/switch'
+    url: '/components/switch'
   },
   {
     title: 'Table',
-    url: '/documentation/table'
+    url: '/components/table'
   },
   {
     title: 'Tabs',
-    url: '/documentation/tabs'
+    url: '/components/tabs'
   },
   {
     title: 'Typography',
-    url: '/documentation/typography'
+    url: '/components/typography'
   }
 ]
 

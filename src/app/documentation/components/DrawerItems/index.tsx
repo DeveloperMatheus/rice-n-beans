@@ -1,4 +1,4 @@
-import { CodeXml, Paintbrush, PaintRoller } from 'lucide-react'
+import { CodeXml, Paintbrush, PaintRoller, Square } from 'lucide-react'
 import Link from 'next/link'
 import { Text } from '~/components/typography'
 import { MOCK_COMPONENTS } from '~/mocks/componentList'
@@ -67,6 +67,15 @@ export const DrawerItems = ({
           >
             <PaintRoller size={26} />
             {renderOpenContent(<Text>Themes</Text>)}
+          </Link>
+
+          <Link
+            className="flex items-center space-x-2"
+            href="/documentation/examples"
+            onClick={() => onClickDrawerItem()}
+          >
+            <Square size={26} />
+            {renderOpenContent(<Text>Examples</Text>)}
           </Link>
         </div>
       </div>

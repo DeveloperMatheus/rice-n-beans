@@ -1,6 +1,5 @@
-import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentProps } from 'react'
-import { tv } from 'tailwind-variants'
+import { tv, VariantProps } from 'tailwind-variants'
 
 const separatorStyles = tv({
   base: 'bg-muted shrink-0',

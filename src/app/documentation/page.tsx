@@ -67,18 +67,6 @@ export default function DocumentationPage() {
             TailwindCSS
           </Button>
         </Link>
-
-        <Link href="https://cva.style" target="_blank">
-          <Button variant="link" className="text-2xl">
-            Class Variance Authority
-          </Button>
-        </Link>
-
-        <Link href="https://github.com/dcastil/tailwind-merge" target="_blank">
-          <Button variant="link" className="text-2xl">
-            Tailwind Merge
-          </Button>
-        </Link>
       </div>
     </section>
   )

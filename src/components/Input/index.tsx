@@ -1,5 +1,4 @@
 import { ComponentProps } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const inputStyles = tv({
@@ -16,10 +15,7 @@ const Input = ({
   isInvalid,
   ...props
 }: ComponentProps<'input'> & VariantProps<typeof inputStyles>) => (
-  <input
-    className={twMerge(inputStyles({ className, isInvalid }))}
-    {...props}
-  />
+  <input className={inputStyles({ className, isInvalid })} {...props} />
 )
 
 Input.displayName = 'Input'

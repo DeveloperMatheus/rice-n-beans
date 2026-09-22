@@ -8,7 +8,7 @@ import {
   BaseHeader,
   BaseContent
 } from '~/components/base'
-import { ThemeSwitch } from '~/components/Theme/ThemeSwitch'
+import { ThemeSwitch } from '~/components/theme/theme-switch'
 import { useCallback, useEffect, useState } from 'react'
 import { DrawerItems } from '~/app/documentation/components/DrawerItems'
 

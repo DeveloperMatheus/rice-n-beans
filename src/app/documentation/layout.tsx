@@ -9,7 +9,7 @@ import {
   BaseContent
 } from '~/components/base'
 import { DrawerItems } from './components/DrawerItems'
-import { ThemeSwitch } from '~/components/Theme/ThemeSwitch'
+import { ThemeSwitch } from '~/components/theme/theme-switch'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function DocumentationLayout({

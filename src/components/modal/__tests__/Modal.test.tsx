@@ -21,7 +21,7 @@ describe('Modal Component', () => {
 
     const modal = screen.getByRole('dialog', { hidden: true })
     expect(modal).toHaveProperty('open', true)
-    expect(modal).toHaveClass('rounded-lg')
+    expect(modal).toHaveClass('rounded-default')
     expect(modal).toHaveClass('open:animate-modal')
     expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled()
   })

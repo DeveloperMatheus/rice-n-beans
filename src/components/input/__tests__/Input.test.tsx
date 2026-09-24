@@ -8,7 +8,7 @@ describe('Input Component', () => {
     const input = screen.getByRole('textbox')
     expect(input).toBeInTheDocument()
     expect(input).toHaveClass('text-scaffold-contrast')
-    expect(input).toHaveClass('rounded-lg')
+    expect(input).toHaveClass('rounded-default')
     expect(input).toHaveClass('border')
     expect(input).toHaveClass('border-default')
     expect(input).toHaveClass('bg-scaffold')
@@ -35,7 +35,7 @@ describe('Input Component', () => {
 
     const input = screen.getByRole('textbox')
     expect(input).toHaveClass('custom-class')
-    expect(input).toHaveClass('rounded-lg')
+    expect(input).toHaveClass('rounded-default')
   })
 
   it('should apply the correct styles when disabled', () => {

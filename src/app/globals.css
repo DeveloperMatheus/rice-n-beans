@@ -63,6 +63,8 @@
   --animate-fade-in: fade-in 0.2s ease-in-out;
   --animate-modal: modal 0.2s ease-in-out;
 
+  --radius-default: 0.5rem;
+
   /* Just for the /documentation/colors to show as a background, don't copy it */
   --color-border-default: var(--border);
 

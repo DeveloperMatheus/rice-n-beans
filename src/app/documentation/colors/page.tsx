@@ -44,33 +44,33 @@ export default function DocumentationColorsPage() {
 
         <Card className="space-y-3">
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-primary min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-primary rounded-default min-h-9 min-w-9"></div>
             <Text>--primary: The main color of your project.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-secondary min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-secondary rounded-default min-h-9 min-w-9"></div>
             <Text>--secondary: Your second color.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-success min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-success rounded-default min-h-9 min-w-9"></div>
             <Text>
               --success: Good for currencies and any other sucessful actions.
             </Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-error min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-error rounded-default min-h-9 min-w-9"></div>
             <Text>--error: Main color for error states.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-border-default min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-border-default rounded-default min-h-9 min-w-9"></div>
             <Text>--border: The color of the borders.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-muted min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-muted rounded-default min-h-9 min-w-9"></div>
             <Text>--muted: Mostly used for placeholders.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-scaffold border-default min-h-9 min-w-9 rounded-lg border"></div>
+            <div className="bg-scaffold border-default rounded-default min-h-9 min-w-9 border"></div>
             <Text>
               --scaffold: Main background color for the pages and components.
             </Text>
@@ -82,23 +82,23 @@ export default function DocumentationColorsPage() {
             colors (mostly as text)
           </Text>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-primary-contrast min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-primary-contrast rounded-default min-h-9 min-w-9"></div>
             <Text>--primary-contrast</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-secondary-contrast min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-secondary-contrast rounded-default min-h-9 min-w-9"></div>
             <Text>--secondary-contrast</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-success-contrast border-default min-h-9 min-w-9 rounded-lg border"></div>
+            <div className="bg-success-contrast border-default rounded-default min-h-9 min-w-9 border"></div>
             <Text>--success-contrast</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-error-contrast border-default min-h-9 min-w-9 rounded-lg border"></div>
+            <div className="bg-error-contrast border-default rounded-default min-h-9 min-w-9 border"></div>
             <Text>--error-contrast</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-scaffold-contrast min-h-9 min-w-9 rounded-lg"></div>
+            <div className="bg-scaffold-contrast rounded-default min-h-9 min-w-9"></div>
             <Text>--scaffold-contrast</Text>
           </div>
 

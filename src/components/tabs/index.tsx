@@ -13,7 +13,7 @@ import { Button } from '~/components/button'
 
 const tabsStyles = tv({
   slots: {
-    wrapper: 'bg-scaffold border-default rounded-lg border p-3',
+    wrapper: 'bg-scaffold border-default rounded-default border p-3',
     list: 'flex list-none flex-row items-center justify-start space-x-3 overflow-x-auto',
     panel: 'mt-3 w-full rounded-b-lg'
   }

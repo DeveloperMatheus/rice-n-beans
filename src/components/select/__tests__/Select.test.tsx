@@ -14,7 +14,7 @@ describe('Select Component', () => {
     expect(select).toBeInTheDocument()
     expect(select).toHaveClass('text-scaffold-contrast')
     expect(select).toHaveClass('w-full')
-    expect(select).toHaveClass('rounded-lg')
+    expect(select).toHaveClass('rounded-default')
     expect(select).toHaveClass('border')
     expect(select).toHaveClass('border-default')
     expect(select).toHaveClass('bg-scaffold')

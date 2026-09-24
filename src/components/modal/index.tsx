@@ -6,7 +6,7 @@ import { tv } from 'tailwind-variants'
 const modalStyles = tv({
   slots: {
     wrapper:
-      'open:animate-modal open:backdrop:animate-fade-in my-auto w-full rounded-lg backdrop:backdrop-blur-xs md:mx-auto md:w-auto',
+      'open:animate-modal open:backdrop:animate-fade-in my-auto w-full rounded-default backdrop:backdrop-blur-xs md:mx-auto md:w-auto',
     content: 'px-3 pb-3',
     header: 'px-3 pt-3',
     footer: 'border-default border-t p-3'

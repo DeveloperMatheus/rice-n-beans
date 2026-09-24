@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const datePickerStyles = tv({
-  base: 'border-default bg-scaffold placeholder:placeholder-muted focus-visible:ring-default w-full appearance-none rounded-lg border px-3 py-2 file:border-0 file:bg-transparent file:font-medium focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50'
+  base: 'border-default bg-scaffold placeholder:placeholder-muted focus-visible:ring-default w-full appearance-none rounded-default border px-3 py-2 file:border-0 file:bg-transparent file:font-medium focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50'
 })
 
 type DatePickerProps = {

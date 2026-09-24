@@ -10,7 +10,7 @@ describe('Card Component', () => {
     expect(card).toHaveClass('bg-scaffold')
     expect(card).toHaveClass('border')
     expect(card).toHaveClass('border-default')
-    expect(card).toHaveClass('rounded-lg')
+    expect(card).toHaveClass('rounded-default')
     expect(card).toHaveClass('p-3')
     expect(card).toHaveClass('shadow-xs')
   })

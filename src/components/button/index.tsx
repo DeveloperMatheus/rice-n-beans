@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const buttonStyles = tv({
-  base: 'inline-flex cursor-pointer appearance-none items-center justify-center rounded-lg disabled:cursor-not-allowed disabled:opacity-50',
+  base: 'inline-flex cursor-pointer appearance-none items-center justify-center rounded-default disabled:cursor-not-allowed disabled:opacity-50',
   variants: {
     variant: {
       default:

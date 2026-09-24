@@ -8,7 +8,7 @@ describe('DatePicker Component', () => {
     const datePicker = screen.getByTestId('date-input')
     expect(datePicker).toBeInTheDocument()
     expect(datePicker).toHaveAttribute('type', 'date')
-    expect(datePicker).toHaveClass('rounded-lg')
+    expect(datePicker).toHaveClass('rounded-default')
     expect(datePicker).toHaveClass('border')
     expect(datePicker).toHaveClass('border-default')
     expect(datePicker).toHaveClass('bg-scaffold')

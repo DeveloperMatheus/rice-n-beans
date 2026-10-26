@@ -39,15 +39,14 @@ const Modal = ({
   )
 
   useEffect(() => {
-    if (isOpen) {
-      ref.current?.showModal()
-      document.addEventListener('click', handleClickOutside)
-      return
-    }
+    if (!isOpen) return
 
-    ref.current?.close()
+    ref.current?.showModal()
+    document.addEventListener('click', handleClickOutside)
+
     return () => {
       document.removeEventListener('click', handleClickOutside)
+      ref.current?.close()
     }
   }, [isOpen, handleClickOutside])
 

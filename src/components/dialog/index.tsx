@@ -1,6 +1,16 @@
 'use client'
 
-import React, { createContext, useContext, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
+import { tv } from 'tailwind-variants'
 import {
   Modal,
   ModalContent,
@@ -9,65 +19,15 @@ import {
 } from '~/components/modal'
 import { Text } from '~/components/typography'
 import { Button } from '~/components/button'
-import { createPortal } from 'react-dom'
-import { tv } from 'tailwind-variants'
 
 const dialogStyles = tv({
   base: 'max-w-80 select-text'
 })
 
-/* --- Context --- */
-type DialogContextProps = {
-  render: (modal: DialogProps, handleAction: (result: boolean) => void) => void
-}
-
-const DialogContext = createContext<DialogContextProps | undefined>(undefined)
-
-const DialogProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [modal, setModal] = useState<
-    DialogProps & { action: (value: boolean) => void }
-  >()
-
-  const render = (
-    modal: DialogProps,
-    handleAction: (result: boolean) => void
-  ) => {
-    setModal({
-      ...modal,
-      action: result => {
-        setIsOpen(false)
-        handleAction(result)
-      }
-    })
-
-    setIsOpen(true)
-  }
-
-  return (
-    <DialogContext value={{ render }}>
-      {children}
-
-      {isOpen &&
-        createPortal(
-          <DialogModal
-            variant={modal?.variant}
-            open={isOpen}
-            header={modal?.header}
-            content={modal?.content}
-            rejectText={modal?.rejectText}
-            confirmText={modal?.confirmText}
-            handleAction={modal?.action}
-          />,
-          document.body
-        )}
-    </DialogContext>
-  )
-}
-
+/* --- Types --- */
 type DialogProps = {
   header?: string
-  content?: string
+  content?: React.ReactNode
   confirmText?: string
   rejectText?: string
   variant?:
@@ -79,43 +39,115 @@ type DialogProps = {
     | 'link'
 }
 
+type DialogContextProps = {
+  confirm: (options: DialogProps) => Promise<boolean>
+}
+
+const DialogContext = createContext<DialogContextProps | undefined>(undefined)
+
+/* --- Provider --- */
+const DialogProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [options, setOptions] = useState<DialogProps>()
+
+  const triggerRef = useRef<HTMLElement | null>(null)
+
+  const resolverRef = useRef<((value: boolean) => void) | null>(null)
+
+  const settle = useCallback((result: boolean) => {
+    const resolve = resolverRef.current
+    if (!resolve) return
+
+    resolverRef.current = null
+    setIsOpen(false)
+    resolve(result)
+  }, [])
+
+  const confirm = useCallback(
+    (next: DialogProps) =>
+      new Promise<boolean>(resolve => {
+        if (resolverRef.current) {
+          resolverRef.current(false)
+        } else {
+          const active = document.activeElement
+          triggerRef.current =
+            active instanceof HTMLElement && !active.closest('dialog')
+              ? active
+              : null
+        }
+
+        resolverRef.current = resolve
+        setOptions(next)
+        setIsOpen(true)
+      }),
+    []
+  )
+
+  // Restore focus once the dialog has been removed from the DOM.
+  useEffect(() => {
+    if (isOpen) return
+
+    const element = triggerRef.current
+    if (!element) return
+
+    triggerRef.current = null
+    if (element.isConnected) element.focus()
+  }, [isOpen])
+
+  useEffect(
+    () => () => {
+      resolverRef.current?.(false)
+      resolverRef.current = null
+    },
+    []
+  )
+
+  const value = useMemo(() => ({ confirm }), [confirm])
+
+  return (
+    <DialogContext value={value}>
+      {children}
+
+      {isOpen && <DialogModal {...options} onAction={settle} />}
+    </DialogContext>
+  )
+}
+
 /* --- DialogModal --- */
 const DialogModal = ({
-  open,
-  handleAction,
+  onAction,
   header = 'Are you sure?',
   content = 'This action cannot be undone.',
   rejectText = 'Cancel',
   confirmText = 'Confirm',
   variant = 'default'
-}: DialogProps & {
-  open: boolean
-  handleAction?: (value: boolean) => void
-}) => {
-  const handleClose = (value: boolean) => {
-    if (!handleAction) return
-    handleAction(value)
-  }
+}: DialogProps & { onAction: (result: boolean) => void }) => {
+  const id = useId()
+  const titleId = `${id}-title`
+  const descriptionId = `${id}-description`
 
   return (
     <Modal
-      isOpen={open}
-      onCloseModal={() => handleClose(false)}
+      isOpen
+      onCloseModal={() => onAction(false)}
       className={dialogStyles()}
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
     >
       <ModalHeader>
-        <Text tag="h3" className="text-center">
+        <Text tag="h3" id={titleId} className="text-center">
           {header}
         </Text>
       </ModalHeader>
-      <ModalContent>{content}</ModalContent>
+
+      <ModalContent id={descriptionId}>{content}</ModalContent>
 
       <ModalFooter className="flex justify-end space-x-3">
         <Button
           className="w-full"
           variant="outline"
           size="sm"
-          onClick={() => handleClose(false)}
+          onClick={() => onAction(false)}
         >
           {rejectText}
         </Button>
@@ -123,7 +155,7 @@ const DialogModal = ({
           className="w-full"
           variant={variant}
           size="sm"
-          onClick={() => handleClose(true)}
+          onClick={() => onAction(true)}
         >
           {confirmText}
         </Button>
@@ -134,23 +166,14 @@ const DialogModal = ({
 
 /* --- Hook --- */
 const useConfirm = () => {
-  const dialogContext = useContext(DialogContext)
+  const context = useContext(DialogContext)
 
-  if (!dialogContext) {
-    throw new Error('useConfirm must be used inside an DialogProvider')
+  if (!context) {
+    throw new Error('useConfirm must be used inside a DialogProvider')
   }
 
-  const getConfirmation = async (modal: DialogProps): Promise<boolean> => {
-    const reactionPromise = new Promise<boolean>(resolve => {
-      dialogContext.render(modal, resolve)
-    })
-
-    return reactionPromise
-  }
-
-  return {
-    getConfirmation
-  }
+  return useMemo(() => ({ getConfirmation: context.confirm }), [context])
 }
 
 export { DialogProvider, DialogModal, useConfirm }
+export type { DialogProps }

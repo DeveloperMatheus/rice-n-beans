@@ -11,7 +11,8 @@
     "updatePnpm": "npm update -g pnpm",
     "test": "jest",
     "test:watch": "jest --watch",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "pnpm:udate": "pnpm self-update"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",
@@ -23,7 +24,7 @@
     "next": "16.3.5",
     "next-themes": "0.4.6",
     "react": "19.3.0",
-    "react-dom": "19.2.0",
+    "react-dom": "19.3.0",
     "react-hook-form": "7.66.1",
     "sonner": "2.0.7",
     "tailwind-variants": "^3.1.1",

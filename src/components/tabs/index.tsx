@@ -2,10 +2,11 @@
 
 import {
   ComponentProps,
-  ComponentPropsWithoutRef,
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
   createContext,
   useContext,
-  useRef,
   useState
 } from 'react'
 import { tv } from 'tailwind-variants'
@@ -23,7 +24,7 @@ const { wrapper, list, panel } = tabsStyles()
 
 /* --- Context --- */
 type TabsProviderProps = {
-  children: React.ReactNode
+  children: ReactNode
   defaultValue: string
 }
 
@@ -38,7 +39,7 @@ const useTabsContext = () => {
   const context = useContext(TabsContext)
 
   if (!context) {
-    throw new Error('useTabsContext must be used inside an TabsProvider')
+    throw new Error('useTabsContext must be used inside a Tabs')
   }
 
   return context
@@ -54,94 +55,70 @@ const TabsProvider = ({ children, defaultValue }: TabsProviderProps) => {
 
 /* --- Tabs --- */
 type TabsProps = {
-  children: React.ReactNode
   defaultValue: string
-} & ComponentPropsWithoutRef<'div'>
+} & ComponentProps<'div'>
 
-const Tabs = ({ children, className, defaultValue, ...props }: TabsProps) => {
-  const refList = useRef<HTMLDivElement>(null)
+const Tabs = ({ className, defaultValue, onKeyDown, ...props }: TabsProps) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (onKeyDown) {
+      onKeyDown(event)
+    }
 
-  const arrowFocus = (
-    tabButton: HTMLElement,
-    evt: React.KeyboardEvent<HTMLDivElement>
-  ) => {
-    tabButton.click()
-    tabButton.focus()
-    tabButton.scrollIntoView({
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+      return
+    }
+
+    const tabs = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(
+        '[role="tab"]:not([disabled])'
+      )
+    )
+    const index = tabs.indexOf(document.activeElement as HTMLElement)
+
+    if (index < 0) {
+      return
+    }
+
+    const step = event.key === 'ArrowRight' ? 1 : -1
+    const target = tabs[(index + step + tabs.length) % tabs.length]
+
+    event.preventDefault()
+    target.click()
+    target.focus()
+    target.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
       inline: 'center'
     })
-    evt.preventDefault()
-  }
-
-  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const list = refList.current
-
-    if (!list) return
-
-    const tabs = Array.from<HTMLElement>(
-      list.querySelectorAll('[role="tab"]:not([disabled])')
-    )
-
-    const index = tabs.indexOf(document.activeElement as HTMLElement)
-
-    if (index < 0) return
-
-    switch (event.key) {
-      case 'ArrowLeft': {
-        const prev = (index - 1 + tabs.length) % tabs.length
-        arrowFocus(tabs[prev], event)
-        break
-      }
-
-      case 'ArrowRight': {
-        const next = (index + 1 + tabs.length) % tabs.length
-        arrowFocus(tabs[next], event)
-        break
-      }
-    }
   }
 
   return (
     <TabsProvider defaultValue={defaultValue}>
       <div
-        ref={refList}
-        onKeyDown={onKeyDown}
         className={wrapper({ className })}
         {...props}
-      >
-        {children}
-      </div>
+        onKeyDown={handleKeyDown}
+      />
     </TabsProvider>
   )
 }
 
-Tabs.displayName = 'Tabs'
-
 /* --- TabList --- */
-const TabList = ({ children, className, ...props }: ComponentProps<'div'>) => (
-  <div
-    role="tablist"
-    aria-orientation="horizontal"
-    className={list({ className })}
-    {...props}
-  >
-    {children}
-  </div>
+const TabList = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div role="tablist" className={list({ className })} {...props} />
 )
-
-TabList.displayName = 'TabList'
 
 /* --- TabPanel --- */
 type TabPanelProps = {
   id: string
 } & ComponentProps<'div'>
 
-const TabPanel = ({ children, id, className, ...props }: TabPanelProps) => {
+const TabPanel = ({ id, className, ...props }: TabPanelProps) => {
   const { activeTab } = useTabsContext()
 
-  if (activeTab !== id) return
+  if (activeTab !== id) {
+    return null
+  }
 
   return (
     <div
@@ -151,74 +128,40 @@ const TabPanel = ({ children, id, className, ...props }: TabPanelProps) => {
       role="tabpanel"
       tabIndex={0}
       {...props}
-    >
-      {children}
-    </div>
+    />
   )
 }
 
-TabPanel.displayName = 'TabPanel'
-
 /* --- Tab --- */
-type TabButtonProps = {
+type TabProps = {
   id: string
 } & ComponentProps<'button'>
 
-const Tab = ({ children, className, id, ...props }: TabButtonProps) => {
+const Tab = ({ id, onClick, ...props }: TabProps) => {
   const { activeTab, setActiveTab } = useTabsContext()
+  const isActive = activeTab === id
 
-  const isTabActive = () => {
-    if (activeTab !== id) return false
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) {
+      onClick(event)
+    }
 
-    return true
-  }
-
-  const applyActiveStyle = () => {
-    if (!isTabActive()) return 'outline'
-
-    return 'default'
-  }
-
-  const applyTabIndex = () => {
-    if (!isTabActive()) return -1
-
-    return 0
-  }
-
-  const clickAndFocus = (
-    tabButton: HTMLElement,
-    evt: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    tabButton.focus()
-    evt.preventDefault()
-  }
-
-  const onClickDown = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    clickAndFocus(event.currentTarget, event)
+    setActiveTab(id)
+    event.currentTarget.focus()
   }
 
   return (
     <Button
-      onClick={evt => {
-        setActiveTab(id)
-        onClickDown(evt)
-      }}
-      role="tab"
-      aria-selected={isTabActive()}
-      id={`tab-${id}`}
-      aria-controls={`tabpanel-${id}`}
-      tabIndex={applyTabIndex()}
-      variant={applyActiveStyle()}
-      aria-disabled="false"
       {...props}
-    >
-      {children}
-    </Button>
+      role="tab"
+      id={`tab-${id}`}
+      aria-selected={isActive}
+      aria-controls={`tabpanel-${id}`}
+      tabIndex={isActive ? 0 : -1}
+      variant={isActive ? 'default' : 'outline'}
+      onClick={handleClick}
+    />
   )
 }
-
-Tab.displayName = 'Tab'
 
 export { Tabs, TabList, TabPanel, Tab }

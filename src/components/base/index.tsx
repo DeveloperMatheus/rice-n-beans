@@ -6,13 +6,13 @@ import { tv, VariantProps } from 'tailwind-variants'
 const baseStyles = tv({
   slots: {
     wrapper: 'flex',
-    container: 'h-screen w-full overflow-hidden',
+    container: 'flex h-dvh w-full flex-col overflow-hidden',
     content:
-      'bg-scaffold border-default h-[calc(100vh-4.1875rem)] overflow-auto border-t p-3 lg:border-y',
+      'bg-scaffold border-default min-h-0 flex-1 overflow-auto border-t p-3 lg:border-y',
     drawer:
-      'bg-scaffold border-default fixed top-0 right-0 left-0 z-10 h-screen overflow-x-hidden overflow-y-auto border p-3 transition-all lg:sticky lg:overflow-x-hidden lg:overflow-y-auto',
+      'bg-scaffold border-default fixed top-0 right-0 left-0 z-10 h-dvh overflow-x-hidden overflow-y-auto border p-3 transition-all lg:sticky',
     header:
-      'bg-scaffold border-default sticky top-0 w-full p-3 shadow-md lg:border-t',
+      'bg-scaffold border-default sticky top-0 w-full shrink-0 p-3 shadow-md lg:border-t',
     toggle: 'text-2xl'
   },
   variants: {
@@ -39,110 +39,71 @@ const { wrapper, container, content, drawer, header, toggle } = baseStyles()
 
 /* --- Base --- */
 const Base = ({
-  children,
   className,
   orientation = 'left',
   ...props
-}: ComponentProps<'div'> & Omit<VariantProps<typeof baseStyles>, 'isOpen'>) => {
-  return (
-    <div className={wrapper({ className, orientation })} {...props}>
-      {children}
-    </div>
-  )
-}
-
-Base.displayName = 'Base'
+}: ComponentProps<'div'> & Omit<VariantProps<typeof baseStyles>, 'isOpen'>) => (
+  <div className={wrapper({ className, orientation })} {...props} />
+)
 
 /* --- BaseContainer --- */
-const BaseContainer = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => (
-  <div className={container({ className })} {...props}>
-    {children}
-  </div>
+const BaseContainer = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={container({ className })} {...props} />
 )
-
-BaseContainer.displayName = 'BaseContainer'
 
 /* --- BaseContent --- */
-const BaseContent = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'main'>) => (
-  <main className={content({ className })} {...props}>
-    {children}
-  </main>
+const BaseContent = ({ className, ...props }: ComponentProps<'main'>) => (
+  <main className={content({ className })} {...props} />
 )
-
-BaseContent.displayName = 'BaseContent'
 
 /* --- BaseDrawer --- */
 const BaseDrawer = ({
-  children,
   className,
   isOpen,
   ...props
 }: ComponentProps<'nav'> &
-  Omit<VariantProps<typeof baseStyles>, 'orientation'>) => {
-  return (
-    <nav className={drawer({ className, isOpen })} {...props}>
-      {children}
-    </nav>
-  )
-}
-
-BaseDrawer.displayName = 'BaseDrawer'
+  Omit<VariantProps<typeof baseStyles>, 'orientation'>) => (
+  <nav className={drawer({ className, isOpen })} {...props} />
+)
 
 /* --- BaseHeader --- */
-const BaseHeader = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => {
-  return (
-    <div className={header({ className })} {...props}>
-      {children}
-    </div>
-  )
-}
-
-BaseHeader.displayName = 'BaseHeader'
+const BaseHeader = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={header({ className })} {...props} />
+)
 
 /* --- BaseToggleDrawer --- */
-const BaseToggleDrawer = ({
-  className,
-  ...props
-}: ComponentProps<'button'>) => {
-  return (
-    <Button
-      variant="ghost"
-      className={toggle({ className })}
-      size="icon"
-      {...props}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="4" x2="20" y1="12" y2="12" />
-        <line x1="4" x2="20" y1="6" y2="6" />
-        <line x1="4" x2="20" y1="18" y2="18" />
-      </svg>
-    </Button>
-  )
+type BaseToggleDrawerProps = Omit<
+  ComponentProps<'button'>,
+  'aria-label' | 'children'
+> & {
+  'aria-label': string
 }
 
-BaseToggleDrawer.displayName = 'BaseToggleDrawer'
+const BaseToggleDrawer = ({ className, ...props }: BaseToggleDrawerProps) => (
+  <Button
+    {...props}
+    variant="ghost"
+    size="icon"
+    className={toggle({ className })}
+  >
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </svg>
+  </Button>
+)
 
 export {
   Base,

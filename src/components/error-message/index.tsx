@@ -5,16 +5,8 @@ const errorMessageStyles = tv({
   base: 'text-error'
 })
 
-const ErrorMessage = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'p'>) => (
-  <p className={errorMessageStyles({ className })} {...props}>
-    {children}
-  </p>
+const ErrorMessage = ({ className, ...props }: ComponentProps<'p'>) => (
+  <p className={errorMessageStyles({ className })} {...props} />
 )
-
-ErrorMessage.displayName = 'ErrorMessage'
 
 export { ErrorMessage }

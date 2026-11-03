@@ -1,4 +1,4 @@
-import React from 'react'
+import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const textStyles = tv({
@@ -22,13 +22,12 @@ const textStyles = tv({
 
 type TextProps = {
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
-} & React.HTMLAttributes<HTMLElement>
+} & ComponentProps<'p'>
 
-const Text = ({ tag = 'p', children, className, ...props }: TextProps) =>
-  React.createElement(
-    tag,
-    { ...props, className: textStyles({ className, tag }) },
-    children
-  )
+const Text = ({ tag = 'p', className, ...props }: TextProps) => {
+  const Component = tag
+
+  return <Component className={textStyles({ className, tag })} {...props} />
+}
 
 export { Text }

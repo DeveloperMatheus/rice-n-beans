@@ -15,20 +15,17 @@ const separatorStyles = tv({
 })
 
 const Separator = ({
-  children,
   className,
   orientation,
   ...props
-}: Omit<ComponentProps<'div'>, 'role' | 'aria-orientation'> &
+}: Omit<ComponentProps<'div'>, 'role' | 'aria-orientation' | 'children'> &
   VariantProps<typeof separatorStyles>) => (
   <div
     role="separator"
-    aria-orientation={orientation ?? 'horizontal'}
+    aria-orientation={orientation === 'vertical' ? 'vertical' : undefined}
     className={separatorStyles({ className, orientation })}
     {...props}
-  ></div>
+  />
 )
-
-Separator.displayName = 'Separator'
 
 export { Separator }

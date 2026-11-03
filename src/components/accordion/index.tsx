@@ -1,6 +1,13 @@
 'use client'
 
-import { ComponentProps, createContext, useContext, useState } from 'react'
+import {
+  ComponentProps,
+  MouseEvent,
+  ReactNode,
+  createContext,
+  useContext,
+  useState
+} from 'react'
 import { tv } from 'tailwind-variants'
 import { Button } from '~/components/button'
 
@@ -8,7 +15,14 @@ const accordionStyles = tv({
   slots: {
     wrapper: 'w-full space-y-3',
     content: 'mt-3 px-5',
-    trigger: 'flex w-full flex-row items-center justify-between'
+    trigger: 'flex w-full flex-row items-center justify-between',
+    icon: 'bg-arrow-icon min-h-6 min-w-6 transition-all'
+  },
+  variants: {
+    isOpen: {
+      true: { icon: 'rotate-180' },
+      false: { icon: 'rotate-0' }
+    }
   }
 })
 
@@ -16,7 +30,7 @@ const { wrapper, content, trigger } = accordionStyles()
 
 /* --- Context --- */
 type AccordionProviderProps = {
-  children: React.ReactNode
+  children: ReactNode
   defaultValue?: string
 }
 
@@ -36,7 +50,7 @@ const useAccordionContext = () => {
   const context = useContext(AccordionContext)
 
   if (!context) {
-    throw new Error('useCount must be used inside an AccordionProvider')
+    throw new Error('useAccordionContext must be used inside an Accordion')
   }
 
   return context
@@ -56,21 +70,15 @@ const AccordionProvider = ({
 }
 
 /* --- Wrapper --- */
-const Accordion = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => {
-  return (
-    <AccordionProvider>
-      <div className={wrapper({ className })} {...props}>
-        {children}
-      </div>
-    </AccordionProvider>
-  )
-}
+type AccordionProps = {
+  defaultValue?: string
+} & Omit<ComponentProps<'div'>, 'defaultValue'>
 
-Accordion.displayName = 'Accordion'
+const Accordion = ({ className, defaultValue, ...props }: AccordionProps) => (
+  <AccordionProvider defaultValue={defaultValue}>
+    <div className={wrapper({ className })} {...props} />
+  </AccordionProvider>
+)
 
 /* --- Content --- */
 type AccordionContentProps = {
@@ -78,14 +86,13 @@ type AccordionContentProps = {
 } & ComponentProps<'div'>
 
 const AccordionContent = ({
-  children,
   className,
   id,
   ...props
 }: AccordionContentProps) => {
   const { activeAccordion } = useAccordionContext()
 
-  if (!isAccordionOpen(id, activeAccordion)) return
+  if (!isAccordionOpen(id, activeAccordion)) return null
 
   return (
     <div
@@ -93,15 +100,10 @@ const AccordionContent = ({
       {...props}
       id={`accordion-${id}`}
       aria-labelledby={id}
-      hidden={!isAccordionOpen(id, activeAccordion)}
       role="region"
-    >
-      {children}
-    </div>
+    />
   )
 }
-
-AccordionContent.displayName = 'AccordionContent'
 
 /* --- Trigger --- */
 type AccordionTriggerProps = {
@@ -112,26 +114,18 @@ const AccordionTrigger = ({
   children,
   className,
   id,
+  onClick,
   ...props
 }: AccordionTriggerProps) => {
   const { activeAccordion, setActiveAccordion } = useAccordionContext()
+  const isOpen = isAccordionOpen(id, activeAccordion)
+  const { icon } = accordionStyles({ isOpen })
 
-  const renderAccordionIcon = (): React.ReactNode => {
-    const iconAnimation = isAccordionOpen(id, activeAccordion)
-      ? 'rotate-180'
-      : 'rotate-0'
+  const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) onClick(event)
 
-    return (
-      <div
-        aria-hidden="true"
-        tabIndex={-1}
-        className={`bg-arrow-icon min-h-6 min-w-6 ${iconAnimation} transition-all`}
-      ></div>
-    )
+    setActiveAccordion(isOpen ? undefined : id)
   }
-
-  const handleToggle = () =>
-    setActiveAccordion(isAccordionOpen(id, activeAccordion) ? undefined : id)
 
   return (
     <Button
@@ -139,16 +133,14 @@ const AccordionTrigger = ({
       {...props}
       variant="outline"
       id={id}
-      aria-expanded={isAccordionOpen(id, activeAccordion)}
+      aria-expanded={isOpen}
       aria-controls={`accordion-${id}`}
       onClick={handleToggle}
     >
       {children}
-      {renderAccordionIcon()}
+      <div aria-hidden="true" className={icon()} />
     </Button>
   )
 }
-
-AccordionTrigger.displayName = 'AccordionTrigger'
 
 export { Accordion, AccordionContent, AccordionTrigger }

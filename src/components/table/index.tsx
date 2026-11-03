@@ -16,79 +16,43 @@ const tableStyles = tv({
 const { wrapper, body, data, row, head, header, footer } = tableStyles()
 
 /* --- Table --- */
-const Table = ({ children, className, ...props }: ComponentProps<'table'>) => (
-  <table className={wrapper({ className })} {...props}>
-    {children}
-  </table>
+const Table = ({ className, ...props }: ComponentProps<'table'>) => (
+  <table className={wrapper({ className })} {...props} />
 )
-
-Table.displayName = 'Table'
 
 /* --- TableBody --- */
-const TableBody = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'tbody'>) => (
-  <tbody className={body({ className })} {...props}>
-    {children}
-  </tbody>
+const TableBody = ({ className, ...props }: ComponentProps<'tbody'>) => (
+  <tbody className={body({ className })} {...props} />
 )
-
-TableBody.displayName = 'TableBody'
 
 /* --- TableData --- */
-const TableData = ({ children, className, ...props }: ComponentProps<'td'>) => (
-  <td className={data({ className })} {...props}>
-    {children}
-  </td>
+const TableData = ({ className, ...props }: ComponentProps<'td'>) => (
+  <td className={data({ className })} {...props} />
 )
-
-TableData.displayName = 'TableData'
 
 /* --- TableRow --- */
-const TableRow = ({ children, className, ...props }: ComponentProps<'tr'>) => (
-  <tr className={row({ className })} {...props}>
-    {children}
-  </tr>
+const TableRow = ({ className, ...props }: ComponentProps<'tr'>) => (
+  <tr className={row({ className })} {...props} />
 )
-
-TableRow.displayName = 'TableRow'
 
 /* --- TableHead --- */
-const TableHead = ({ children, className, ...props }: ComponentProps<'th'>) => (
-  <th className={head({ className })} {...props}>
-    {children}
-  </th>
+const TableHead = ({
+  className,
+  scope = 'col',
+  ...props
+}: ComponentProps<'th'>) => (
+  <th className={head({ className })} scope={scope} {...props} />
 )
-
-TableHead.displayName = 'TableHead'
 
 /* --- TableHeader --- */
-const TableHeader = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'thead'>) => (
-  <thead className={header({ className })} {...props}>
-    {children}
-  </thead>
+const TableHeader = ({ className, ...props }: ComponentProps<'thead'>) => (
+  <thead className={header({ className })} {...props} />
 )
-
-TableHeader.displayName = 'TableHeader'
 
 /* --- TableFooter --- */
-const TableFooter = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'tfoot'>) => (
-  <tfoot className={footer({ className })} {...props}>
-    {children}
-  </tfoot>
+const TableFooter = ({ className, ...props }: ComponentProps<'tfoot'>) => (
+  <tfoot className={footer({ className })} {...props} />
 )
-
-TableFooter.displayName = 'TableFooter'
 
 export {
   Table,

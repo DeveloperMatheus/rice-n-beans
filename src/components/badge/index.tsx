@@ -5,12 +5,11 @@ const badgeStyles = tv({
   base: 'inline-block rounded-full px-2.5 py-0.5 text-center text-sm font-bold select-none',
   variants: {
     variant: {
-      default: 'bg-primary text-primary-contrast hover:bg-primary/90',
-      destructive: 'bg-error text-error-contrast hover:bg-error/90',
-      outline:
-        'border-default text-scaffold-contrast bg-scaffold hover:bg-scaffold/90 border',
-      secondary: 'bg-secondary text-secondary-contrast hover:bg-secondary/70',
-      success: 'bg-success text-success-contrast hover:bg-success/70'
+      default: 'bg-primary text-primary-contrast',
+      destructive: 'bg-error text-error-contrast',
+      outline: 'border-default text-scaffold-contrast bg-scaffold border',
+      secondary: 'bg-secondary text-secondary-contrast',
+      success: 'bg-success text-success-contrast'
     }
   },
   defaultVariants: {
@@ -19,16 +18,11 @@ const badgeStyles = tv({
 })
 
 const Badge = ({
-  children,
   className,
   variant,
   ...props
-}: ComponentProps<'div'> & VariantProps<typeof badgeStyles>) => (
-  <div className={badgeStyles({ className, variant })} {...props}>
-    {children}
-  </div>
+}: ComponentProps<'span'> & VariantProps<typeof badgeStyles>) => (
+  <span className={badgeStyles({ className, variant })} {...props} />
 )
-
-Badge.displayName = 'Badge'
 
 export { Badge }

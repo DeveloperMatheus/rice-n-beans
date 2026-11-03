@@ -1,6 +1,12 @@
 'use client'
 
-import { ComponentProps, useCallback, useEffect, useRef } from 'react'
+import {
+  ComponentProps,
+  MouseEvent,
+  SyntheticEvent,
+  useEffect,
+  useRef
+} from 'react'
 import { tv } from 'tailwind-variants'
 
 const modalStyles = tv({
@@ -21,86 +27,74 @@ type ModalProps = {
   onCloseModal: () => void
 } & ComponentProps<'dialog'>
 
+const isOutsideBox = (event: MouseEvent<HTMLElement>) => {
+  const { top, bottom, left, right } =
+    event.currentTarget.getBoundingClientRect()
+
+  return (
+    event.clientY < top ||
+    event.clientY > bottom ||
+    event.clientX < left ||
+    event.clientX > right
+  )
+}
+
 const Modal = ({
-  children,
   className,
   isOpen,
   onCloseModal,
+  onClick,
+  onClose,
   ...props
 }: ModalProps) => {
   const ref = useRef<HTMLDialogElement>(null)
 
-  const handleClickOutside = useCallback(
-    (event: MouseEvent) => {
-      if (ref.current !== event.target) return
-      onCloseModal()
-    },
-    [onCloseModal]
-  )
-
   useEffect(() => {
-    if (!isOpen) return
+    const element = ref.current
 
-    ref.current?.showModal()
-    document.addEventListener('click', handleClickOutside)
+    if (!element) return
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-      ref.current?.close()
+    if (isOpen && !element.open) element.showModal()
+
+    if (!isOpen && element.open) element.close()
+  }, [isOpen])
+
+  const handleClick = (event: MouseEvent<HTMLDialogElement>) => {
+    if (onClick) onClick(event)
+
+    if (event.target === event.currentTarget && isOutsideBox(event)) {
+      onCloseModal()
     }
-  }, [isOpen, handleClickOutside])
+  }
+
+  const handleClose = (event: SyntheticEvent<HTMLDialogElement>) => {
+    if (onClose) onClose(event)
+
+    if (isOpen) onCloseModal()
+  }
 
   return (
     <dialog
-      className={wrapper({ className })}
-      onClose={() => onCloseModal()}
       ref={ref}
+      className={wrapper({ className })}
+      onClick={handleClick}
+      onClose={handleClose}
       {...props}
-    >
-      {children}
-    </dialog>
+    />
   )
 }
 
-Modal.displayName = 'Modal'
-
-/* --- ModalContent --- */
-const ModalContent = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => (
-  <div className={content({ className })} {...props}>
-    {children}
-  </div>
+/* --- Sections --- */
+const ModalContent = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={content({ className })} {...props} />
 )
 
-ModalContent.displayName = 'ModalContent'
-
-/* --- ModalHeader --- */
-const ModalHeader = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => (
-  <div className={header({ className })} {...props}>
-    {children}
-  </div>
+const ModalHeader = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={header({ className })} {...props} />
 )
 
-ModalHeader.displayName = 'ModalHeader'
-
-/* --- ModalFooter --- */
-const ModalFooter = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<'div'>) => (
-  <div className={footer({ className })} {...props}>
-    {children}
-  </div>
+const ModalFooter = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={footer({ className })} {...props} />
 )
-
-ModalFooter.displayName = 'ModalFooter'
 
 export { Modal, ModalContent, ModalHeader, ModalFooter }

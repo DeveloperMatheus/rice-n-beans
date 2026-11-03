@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const errorMessageStyles = tv({
-  base: 'text-error'
+  base: 'text-fg-error'
 })
 
 const ErrorMessage = ({ className, ...props }: ComponentProps<'p'>) => (

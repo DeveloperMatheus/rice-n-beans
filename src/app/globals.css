@@ -1,108 +1,219 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is([class~='dark'] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* ---------- valores de estado (sem namespace do Tailwind) ---------- */
 :root {
-  --primary: oklch(0.21 0.0059 285.89);
-  --secondary: oklch(0.96 0.0013 286.38);
-  --success: oklch(0.52 0.1367 149.91);
-  --error: oklch(0.63 0.2088 25.41);
-  --border: oklch(0.92 0.004 286.32);
-  --muted: oklch(0.55 0.0234 264.36);
+  color-scheme: light;
+  --alpha-hover: 90%;
+  --alpha-active: 80%;
+  --opacity-disabled: 0.5;
+  --focus-width: 2px;
+  --focus-offset: 2px;
 
-  --primary-contrast: oklch(0.92 0.004 286.32);
-  --secondary-contrast: oklch(0.31 0 0);
-  --success-contrast: oklch(1 0 0);
-  --error-contrast: oklch(1 0 0);
-
-  --scaffold: oklch(1 0 0);
-  --scaffold-contrast: oklch(0.31 0 0);
-  --ring: oklch(0.14 0.0044 285.82);
-
-  --checkmark-icon: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-  --arrow-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  --icon-check: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  --icon-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
 }
 
-.dark {
-  --primary: oklch(0.87 0.0055 286.29);
-  --secondary: oklch(0.27 0.0055 286.03);
-  --success: oklch(0.44 0.1069 151.54);
-  --error: oklch(0.4 0.1352 25.81);
-  --border: oklch(0.27 0.0055 286.03);
-  --muted: oklch(0.71 0.0205 262.98);
-
-  --primary-contrast: oklch(0.31 0 0);
-  --secondary-contrast: oklch(0.88 0 0);
-  --success-contrast: oklch(0.88 0 0);
-  --error-contrast: oklch(0.88 0 0);
-
-  --scaffold: oklch(0.21 0.0059 285.89);
-  --scaffold-contrast: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.87 0.0055 286.29);
-}
-
+/* ---------- contrato: nomes + valores do tema claro ---------- */
 @theme {
-  --content-checkmark-icon: var(--checkmark-icon);
+  /* remove a paleta padrão: classe de cor fora do contrato não é gerada */
+  --color-*: initial;
 
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-success: var(--success);
-  --color-error: var(--error);
-  --color-scaffold: var(--scaffold);
-  --color-muted: var(--muted);
+  /* altura: gera h-control-sm, h-control-md, h-control-lg */
+  --spacing-control-sm: --spacing(8);
+  --spacing-control-md: --spacing(9);
+  --spacing-control-lg: --spacing(10);
 
-  --color-primary-contrast: var(--primary-contrast);
-  --color-secondary-contrast: var(--secondary-contrast);
-  --color-success-contrast: var(--success-contrast);
-  --color-error-contrast: var(--error-contrast);
-  --color-scaffold-contrast: var(--scaffold-contrast);
+  /* padding horizontal: gera px-inset-sm, px-inset-md, px-inset-lg */
+  --spacing-inset-sm: --spacing(3);
+  --spacing-inset-md: --spacing(4);
+  --spacing-inset-lg: --spacing(8);
 
-  --border-color-default: var(--border);
-  --ring-color-default: var(--ring);
-  --background-image-arrow-icon: var(--arrow-icon);
-  --animate-fade-in: fade-in 0.2s ease-in-out;
-  --animate-modal: modal 0.2s ease-in-out;
+  /* raio do checkbox, separado de --radius-default */
+  --radius-check: 0.25rem;
 
   --radius-default: 0.5rem;
 
-  /* Just for the /documentation/colors to show as a background, don't copy it */
-  --color-border-default: var(--border);
+  --animate-fade-in: fade-in 0.2s ease-in-out;
+  --animate-modal: modal 0.2s ease-in-out;
 
   @keyframes fade-in {
-    0% {
-      opacity: 0%;
+    from {
+      opacity: 0;
     }
-    100% {
-      opacity: 100%;
+    to {
+      opacity: 1;
     }
   }
 
   @keyframes modal {
-    0% {
+    from {
       transform: scale(1.05);
     }
-    100% {
+    to {
       transform: scale(1);
     }
   }
+
+  /* superfície e texto */
+  --color-canvas: oklch(1 0 0);
+  --color-canvas-fg: oklch(0.31 0 0);
+  --color-line: oklch(0.92 0.004 286.32);
+  --color-ring: oklch(0.14 0.0044 285.82);
+  --color-overlay: oklch(0 0 0 / 0.5);
+
+  /* papéis de texto sobre o canvas */
+  --color-fg-muted: oklch(0.55 0.0234 264.36);
+  --color-fg-error: oklch(0.5 0.19 27);
+
+  /* ações e feedback (superfície + texto sobre ela) */
+  --color-primary: oklch(0.21 0.0059 285.89);
+  --color-primary-fg: oklch(0.92 0.004 286.32);
+  --color-secondary: oklch(0.96 0.0013 286.38);
+  --color-secondary-fg: oklch(0.31 0 0);
+  --color-success: oklch(0.52 0.1367 149.91);
+  --color-success-fg: oklch(1 0 0);
+  --color-error: oklch(0.63 0.2088 25.41);
+  --color-error-fg: oklch(1 0 0);
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar {
-  width: 20px;
+/* ---------- derivados: resolvidos no elemento, então o .dark não os redeclara ---------- */
+@theme inline {
+  --color-primary-hover: color-mix(
+    in oklab,
+    var(--color-primary) var(--alpha-hover),
+    transparent
+  );
+  --color-primary-active: color-mix(
+    in oklab,
+    var(--color-primary) var(--alpha-active),
+    transparent
+  );
+  --color-secondary-hover: color-mix(
+    in oklab,
+    var(--color-secondary) var(--alpha-hover),
+    transparent
+  );
+  --color-secondary-active: color-mix(
+    in oklab,
+    var(--color-secondary) var(--alpha-active),
+    transparent
+  );
+  --color-success-hover: color-mix(
+    in oklab,
+    var(--color-success) var(--alpha-hover),
+    transparent
+  );
+  --color-success-active: color-mix(
+    in oklab,
+    var(--color-success) var(--alpha-active),
+    transparent
+  );
+  --color-error-hover: color-mix(
+    in oklab,
+    var(--color-error) var(--alpha-hover),
+    transparent
+  );
+  --color-error-active: color-mix(
+    in oklab,
+    var(--color-error) var(--alpha-active),
+    transparent
+  );
+
+  /* estado marcado/ativo: Checkbox, Radio, Switch, Range, aba ativa, trigger aberto */
+  --color-selected: var(--color-primary);
+  --color-selected-fg: var(--color-primary-fg);
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
+/* ---------- dark: só sobrescreve valores base ---------- */
+.dark {
+  color-scheme: dark;
+
+  --icon-chevron: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+
+  --color-canvas: oklch(0.21 0.0059 285.89);
+  --color-canvas-fg: oklch(0.92 0.004 286.32);
+  --color-line: oklch(0.27 0.0055 286.03);
+  --color-ring: oklch(0.87 0.0055 286.29);
+
+  --color-fg-muted: oklch(0.71 0.0205 262.98);
+  --color-fg-error: oklch(0.72 0.17 25);
+
+  --color-primary: oklch(0.87 0.0055 286.29);
+  --color-primary-fg: oklch(0.31 0 0);
+  --color-secondary: oklch(0.27 0.0055 286.03);
+  --color-secondary-fg: oklch(0.88 0 0);
+  --color-success: oklch(0.44 0.1069 151.54);
+  --color-success-fg: oklch(0.88 0 0);
+  --color-error: oklch(0.4 0.1352 25.81);
+  --color-error-fg: oklch(0.88 0 0);
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: oklch(0.85 0.03 220);
-  border-radius: 20px;
-  border: 6px solid transparent;
-  background-clip: content-box;
+/* ---------- fragmentos compartilhados ---------- */
+@utility focus-ring {
+  &:focus-visible {
+    outline: var(--focus-width) solid var(--color-ring);
+    outline-offset: var(--focus-offset);
+  }
+  &[aria-invalid='true']:focus-visible {
+    outline-color: var(--color-fg-error);
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: oklch(0.75 0.04 220);
+@utility disabled-state {
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
+  }
+}
+
+/* máscaras: a cor vem de bg-* */
+@utility icon-check {
+  mask: var(--icon-check) center / contain no-repeat;
+}
+
+@utility icon-chevron {
+  mask: var(--icon-chevron) center / contain no-repeat;
+}
+
+/* seta do Select: imagem de fundo, sem colchetes no tv() */
+@utility field-arrow {
+  background-image: var(--icon-chevron);
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-inset-sm) center;
+  background-size: 1.5rem;
+}
+
+@utility range-field {
+  appearance: none;
+  height: --spacing(2);
+  cursor: pointer;
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  background-color: var(--color-canvas);
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: --spacing(4);
+    height: --spacing(4);
+    border: 0;
+    border-radius: 9999px;
+    background-color: var(--color-selected);
+  }
+
+  &::-moz-range-thumb {
+    width: --spacing(4);
+    height: --spacing(4);
+    border: 0;
+    border-radius: 9999px;
+    background-color: var(--color-selected);
+  }
+
+  &::-moz-range-progress {
+    height: 100%;
+    border-radius: 9999px;
+    background-color: var(--color-selected);
+  }
 }

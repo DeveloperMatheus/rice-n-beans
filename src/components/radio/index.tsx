@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const radioStyles = tv({
-  base: "bg-scaffold border-default checked:before:bg-scaffold-contrast relative min-h-5 min-w-5 cursor-pointer appearance-none rounded-full border checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:h-[0.6rem] checked:before:w-[0.6rem] checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:rounded-full checked:before:content-[''] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-50"
+  base: 'focus-ring disabled-state relative size-5 cursor-pointer appearance-none rounded-full border border-line bg-canvas checked:border-selected checked:bg-selected checked:before:absolute checked:before:inset-1 checked:before:rounded-full checked:before:bg-selected-fg'
 })
 
 const Radio = ({ className, ...props }: ComponentProps<'input'>) => (

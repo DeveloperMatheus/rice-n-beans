@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const separatorStyles = tv({
-  base: 'bg-muted shrink-0',
+  base: 'shrink-0 bg-line',
   variants: {
     orientation: {
       horizontal: 'h-px w-full',

@@ -2,15 +2,11 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const cardStyles = tv({
-  base: 'bg-scaffold border-default rounded-default border p-3 shadow-xs'
+  base: 'rounded-default border border-line bg-canvas p-3 text-canvas-fg shadow-xs'
 })
 
-const Card = ({ children, className, ...props }: ComponentProps<'div'>) => (
-  <div className={cardStyles({ className })} {...props}>
-    {children}
-  </div>
+const Card = ({ className, ...props }: ComponentProps<'div'>) => (
+  <div className={cardStyles({ className })} {...props} />
 )
-
-Card.displayName = 'Card'
 
 export { Card }

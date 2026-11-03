@@ -62,7 +62,7 @@ export default function DocumentationColorsPage() {
             <Text>--error: Main color for error states.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">
-            <div className="bg-border-default rounded-default min-h-9 min-w-9"></div>
+            <div className="bg-line rounded-default min-h-9 min-w-9"></div>
             <Text>--border: The color of the borders.</Text>
           </div>
           <div className="flex items-center justify-start gap-3">

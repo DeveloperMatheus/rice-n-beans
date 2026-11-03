@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const inputStyles = tv({
-  base: 'text-scaffold-contrast border-default bg-scaffold placeholder:placeholder-muted focus-visible:ring-default w-full appearance-none rounded-default border px-3 py-2 file:border-0 file:bg-transparent file:font-medium focus-visible:ring-2 focus-visible:outline-hidden focus-visible:outline-offset-0 aria-invalid:focus-visible:ring-error disabled:cursor-not-allowed disabled:opacity-50'
+  base: 'focus-ring disabled-state h-control-md w-full appearance-none rounded-default border border-line bg-canvas px-inset-sm text-canvas-fg placeholder:text-fg-muted file:border-0 file:bg-transparent file:font-medium'
 })
 
 type InputProps = ComponentProps<'input'> & {

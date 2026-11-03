@@ -5,11 +5,11 @@ const badgeStyles = tv({
   base: 'inline-block rounded-full px-2.5 py-0.5 text-center text-sm font-bold select-none',
   variants: {
     variant: {
-      default: 'bg-primary text-primary-contrast',
-      destructive: 'bg-error text-error-contrast',
-      outline: 'border-default text-scaffold-contrast bg-scaffold border',
-      secondary: 'bg-secondary text-secondary-contrast',
-      success: 'bg-success text-success-contrast'
+      default: 'bg-primary text-primary-fg',
+      destructive: 'bg-error text-error-fg',
+      outline: 'border border-line bg-canvas text-canvas-fg',
+      secondary: 'bg-secondary text-secondary-fg',
+      success: 'bg-success text-success-fg'
     }
   },
   defaultVariants: {

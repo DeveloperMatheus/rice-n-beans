@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const labelStyles = tv({
-  base: 'text-scaffold-contrast inline-block font-bold select-none'
+  base: 'inline-block font-bold text-canvas-fg select-none'
 })
 
 const Label = ({ className, ...props }: ComponentProps<'label'>) => (

@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const checkboxStyles = tv({
-  base: 'bg-scaffold border-default relative min-h-5 min-w-5 cursor-pointer appearance-none rounded-md border checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 checked:before:h-4 checked:before:w-4 checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 checked:before:leading-none checked:before:brightness-0 checked:before:content-(--checkmark-icon) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-50 dark:checked:before:brightness-200'
+  base: 'focus-ring disabled-state relative size-5 cursor-pointer appearance-none rounded-check border border-line bg-canvas checked:border-selected checked:bg-selected checked:before:absolute checked:before:inset-px checked:before:bg-selected-fg checked:before:icon-check'
 })
 
 const Checkbox = ({ className, ...props }: ComponentProps<'input'>) => (

@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 import { tv } from 'tailwind-variants'
 
 const textStyles = tv({
-  base: 'text-scaffold-contrast',
+  base: 'text-canvas-fg',
   variants: {
     tag: {
       h1: 'text-3xl font-bold lg:text-4xl',

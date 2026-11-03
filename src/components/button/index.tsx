@@ -2,28 +2,28 @@ import { ComponentProps } from 'react'
 import { tv, VariantProps } from 'tailwind-variants'
 
 const buttonStyles = tv({
-  base: 'inline-flex cursor-pointer appearance-none items-center justify-center rounded-default disabled:cursor-not-allowed disabled:opacity-50',
+  base: 'focus-ring disabled-state inline-flex cursor-pointer appearance-none items-center justify-center rounded-default',
   variants: {
     variant: {
       default:
-        'bg-primary text-primary-contrast hover:bg-primary/90 active:bg-primary/85',
+        'bg-primary text-primary-fg hover:bg-primary-hover active:bg-primary-active',
       success:
-        'bg-success text-success-contrast hover:bg-success/90 active:bg-success/85',
+        'bg-success text-success-fg hover:bg-success-hover active:bg-success-active',
       destructive:
-        'bg-error text-error-contrast hover:bg-error/90 active:bg-error/85',
-      outline:
-        'bg-scaffold border-default text-scaffold-contrast hover:bg-scaffold/90 active:text-scaffold-contrast/85 border',
+        'bg-error text-error-fg hover:bg-error-hover active:bg-error-active',
       secondary:
-        'bg-secondary text-secondary-contrast hover:bg-secondary/90 active:bg-secondary/80',
+        'bg-secondary text-secondary-fg hover:bg-secondary-hover active:bg-secondary-active',
+      outline:
+        'border border-line bg-canvas text-canvas-fg hover:bg-secondary active:bg-secondary-active',
       ghost:
-        'text-scaffold-contrast hover:bg-secondary/90 active:bg-secondary/80 bg-transparent',
-      link: 'text-scaffold-contrast underline-offset-4 hover:underline'
+        'bg-transparent text-canvas-fg hover:bg-secondary active:bg-secondary-active',
+      link: 'text-canvas-fg underline-offset-4 hover:underline'
     },
     size: {
-      default: 'h-9 px-4 py-2',
-      sm: 'h-8 rounded-md px-3 text-xs',
-      lg: 'h-10 rounded-md px-8',
-      icon: 'h-9 w-9'
+      default: 'h-control-md px-inset-md',
+      sm: 'h-control-sm px-inset-sm text-xs',
+      lg: 'h-control-lg px-inset-lg',
+      icon: 'size-control-md'
     }
   },
   defaultVariants: {
@@ -33,17 +33,12 @@ const buttonStyles = tv({
 })
 
 const Button = ({
-  children,
   className,
   variant,
   size,
   ...props
 }: ComponentProps<'button'> & VariantProps<typeof buttonStyles>) => (
-  <button className={buttonStyles({ className, variant, size })} {...props}>
-    {children}
-  </button>
+  <button className={buttonStyles({ className, variant, size })} {...props} />
 )
-
-Button.displayName = 'Button'
 
 export { Button }

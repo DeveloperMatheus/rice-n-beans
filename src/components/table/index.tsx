@@ -3,13 +3,13 @@ import { tv } from 'tailwind-variants'
 
 const tableStyles = tv({
   slots: {
-    wrapper: 'text-scaffold-contrast border-collapse',
-    body: 'w-auto',
+    wrapper: 'border-collapse text-canvas-fg',
+    body: '',
     data: 'px-2 py-1 text-center',
-    row: 'border-default not-last:border-b',
+    row: 'border-line not-last:border-b',
     head: 'px-2 py-1 text-center',
-    header: 'border-default border-b text-center',
-    footer: 'border-default border-t font-bold'
+    header: 'border-b border-line text-center',
+    footer: 'border-t border-line font-bold'
   }
 })
 
